@@ -1,0 +1,252 @@
+/* Base Styles (Light Mode Default) */
+body {
+  scroll-behavior: smooth;
+  background-color: #f8f9fa; /* Light background */
+  color: #212529; /* Dark text for contrast */
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Logo */
+.logo-img {
+    max-height: 26px; /* Maximum height you want in navbar */
+    height: auto; 
+    width: auto; /* Maintain aspect ratio */
+  }
+
+/* Font added */
+.footer,
+h2,
+h3,
+p {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.footer,
+h2,
+h3{
+  f
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+
+
+/* Hero Section (Light Mode Default) */
+.hero {
+  /* Background image */
+  background-image: url("../images/hero-bg-1.svg");
+  background-position: center; /* center the image */
+  background-size: cover; /* scale to cover the container */
+  background-repeat: no-repeat; /* don’t tile */
+  background-attachment: scroll; /* optional, use 'fixed' for parallax effect */
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff; /* White text for contrast against typical dark bg image */
+  text-align: center;
+  position: relative; /* For overlay or adjustments */
+  transition: background 0.3s, color 0.3s; /* Smooth transition for theme switch */
+}
+
+.hero .display-4 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Enhance readability on light areas of bg */
+}
+
+.hero .lead {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.down-arrow {
+  font-size: 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  color: #ffffff; /* White arrow */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s; /* Smooth color change */
+}
+
+/* Hero Section (Dark Mode) */
+.hero.dark-mode {
+  /* Add a semi-transparent overlay to darken the background image for better contrast */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/hero-bg-1.svg") center/cover no-repeat;
+  color: #f8f9fa; /* Light text to stand out against dark overlay */
+}
+
+.hero.dark-mode .display-4,
+.hero.dark-mode .lead {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for dark mode */
+}
+
+.down-arrow.dark-mode {
+  color: #f8f9fa; /* Light arrow for dark mode */
+}
+
+.down-arrow {
+  font-size: 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  color: #ffffff; /* Matches hero text */
+}
+
+section {
+  padding: 80px 0;
+}
+
+.skills .progress {
+  height: 20px;
+  margin-bottom: 15px;
+  background-color: #e9ecef; /* Light progress background */
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.carousel-item {
+  min-height: 150px;
+}
+
+.progress-bar {
+  transition: width 0.3s;
+}
+
+/* Navbar (Light Mode) */
+.navbar {
+  background-color: #ffffff !important; /* White navbar */
+  border-bottom: 1px solid #dee2e6; /* Subtle border */
+}
+
+/* Card (Light Mode) */
+.card {
+  background-color: #ffffff; /* White card background */
+  border: 1px solid #dee2e6; /* Light border */
+  color: #212529; /* Dark text */
+}
+
+/*====================================== Footer (Light Mode) ======================================*/
+.footer {
+  overflow: hidden;
+  position: relative;
+  height: 32vh;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  background-color: #f1f3f5; /* Light footer background */
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  color: #212529; /* Dark text */
+}
+
+.cutoff-text {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 177px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.1); /* Faded black for light mode */
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/*====================================== Dark Mode ======================================*/
+/*====================================== Dark Mode ======================================*/
+/*====================================== Dark Mode ======================================*/
+
+body.dark-mode {
+  background-color: #121212; /* Dark background */
+  color: #f8f9fa; /* Light text for contrast */
+}
+
+.hero.dark-mode {
+  color: #f8f9fa; /* Ensure text remains readable */
+  /* Optional: Darken hero background with overlay */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/hero-bg-1.svg") center/cover no-repeat;
+}
+
+.down-arrow.dark-mode {
+  color: #f8f9fa; /* Light arrow */
+}
+
+.navbar.dark-mode {
+  background-color: #1f1f1f !important; /* Darker navbar */
+  border-bottom: 1px solid #333333; /* Dark border */
+}
+
+.navbar.dark-mode .navbar-brand,
+.navbar.dark-mode .nav-link {
+  color: #f8f9fa; /* Light text */
+}
+
+.navbar.dark-mode .btn-outline-secondary {
+  border-color: #6c757d; /* Darker border */
+  color: #f8f9fa; /* Light text */
+}
+
+.navbar.dark-mode .btn-outline-secondary:hover {
+  background-color: #343a40; /* Dark hover */
+  color: #ffffff; /* White on hover */
+}
+
+.skills.dark-mode .progress {
+  background-color: #2d2d2d; /* Dark progress background */
+}
+
+.card.dark-mode {
+  background-color: #1e1e1e; /* Dark card background */
+  border: 1px solid #333333; /* Dark border */
+  color: #f8f9fa; /* Light text */
+}
+
+.card.dark-mode img {
+  filter: brightness(90%); /* Slight adjustment for dark mode */
+}
+
+.progress-bar.dark-mode {
+  background-color: #4dabf7; /* Brighter blue for visibility */
+}
+
+.carousel-item.dark-mode {
+  background-color: #1e1e1e; /* Dark carousel background */
+  color: #f8f9fa; /* Light text */
+}
+
+.footer.dark-mode {
+  background-color: #1a1a1a; /* Dark footer */
+}
+
+.footer-content.dark-mode {
+  color: #f8f9fa; /* Light text */
+}
+
+.cutoff-text.dark-mode {
+  color: rgba(255, 255, 255, 0.1); /* Faded white for dark mode */
+}
+
+/* Ensure button consistency */
+.btn-outline-secondary {
+  transition: all 0.3s;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #ffffff;
+}

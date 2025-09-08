@@ -13,8 +13,12 @@ tashinparvez.github.io/
 │
 ├── assets/                  # All static files
 │   ├── css/
-│   │   ├── style.css        # Custom styles (dark/light theme, layouts)
+│   │   ├── style.css         # Custom styles (dark/light theme, layouts)
 │   │   └── bootstrap.min.css # Bootstrap 5 CSS (optional CDN)
+│   │
+│   ├── data-json/
+│   │   ├── projects.json
+│   │   └── papers.json
 │   │
 │   ├── js/
 │   │   ├── main.js          # Custom JS (theme toggle, smooth scroll, carousel)

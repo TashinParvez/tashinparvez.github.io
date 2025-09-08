@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tashin Parvez | CSE Student & Innovator at UIU</title>
+
+    <!--=================== Bootstrap 5 CSS ===================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--=================== Font ===================-->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    <!--=================== Custom CSS ===================-->
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
+
+    <!--=================== Navbar fetch ===================-->
+
+    <div id="navbar"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("assets/components/navbar.html")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById("navbar").innerHTML = data;
+
+                    // 🔹 Use event delegation to handle dynamic button
+                    document.getElementById("navbar").addEventListener("click", (e) => {
+                        if (e.target.id === "theme-toggle") {
+                            document.body.classList.toggle("dark-mode");
+                            // Optional: Update button icon (🌙 for dark, ☀ for light)
+                            e.target.textContent = document.body.classList.contains("dark-mode") ? "☀" : "🌙";
+                        }
+                    });
+                })
+                .catch(err => console.error("Navbar load failed:", err));
+        });
+    </script>
+
+    <!-- =================== Hero Section ===================-->
+
+    <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4">Tashin Parvez</h1>
+         
+        <p class="lead">CSE Student & Innovator at UIU | Building Tools for Better Lives</p>
+        <a href="#about" class="down-arrow text-white">&#x25BC;</a>
+    </section>
+
+    <!-- ===================  About Section  =================== -->
+    <section id="about" class="container text-center">
+        <h2>About Me</h2>
+        <div class="row align-items-center mt-4">
+            <div class="col-md-4">
+                <img src="assets/images/profile.jpg" class="img-fluid rounded-circle" alt="Tashin Parvez">
+            </div>
+            <div class="col-md-8 text-start mt-3 mt-md-0">
+                <p>
+                    I am a passionate CSE student at United International University (UIU), dedicated to creating tools
+                    that make life easier.
+                    With a strong foundation in competitive programming, I love solving challenging algorithmic problems
+                    and continuously improving my skills.
+                    I have worked on several projects, including a faculty schedule management tool, and I enjoy
+                    teaching friends and peers along the way.
+                    My long-term ambition is to become the CEO of Google while also exploring entrepreneurial ventures
+                    that positively impact society.
+                </p>
+                <a href="experience.html" class="btn btn-outline-primary me-2">See My Journey</a>
+                <a href="education.html" class="btn btn-primary">Learn More About My Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================   Skills Section  =================== -->
+    <section id="skills" class="container skills">
+        <h2 class="text-center">Skills & Expertise</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <label>HTML/CSS/JS</label>
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 90%"></div>
+                </div>
+                <label>Bootstrap 5</label>
+                <div class="progress">
+                    <div class="progress-bar bg-info" style="width: 85%"></div>
+                </div>
+                <label>Algorithms & DSA (CP)</label>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" style="width: 80%"></div>
+                </div>
+                <label>Teaching & Mentoring</label>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" style="width: 75%"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Python & Backend</label>
+                <div class="progress">
+                    <div class="progress-bar bg-primary" style="width: 70%"></div>
+                </div>
+                <label>React/Frontend</label>
+                <div class="progress">
+                    <div class="progress-bar bg-secondary" style="width: 65%"></div>
+                </div>
+                <label>Project Management</label>
+                <div class="progress">
+                    <div class="progress-bar bg-dark" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================  Interests Section  =================== -->
+    <section id="interests" class="container mt-5">
+        <h2 class="text-center">Interests</h2>
+        <div class="row text-center mt-4">
+            <div class="col-md-3 mb-3">
+                <div class="card p-3">Coding</div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card p-3">Movies</div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card p-3">Learning English</div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card p-3">Innovative Ideas</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================  Projects Section  =================== -->
+    <section id="projects" class="container mt-5">
+        <h2 class="text-center">Notable Projects</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="assets/images/project1.png" class="card-img-top" alt="Project 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Faculty Schedule Tool</h5>
+                        <p class="card-text">A web app to manage faculty schedules efficiently using Bootstrap and JS.
+                        </p>
+                        <a href="#" class="btn btn-primary">Live</a>
+                        <a href="#" class="btn btn-outline-secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="assets/images/project2.png" class="card-img-top" alt="Project 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2</h5>
+                        <p class="card-text">Description of another project with tech stack and link.</p>
+                        <a href="#" class="btn btn-primary">Live</a>
+                        <a href="#" class="btn btn-outline-secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3"><a href="projects.html" class="btn btn-outline-primary">See More Projects</a>
+        </div>
+    </section>
+
+    <!-- ===================  Blog/Recent Posts  =================== -->
+    <section id="blog" class="container mt-5">
+        <h2 class="text-center">Recent Posts</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card p-3">
+                    <h5>CP Tips & Tricks</h5>
+                    <p>Short excerpt from latest blog post about competitive programming.</p>
+                    <small>Sept 2025</small>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card p-3">
+                    <h5>My UIU Project Story</h5>
+                    <p>How I built my faculty schedule tool, challenges faced, solutions.</p>
+                    <small>Sept 2025</small>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3"><a href="blog.html" class="btn btn-outline-primary">See More Posts</a></div>
+    </section>
+
+    <!-- ===================  Testimonials Carousel  =================== -->
+    <section id="testimonials" class="container mt-5">
+        <h2 class="text-center">Testimonials</h2>
+        <div id="testimonialCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+                <div class="carousel-item active">
+                    <p>"Tashin's tool saved me a lot of time!"</p>
+                    <small>- UIU Faculty</small>
+                </div>
+                <div class="carousel-item">
+                    <p>"A brilliant mind and a great mentor."</p>
+                    <small>- Peer</small>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===================  Follow Me / Social Links  =================== -->
+    <section id="follow" class="container mt-5 text-center">
+        <h2>Follow Me</h2>
+        <div class="mt-3">
+            <a href="https://linkedin.com/" target="_blank" class="me-3">LinkedIn</a>
+            <a href="https://github.com/" target="_blank" class="me-3">GitHub</a>
+            <a href="https://codeforces.com/" target="_blank" class="me-3">Codeforces</a>
+            <a href="https://twitter.com/" target="_blank">X/Twitter</a>
+        </div>
+    </section>
+
+    <!-- ===================  Contact Section  =================== -->
+    <section id="contact" class="container mt-5 mb-5">
+        <h2 class="text-center">Get in Touch</h2>
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-4">
+            <div class="row mb-3">
+                <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name"
+                        required></div>
+                <div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Your Email"
+                        required></div>
+            </div>
+            <div class="mb-3"><textarea name="message" class="form-control" rows="5" placeholder="Your Message"
+                    required></textarea></div>
+            <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
+        </form>
+    </section>
+
+    <!-- ===================  Footer  =================== -->
+
+    <footer class="footer bg-light text-center position-relative py-5">
+
+
+        <div class="row align-items-center">
+
+            <div class="col">
+                <!-- Copyright -->
+                <div class="mb-4 text-dark">
+                    <h2>&copy; 2025</h2>
+                    <h2>Tashin Parvez </h2>
+                </div>
+            </div>
+
+
+            <div class="col">
+
+                <!-- Local Time + Status Section -->
+                <div class="d-flex flex-column justify-content-center align-items-center gap-3 mb-4">
+
+
+                    <!-- Dhaka Local Time -->
+                    <div class="text-secondary">
+                        Local time (Dhaka) - <span id="dhaka-time" class="fw-bold">--:--</span>
+                    </div>
+
+                    <!-- Lottie Animation + Availability -->
+                    <div class="d-flex border border-secondary rounded align-items-center">
+
+                        <!-- Lottie Placeholder -->
+                        <div class="p-2">
+                            <div id="lottie" style="width:40px; height:40px; overflow:hidden;">
+                                <img src="/assets/icons/glove-spinning-color.gif" alt="Spinning glove animation"
+                                    style="width:100%; height:100%; object-fit:contain;">
+                            </div>
+                        </div>
+
+                        <!-- Availability Info -->
+                        <div class="px-2 py-1 border-start border-secondary text-start">
+                            <div class="fw-semibold text-dark">Open to Global Work</div>
+                            <div class="fw-light text-secondary">Available For Work</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Cut-off Text -->
+        <div class="cutoff-text">end()</div>
+
+    </footer>
+
+    <!--===================  Script: Dhaka Local Time  ===================-->
+    <script>
+        function updateDhakaTime() {
+            const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Dhaka' };
+            document.getElementById('dhaka-time').textContent = new Date().toLocaleTimeString('en-US', options);
+        }
+        setInterval(updateDhakaTime, 1000);
+        updateDhakaTime();
+    </script>
+
+
+
+    <!-- ===================  Bootstrap JS Bundle  =================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- ===================  Script  =================== -->
+    <script>
+
+        // for the dark mode
+        const toggle = document.getElementById('theme-toggle');
+
+        // Apply saved theme on load
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggle.classList.add('dark-mode');
+            toggle.textContent = "☀️";
+        }
+
+        // Toggle dark mode
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggle.classList.toggle('dark-mode');
+
+            if (document.body.classList.contains('dark-mode')) {
+                toggle.textContent = "☀️"; // Sun icon for light
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggle.textContent = "🌙"; // Moon icon for dark
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+    </script>
+</body>
+
+</html>

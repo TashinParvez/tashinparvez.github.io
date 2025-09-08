@@ -1,0 +1,68 @@
+body {
+  scroll-behavior: smooth;
+}
+
+/* Logo */
+.logo-img {
+  max-height: 26px; /* Maximum height you want in navbar */
+  height: auto; /* Let height adjust automatically */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.hero {
+  /* Background image */
+  background-image: url("../images/hero-bg-1.svg");
+  background-position: center; /* center the image */
+  background-size: cover; /* scale to cover the container */
+  background-repeat: no-repeat; /* don’t tile */
+  background-attachment: scroll; /* optional, use 'fixed' for parallax effect */
+
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.down-arrow {
+  font-size: 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.skills .progress {
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.carousel-item {
+  min-height: 150px;
+}
+
+.navbar.dark-mode {
+  background-color: #1f1f1f !important;
+}
+
+.btn-outline-secondary.dark-mode {
+  border-color: #f8f9fa;
+  color: #f8f9fa;
+}
+
+.card.dark-mode {
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+}
+
+.progress-bar {
+  transition: width 0.3s;
+}

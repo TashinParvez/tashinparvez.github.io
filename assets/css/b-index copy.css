@@ -1,0 +1,100 @@
+body {
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background: url("assets/images/hero-bg.jpg") center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.down-arrow {
+  font-size: 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.skills .progress {
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.carousel-item {
+  min-height: 150px;
+}
+
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f8f9fa;
+}
+
+.navbar.dark-mode {
+  background-color: #1f1f1f !important;
+}
+
+.btn-outline-secondary.dark-mode {
+  border-color: #f8f9fa;
+  color: #f8f9fa;
+}
+
+.card.dark-mode {
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+}
+
+.progress-bar {
+  transition: width 0.3s;
+}
+
+/* ===================  footer  =================== */
+
+/* Footer styling */
+.footer {
+  overflow: hidden; /* Hide overflowing text */
+  position: relative;
+  height: 32vh; /* 32% of viewport height, responsive */
+  min-height: 300px; /* Minimum height for smaller screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keep content at bottom */
+  padding-bottom: 20px; /* Adjust for spacing */
+}
+
+/* Normal footer text */
+.footer-content {
+  position: relative;
+  z-index: 1; /* Stay above the cut-off text */
+}
+
+/* Cut-off text effect */
+.cutoff-text {
+  position: absolute;
+  bottom: -40px; /* Adjust how much it cuts off */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 177px; /* Big font for effect */
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.1); /* faded effect */
+  line-height: 1;
+  pointer-events: none; /* not clickable */
+  user-select: none;
+  white-space: nowrap;
+}
