@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Navigator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        /* Different background colors for demo */
+        #pitch {
+            background: #0f172a;
+            color: white;
+        }
+
+        #cornerstone {
+            background: #1e293b;
+            color: white;
+        }
+
+        #experience {
+            background: #334155;
+            color: white;
+        }
+
+        #carriageway {
+            background: #475569;
+            color: white;
+        }
+
+        #contact {
+            background: #64748b;
+            color: white;
+        }
+
+        /* Navigator container */
+        .nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Bullet container fixed size */
+        .nav-bullet {
+            width: 18px;
+            /* Increased to accommodate scaled active state */
+            height: 18px;
+            /* Increased to accommodate scaled active state */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Inner bullet */
+        .nav-bullet::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #38bdf8;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        /* Active bullet: scale and center */
+        .nav-bullet.active::before {
+            transform: rotate(0deg) scale(1.5);
+            border: 1px solid #38bdf8; 
+            background: #ffffff; 
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sections -->
+    <section id="pitch">Pitch</section>
+    <section id="cornerstone">Cornerstone</section>
+    <section id="experience">Experience</section>
+    <section id="carriageway">Carriageway</section>
+    <section id="contact">Contact</section>
+
+    <!-- Navigator -->
+    <div class="nav">
+        <a href="#pitch" class="nav-bullet"></a>
+        <a href="#cornerstone" class="nav-bullet"></a>
+        <a href="#experience" class="nav-bullet"></a>
+        <a href="#carriageway" class="nav-bullet"></a>
+        <a href="#contact" class="nav-bullet"></a>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll("section");
+        const bullets = document.querySelectorAll(".nav-bullet");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 50) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            bullets.forEach((bullet, index) => {
+                bullet.classList.remove("active");
+                if (sections[index].id === current) {
+                    bullet.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tashin Parvez | Portfolio</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .hero {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .code-line {
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            display: block;
+            font-size: 4rem;
+            font-weight: 900;
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark .code-line {
+            color: #94a3b8;
+        }
+
+        body.dark .highlight {
+            color: #38bdf8;
+        }
+
+        body.dark .info {
+            color: #f8fafc;
+        }
+
+        /* Light Theme */
+        body.light {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        body.light .code-line {
+            color: #475569;
+        }
+
+        body.light .highlight {
+            color: #0284c7;
+        }
+
+        body.light .info {
+            color: #0f172a;
+        }
+
+        /* Toggle Switch */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #38bdf8;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body class="dark">
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="themeSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <p class="code-line">
+            cout << <span class="highlight">"Hello, World!"</span>
+                << endl; </p>
+                    <p class="info">
+                        This is <b>Tashin Parvez</b><br>
+                        CSE Student at UIU | Building Intelligent Tools | Passionate About Problem Solving
+                    </p>
+    </div>
+
+    <script>
+        const themeSwitch = document.getElementById('themeSwitch');
+        const body = document.body;
+
+        themeSwitch.addEventListener('change', () => {
+            if (themeSwitch.checked) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+            }
+        });
+    </script>
+
+
+</body>
+</html>

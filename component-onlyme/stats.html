@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Stats API Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-card {
+            border: 2px solid #333;
+            border-radius: 10px;
+            width: 180px;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card div {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Coding Stats</h1>
+    <div class="stats-container">
+        <div class="stat-card">
+            <h2>⭐ GitHub Stars</h2>
+            <div id="github-stars">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>👥 GitHub Followers</h2>
+            <div id="github-followers">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🟢 Codeforces Solved</h2>
+            <div id="codeforces-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>💡 LeetCode Solved</h2>
+            <div id="leetcode-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🔥 CodeChef Solved</h2>
+            <div id="codechef-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🌐 VJudge Solved</h2>
+            <div id="vjudge-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🎯 AtCoder Solved</h2>
+            <div id="atcoder-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🏆 HackerRank Solved</h2>
+            <div id="hackerrank-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>🧩 CSES Solved</h2>
+            <div id="cses-solved">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <h2>💻 SPOJ Solved</h2>
+            <div id="spoj-solved">Loading...</div>
+        </div>
+    </div>
+
+    <script>
+        const usernames = {
+            github: "TashinParvez",
+            codeforces: "Tashin.Parvez",
+            leetcode: "tashinParvez",
+            codechef: "tashin_parvez",
+            vjudge: "Tashin_Parvez",
+            atcoder: "Tashin_Parvez",
+            hackerrank: "tashinparvez",
+            cses: "Tashin.Parvez",
+            spoj: "tashin_parvez"
+        };
+
+        async function fetchGitHub() {
+            try {
+                const repos = await fetch(`https://api.github.com/users/${usernames.github}/repos?per_page=100`).then(r => r.json());
+                const stars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+                const user = await fetch(`https://api.github.com/users/${usernames.github}`).then(r => r.json());
+                document.getElementById("github-stars").innerText = stars;
+                document.getElementById("github-followers").innerText = user.followers;
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchCodeforces() {
+            try {
+                const data = await fetch(`https://codeforces.com/api/user.status?handle=${usernames.codeforces}`).then(r => r.json());
+                if (data.status === "OK") {
+                    const solved = new Set(data.result.filter(s => s.verdict === "OK").map(s => s.problem.name)).size;
+                    document.getElementById("codeforces-solved").innerText = solved;
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchLeetCode() {
+            try {
+                const data = await fetch(`https://leetcode-stats-api.herokuapp.com/${usernames.leetcode}`).then(r => r.json());
+                document.getElementById("leetcode-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchCodeChef() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/codechef/${usernames.codechef}`).then(r => r.json());
+                document.getElementById("codechef-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchVJudge() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/vjudge/${usernames.vjudge}`).then(r => r.json());
+                document.getElementById("vjudge-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchAtCoder() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/atcoder/${usernames.atcoder}`).then(r => r.json());
+                document.getElementById("atcoder-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchHackerRank() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/hackerrank/${usernames.hackerrank}`).then(r => r.json());
+                document.getElementById("hackerrank-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchCSES() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/cses/${usernames.cses}`).then(r => r.json());
+                document.getElementById("cses-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchSPOJ() {
+            try {
+                const data = await fetch(`https://competitive-coding-api.herokuapp.com/api/spoj/${usernames.spoj}`).then(r => r.json());
+                document.getElementById("spoj-solved").innerText = data.totalSolved || "Error";
+            } catch (e) { console.error(e); }
+        }
+
+        // Call all
+        fetchGitHub();
+        fetchCodeforces();
+        fetchLeetCode();
+        fetchCodeChef();
+        fetchVJudge();
+        fetchAtCoder();
+        fetchHackerRank();
+        fetchCSES();
+        fetchSPOJ();
+    </script>
+</body>
+
+</html>
