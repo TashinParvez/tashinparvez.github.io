@@ -12,10 +12,15 @@
     <!--=================== Font ===================-->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <!--=================== Font Awesome 6 CDN ===================-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
 
     <!--=================== Custom CSS ===================-->
     <link rel="stylesheet" href="/assets/css/index.css">
-    <link rel="stylesheet" href="/assets/css/navbar.css">
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" tabindex="0">
@@ -48,12 +53,17 @@
 
     <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center">
         <h1 class="display-4">Tashin Parvez</h1>
-         
-        <p class="lead">CSE Student & Innovator at UIU | Building Tools for Better Lives</p>
-        <a href="#about" class="down-arrow text-white">&#x25BC;</a>
+        <p class="lead">CSE Student at UIU | Building Intelligent Tools | Passionate About Problem Solving</p>
+
+        <!-- Down Arrow -->
+        <a href="#about" class="down-arrow text-white position-absolute">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+
     </section>
 
     <!-- ===================  About Section  =================== -->
+
     <section id="about" class="container text-center">
         <h2>About Me</h2>
         <div class="row align-items-center mt-4">
@@ -71,11 +81,30 @@
                     My long-term ambition is to become the CEO of Google while also exploring entrepreneurial ventures
                     that positively impact society.
                 </p>
-                <a href="experience.html" class="btn btn-outline-primary me-2">See My Journey</a>
-                <a href="education.html" class="btn btn-primary">Learn More About My Studies</a>
+                <div class="mb-3">
+                    <a href="about.html" class="btn btn-outline-primary me-2">See My Journey</a>
+                    <a href="education.html" class="btn btn-primary me-2">Learn More About My Studies</a>
+                    <a href="assets/resume/Tashin_Parvez_Resume.pdf" class="btn btn-success" download>Download
+                        Resume</a>
+                </div>
+                <div class="social-links mt-3">
+                    <a href="https://www.linkedin.com/in/tashinparvez" target="_blank" class="me-3">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/TashinParvez" target="_blank" class="me-3">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.facebook.com/tashin.parvez.5" target="_blank" class="me-3">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="mailto:tashinparvez2002@gmail.com" target="_blank" class="me-3">
+                        <i class="fas fa-envelope fa-lg"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- ===================   Skills Section  =================== -->
     <section id="skills" class="container skills">
@@ -116,24 +145,83 @@
         </div>
     </section>
 
-    <!-- ===================  Interests Section  =================== -->
-    <section id="interests" class="container mt-5">
-        <h2 class="text-center">Interests</h2>
-        <div class="row text-center mt-4">
-            <div class="col-md-3 mb-3">
-                <div class="card p-3">Coding</div>
+
+
+    <!-- ===================   Timeline Section  =================== -->
+    <section id="timeline" class="container my-5">
+        <h2 class="text-center mb-5">Experience & Education</h2>
+        <div class="row">
+            <!-- Vertical line in the middle -->
+            <div class="col-12 position-relative">
+                <div class="timeline-line"></div>
             </div>
-            <div class="col-md-3 mb-3">
-                <div class="card p-3">Movies</div>
+
+            <!-- Experience Column (Left) -->
+            <div class="col-md-6">
+                <div class="timeline-item left">
+                    <div class="timeline-badge bg-primary"></div>
+                    <div class="timeline-content card p-3 shadow-sm">
+                        <h5>UGA of UIU</h5>
+                        <small>June 2023 - Present</small>
+                        <p>Worked on multiple projects including faculty schedule management tool and mentoring peers.
+                        </p>
+                        <div class="tech-icons">
+                            <i class="fab fa-html5 me-2"></i>
+                            <i class="fab fa-css3-alt me-2"></i>
+                            <i class="fab fa-js me-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-badge bg-primary"></div>
+                    <div class="timeline-content card p-3 shadow-sm">
+                        <h5>Internship at ABC Tech</h5>
+                        <small>Jan 2023 - May 2023</small>
+                        <p>Developed front-end features using React and assisted in backend APIs.</p>
+                        <div class="tech-icons">
+                            <i class="fab fa-react me-2"></i>
+                            <i class="fab fa-python me-2"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3 mb-3">
-                <div class="card p-3">Learning English</div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <div class="card p-3">Innovative Ideas</div>
+
+            <!-- Education Column (Right) -->
+            <div class="col-md-6">
+                <div class="timeline-item right">
+                    <div class="timeline-badge bg-success"></div>
+                    <div class="timeline-content card p-3 shadow-sm">
+                        <h5>Student of UIU</h5>
+                        <small>CGPA: 4.00</small>
+                        <p>Focused on computer science courses, competitive programming, and software development
+                            projects.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-badge bg-success"></div>
+                    <div class="timeline-content card p-3 shadow-sm">
+                        <h5>High School XYZ</h5>
+                        <small>Graduated 2020</small>
+                        <p>Excelled in mathematics and science, participated in coding competitions.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- ===================  Projects Section  =================== -->
     <section id="projects" class="container mt-5">
@@ -164,6 +252,53 @@
             </div>
         </div>
         <div class="text-center mt-3"><a href="projects.html" class="btn btn-outline-primary">See More Projects</a>
+        </div>
+    </section>
+
+
+
+    <!-- ===================  Research Experience Section  =================== -->
+    <section id="research" class="container mt-5">
+        <h2 class="text-center">Research Experience</h2>
+
+        <!-- Single Research Card -->
+        <div class="row mt-4">
+            <div class="col-12 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">AI in Healthcare</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">UIU Research Lab, 2024</h6>
+                        <p class="card-text">
+                            Explored machine learning models to predict patient outcomes using electronic health
+                            records. Implemented Python & Scikit-learn for predictive analysis.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">Read Paper</a>
+                        <a href="#" class="btn btn-outline-secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Another Research Card -->
+        <div class="row mt-3">
+            <div class="col-12 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Data-Centric LLM Fine-Tuning</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">UIU NLP Lab, 2025</h6>
+                        <p class="card-text">
+                            Designed datasets and fine-tuned LLMs for Bangla language instruction-following tasks,
+                            improving accuracy and relevance.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary">Read Paper</a>
+                        <a href="#" class="btn btn-outline-secondary">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="research.html" class="btn btn-outline-primary">See More Research</a>
         </div>
     </section>
 
@@ -214,6 +349,7 @@
         </div>
     </section>
 
+
     <!-- ===================  Follow Me / Social Links  =================== -->
     <section id="follow" class="container mt-5 text-center">
         <h2>Follow Me</h2>
@@ -225,21 +361,7 @@
         </div>
     </section>
 
-    <!-- ===================  Contact Section  =================== -->
-    <section id="contact" class="container mt-5 mb-5">
-        <h2 class="text-center">Get in Touch</h2>
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-4">
-            <div class="row mb-3">
-                <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name"
-                        required></div>
-                <div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Your Email"
-                        required></div>
-            </div>
-            <div class="mb-3"><textarea name="message" class="form-control" rows="5" placeholder="Your Message"
-                    required></textarea></div>
-            <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
-        </form>
-    </section>
+
 
     <!-- ===================  Footer  =================== -->
 
