@@ -12,13 +12,6 @@ html, body {
   cursor: url("assets/icons/mycursor.cur"), auto;
 }
 
-/* Logo */
-.logo-img {
-    max-height: 26px; /* Maximum height you want in navbar */
-    height: auto; 
-    width: auto; /* Maintain aspect ratio */
-  }
-
 /* Font added */
 .footer,
 h2,
@@ -133,19 +126,31 @@ section {
   transition: width 0.3s;
 }
 
-/* Navbar (Light Mode) */
+/*==================================== Navbar (Light Mode) ====================================*/
 .navbar {
   background-color: #ffffff !important; /* White navbar */
   border-bottom: 1px solid #dee2e6; /* Subtle border */
 }
 
-/* Card (Light Mode) */
+/*--------- Logo ---------*/
+.logo-img {
+  max-height: 26px; /* Maximum height you want in navbar */
+  height: auto; 
+  width: auto; /* Maintain aspect ratio */
+}
+
+
+
+/*---------------- Card (Light Mode) ----------------*/
 .card {
   background-color: #ffffff; /* White card background */
   border: 1px solid #dee2e6; /* Light border */
   color: #212529; /* Dark text */
 }
+
+
  /*=========================== Floating circular button ===========================*/
+
  #toTopBtn {
   position: fixed;
   bottom: 30px;
@@ -205,7 +210,7 @@ section {
   position: absolute;
 }
 
-/* <!-- =================== Timeline CSS =================== --> */
+/*-- =================== Timeline CSS =================== --*/
  
 /* Vertical line */
 .timeline-line {
@@ -320,6 +325,8 @@ body.dark-mode {
   color: #f8f9fa; /* Light arrow */
 }
 
+/*------------------------- Navbar-dark -------------------------*/
+
 .navbar.dark-mode {
   background-color: #1f1f1f !important; /* Darker navbar */
   border-bottom: 1px solid #333333; /* Dark border */
@@ -339,6 +346,9 @@ body.dark-mode {
   background-color: #343a40; /* Dark hover */
   color: #ffffff; /* White on hover */
 }
+
+
+/*------------------------- Skill-dark -------------------------*/
 
 .skills.dark-mode .progress {
   background-color: #2d2d2d; /* Dark progress background */
