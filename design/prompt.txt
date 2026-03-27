@@ -1,0 +1,17 @@
+I will share sections of a portfolio one by one. For each section, you need to generate the corresponding code.
+
+Please ensure that:
+
+The design remains minimal and clean
+It is tailored for a Product Manager portfolio
+The color theme stays consistent across all sections
+
+give em all code in HTML CSS JS
+one single code inline css
+Wait for each section before generating the code for the next one.
+
+here is my above section code understand the theme foem this code
+
+"
+
+'
