@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        /* basic reset for demo */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        /* navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+
+            /* start fully transparent so page content is visible through it */
+            background: rgba(255, 255, 255, 0);
+            /* transparent initially */
+            -webkit-backdrop-filter: blur(0px);
+            backdrop-filter: blur(0px);
+
+            transition: background-color 220ms ease, -webkit-backdrop-filter 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease;
+        }
+
+        /* container inside navbar */
+        .navbar .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* scrolled state: translucent + blur */
+        .navbar.scrolled {
+            /* choose a translucent color appropriate to your design.
+     for light navbars use rgba(255,255,255,0.6); for dark ones rgba(10,10,10,0.5) */
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        /* optional: slightly reduce touch-target shifting when blur is active */
+        .navbar.scrolled .brand {
+            transform: translateY(0);
+        }
+
+        /* content spacing so page content isn't under the fixed navbar */
+        main {
+            padding-top: 72px;
+        }
+
+        /* simple nav links */
+        .nav a {
+            margin-left: 18px;
+            text-decoration: none;
+            color: #111;
+        }
+
+        .brand {
+            font-weight: 700;
+            color: #111;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a class="brand" href="#">Logo</a>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Long content to allow scrolling -->
+        <section style="height:1600px; padding-top:80px;">
+            <h1>Scroll down to see blur under the navbar</h1>
+            <p>...</p>
+        </section>
+    </main>
+
+    <script>
+        // Add/remove class on scroll — lightweight
+        (function () {
+            const nav = document.getElementById('navbar');
+            const scrolldist = 20; // threshold in px; tweak as needed
+
+            // on page load check position (useful if user refreshes mid-scroll)
+            function update() {
+                if (window.scrollY > scrolldist) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+
+            // throttle using requestAnimationFrame for performance
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        update();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // initial
+            update();
+        })();
+
+    </script>
+</body>
+
+</html>

@@ -394,3 +394,48 @@ body.dark-mode {
   background-color: #6c757d;
   color: #ffffff;
 }
+
+
+
+
+/* ================= navbar- new=========================== */
+.navbar {
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  margin-right: 0;
+  /* Ensure logo stays left */
+}
+
+.nav-box {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.nav-link {
+  margin: 0 15px;
+  color: #212529;
+  transition: color 0.3s, box-shadow 0.3s;
+}
+
+.nav-link.active {
+  color: black;
+  font-weight: bold;
+}
+
+.theme-toggle {
+  margin-left: auto;
+  /* Push to the right */
+}
+
+.duplicate {
+  position: absolute;
+  color: #212529;
+  transition: transform 0.3s;
+}
+

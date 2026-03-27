@@ -30,6 +30,7 @@
 
     <div id="navbar"></div>
 
+    <!-- fetch navbar -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             fetch("assets/components/navbar.html")
@@ -47,6 +48,72 @@
                     });
                 })
                 .catch(err => console.error("Navbar load failed:", err));
+        });
+    </script>
+
+    <!-- navbar - new -->
+
+
+    <script>
+        // Highlight active section based on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 60;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const scrollPosition = window.scrollY;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === section.getAttribute('id')) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Hover effect with duplicate and scroll
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                // Add box shadow on hover
+                item.querySelector('.nav-link').style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+
+                // Create duplicate
+                const duplicate = document.createElement('li');
+                duplicate.classList.add('nav-item', 'duplicate');
+                duplicate.innerHTML = item.innerHTML;
+                item.parentNode.appendChild(duplicate);
+
+                // Animate duplicate sliding down
+                let pos = 0;
+                const interval = setInterval(() => {
+                    if (pos === 20) clearInterval(interval);
+                    duplicate.style.transform = `translateY(${pos}px)`;
+                    pos++;
+                }, 10);
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const duplicate = item.parentNode.querySelector('.duplicate');
+                if (duplicate) {
+                    // Animate duplicate sliding back up
+                    let pos = 20;
+                    const interval = setInterval(() => {
+                        if (pos <= 0) {
+                            clearInterval(interval);
+                            duplicate.remove();
+                        }
+                        duplicate.style.transform = `translateY(${pos}px)`;
+                        pos--;
+                    }, 10);
+                }
+                item.querySelector('.nav-link').style.boxShadow = 'none';
+            });
         });
     </script>
 
