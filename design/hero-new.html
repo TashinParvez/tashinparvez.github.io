@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero - PM Portfolio</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #0b1020;
+            font-family: Inter, Arial;
+            color: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            padding: 40px 6%;
+        }
+
+        /* LEFT stays same */
+        .left h1 {
+            font-size: 56px;
+            font-weight: 800;
+        }
+
+        .left h2 {
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .left p {
+            margin-top: 20px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .buttons a {
+            padding: 12px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .outline {
+            border: 1px solid #64748b;
+            color: #cbd5e1;
+        }
+
+        /* RIGHT */
+        .right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+        }
+
+        .scene {
+            width: 260px;
+            height: 260px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(20deg);
+            transition: transform 0.1s;
+        }
+
+        .face {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #f8fafc, #cbd5e1);
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* positions */
+        .front {
+            transform: translateZ(130px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(130px);
+        }
+
+        .rightf {
+            transform: rotateY(90deg) translateZ(130px);
+        }
+
+        .leftf {
+            transform: rotateY(-90deg) translateZ(130px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(130px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(130px);
+        }
+
+        /* glow */
+        .glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(79, 70, 229, 0.25);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <!-- LEFT (simplified from your file :contentReference[oaicite:0]{index=0}) -->
+        <div class="left">
+            <h1>Md Tashin Parvez</h1>
+            <h2>Product Analyst | Aspiring Product Manager</h2>
+
+            <p>
+                I build user-focused digital products by combining product research,
+                structured thinking, and hands-on execution.
+            </p>
+
+            <div class="buttons">
+                <a href="#" class="primary">View My Work</a>
+                <a href="#" class="outline">Download Resume</a>
+                <a href="#" class="outline">Contact Me</a>
+                <a href="#" class="outline">Explore Resources</a>
+            </div>
+        </div>
+
+        <!-- RIGHT (UPGRADED CUBE) -->
+        <div class="right">
+            <div class="glow"></div>
+
+            <div class="scene" id="scene">
+                <div class="cube" id="cube">
+                    <div class="face front">Habit App</div>
+                    <div class="face back">Travel</div>
+                    <div class="face rightf">Supply Chain</div>
+                    <div class="face leftf">Campus Tool</div>
+                    <div class="face top">AI Tracker</div>
+                    <div class="face bottom">More +</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        const cube = document.getElementById("cube");
+        const scene = document.getElementById("scene");
+
+        let isDragging = false;
+        let startX, startY;
+        let rotX = -20;
+        let rotY = 20;
+        let autoRotate = true;
+
+        /* AUTO ROTATION */
+        function animate() {
+            if (autoRotate && !isDragging) {
+                rotY += 0.3;
+                cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        /* STOP ON HOVER */
+        scene.addEventListener("mouseenter", () => autoRotate = false);
+        scene.addEventListener("mouseleave", () => autoRotate = true);
+
+        /* DRAG ROTATION */
+        scene.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        window.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (!isDragging) return;
+
+            let dx = e.clientX - startX;
+            let dy = e.clientY - startY;
+
+            rotY += dx * 0.5;
+            rotX -= dy * 0.5;
+
+            cube.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+    </script>
+
+</body>
+
+</html>
