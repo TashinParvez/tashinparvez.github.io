@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #06070a;
+      --panel: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f7fb;
+      --muted: #9aa4b2;
+      --accent: #8b5cf6;
+    }
+
+    body {
+      background: #111;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+    }
+
+    .footer {
+      padding: 80px 7% 30px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(139,92,246,0.12), transparent 25%),
+        linear-gradient(180deg, #05060a 0%, #07090f 100%);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* === TOP (merged section) === */
+    .top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 15px;
+    }
+
+    .desc {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 20px;
+    }
+
+    .email {
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .email:hover {
+      color: #c4b5fd;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 18px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .card strong {
+      color: var(--text);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      background: rgba(139,92,246,0.15);
+      transform: translateY(-3px);
+    }
+
+    /* === BOTTOM === */
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+    }
+
+    .brand span {
+      color: rgba(255,255,255,0.4);
+      margin-right: 8px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 800px) {
+      .top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<footer class="footer">
+  <div class="container">
+
+    <!-- TOP -->
+    <div class="top">
+      <div>
+        <h2 class="title">Let’s build something clean & modern.</h2>
+        <p class="desc">
+          I design and build minimal web experiences focused on clarity and performance.
+        </p>
+
+        <a href="mailto:yourmail@example.com" class="email">
+          yourmail@example.com
+        </a>
+
+        <div class="socials">
+          <a href="https://github.com/TashinParvez" target="_blank">
+            <i class="ri-github-line"></i>
+          </a>
+          <a href="#"><i class="ri-linkedin-line"></i></a>
+          <a href="#"><i class="ri-twitter-x-line"></i></a>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          Status
+          <strong class="status">
+            <span class="dot"></span> Available for work
+          </strong>
+        </div>
+
+        <div class="card">
+          GitHub
+          <strong>github.com/TashinParvez</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="bottom">
+      <div class="brand"><span>© 2026</span>Tashin Parvez</div>
+
+      <div class="nav">
+        <a href="#">Work</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

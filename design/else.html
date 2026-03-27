@@ -1,215 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PM Portfolio Hero</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Minimal Footer</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 
-    body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: white;
-      overflow: hidden;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 8%;
-    }
+        :root {
+            --bg: #06070a;
+            --panel: rgba(255, 255, 255, 0.04);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --text: #f5f7fb;
+            --muted: #9aa4b2;
+            --soft: #c8d1dc;
+            --accent: #8b5cf6;
+            --line: rgba(255, 255, 255, 0.08);
+        }
 
-    /* LEFT */
-    .left {
-      max-width: 600px;
-    }
+        body {
+            background: #111;
+            font-family: Inter, system-ui, sans-serif;
+            color: var(--text);
+        }
 
-    .left h1 {
-      font-size: 52px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
+        .footer {
+            padding: 80px 7% 30px;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.12), transparent 25%),
+                linear-gradient(180deg, #05060a 0%, #07090f 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    .left h2 {
-      font-size: 22px;
-      color: #38bdf8;
-      margin-bottom: 20px;
-    }
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-    .left p {
-      font-size: 18px;
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--line);
+        }
 
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
+        .footer-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 15px;
+        }
 
-    .buttons a {
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
+        .footer-desc {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 520px;
+        }
 
-    .primary {
-      background: #38bdf8;
-      color: #0f172a;
-    }
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .primary:hover {
-      background: #0ea5e9;
-    }
+        .info-card {
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 16px 18px;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
 
-    .outline {
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-    }
+        .info-card strong {
+            color: var(--text);
+            display: block;
+            margin-top: 4px;
+        }
 
-    .outline:hover {
-      background: #38bdf8;
-      color: #0f172a;
-    }
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .points {
-      display: grid;
-      gap: 10px;
-    }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
 
-    .points div {
-      background: rgba(255,255,255,0.05);
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
+        /* ==== BOTTOM ==== */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding-top: 25px;
+            flex-wrap: wrap;
+        }
 
-    /* RIGHT */
-    .right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 400px;
-      height: 400px;
-      perspective: 1000px;
-    }
+        .brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+        }
 
-    .cube {
-      width: 200px;
-      height: 200px;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: rotate 10s infinite linear;
-    }
+        .brand span {
+            color: rgba(255, 255, 255, 0.4);
+            margin-right: 8px;
+        }
 
-    .face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(145deg, #f8fafc, #cbd5e1);
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
+        .nav-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
 
-    /* Position faces */
-    .front  { transform: rotateY(0deg) translateZ(100px); }
-    .back   { transform: rotateY(180deg) translateZ(100px); }
-    .rightf { transform: rotateY(90deg) translateZ(100px); }
-    .leftf  { transform: rotateY(-90deg) translateZ(100px); }
-    .top    { transform: rotateX(90deg) translateZ(100px); }
-    .bottom { transform: rotateX(-90deg) translateZ(100px); }
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+        }
 
-    @keyframes rotate {
-      0%   { transform: rotateX(-20deg) rotateY(0deg); }
-      100% { transform: rotateX(-20deg) rotateY(360deg); }
-    }
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
 
-    /* Glow */
-    .glow {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(56,189,248,0.2);
-      filter: blur(100px);
-      border-radius: 50%;
-      z-index: -1;
-    }
+        .footer-nav a:hover {
+            color: var(--text);
+        }
 
-    /* Responsive */
-    @media(max-width: 900px){
-      .hero {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        gap: 40px;
-      }
-    }
-  </style>
+        /* ==== KEEP BUILDING TEXT ==== */
+        .keep-building {
+            font-size: clamp(2.5rem, 7vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+
+            color: transparent;
+            /* no fill */
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+
+            opacity: 1;
+            /* IMPORTANT: remove fading */
+            line-height: 1;
+
+            white-space: nowrap;
+            /* keeps it in one line */
+        }
+
+        .copyright {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 800px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-wrapper {
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<section class="hero">
+    <footer class="footer">
+        <div class="footer-container">
 
-  <!-- LEFT -->
-  <div class="left">
-    <h1>Md Tashin Parvez</h1>
-    <h2>Product Analyst | Aspiring Product Manager</h2>
+            <!-- TOP -->
+            <div class="footer-top">
+                <div>
+                    <h2 class="footer-title">Let’s build something clean & modern.</h2>
+                    <p class="footer-desc">
+                        I design and build minimal web experiences focused on clarity and performance.
+                    </p>
+                </div>
 
-    <p>
-      I build user-focused digital products by combining product research,
-      structured thinking, and hands-on execution.
-    </p>
+                <div class="footer-right">
+                    <div class="info-card">
+                        Status
+                        <strong class="status">
+                            <span class="dot"></span> Available for work
+                        </strong>
+                    </div>
 
-    <div class="buttons">
-      <a href="#" class="primary">View My Work</a>
-      <a href="#" class="outline">Download Resume</a>
-      <a href="#" class="outline">Contact Me</a>
-      <a href="#" class="outline">Explore Resources</a>
-    </div>
+                    <div class="info-card">
+                        GitHub
+                        <strong>github.com/TashinParvez</strong>
+                    </div>
+                </div>
+            </div>
 
-    <div class="points">
-      <div>🧩 Product Analyst at Ontik Technology</div>
-      <div>🏆 Champion & Multi-time Award Winner (UIU CSE Project Show)</div>
-      <div>📊 Built 4+ Product Systems</div>
-      <div>📄 IEEE Publication (AI-based Vehicle Tracking)</div>
-      <div>🎓 BSc in CSE (CGPA: 3.93)</div>
-    </div>
-  </div>
+            <!-- BOTTOM -->
+            <div class="footer-bottom">
+                <div class="brand"><span>© 2026</span>Tashin Parvez</div>
 
-  <!-- RIGHT -->
-  <div class="right">
-    <div class="glow"></div>
+                <div class="nav-wrapper">
+                    <nav class="footer-nav">
+                        <a href="#home">Home</a>
+                        <a href="#work">Work</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
 
-    <div class="cube">
-      <div class="face front">Habit App</div>
-      <div class="face back">Travel System</div>
-      <div class="face rightf">Supply Chain</div>
-      <div class="face leftf">Campus Tool</div>
-      <div class="face top">AI Tracker</div>
-      <div class="face bottom">More +</div>
-    </div>
-  </div>
+                    <!-- YOUR CUSTOM TEXT -->
+                    <div class="keep-building">
+                        Keep_Building()
+                    </div>
+                </div>
 
-</section>
+                <p class="copyright">
+                    Minimal footer crafted for a modern portfolio.
+                </p>
+            </div>
+
+        </div>
+    </footer>
 
 </body>
+
 </html>

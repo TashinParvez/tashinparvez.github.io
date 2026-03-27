@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero - PM Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b1020;
+            font-family: Inter, Arial, sans-serif;
+            color: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            padding: 48px 6%;
+            gap: 40px;
+            background:
+                radial-gradient(circle at top right, rgba(99, 102, 241, 0.18), transparent 28%),
+                radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.16), transparent 30%),
+                linear-gradient(135deg, #0b1020 0%, #111827 45%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 95%);
+            pointer-events: none;
+        }
+
+        .left {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #cbd5e1;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 22px;
+            backdrop-filter: blur(8px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            display: inline-block;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #93c5fd;
+            margin-bottom: 14px;
+        }
+
+        .left h1 {
+            margin: 0;
+            font-size: clamp(2.8rem, 6vw, 5.1rem);
+            line-height: 0.97;
+            letter-spacing: -0.04em;
+            color: #f8fafc;
+            font-weight: 800;
+        }
+
+        .left h2 {
+            margin: 18px 0 0 0;
+            font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+            line-height: 1.4;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .left p {
+            margin: 24px 0 0 0;
+            max-width: 720px;
+            font-size: clamp(1rem, 1.4vw, 1.12rem);
+            line-height: 1.8;
+            color: #94a3b8;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 34px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 14px 22px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #4f46e5, #2563eb);
+            color: white;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
+        }
+
+        .primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px rgba(37, 99, 235, 0.36);
+        }
+
+        .soft-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f8fafc;
+            backdrop-filter: blur(8px);
+        }
+
+        .soft-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ghost-btn {
+            background: transparent;
+            border: 1px dashed rgba(148, 163, 184, 0.35);
+            color: #cbd5e1;
+        }
+
+        .ghost-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(96, 165, 250, 0.6);
+            color: #eff6ff;
+        }
+
+        .trust-line {
+            margin-top: 28px;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .proof-points {
+            margin-top: 28px;
+            display: grid;
+            gap: 12px;
+            max-width: 720px;
+        }
+
+        .proof-points div {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #dbe4f0;
+            font-size: 14px;
+            backdrop-filter: blur(8px);
+        }
+
+        .right {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1400px;
+            min-height: 520px;
+        }
+
+        .glow {
+            position: absolute;
+            width: 390px;
+            height: 390px;
+            background:
+                radial-gradient(circle,
+                    rgba(129, 140, 248, 0.28) 0%,
+                    rgba(56, 189, 248, 0.17) 38%,
+                    rgba(251, 191, 36, 0.09) 58%,
+                    transparent 72%);
+            filter: blur(52px);
+            border-radius: 50%;
+            z-index: 0;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        .scene {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            transform-style: preserve-3d;
+            z-index: 2;
+            animation: floatCube 5.5s ease-in-out infinite;
+        }
+
+        @keyframes floatCube {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            cursor: default;
+            will-change: transform;
+        }
+
+        .face {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 34px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: white;
+            box-shadow:
+                0 28px 60px rgba(0, 0, 0, 0.34),
+                inset 0 2px 10px rgba(255, 255, 255, 0.18),
+                inset 0 -14px 24px rgba(0, 0, 0, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            user-select: none;
+            -webkit-user-select: none;
+            backdrop-filter: blur(10px);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .face::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.28), transparent 28%),
+                radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.10), transparent 20%),
+                radial-gradient(circle at 80% 85%, rgba(0, 0, 0, 0.16), transparent 28%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02) 42%, rgba(0, 0, 0, 0.08) 100%);
+            pointer-events: none;
+        }
+
+        .face::after {
+            content: "";
+            position: absolute;
+            top: 14px;
+            left: 18px;
+            width: 64px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            pointer-events: none;
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
+        }
+
+        .face-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .face-label {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+
+        .face h3 {
+            margin: 0;
+            font-size: 26px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+        }
+
+        .face p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 90%;
+        }
+
+        .front {
+            transform: rotateY(0deg) translateZ(140px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(140px);
+        }
+
+        .rightf {
+            transform: rotateY(90deg) translateZ(140px);
+        }
+
+        .leftf {
+            transform: rotateY(-90deg) translateZ(140px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(140px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(140px);
+        }
+
+        .front {
+            background:
+                linear-gradient(145deg, rgba(129, 140, 248, 0.98), rgba(79, 70, 229, 0.95) 52%, rgba(37, 99, 235, 0.90));
+        }
+
+        .back {
+            background:
+                linear-gradient(145deg, rgba(52, 211, 153, 0.96), rgba(20, 184, 166, 0.93) 50%, rgba(14, 165, 233, 0.90));
+        }
+
+        .rightf {
+            background:
+                linear-gradient(145deg, rgba(251, 191, 183, 0.97), rgba(244, 114, 182, 0.92) 46%, rgba(168, 85, 247, 0.90));
+        }
+
+        .leftf {
+            background:
+                linear-gradient(145deg, rgba(253, 186, 116, 0.98), rgba(251, 146, 60, 0.94) 48%, rgba(239, 68, 68, 0.90));
+        }
+
+        .top {
+            background:
+                linear-gradient(145deg, rgba(125, 211, 252, 0.98), rgba(56, 189, 248, 0.94) 50%, rgba(59, 130, 246, 0.90));
+        }
+
+        .bottom {
+            background:
+                linear-gradient(145deg, rgba(148, 163, 184, 0.95), rgba(100, 116, 139, 0.92) 48%, rgba(71, 85, 105, 0.90));
+        }
+
+        .cube-shadow {
+            position: absolute;
+            width: 250px;
+            height: 78px;
+            border-radius: 50%;
+            background:
+                radial-gradient(ellipse,
+                    rgba(15, 23, 42, 0.58) 0%,
+                    rgba(30, 41, 59, 0.34) 48%,
+                    transparent 75%);
+            filter: blur(28px);
+            transform: translateY(190px) scale(1.1);
+            z-index: 1;
+            animation: shadowBreath 5.5s ease-in-out infinite;
+        }
+
+        @keyframes shadowBreath {
+
+            0%,
+            100% {
+                transform: translateY(190px) scale(1.08);
+                opacity: 0.62;
+            }
+
+            50% {
+                transform: translateY(198px) scale(0.96);
+                opacity: 0.42;
+            }
+        }
+
+        .cube-hint {
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #a5b4fc;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 14px;
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+        }
+
+        @media (max-width: 980px) {
+            body {
+                overflow: auto;
+            }
+
+            .hero {
+                min-height: 100vh;
+                height: auto;
+                grid-template-columns: 1fr;
+                padding: 36px 20px 54px;
+                gap: 32px;
+            }
+
+            .left {
+                max-width: 100%;
+            }
+
+            .right {
+                min-height: 420px;
+            }
+
+            .scene {
+                width: 230px;
+                height: 230px;
+            }
+
+            .face {
+                width: 230px;
+                height: 230px;
+                border-radius: 28px;
+            }
+
+            .front {
+                transform: rotateY(0deg) translateZ(115px);
+            }
+
+            .back {
+                transform: rotateY(180deg) translateZ(115px);
+            }
+
+            .rightf {
+                transform: rotateY(90deg) translateZ(115px);
+            }
+
+            .leftf {
+                transform: rotateY(-90deg) translateZ(115px);
+            }
+
+            .top {
+                transform: rotateX(90deg) translateZ(115px);
+            }
+
+            .bottom {
+                transform: rotateX(-90deg) translateZ(115px);
+            }
+
+            .cube-shadow {
+                width: 220px;
+                height: 70px;
+                transform: translateY(154px) scale(1.05);
+            }
+
+            @keyframes shadowBreath {
+
+                0%,
+                100% {
+                    transform: translateY(154px) scale(1.05);
+                    opacity: 0.62;
+                }
+
+                50% {
+                    transform: translateY(160px) scale(0.94);
+                    opacity: 0.42;
+                }
+            }
+        }
+
+        @media (max-width: 560px) {
+            .buttons {
+                gap: 10px;
+            }
+
+            .buttons a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .proof-points div {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="left">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Open to APM / Junior PM Opportunities
+            </div>
+
+            <div class="eyebrow">Hello, I’m</div>
+
+            <h1>Md Tashin Parvez</h1>
+            <h2>Product Analyst <span style="color:#64748b;">|</span> Aspiring Product Manager</h2>
+
+            <p>
+                I build user-focused digital products by combining product research,
+                structured thinking, and hands-on execution.
+            </p>
+
+            <div class="buttons">
+                <a href="#work" class="primary">View My Work</a>
+                <a href="#resume" class="soft-btn">Download Resume</a>
+                <a href="#contact" class="soft-btn">Contact Me</a>
+                <a href="#resources" class="ghost-btn">Explore Resources</a>
+            </div>
+
+            <div class="trust-line">
+                Based in Dhaka, Bangladesh · Building toward APM / Junior PM roles · Product, systems, and user-focused
+                problem solving
+            </div>
+
+            <div class="proof-points">
+                <div>🧩 Product Analyst at Ontik Technology</div>
+                <div>🏆 Champion & Multi-time Award Winner (UIU CSE Project Show)</div>
+                <div>📊 Built 4+ Product Systems (Habit, Travel, Supply Chain, Campus Tool)</div>
+                <div>📄 IEEE Publication (AI-based Vehicle Tracking System)</div>
+                <div>🎓 BSc in CSE (CGPA: 3.93)</div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="glow"></div>
+            <div class="cube-shadow"></div>
+
+            <div class="scene">
+                <div class="cube" id="cube">
+                    <div class="face front">
+                        <div class="face-content">
+                            <div class="face-label">Product 01</div>
+                            <h3>Habit App</h3>
+                            <p>A productivity-focused habit system built around retention and behavior tracking.</p>
+                        </div>
+                    </div>
+
+                    <div class="face back">
+                        <div class="face-content">
+                            <div class="face-label">Product 02</div>
+                            <h3>Travel System</h3>
+                            <p>A travel planning flow focused on structured decision making and better journey
+                                discovery.</p>
+                        </div>
+                    </div>
+
+                    <div class="face rightf">
+                        <div class="face-content">
+                            <div class="face-label">Product 03</div>
+                            <h3>Supply Chain</h3>
+                            <p>An operational workflow product designed to improve visibility, control, and
+                                coordination.</p>
+                        </div>
+                    </div>
+
+                    <div class="face leftf">
+                        <div class="face-content">
+                            <div class="face-label">Product 04</div>
+                            <h3>Campus Tool</h3>
+                            <p>A student-focused utility that solves day-to-day campus coordination and usability pain
+                                points.</p>
+                        </div>
+                    </div>
+
+                    <div class="face top">
+                        <div class="face-content">
+                            <div class="face-label">Product 05</div>
+                            <h3>AI Tracker</h3>
+                            <p>An AI-based vehicle tracking concept supported by technical research and IEEE publication
+                                work.</p>
+                        </div>
+                    </div>
+
+                    <div class="face bottom">
+                        <div class="face-content">
+                            <div class="face-label">More Work</div>
+                            <h3>Explore More</h3>
+                            <p>More systems, experiments, and product thinking artifacts across research and execution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cube-hint">Move your cursor anywhere on the page ✨</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const cube = document.getElementById("cube");
+
+        let autoRotateY = 0;
+        let currentX = -18;
+        let currentY = 24;
+        let targetX = -18;
+        let targetY = 24;
+
+        let mouseActive = false;
+        let idleTimer = null;
+
+        const baseX = -18;
+        const influenceX = 18;
+        const influenceY = 28;
+        const smoothing = 0.08;
+        const autoSpeed = 0.35;
+
+        function setMouseActiveState() {
+            mouseActive = true;
+
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                mouseActive = false;
+            }, 140);
+        }
+
+        document.addEventListener("mousemove", (e) => {
+            const xRatio = (e.clientX / window.innerWidth) * 2 - 1;
+            const yRatio = (e.clientY / window.innerHeight) * 2 - 1;
+
+            targetY = xRatio * influenceY;
+            targetX = baseX + yRatio * influenceX;
+
+            setMouseActiveState();
+        });
+
+        document.addEventListener("mouseleave", () => {
+            mouseActive = false;
+        });
+
+        document.addEventListener("touchstart", () => {
+            mouseActive = false;
+        }, { passive: true });
+
+        function animateCube() {
+            if (!mouseActive) {
+                autoRotateY += autoSpeed;
+                targetY = autoRotateY;
+                targetX = baseX + Math.sin(autoRotateY * Math.PI / 180) * 4;
+            }
+
+            currentX += (targetX - currentX) * smoothing;
+            currentY += (targetY - currentY) * smoothing;
+
+            cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+
+            requestAnimationFrame(animateCube);
+        }
+
+        animateCube();
+    </script>
+</body>
+
+</html>

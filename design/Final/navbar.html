@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Posh Navbar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 20px;
+            margin: 20px auto;
+            max-width: 1100px;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        /* MENU */
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+        }
+
+        /* NAV ITEM */
+        .nav-item {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            height: 22px;
+            overflow: hidden;
+        }
+
+        /* UNDERLINE */
+        .nav-item::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #38bdf8;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        /* TEXT SWAP */
+        .text-wrap {
+            position: relative;
+            display: block;
+            height: 22px;
+            overflow: hidden;
+        }
+
+        .text-wrap span {
+            display: block;
+            line-height: 22px;
+            transition: transform 0.35s ease;
+        }
+
+        .default-text {
+            transform: translateY(0);
+        }
+
+        .hover-text {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        .nav-item:hover .default-text {
+            transform: translateY(-100%);
+        }
+
+        .nav-item:hover .hover-text {
+            transform: translateY(-100%);
+        }
+
+        /* ACTIVE */
+        .nav-item.active {
+            color: white;
+        }
+
+        /* BUTTON */
+        .resume-btn {
+            padding: 10px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            background: #2563eb;
+            transition: 0.3s;
+        }
+
+        .resume-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* SECTIONS */
+        section {
+            height: 100vh;
+            padding: 80px 40px;
+        }
+
+        #home {
+            background: #0f172a;
+        }
+
+        #about {
+            background: #111827;
+        }
+
+        #education {
+            background: #1e293b;
+        }
+
+        #works {
+            background: #020617;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">My<span>Logo</span></div>
+
+        <div class="nav-menu">
+            <a href="#home" class="nav-item active">
+                <span class="text-wrap">
+                    <span class="default-text">Home</span>
+                    <span class="hover-text">Home</span>
+                </span>
+            </a>
+
+            <a href="#about" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">About</span>
+                    <span class="hover-text">About</span>
+                </span>
+            </a>
+
+            <a href="#education" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">Education</span>
+                    <span class="hover-text">Education</span>
+                </span>
+            </a>
+
+            <a href="#works" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">Works</span>
+                    <span class="hover-text">Works</span>
+                </span>
+            </a>
+        </div>
+
+        <a href="resume.pdf" class="resume-btn">Resume</a>
+    </nav>
+
+    <!-- SECTIONS -->
+    <section id="home">
+        <h1>Home</h1>
+        <p>Welcome to my site</p>
+    </section>
+
+    <section id="about">
+        <h1>About</h1>
+        <p>About me section</p>
+    </section>
+
+    <section id="education">
+        <h1>Education</h1>
+        <p>Your education details</p>
+    </section>
+
+    <section id="works">
+        <h1>Works</h1>
+        <p>Your projects / work</p>
+    </section>
+
+    <!-- SCRIPT -->
+    <script>
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-item");
+
+        // Click active
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        // Scroll active
+        window.addEventListener("scroll", () => {
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Minimal Footer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06070a;
+            --panel: rgba(255, 255, 255, 0.04);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --text: #f5f7fb;
+            --muted: #9aa4b2;
+            --soft: #c8d1dc;
+            --accent: #8b5cf6;
+            --accent-2: #4f46e5;
+            --line: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background: #111;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, sans-serif;
+            color: var(--text);
+        }
+
+        .footer {
+            position: relative;
+            overflow: hidden;
+            padding: 100px 7% 36px;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.14), transparent 24%),
+                radial-gradient(circle at 85% 80%, rgba(79, 70, 229, 0.12), transparent 22%),
+                linear-gradient(180deg, #05060a 0%, #07090f 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+            pointer-events: none;
+        }
+
+        .footer-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr;
+            gap: 64px;
+            align-items: start;
+            padding-bottom: 70px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--soft);
+            margin-bottom: 18px;
+            opacity: 0.75;
+        }
+
+        .footer-title {
+            font-size: clamp(2.2rem, 5vw, 4.8rem);
+            line-height: 0.96;
+            letter-spacing: -0.05em;
+            font-weight: 800;
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+
+        .footer-desc {
+            max-width: 580px;
+            color: var(--muted);
+            font-size: 1.03rem;
+            line-height: 1.85;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .info-card {
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 20px 22px;
+            backdrop-filter: blur(14px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .info-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .info-value {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 14px rgba(34, 197, 94, 0.75);
+        }
+
+        .footer-middle {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+            padding: 38px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            flex-wrap: wrap;
+        }
+
+        .contact-block h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .contact-mail {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text);
+            font-size: clamp(1.4rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-mail:hover {
+            color: #c4b5fd;
+            transform: translateX(4px);
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            font-size: 1.15rem;
+        }
+
+        .socials a:hover {
+            transform: translateY(-4px);
+            background: rgba(139, 92, 246, 0.12);
+            border-color: rgba(139, 92, 246, 0.35);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-size: clamp(1.6rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .brand span {
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.98rem;
+            transition: color 0.25s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--text);
+        }
+
+        .copyright {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 940px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-middle {
+                align-items: flex-start;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .footer {
+                padding: 78px 6% 30px;
+            }
+
+            .contact-mail {
+                word-break: break-word;
+            }
+
+            .socials a {
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-top">
+                <div class="footer-left">
+                    <span class="eyebrow">Let’s build something thoughtful</span>
+                    <h2 class="footer-title">
+                        Clean design, useful products, and meaningful digital experiences.
+                    </h2>
+                    <p class="footer-desc">
+                        I like building modern web experiences with a strong focus on clarity,
+                        interaction, and simplicity. Open to freelance work, collaborations,
+                        and interesting product ideas.
+                    </p>
+                </div>
+
+                <div class="footer-right">
+                    <div class="info-card">
+                        <div class="info-label">Current status</div>
+                        <div class="info-value status">
+                            <span class="status-dot"></span>
+                            Available for selected work
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">GitHub</div>
+                        <div class="info-value">github.com/TashinParvez</div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">Focus</div>
+                        <div class="info-value">Frontend • UI • Web Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-middle">
+                <div class="contact-block">
+                    <h3>Start a conversation</h3>
+                    <a href="https://github.com/TashinParvez" target="_blank" class="contact-mail">
+                        TashinParvez on GitHub
+                    </a>
+                </div>
+
+                <div class="socials">
+                    <a href="https://github.com/TashinParvez" target="_blank" aria-label="GitHub">
+                        <i class="ri-github-line"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="ri-linkedin-line"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter X">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="mailto:yourmail@example.com" aria-label="Email">
+                        <i class="ri-mail-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="brand"><span>© 2026</span>Tashin Parvez</div>
+
+                <nav class="footer-nav">
+                    <a href="#home">Home</a>
+                    <a href="#work">Work</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+
+                <p class="copyright">
+                    Minimal footer crafted for a modern personal portfolio.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
