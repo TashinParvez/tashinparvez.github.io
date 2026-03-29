@@ -1,193 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scroll Reading Text</title>
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    html,
     body {
-      margin: 0;
-      padding: 0;
-      background: #0f0f0f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-
-    .top-space,
-    .bottom-space {
-      height: 100vh;
-    }
-
-    .scroll-section {
-      height: 300vh;
-      position: relative;
-    }
-
-    .sticky-box {
-      position: sticky;
-      top: 0;
+      background: #080b10;
+      color: #e2e8f0;
+      font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
+    }
+
+    /* === NOISE OVERLAY === */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === AMBIENT GLOW === */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: sticky;
+      top: 18px;
+      margin: 18px auto;
+      max-width: 980px;
+      padding: 0 28px;
+      height: 62px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+      background: rgba(12, 16, 24, 0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+      z-index: 100;
+    }
+
+    /* === LOGO === */
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+      color: #f1f5f9;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+      gap: 6px;
     }
 
-    .text {
-      max-width: 1000px;
-      font-size: clamp(28px, 4vw, 60px);
-      line-height: 1.25;
+    .logo-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #63b3ed;
+      box-shadow: 0 0 8px rgba(99, 179, 237, 0.8);
+      flex-shrink: 0;
+    }
+
+    /* === NAV MENU === */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* === NAV ITEM === */
+    .nav-item {
+      text-decoration: none;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      position: relative;
+      padding: 7px 14px;
+      border-radius: 10px;
+      transition: color 0.3s ease, background 0.3s ease;
+      height: 36px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-item:hover {
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-item.active {
+      color: #f1f5f9;
+      background: rgba(99, 179, 237, 0.08);
+    }
+
+    /* UNDERLINE */
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 14px;
+      right: 14px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #63b3ed, transparent);
+      transform: scaleX(0);
+      transition: transform 0.35s ease;
+      transform-origin: center;
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      transform: scaleX(1);
+    }
+
+    /* === TEXT SWAP (preserved) === */
+    .text-wrap {
+      position: relative;
+      display: block;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .text-wrap span {
+      display: block;
+      line-height: 20px;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .default-text { transform: translateY(0); }
+
+    .hover-text {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      color: #93c5fd;
+    }
+
+    .nav-item:hover .default-text { transform: translateY(-100%); }
+    .nav-item:hover .hover-text   { transform: translateY(-100%); }
+
+    /* === CTA BUTTON === */
+    .cta-btn {
+      padding: 9px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #0f172a;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #93c5fd 0%, #63b3ed 50%, #3b82f6 100%);
+      box-shadow: 0 0 0 1px rgba(99,179,237,0.3), 0 4px 16px rgba(59,130,246,0.25);
+      transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .word {
-      color: rgba(255, 255, 255, 0.2);
-      transition: color 0.18s linear;
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
+      border-radius: inherit;
     }
 
-    .word.active {
-      color: rgba(255, 255, 255, 1);
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(99,179,237,0.5), 0 8px 24px rgba(59,130,246,0.4);
+      filter: brightness(1.06);
+    }
+
+    .cta-btn:active { transform: translateY(0); }
+
+    /* === SECTIONS === */
+    section {
+      height: 100vh;
+      padding: 120px 60px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #home     { background: transparent; }
+    #about    { background: rgba(255,255,255,0.01); }
+    #education{ background: transparent; }
+    #works    { background: rgba(255,255,255,0.01); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #64748b;
+      font-weight: 300;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="top-space"></div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-dot"></span>
+      Portfolio
+    </a>
 
-  <section class="scroll-section" id="scrollSection">
-    <div class="sticky-box">
-      <div class="text" id="readingText">
-        Make your website fast, accessible, and built to last using modern web technologies and standards to create an
-        experience that works seamlessly on any browser or device.
-      </div>
+    <div class="nav-menu">
+      <a href="#home" class="nav-item active">
+        <span class="text-wrap">
+          <span class="default-text">Home</span>
+          <span class="hover-text">Home</span>
+        </span>
+      </a>
+      <a href="#about" class="nav-item">
+        <span class="text-wrap">
+          <span class="default-text">About</span>
+          <span class="hover-text">About</span>
+        </span>
+      </a>
+      <a href="#education" class="nav-item">
+        <span class="text-wrap">
+          <span class="default-text">Education</span>
+          <span class="hover-text">Education</span>
+        </span>
+      </a>
+      <a href="#works" class="nav-item">
+        <span class="text-wrap">
+          <span class="default-text">Works</span>
+          <span class="hover-text">Works</span>
+        </span>
+      </a>
     </div>
+
+    <a href="resume.pdf" class="cta-btn">Let's Connect →</a>
+  </nav>
+
+  <!-- SECTIONS -->
+  <section id="home">
+    <h1>Home</h1>
+    <p>Welcome to my portfolio.</p>
+  </section>
+  <section id="about">
+    <h1>About</h1>
+    <p>About me section.</p>
+  </section>
+  <section id="education">
+    <h1>Education</h1>
+    <p>Education details.</p>
+  </section>
+  <section id="works">
+    <h1>Works</h1>
+    <p>Projects & work.</p>
   </section>
 
-  <div class="bottom-space"></div>
-
   <script>
-    const textEl = document.getElementById("readingText");
-    const sectionEl = document.getElementById("scrollSection");
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-item");
 
-    const text = textEl.textContent.trim();
-    const words = text.split(" ");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
 
-    textEl.innerHTML = words
-      .map(word => `<span class="word">${word}</span>`)
-      .join(" ");
-
-    const wordEls = textEl.querySelectorAll(".word");
-
-    function updateWords() {
-      const rect = sectionEl.getBoundingClientRect();
-      const sectionStart = window.innerHeight;
-      const sectionEnd = -rect.height + window.innerHeight;
-
-      let progress = (sectionStart - rect.top) / (sectionStart - sectionEnd);
-      progress = Math.max(0, Math.min(1, progress));
-
-      const activeCount = Math.floor(progress * wordEls.length);
-
-      wordEls.forEach((word, index) => {
-        if (index < activeCount) {
-          word.classList.add("active");
-        } else {
-          word.classList.remove("active");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        if (pageYOffset >= section.offsetTop - 120) {
+          current = section.getAttribute("id");
         }
-
-        .site-footer {
-            text-align: center;
-            padding: 24px 16px;
-            font-size: 14px;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            background-color: #f9fafb;
-            line-height: 1.6;
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
         }
+      });
+    });
+  </script>
 
-        .site-footer strong {
-            color: #111827;
-        }
-
-        .github-stats {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 12px 0 0;
-        }
-
-        .github-stats .stat {
-            text-align: center;
-        }
-
-        .github-stats .number {
-            font-weight: bold;
-            font-size: 16px;
-            display: block;
-        }
-
-        .github-stats .label {
-            font-size: 12px;
-            color: #6b7280;
-        }
-
-        /* Optional: small icon styling */
-        .github-stats svg {
-            width: 14px;
-            height: 14px;
-            vertical-align: middle;
-            margin-right: 4px;
-            fill: #fbbf24;
-            /* default gold for star */
-        }
-
-        .github-stats .followers svg {
-            fill: #3b82f6;
-        }
-
-        .github-stats .forks svg {
-            fill: #10b981;
-        }
-    </style>
-</head>
-
-<body>
-    <footer class="site-footer">
-        <div class="github-stats">
-            <div class="stat stars">
-                <span class="number">
-                    <svg viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                    149
-                </span>
-                <span class="label">Stars</span>
-            </div>
-            <div class="stat forks">
-                <span class="number">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M6 3v12h4v-4h4v-4h4V3h-12zm6 8H8V5h4v6z" />
-                    </svg>
-                    8
-                </span>
-                <span class="label">Forks</span>
-            </div>
-        </div>
-        <p>© 2026 <strong>Tashin Parvez</strong></p>
-        <p>Built with intent, not just code.</p>
-
-
-    </footer>
 </body>
-
 </html>
-

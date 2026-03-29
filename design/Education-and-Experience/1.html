@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education & Experience</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f5f7fa;
+      --muted: #9aa4b2;
+      --accent: #7c8cff;
+      --accent-soft: rgba(124, 140, 255, 0.12);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 140, 255, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 200, 255, 0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 60px 20px;
+    }
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header span {
+      display: inline-block;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(124, 140, 255, 0.22);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .panel-title {
+      padding: 24px 24px 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-subtitle {
+      padding: 8px 24px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      padding: 20px 24px 26px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 26px;
+      padding-bottom: 28px;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      margin-left: 8px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: -7px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(124, 140, 255, 0.12);
+    }
+
+    .item-year {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: var(--accent);
+      background: rgba(124, 140, 255, 0.08);
+      border: 1px solid rgba(124, 140, 255, 0.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .item-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .item-org {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 10px;
+    }
+
+    .item-desc {
+      color: #d5dbe3;
+      font-size: 0.95rem;
+    }
+
+    .experience-list {
+      padding: 20px 24px 26px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .job-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 18px;
+      padding: 20px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124, 140, 255, 0.35);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .job-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .job-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .job-company {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .job-meta {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--muted);
+      min-width: 180px;
+    }
+
+    .job-meta .date {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .job-points {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .job-points li {
+      position: relative;
+      padding-left: 18px;
+      color: #dbe1e8;
+      font-size: 0.95rem;
+    }
+
+    .job-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @media (max-width: 960px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .job-meta {
+        text-align: left;
+        min-width: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 36px 16px;
+      }
+
+      .panel-title,
+      .panel-subtitle,
+      .timeline,
+      .experience-list {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .job-card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="wrapper">
+    <div class="section-header">
+      <span>Portfolio</span>
+      <h1>Education & Experience</h1>
+      <p>
+        A minimal overview of my academic background and professional journey as a Flutter developer.
+      </p>
+    </div>
+
+    <div class="grid">
+      <!-- Education -->
+      <div class="panel">
+        <h2 class="panel-title">Education</h2>
+        <p class="panel-subtitle">My academic path in science and technology.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="item-year">2017 — 2021</span>
+            <h3 class="item-title">Bachelor of Science in Computer Science and Information Technology (B.Sc. CSIT)</h3>
+            <p class="item-org">Nihareeka College of Management and Information Technology</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="item-year">2015 — 2017</span>
+            <h3 class="item-title">+2 Science</h3>
+            <p class="item-org">Greenland International College</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="panel">
+        <h2 class="panel-title">Experience</h2>
+        <p class="panel-subtitle">My professional growth and contributions in Flutter development.</p>
+
+        <div class="experience-list">
+          <article class="job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Flutter Developer</h3>
+                <p class="job-company">Adzen Tech Pvt. Ltd</p>
+              </div>
+              <div class="job-meta">
+                <span class="date">Feb, 2025 — Present • 1 yr 1 mo</span>
+                Kathmandu, Nepal
+              </div>
+            </div>
+            <ul class="job-points">
+              <li>Responsible for designing and developing mobile applications using Flutter.</li>
+            </ul>
+          </article>
+
+          <article class="job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Mid-Level Flutter Developer</h3>
+                <p class="job-company">Tokma Technologies</p>
+              </div>
+              <div class="job-meta">
+                <span class="date">Aug, 2024 — Feb, 2025 • 6 mo</span>
+                Kathmandu, Nepal
+              </div>
+            </div>
+            <ul class="job-points">
+              <li>Developed new features and implemented UI designs into code using Flutter.</li>
+              <li>Designed and created custom e-form features including scrolling features and data entries.</li>
+              <li>Integrated Google and Facebook sign-in for user authentication.</li>
+              <li>Designed dynamic functionalities using the BLOC design pattern.</li>
+              <li>Integrated APIs for seamless data communication and backend functionality.</li>
+              <li>Implemented payment gateway integration like Khalti for secure transactions.</li>
+              <li>Collaborated with other developers and backend team to deliver features.</li>
+              <li>Participated in team meetings to discuss new features and project updates.</li>
+              <li>Ensured smooth functionality and user-friendly experiences throughout the app.</li>
+              <li>Performed code review and deployed the app in Playstore and Appstore.</li>
+            </ul>
+          </article>
+
+          <article class="job-card">
+            <div class="job-top">
+              <div>
+                <h3 class="job-title">Flutter Developer</h3>
+                <p class="job-company">Inflancer Technology</p>
+              </div>
+              <div class="job-meta">
+                <span class="date">Oct, 2022 — Aug, 2024 • 1 yr 10 mo</span>
+                Kathmandu, Nepal
+              </div>
+            </div>
+            <ul class="job-points">
+              <li>Developed new features and transformed UI designs into fully functional user interfaces.</li>
+              <li>Integrated payment solution like eSewa, for secure and seamless transactions.</li>
+              <li>Optimized application performance to ensure a smooth and engaging user experience.</li>
+              <li>Supported other team members initiatives by developing solutions to common problems and sharing those solutions.</li>
+              <li>Identified and resolved bugs, improving app stability and performance.</li>
+              <li>Wrote clean, maintainable, and testable code following best practices.</li>
+              <li>Utilization of latest version of support libraries to ensure backend compatibility.</li>
+              <li>Integrated payment solution like eSewa, for secure and seamless transactions.</li>
+              <li>Collaborated with backend developers, designers, and cross-functional teams to deliver scalable, high-quality solutions.</li>
+              <li>Performed code review and deployed the app in Playstore and Appstore.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education & Experience</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0f1115;
+      --panel: #151922;
+      --soft: #1b2130;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f5f7fb;
+      --muted: #9ca3af;
+      --accent: #8b5cf6;
+      --accent-2: #22c55e;
+      --radius: 24px;
+      --max: 1100px;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      padding: 48px 20px;
+    }
+
+    .resume {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.25fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      position: sticky;
+      top: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .intro h1 {
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .mini-tags span {
+      font-size: 13px;
+      color: #d7dbe3;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .edu-grid,
+    .exp-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .item {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(139, 92, 246, 0.35);
+    }
+
+    .item-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .item h3 {
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .org {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .year {
+      font-size: 0.82rem;
+      color: #e9e9ff;
+      background: rgba(139, 92, 246, 0.14);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 7px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .summary {
+      color: #d7dbe3;
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .highlight span {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: #d6dae3;
+    }
+
+    .exp-grid .item:nth-child(1) .year {
+      background: rgba(34, 197, 94, 0.14);
+      border-color: rgba(34, 197, 94, 0.22);
+    }
+
+    @media (max-width: 920px) {
+      .resume {
+        grid-template-columns: 1fr;
+      }
+
+      .intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 24px 14px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .item-top {
+        flex-direction: column;
+      }
+
+      .year {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="resume">
+    <div class="card intro">
+      <div>
+        <div class="eyebrow">Portfolio Snapshot</div>
+        <h1>Education<br>& Experience</h1>
+        <p>
+          A compact look at my academic background and professional journey building modern Flutter applications.
+        </p>
+
+        <div class="mini-tags">
+          <span>Flutter</span>
+          <span>BLoC</span>
+          <span>API Integration</span>
+          <span>Payments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="card">
+        <div class="section-title">Education</div>
+        <div class="edu-grid">
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <h3>B.Sc. CSIT</h3>
+                <div class="org">Nihareeka College of Management and Information Technology</div>
+              </div>
+              <div class="year">2017 — 2021</div>
+            </div>
+            <div class="summary">
+              Bachelor of Science in Computer Science and Information Technology.
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <h3>+2 Science</h3>
+                <div class="org">Greenland International College</div>
+              </div>
+              <div class="year">2015 — 2017</div>
+            </div>
+            <div class="summary">
+              Higher secondary education with a science background.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Experience</div>
+        <div class="exp-grid">
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <h3>Flutter Developer</h3>
+                <div class="org">Adzen Tech Pvt. Ltd · Kathmandu, Nepal</div>
+              </div>
+              <div class="year">Feb 2025 — Present</div>
+            </div>
+            <div class="summary">
+              Designing and developing mobile applications using Flutter.
+            </div>
+            <div class="highlight">
+              <span>App Development</span>
+              <span>Flutter UI</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <h3>Mid-Level Flutter Developer</h3>
+                <div class="org">Tokma Technologies · Kathmandu, Nepal</div>
+              </div>
+              <div class="year">Aug 2024 — Feb 2025</div>
+            </div>
+            <div class="summary">
+              Built new features, custom e-forms, social login, BLoC-based functionality, API integration, Khalti payments, and app deployment.
+            </div>
+            <div class="highlight">
+              <span>BLoC</span>
+              <span>Khalti</span>
+              <span>Google Login</span>
+              <span>API</span>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <h3>Flutter Developer</h3>
+                <div class="org">Inflancer Technology · Kathmandu, Nepal</div>
+              </div>
+              <div class="year">Oct 2022 — Aug 2024</div>
+            </div>
+            <div class="summary">
+              Delivered Flutter features, payment integration with eSewa, performance optimization, bug fixing, clean architecture, and store deployment.
+            </div>
+            <div class="highlight">
+              <span>eSewa</span>
+              <span>Performance</span>
+              <span>Code Review</span>
+              <span>Play Store</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

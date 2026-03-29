@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience & Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #080b10;
+      --surface:  rgba(255,255,255,0.032);
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #63b3ed;
+      --accent2:  #3b82f6;
+      --text-1:   #f1f5f9;
+      --text-2:   #cbd5e1;
+      --text-3:   #94a3b8;
+      --text-4:   #475569;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 80px 24px 120px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ambient top glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -160px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 360px;
+      background: radial-gradient(ellipse, rgba(99,179,237,0.055) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      margin-bottom: 80px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp .7s .1s ease forwards;
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700; letter-spacing: -0.04em;
+      line-height: 1.0; color: var(--text-1);
+      margin-bottom: 16px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .page-sub {
+      font-size: 1rem; font-weight: 400;
+      color: var(--text-3); line-height: 1.7;
+      max-width: 460px;
+    }
+
+    /* ── SECTION BLOCK ── */
+    .section-block {
+      margin-bottom: 72px;
+      opacity: 0; transform: translateY(24px);
+      animation: fadeUp .7s ease forwards;
+    }
+
+    .section-block:nth-child(2) { animation-delay: .2s; }
+    .section-block:nth-child(3) { animation-delay: .35s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-label {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .section-label-text {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-4);
+    }
+
+    .section-label-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ── EXPERIENCE CARDS ── */
+    .exp-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .exp-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 12px 24px;
+      padding: 24px 26px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+      transition: border-color .3s, background .3s, transform .3s;
+      cursor: default;
+    }
+
+    /* left accent bar */
+    .exp-card::before {
+      content: '';
+      position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 999px;
+      opacity: 0;
+      transition: opacity .3s, top .3s, bottom .3s;
+    }
+
+    /* shimmer */
+    .exp-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(99,179,237,0.04) 50%, transparent 70%);
+      opacity: 0; transition: opacity .3s;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(99,179,237,0.2);
+      background: rgba(99,179,237,0.04);
+      transform: translateX(3px);
+    }
+
+    .exp-card:hover::before { opacity: 1; top: 16%; bottom: 16%; }
+    .exp-card:hover::after  { opacity: 1; }
+
+    .exp-main { min-width: 0; }
+
+    .exp-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em;
+      color: var(--text-1); margin-bottom: 5px;
+      transition: color .3s;
+    }
+    .exp-card:hover .exp-role { color: #fff; }
+
+    .exp-org {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--accent); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 7px;
+    }
+
+    .exp-org-sep { color: var(--text-4); font-weight: 300; }
+
+    .exp-location {
+      font-size: 0.83rem; color: var(--text-4); font-weight: 400;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem; font-weight: 400;
+      color: var(--text-3); line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .exp-date {
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--text-4); letter-spacing: 0.01em;
+      white-space: nowrap;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      height: fit-content;
+      transition: border-color .3s, color .3s;
+    }
+    .exp-card:hover .exp-date { border-color: rgba(99,179,237,0.2); color: var(--text-3); }
+
+    .current-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #22c55e;
+      padding: 3px 10px; border-radius: 999px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.2);
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+
+    .current-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px rgba(34,197,94,0.9);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: .4; }
+    }
+
+    /* ── EDUCATION CARDS ── */
+    .edu-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .edu-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 26px 28px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      position: relative; overflow: hidden;
+      transition: border-color .35s ease, background .35s ease, transform .35s ease, box-shadow .35s ease;
+      cursor: default;
+    }
+
+    /* glow sweep on hover */
+    .edu-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(99,179,237,0.09) 0%, transparent 60%);
+      opacity: 0; transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .edu-card:hover {
+      border-color: rgba(99,179,237,0.22);
+      background: rgba(99,179,237,0.035);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(99,179,237,0.1);
+    }
+    .edu-card:hover::before { opacity: 1; }
+
+    /* year pill left */
+    .edu-year-col { flex-shrink: 0; }
+
+    .edu-year-pill {
+      width: 60px; height: 60px; border-radius: 14px;
+      background: rgba(99,179,237,0.08);
+      border: 1px solid rgba(99,179,237,0.15);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: background .35s, border-color .35s, box-shadow .35s;
+    }
+
+    .edu-card:hover .edu-year-pill {
+      background: rgba(99,179,237,0.14);
+      border-color: rgba(99,179,237,0.3);
+      box-shadow: 0 0 20px rgba(99,179,237,0.12);
+    }
+
+    .edu-year-start {
+      font-size: 14px; font-weight: 700; color: var(--accent); line-height: 1;
+    }
+    .edu-year-dash  { font-size: 10px; color: var(--text-4); margin: 1px 0; }
+    .edu-year-end   { font-size: 12px; font-weight: 600; color: var(--text-4); line-height: 1; }
+
+    .edu-body { min-width: 0; flex: 1; }
+
+    .edu-degree {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em;
+      color: var(--text-1); margin-bottom: 5px;
+      transition: color .3s;
+    }
+    .edu-card:hover .edu-degree { color: #fff; }
+
+    .edu-school {
+      font-size: 0.88rem; color: var(--text-3); font-weight: 400;
+      line-height: 1.5;
+      transition: color .3s;
+    }
+    .edu-card:hover .edu-school { color: var(--text-2); }
+
+    /* tags */
+    .edu-tags {
+      display: flex; flex-wrap: wrap; gap: 7px;
+      margin-top: 14px;
+    }
+
+    .edu-tag {
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.04em;
+      padding: 3px 10px; border-radius: 999px;
+      color: var(--text-3);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      transition: border-color .3s, color .3s;
+    }
+    .edu-card:hover .edu-tag { border-color: rgba(99,179,237,0.15); color: var(--text-2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .exp-card { grid-template-columns: 1fr; }
+      .exp-date { width: fit-content; }
+      body { padding: 60px 16px 80px; }
+      .edu-year-pill { width: 52px; height: 52px; border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">My Journey</div>
+    <h1 class="page-title">Experience &amp;<br><span>Education</span></h1>
+    <p class="page-sub">A focused timeline of roles, achievements, and academic foundations that shaped my product thinking.</p>
+  </div>
+
+  <!-- ── EXPERIENCE ── -->
+  <div class="section-block">
+    <div class="section-label">
+      <span class="section-label-text">Experience</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="exp-list">
+
+      <!-- Current Role -->
+      <div class="exp-card">
+        <div class="exp-main">
+          <div class="current-badge">
+            <span class="current-dot"></span>
+            Current
+          </div>
+          <div class="exp-role">Product Analyst</div>
+          <div class="exp-org">
+            Ontik Technology
+            <span class="exp-org-sep">·</span>
+            <span class="exp-location">Dhaka, Bangladesh</span>
+          </div>
+          <div class="exp-desc">
+            Leading product analysis initiatives, conducting user research, and translating insights into structured product requirements. Supporting roadmap decisions with data-driven documentation and cross-functional collaboration.
+          </div>
+        </div>
+        <div class="exp-date">Feb 2025 — Present</div>
+      </div>
+
+      <!-- Add more experience items here following the same pattern if needed -->
+
+    </div>
+  </div>
+
+  <!-- ── EDUCATION ── -->
+  <div class="section-block">
+    <div class="section-label">
+      <span class="section-label-text">Education</span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="edu-list">
+
+      <div class="edu-card">
+        <div class="edu-year-col">
+          <div class="edu-year-pill">
+            <span class="edu-year-start">2019</span>
+            <span class="edu-year-dash">—</span>
+            <span class="edu-year-end">2024</span>
+          </div>
+        </div>
+        <div class="edu-body">
+          <div class="edu-degree">BSc in Computer Science &amp; Engineering</div>
+          <div class="edu-school">United International University · Dhaka, Bangladesh</div>
+          <div class="edu-tags">
+            <span class="edu-tag">CGPA 3.93</span>
+            <span class="edu-tag">IEEE Publication</span>
+            <span class="edu-tag">Project Show Champion</span>
+            <span class="edu-tag">Multi-Award Winner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more education items here following the same pattern -->
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* Mouse-tracking radial glow on edu cards */
+  document.querySelectorAll('.edu-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+      const y = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
+  });
+
+  /* Scroll-triggered fade-in for section blocks */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-block, .page-header').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    obs.observe(el);
+  });
+</script>
+
+</body>
+</html>
