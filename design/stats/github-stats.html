@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Overview</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: #0b1020;
+            color: #e5e7eb;
+            padding: 40px 20px;
+        }
+
+        .github-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .github-header {
+            margin-bottom: 28px;
+        }
+
+        .github-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .github-header p {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .quick-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin: 28px 0 36px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 18px;
+            backdrop-filter: blur(8px);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .badge-row a,
+        .badge-row img {
+            display: inline-block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 14px;
+        }
+
+        .stats-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .repo-badges {
+            margin-top: 36px;
+        }
+
+        .repo-badges h2 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .repo-badges p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .repo-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .repo-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+        }
+
+        .repo-item h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .repo-item .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="github-wrap">
+        <div class="github-header">
+            <h1>Md Tashin Parvez </h1>
+            <h2> GitHub Overview</h2>
+            <p>
+                A compact view of my GitHub profile, language usage, contribution streak,
+                and key profile metrics.
+            </p>
+        </div>
+
+        <div class="quick-metrics">
+            <div class="metric-card">
+                <div class="metric-label">Followers</div>
+                <div class="metric-value" id="followers">--</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Public Repos</div>
+                <div class="metric-value" id="repos">--</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Following</div>
+                <div class="metric-value" id="following">--</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Profile Link</div>
+                <div class="metric-value" style="font-size:1rem;">
+                    <a href="https://github.com/TashinParvez" target="_blank"
+                        style="color:#93c5fd; text-decoration:none;">
+                        @TashinParvez
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="badge-row">
+            <a href="https://github.com/TashinParvez" target="_blank">
+                <img src="https://img.shields.io/github/followers/TashinParvez?style=for-the-badge&logo=github"
+                    alt="GitHub followers badge">
+            </a>
+
+            <a href="https://github.com/TashinParvez" target="_blank">
+                <img src="https://img.shields.io/github/stars/TashinParvez?style=for-the-badge&logo=github"
+                    alt="GitHub user stars badge">
+            </a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stats-card">
+                <img src="https://github-readme-stats.vercel.app/api?username=TashinParvez&show_icons=true&theme=radical"
+                    alt="GitHub stats card" />
+            </div>
+
+            <div class="stats-card">
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=TashinParvez&layout=compact&theme=radical"
+                    alt="Top languages card" />
+            </div>
+
+            <div class="stats-card" style="grid-column: 1 / -1;">
+                <img src="https://streak-stats.demolab.com?user=TashinParvez&theme=radical" alt="GitHub streak stats" />
+            </div>
+        </div>
+
+        <div class="repo-badges">
+            <h2>Repository badges</h2>
+            <p>
+                Stars and forks are most useful when shown per repository. Replace the repo
+                names below with your own top projects.
+            </p>
+
+            <div class="repo-list">
+                <div class="repo-item">
+                    <h3>example-repo-one</h3>
+                    <div class="badges">
+                        <a href="https://github.com/TashinParvez/example-repo-one" target="_blank">
+                            <img src="https://img.shields.io/github/stars/TashinParvez/example-repo-one?style=for-the-badge&logo=github"
+                                alt="Repo stars">
+                        </a>
+                        <a href="https://github.com/TashinParvez/example-repo-one/network/members" target="_blank">
+                            <img src="https://img.shields.io/github/forks/TashinParvez/example-repo-one?style=for-the-badge&logo=github"
+                                alt="Repo forks">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="repo-item">
+                    <h3>example-repo-two</h3>
+                    <div class="badges">
+                        <a href="https://github.com/TashinParvez/example-repo-two" target="_blank">
+                            <img src="https://img.shields.io/github/stars/TashinParvez/example-repo-two?style=for-the-badge&logo=github"
+                                alt="Repo stars">
+                        </a>
+                        <a href="https://github.com/TashinParvez/example-repo-two/network/members" target="_blank">
+                            <img src="https://img.shields.io/github/forks/TashinParvez/example-repo-two?style=for-the-badge&logo=github"
+                                alt="Repo forks">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function getGitHubData() {
+            try {
+                const res = await fetch("https://api.github.com/users/TashinParvez");
+                if (!res.ok) throw new Error("GitHub API request failed");
+
+                const data = await res.json();
+
+                document.getElementById("followers").textContent = data.followers ?? "--";
+                document.getElementById("repos").textContent = data.public_repos ?? "--";
+                document.getElementById("following").textContent = data.following ?? "--";
+            } catch (error) {
+                document.getElementById("followers").textContent = "N/A";
+                document.getElementById("repos").textContent = "N/A";
+                document.getElementById("following").textContent = "N/A";
+                console.error(error);
+            }
+        }
+
+        getGitHubData();
+    </script>
+</body>
+
+</html>

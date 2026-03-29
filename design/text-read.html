@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll Reading Text</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .top-space,
+    .bottom-space {
+      height: 100vh;
+    }
+
+    .scroll-section {
+      height: 300vh;
+      position: relative;
+    }
+
+    .sticky-box {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .text {
+      max-width: 1000px;
+      font-size: clamp(28px, 4vw, 60px);
+      line-height: 1.25;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .word {
+      color: rgba(255, 255, 255, 0.2);
+      transition: color 0.18s linear;
+    }
+
+    .word.active {
+      color: rgba(255, 255, 255, 1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-space"></div>
+
+  <section class="scroll-section" id="scrollSection">
+    <div class="sticky-box">
+      <div class="text" id="readingText">
+        Make your website fast, accessible, and built to last using modern web technologies and standards to create an experience that works seamlessly on any browser or device.
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom-space"></div>
+
+  <script>
+    const textEl = document.getElementById("readingText");
+    const sectionEl = document.getElementById("scrollSection");
+
+    const text = textEl.textContent.trim();
+    const words = text.split(" ");
+
+    textEl.innerHTML = words
+      .map(word => `<span class="word">${word}</span>`)
+      .join(" ");
+
+    const wordEls = textEl.querySelectorAll(".word");
+
+    function updateWords() {
+      const rect = sectionEl.getBoundingClientRect();
+      const sectionStart = window.innerHeight;
+      const sectionEnd = -rect.height + window.innerHeight;
+
+      let progress = (sectionStart - rect.top) / (sectionStart - sectionEnd);
+      progress = Math.max(0, Math.min(1, progress));
+
+      const activeCount = Math.floor(progress * wordEls.length);
+
+      wordEls.forEach((word, index) => {
+        if (index < activeCount) {
+          word.classList.add("active");
+        } else {
+          word.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateWords);
+    window.addEventListener("resize", updateWords);
+    window.addEventListener("load", updateWords);
+
+    updateWords();
+  </script>
+
+</body>
+</html>

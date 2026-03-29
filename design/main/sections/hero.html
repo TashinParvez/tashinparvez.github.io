@@ -1,0 +1,724 @@
+<style>
+    .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        align-items: center;
+        padding: 60px 6% 72px;
+        gap: 48px;
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 70% 20%, rgba(99, 179, 237, 0.07), transparent 30%),
+            radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.07), transparent 28%),
+            linear-gradient(160deg, #080b10 0%, #0d1220 60%, #080b10 100%);
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 90%);
+        pointer-events: none;
+    }
+
+    .left {
+        position: relative;
+        z-index: 2;
+        max-width: 680px;
+        animation: homeFadeUp .8s ease both;
+    }
+
+    @keyframes homeFadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(28px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 16px;
+        border: 1px solid rgba(99, 179, 237, 0.2);
+        border-radius: 999px;
+        background: rgba(99, 179, 237, 0.06);
+        color: #cbd5e1;
+        font-size: 12.5px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        margin-bottom: 28px;
+        backdrop-filter: blur(8px);
+        animation: homeFadeUp .8s .1s ease both;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+        animation: homePulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes homePulse {
+
+        0%,
+        100% {
+            box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+        }
+
+        50% {
+            box-shadow: 0 0 14px rgba(34, 197, 94, 1);
+        }
+    }
+
+    .eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #63b3ed;
+        margin-bottom: 10px;
+        animation: homeFadeUp .8s .15s ease both;
+    }
+
+    .hero-name {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: #f1f5f9;
+        margin-bottom: 14px;
+        animation: homeFadeUp .8s .2s ease both;
+    }
+
+    .hero-name .first {
+        color: #f1f5f9;
+    }
+
+    .hero-name .last {
+        background: linear-gradient(90deg, #63b3ed, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+        font-weight: 900;
+        color: #94a3b8;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: homeFadeUp .8s .25s ease both;
+    }
+
+    .title-sep {
+        width: 1px;
+        height: 14px;
+        background: #64748b;
+    }
+
+    .hero-title .highlight {
+        color: #cbd5e1;
+        font-weight: 700;
+    }
+
+    .hero-desc {
+        font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+        font-weight: 400;
+        line-height: 1.75;
+        color: #9aa4b2;
+        max-width: 580px;
+        margin-bottom: 32px;
+        animation: homeFadeUp .8s .3s ease both;
+    }
+
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 36px;
+        animation: homeFadeUp .8s .35s ease both;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 12px 22px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.01em;
+        transition: all .25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #93c5fd 0%, #63b3ed 50%, #3b82f6 100%);
+        color: #0b1220;
+        box-shadow: 0 0 0 1px rgba(99, 179, 237, 0.3), 0 6px 20px rgba(59, 130, 246, 0.28);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 55%);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 0 1px rgba(99, 179, 237, 0.5), 0 10px 28px rgba(59, 130, 246, 0.4);
+        filter: brightness(1.06);
+    }
+
+    .btn-soft {
+        background: rgba(255, 255, 255, 0.055);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #f1f5f9;
+        backdrop-filter: blur(8px);
+    }
+
+    .btn-soft:hover {
+        background: rgba(255, 255, 255, 0.09);
+        transform: translateY(-2px);
+        border-color: rgba(99, 179, 237, 0.25);
+    }
+
+    .btn-ghost {
+        background: transparent;
+        border: 1px dashed rgba(99, 179, 237, 0.3);
+        color: #94a3b8;
+    }
+
+    .btn-ghost:hover {
+        border-color: rgba(99, 179, 237, 0.6);
+        color: #cbd5e1;
+        transform: translateY(-2px);
+    }
+
+    .proof-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        animation: homeFadeUp .8s .4s ease both;
+    }
+
+    .proof-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 13px 15px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(8px);
+        transition: border-color .25s, background .25s;
+    }
+
+    .proof-item:hover {
+        background: rgba(99, 179, 237, 0.05);
+        border-color: rgba(99, 179, 237, 0.15);
+    }
+
+    .proof-icon {
+        font-size: 16px;
+        line-height: 1;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    .proof-text {
+        font-size: 12.5px;
+        font-weight: 400;
+        color: #94a3b8;
+        line-height: 1.5;
+    }
+
+    .proof-text strong {
+        display: block;
+        color: #cbd5e1;
+        font-weight: 600;
+        font-size: 13px;
+        margin-bottom: 1px;
+    }
+
+    .location-line {
+        margin-top: 24px;
+        font-size: 12.5px;
+        color: #64748b;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        animation: homeFadeUp .8s .45s ease both;
+    }
+
+    .location-line span {
+        color: #64748b;
+    }
+
+    .location-line .sep {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #64748b;
+    }
+
+    .right {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1400px;
+        min-height: 520px;
+        animation: homeFadeUp .8s .5s ease both;
+    }
+
+    .glow {
+        position: absolute;
+        width: 360px;
+        height: 360px;
+        background: radial-gradient(circle, rgba(99, 179, 237, 0.18), rgba(59, 130, 246, 0.12), transparent 70%);
+        filter: blur(52px);
+        border-radius: 50%;
+        z-index: 0;
+        animation: homePulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes homePulseGlow {
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.85;
+        }
+
+        50% {
+            transform: scale(1.08);
+            opacity: 1;
+        }
+    }
+
+    .scene {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        transform-style: preserve-3d;
+        z-index: 2;
+    }
+
+    .cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        cursor: default;
+    }
+
+    .face {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 22px;
+        color: white;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        user-select: none;
+        -webkit-user-select: none;
+        backdrop-filter: blur(12px);
+    }
+
+    .face::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 35%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+        pointer-events: none;
+    }
+
+    .face-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .face-label {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 5px 11px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .face h3 {
+        margin: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 22px;
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .face p {
+        margin: 8px 0 0;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.84);
+    }
+
+    .front {
+        transform: rotateY(0deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(99, 179, 237, 0.88), rgba(59, 130, 246, 0.80));
+    }
+
+    .back {
+        transform: rotateY(180deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.88), rgba(6, 182, 212, 0.80));
+    }
+
+    .rightf {
+        transform: rotateY(90deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(244, 114, 182, 0.88), rgba(168, 85, 247, 0.80));
+    }
+
+    .leftf {
+        transform: rotateY(-90deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(251, 146, 60, 0.88), rgba(239, 68, 68, 0.80));
+    }
+
+    .top {
+        transform: rotateX(90deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(56, 189, 248, 0.92), rgba(14, 165, 233, 0.80));
+    }
+
+    .bottom {
+        transform: rotateX(-90deg) translateZ(140px);
+        background: linear-gradient(145deg, rgba(71, 85, 105, 0.90), rgba(30, 41, 59, 0.85));
+    }
+
+    .cube-shadow {
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.4);
+        filter: blur(38px);
+        transform: translateY(170px) scale(1.1);
+        z-index: 1;
+    }
+
+    .cube-hint {
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11.5px;
+        color: #64748b;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+        .hero {
+            grid-template-columns: 1fr;
+            padding: 40px 24px 64px;
+            gap: 32px;
+        }
+
+        .left {
+            max-width: 100%;
+        }
+
+        .right {
+            min-height: 380px;
+        }
+
+        .scene,
+        .face {
+            width: 230px;
+            height: 230px;
+        }
+
+        .front {
+            transform: rotateY(0deg) translateZ(115px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(115px);
+        }
+
+        .rightf {
+            transform: rotateY(90deg) translateZ(115px);
+        }
+
+        .leftf {
+            transform: rotateY(-90deg) translateZ(115px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(115px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(115px);
+        }
+
+        .cube-shadow {
+            width: 210px;
+            height: 210px;
+            transform: translateY(140px) scale(1.05);
+        }
+
+        .proof-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            justify-content: center;
+        }
+
+        .hero-name {
+            font-size: 2.4rem;
+        }
+    }
+</style>
+
+<section class="hero-inner">
+    <div class="hero">
+
+        <div class="left">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Open to APM &amp; Junior PM Opportunities
+            </div>
+
+            <div class="eyebrow">Hello, I'm</div>
+
+            <h1 class="hero-name">
+                <span class="first">Md Tashin</span><br>
+                <span class="last">Parvez</span>
+            </h1>
+
+            <div class="hero-title">
+                <span class="highlight">Product Analyst</span>
+                <span class="title-sep"></span>
+                <span>Aspiring Product Manager</span>
+            </div>
+
+            <p class="hero-desc">
+                I build user-focused digital products by combining product research,
+                structured thinking, and hands-on execution.
+            </p>
+
+            <div class="buttons">
+                <a href="#works" class="btn btn-primary">View My Work →</a>
+                <a href="resume.pdf" class="btn btn-soft" download>Download Resume ↓</a>
+                <a href="#contact" class="btn btn-ghost">Contact Me</a>
+            </div>
+
+            <!-- <div class="proof-grid">
+                <div class="proof-item">
+                    <span class="proof-icon">🧩</span>
+                    <div class="proof-text">
+                        <strong>Product Analyst</strong>Ontik Technology
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <span class="proof-icon">🏆</span>
+                    <div class="proof-text">
+                        <strong>Champion &amp; Award Winner</strong>UIU CSE Project Show
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <span class="proof-icon">📊</span>
+                    <div class="proof-text">
+                        <strong>4+ Product Systems Built</strong>Habit, Travel, Supply Chain, Campus
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <span class="proof-icon">📄</span>
+                    <div class="proof-text">
+                        <strong>IEEE Publication</strong>AI-based Vehicle Tracking System
+                    </div>
+                </div>
+
+                <div class="proof-item">
+                    <span class="proof-icon">🎓</span>
+                    <div class="proof-text">
+                        <strong>BSc in CSE — CGPA 3.93</strong>United International University
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="location-line">
+                <span>📍 Dhaka, Bangladesh</span>
+                <span class="sep"></span>
+                <span>Building toward APM / Junior PM roles</span>
+                <span class="sep"></span>
+                <span>Product · Systems · Users</span>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="glow"></div>
+            <div class="cube-shadow"></div>
+
+            <div class="scene">
+                <div class="cube" id="home-cube">
+                    <div class="face front">
+                        <div class="face-content">
+                            <div class="face-label">Product 01</div>
+                            <h3>Habit App</h3>
+                            <p>A productivity-focused habit system built around retention and behavior tracking.</p>
+                        </div>
+                    </div>
+
+                    <div class="face back">
+                        <div class="face-content">
+                            <div class="face-label">Product 02</div>
+                            <h3>Travel System</h3>
+                            <p>A travel planning flow focused on structured decision making and better journey
+                                discovery.</p>
+                        </div>
+                    </div>
+
+                    <div class="face rightf">
+                        <div class="face-content">
+                            <div class="face-label">Product 03</div>
+                            <h3>Supply Chain</h3>
+                            <p>An operational workflow product designed to improve visibility, control, and
+                                coordination.</p>
+                        </div>
+                    </div>
+
+                    <div class="face leftf">
+                        <div class="face-content">
+                            <div class="face-label">Product 04</div>
+                            <h3>Campus Tool</h3>
+                            <p>A student-focused utility that solves day-to-day campus coordination pain points.</p>
+                        </div>
+                    </div>
+
+                    <div class="face top">
+                        <div class="face-content">
+                            <div class="face-label">Research</div>
+                            <h3>AI Tracker</h3>
+                            <p>An AI-based vehicle tracking concept backed by IEEE published research work.</p>
+                        </div>
+                    </div>
+
+                    <div class="face bottom">
+                        <div class="face-content">
+                            <div class="face-label">More</div>
+                            <h3>Explore All</h3>
+                            <p>More systems, experiments, and product thinking artifacts across research and execution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cube-hint">Move your cursor to interact</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    (() => {
+        const cube = document.getElementById("home-cube");
+        if (!cube) return;
+
+        let autoRotateY = 0;
+        let currentX = -18, currentY = 24;
+        let targetX = -18, targetY = 24;
+        let mouseActive = false;
+        let idleTimer = null;
+
+        const baseX = -18;
+        const influenceX = 18;
+        const influenceY = 28;
+        const smoothing = 0.075;
+        const autoSpeed = 0.32;
+
+        document.addEventListener("mousemove", (e) => {
+            const xr = (e.clientX / window.innerWidth) * 2 - 1;
+            const yr = (e.clientY / window.innerHeight) * 2 - 1;
+
+            targetY = xr * influenceY;
+            targetX = baseX + yr * influenceX;
+            mouseActive = true;
+
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                mouseActive = false;
+            }, 140);
+        });
+
+        document.addEventListener("mouseleave", () => {
+            mouseActive = false;
+        });
+
+        document.addEventListener("touchstart", () => {
+            mouseActive = false;
+        }, { passive: true });
+
+        function animateCube() {
+            if (!mouseActive) {
+                autoRotateY += autoSpeed;
+                targetY = autoRotateY;
+                targetX = baseX + Math.sin(autoRotateY * Math.PI / 180) * 4;
+            }
+
+            currentX += (targetX - currentX) * smoothing;
+            currentY += (targetY - currentY) * smoothing;
+
+            cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+            requestAnimationFrame(animateCube);
+        }
+
+        animateCube();
+    })();
+</script>

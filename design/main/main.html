@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080b10;
+            /* background: transparent; */
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* =============================== NOISE OVERLAY =============================== */
+        /* =============================== NOISE OVERLAY =============================== */
+        /* =============================== NOISE OVERLAY =============================== */
+        /* =============================== NOISE OVERLAY =============================== */
+        /* =============================== NOISE OVERLAY =============================== */
+        /* =============================== NOISE OVERLAY =============================== */
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* === AMBIENT GLOW === */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(99, 179, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        /* ===================================== NAVBAR ===================================== */
+        .navbar {
+            position: sticky;
+            top: 18px;
+            margin: 18px auto;
+            max-width: 980px;
+            padding: 0 28px;
+            height: 62px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px;
+            background: rgba(12, 16, 24, 0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            z-index: 100;
+        }
+
+        /* === LOGO === */
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.35rem;
+            letter-spacing: 0.02em;
+            color: #f1f5f9;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #63b3ed;
+            box-shadow: 0 0 8px rgba(99, 179, 237, 0.8);
+            flex-shrink: 0;
+        }
+
+        /* === NAV MENU === */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* === NAV ITEM === */
+        .nav-item {
+            text-decoration: none;
+            color: #94a3b8;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            position: relative;
+            padding: 7px 14px;
+            border-radius: 10px;
+            transition: color 0.3s ease, background 0.3s ease;
+            height: 36px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item:hover {
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            color: #f1f5f9;
+            background: rgba(99, 179, 237, 0.08);
+        }
+
+        /* === UNDERLINE === */
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #63b3ed, transparent);
+            transform: scaleX(0);
+            transition: transform 0.35s ease;
+            transform-origin: center;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            transform: scaleX(1);
+        }
+
+        /* === TEXT SWAP === */
+        .text-wrap {
+            position: relative;
+            display: block;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        .text-wrap span {
+            display: block;
+            line-height: 20px;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .default-text {
+            transform: translateY(0);
+        }
+
+        .hover-text {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            color: #93c5fd;
+        }
+
+        .nav-item:hover .default-text,
+        .nav-item:hover .hover-text {
+            transform: translateY(-100%);
+        }
+
+        /* === CTA BUTTON === */
+        .cta-btn {
+            padding: 9px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0f172a;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #93c5fd 0%, #63b3ed 50%, #3b82f6 100%);
+            box-shadow: 0 0 0 1px rgba(99, 179, 237, 0.3), 0 4px 16px rgba(59, 130, 246, 0.25);
+            transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+            border-radius: inherit;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 1px rgba(99, 179, 237, 0.5), 0 8px 24px rgba(59, 130, 246, 0.4);
+            filter: brightness(1.06);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0);
+        }
+
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        /* =================================== MAIN WRAPPER =================================== */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === SECTIONS === */
+        section {
+            min-height: 100vh;
+            height: auto;
+            /* padding: 120px 60px 80px; */
+            position: relative;
+            z-index: 1;
+        }
+
+        #home {
+            background: transparent;
+        }
+
+        #about {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        #education {
+            background: transparent;
+        }
+
+        #works {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        /* section content wrapper */
+        .section-content {
+            width: 100%;
+        }
+
+        /* === TYPOGRAPHY === */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.04em;
+            color: #f1f5f9;
+            margin-bottom: 14px;
+        }
+
+        h2,
+        h3 {
+            letter-spacing: -0.04em;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #9aa4b2;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        label,
+        .label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        /* loading / fallback */
+        .section-loading,
+        .section-error {
+            max-width: 900px;
+        }
+
+        .section-loading {
+            color: #94a3b8;
+        }
+
+        .section-error {
+            color: #fda4af;
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                max-width: calc(100% - 24px);
+                padding: 0 16px;
+            }
+
+            .nav-menu {
+                gap: 2px;
+            }
+
+            section {
+                padding: 110px 24px 64px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                height: auto;
+                min-height: 62px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <!-- <span class="logo-dot"></span> -->
+            Tashin Parvez
+        </a>
+
+        <div class="nav-menu">
+            <a href="#home" class="nav-item active">
+                <span class="text-wrap">
+                    <span class="default-text">Home</span>
+                    <span class="hover-text">Home</span>
+                </span>
+            </a>
+
+            <a href="#about" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">About</span>
+                    <span class="hover-text">About</span>
+                </span>
+            </a>
+
+            <a href="#education" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">Education</span>
+                    <span class="hover-text">Education</span>
+                </span>
+            </a>
+
+            <a href="#works" class="nav-item">
+                <span class="text-wrap">
+                    <span class="default-text">Works</span>
+                    <span class="hover-text">Works</span>
+                </span>
+            </a>
+        </div>
+
+        <a href="resume.pdf" class="cta-btn">Let's Connect →</a>
+    </nav>
+
+    <main>
+
+        <section id="hero" data-include="sections/hero.html">
+            <div class="section-content section-loading">Loading hero...</div>
+        </section>
+
+
+        <!-- All Ok Above Tashin -->
+
+        <section id="home" data-include="sections/home.html">
+            <div class="section-content section-loading">Loading home...</div>
+        </section>
+
+
+        <section id="about" data-include="sections/about.html">
+            <div class="section-content section-loading">Loading about...</div>
+        </section>
+
+        <section id="education" data-include="sections/education.html">
+            <div class="section-content section-loading">Loading education...</div>
+        </section>
+
+        <section id="works" data-include="sections/works.html">
+            <div class="section-content section-loading">Loading works...</div>
+        </section>
+    </main>
+
+    <script>
+        const navLinks = document.querySelectorAll(".nav-item");
+        const sections = document.querySelectorAll("section[data-include]");
+
+        async function loadSections() {
+            const loaders = [...sections].map(async (section) => {
+                const file = section.getAttribute("data-include");
+                const target = section.querySelector(".section-content");
+
+                try {
+                    const response = await fetch(file);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${file}`);
+                    }
+
+                    const html = await response.text();
+                    target.innerHTML = html;
+                    target.classList.remove("section-loading");
+                } catch (error) {
+                    target.innerHTML = `<div class="section-error">Could not load: ${file}</div>`;
+                    target.classList.remove("section-loading");
+                    console.error(error);
+                }
+            });
+
+            await Promise.all(loaders);
+            updateActiveNav();
+        }
+
+        function setActiveLink(targetId) {
+            navLinks.forEach(link => {
+                link.classList.toggle("active", link.getAttribute("href") === `#${targetId}`);
+            });
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        function updateActiveNav() {
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 140) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            if (current) {
+                setActiveLink(current);
+            }
+        }
+
+        window.addEventListener("scroll", updateActiveNav);
+        window.addEventListener("load", loadSections);
+        window.addEventListener("resize", updateActiveNav);
+    </script>
+</body>
+
+</html>

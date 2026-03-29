@@ -102,16 +102,91 @@
         } else {
           word.classList.remove("active");
         }
-      });
-    }
 
-    window.addEventListener("scroll", updateWords);
-    window.addEventListener("resize", updateWords);
-    window.addEventListener("load", updateWords);
+        .site-footer {
+            text-align: center;
+            padding: 24px 16px;
+            font-size: 14px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            line-height: 1.6;
+        }
 
-    updateWords();
-  </script>
+        .site-footer strong {
+            color: #111827;
+        }
 
+        .github-stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 12px 0 0;
+        }
+
+        .github-stats .stat {
+            text-align: center;
+        }
+
+        .github-stats .number {
+            font-weight: bold;
+            font-size: 16px;
+            display: block;
+        }
+
+        .github-stats .label {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Optional: small icon styling */
+        .github-stats svg {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            margin-right: 4px;
+            fill: #fbbf24;
+            /* default gold for star */
+        }
+
+        .github-stats .followers svg {
+            fill: #3b82f6;
+        }
+
+        .github-stats .forks svg {
+            fill: #10b981;
+        }
+    </style>
+</head>
+
+<body>
+    <footer class="site-footer">
+        <div class="github-stats">
+            <div class="stat stars">
+                <span class="number">
+                    <svg viewBox="0 0 20 20">
+                        <path
+                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.561-.955L10 0l2.95 5.955 6.561.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                    149
+                </span>
+                <span class="label">Stars</span>
+            </div>
+            <div class="stat forks">
+                <span class="number">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 3v12h4v-4h4v-4h4V3h-12zm6 8H8V5h4v6z" />
+                    </svg>
+                    8
+                </span>
+                <span class="label">Forks</span>
+            </div>
+        </div>
+        <p>© 2026 <strong>Tashin Parvez</strong></p>
+        <p>Built with intent, not just code.</p>
+
+
+    </footer>
 </body>
 
 </html>

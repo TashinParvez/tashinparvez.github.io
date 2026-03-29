@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updated Portfolio Footer</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #07070b;
+      --bg-soft: #0d0d14;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-strong: rgba(255, 255, 255, 0.07);
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --line: rgba(255, 255, 255, 0.1);
+      --accent: #8b5cf6;
+      --accent-2: #60a5fa;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: #111;
+      color: var(--text);
+    }
+
+    .footer {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.12), transparent 30%),
+        linear-gradient(135deg, #050509 0%, #0a0a12 50%, #050509 100%);
+      padding: 90px 8% 36px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    .footer-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 46px;
+      align-items: start;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-left h2 {
+      font-size: clamp(2.4rem, 5vw, 5.3rem);
+      line-height: 0.96;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+      max-width: 760px;
+    }
+
+    .footer-left p {
+      max-width: 620px;
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .footer-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: clamp(1.3rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+      transition: 0.3s ease;
+      word-break: break-word;
+    }
+
+    .footer-contact:hover {
+      color: #d8b4fe;
+      transform: translateY(-2px);
+    }
+
+    .footer-contact i {
+      color: #c4b5fd;
+      font-size: 1.1em;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .social-links a {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      font-size: 1.25rem;
+      transition: 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px);
+      background: rgba(139, 92, 246, 0.14);
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 12px 24px rgba(139, 92, 246, 0.14);
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .footer-nav span {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c4b5fd;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px 18px;
+    }
+
+    .footer-nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: 0.25s ease;
+    }
+
+    .footer-nav-links a:hover {
+      color: #fff;
+    }
+
+    /* Better GitHub card */
+    .github-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+
+    .github-panel::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(139,92,246,0.22), transparent 65%);
+      pointer-events: none;
+    }
+
+    .github-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .github-title small {
+      display: inline-block;
+      color: #c4b5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      margin-bottom: 10px;
+    }
+
+    .github-title h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .github-title p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.94rem;
+      max-width: 360px;
+    }
+
+    .github-profile {
+      flex-shrink: 0;
+    }
+
+    .github-profile a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .github-profile a:hover {
+      background: rgba(139, 92, 246, 0.16);
+      border-color: rgba(139, 92, 246, 0.28);
+    }
+
+    .github-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      position: relative;
+      padding: 18px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.3s ease;
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .stat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .stat-index {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-size: clamp(1.8rem, 2vw, 2.2rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .stars .stat-icon {
+      background: rgba(250, 204, 21, 0.12);
+    }
+
+    .followers .stat-icon {
+      background: rgba(96, 165, 250, 0.12);
+    }
+
+    .forks .stat-icon {
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .footer-bottom {
+      padding-top: 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .footer-bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+    }
+
+    .footer-mini .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+    }
+
+    .footer-mini strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .footer-year {
+      color: rgba(255,255,255,0.42);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .keep-building {
+      font-size: clamp(2.8rem, 8vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.24);
+    }
+
+    @media (max-width: 980px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-nav {
+        align-items: flex-start;
+      }
+
+      .footer-nav-links {
+        justify-content: flex-start;
+      }
+
+      .github-head {
+        flex-direction: column;
+      }
+
+      .github-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .keep-building {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer {
+        padding: 72px 6% 28px;
+      }
+
+      .footer-contact {
+        font-size: 1.15rem;
+      }
+
+      .social-links a {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+
+      <div class="footer-top">
+        <div class="footer-left">
+          <h2>Let’s build something togather</h2>
+          <p>
+            Turning strong ideas into polished digital experiences through thoughtful design,
+            smooth interaction, and modern frontend craft.
+          </p>
+
+          <a class="footer-contact" href="mailto:tashinparvez2002@gmail.com">
+            <i class="ri-mail-line"></i>
+            tashinparvez2002@gmail.com
+          </a>
+
+          <div class="social-links">
+            <a href="https://github.com/TashinParvez" target="_blank" aria-label="GitHub">
+              <i class="ri-github-fill"></i>
+            </a>
+            <a href="#" target="_blank" aria-label="LinkedIn">
+              <i class="ri-linkedin-box-fill"></i>
+            </a>
+            <a href="#" target="_blank" aria-label="Twitter/X">
+              <i class="ri-twitter-x-line"></i>
+            </a>
+            <a href="mailto:tashinparvez2002@gmail.com" aria-label="Email">
+              <i class="ri-mail-line"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <div class="footer-nav">
+            <span>[ Navigation ]</span>
+            <div class="footer-nav-links">
+              <a href="#home">Home</a>
+              <a href="#work">Work</a>
+              <a href="#about">About</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+
+          <div class="github-panel">
+            <div class="github-head">
+              <div class="github-title">
+                <small>GitHub Snapshot</small>
+                <h3>Code. Build. Ship.</h3>
+                <p>
+                  A live glimpse of my GitHub presence through stars, followers, and forks.
+                </p>
+              </div>
+
+              <div class="github-profile">
+                <a href="https://github.com/TashinParvez" target="_blank">
+                  <i class="ri-github-fill"></i>
+                  @TashinParvez
+                </a>
+              </div>
+            </div>
+
+            <div class="github-stats">
+              <div class="stat-card stars">
+                <div class="stat-top">
+                  <div class="stat-icon"><i class="ri-star-fill"></i></div>
+                  <div class="stat-index">01</div>
+                </div>
+                <div>
+                  <div class="stat-value" id="totalStars">--</div>
+                  <div class="stat-label">Total stars earned across public repositories</div>
+                </div>
+              </div>
+
+              <div class="stat-card followers">
+                <div class="stat-top">
+                  <div class="stat-icon"><i class="ri-team-fill"></i></div>
+                  <div class="stat-index">02</div>
+                </div>
+                <div>
+                  <div class="stat-value" id="followers">--</div>
+                  <div class="stat-label">Developers and visitors following the journey</div>
+                </div>
+              </div>
+
+              <div class="stat-card forks">
+                <div class="stat-top">
+                  <div class="stat-icon"><i class="ri-git-branch-fill"></i></div>
+                  <div class="stat-index">03</div>
+                </div>
+                <div>
+                  <div class="stat-value" id="totalForks">--</div>
+                  <div class="stat-label">Forks showing reuse, interest, and experimentation</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-bar">
+          <div class="footer-mini">
+            <strong>Frontend-focused.</strong>
+            <span class="dot"></span>
+            <span>Built with intention</span>
+            <span class="dot"></span>
+            <span>Refined for clarity</span>
+            <span class="dot"></span>
+            <span>Made to feel smooth</span>
+          </div>
+
+          <div class="footer-year">2026 Portfolio</div>
+        </div>
+
+        <div class="keep-building">Keep_Building()</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const username = "TashinParvez";
+
+    function formatNumber(num) {
+      if (num === null || num === undefined || Number.isNaN(num)) return "--";
+      return new Intl.NumberFormat("en", {
+        notation: num > 999 ? "compact" : "standard",
+        maximumFractionDigits: 1
+      }).format(num);
+    }
+
+    async function fetchAllRepos(username) {
+      let page = 1;
+      let repos = [];
+      let hasMore = true;
+
+      while (hasMore) {
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+        if (!res.ok) throw new Error("Failed to fetch repositories");
+
+        const data = await res.json();
+        repos = repos.concat(data);
+
+        if (data.length < 100) {
+          hasMore = false;
+        } else {
+          page++;
+        }
+      }
+
+      return repos;
+    }
+
+    async function getGitHubStats() {
+      const followersEl = document.getElementById("followers");
+      const totalStarsEl = document.getElementById("totalStars");
+      const totalForksEl = document.getElementById("totalForks");
+
+      try {
+        const userRes = await fetch(`https://api.github.com/users/${username}`);
+        if (!userRes.ok) throw new Error("Failed to fetch user profile");
+
+        const userData = await userRes.json();
+        followersEl.textContent = formatNumber(userData.followers);
+
+        const repos = await fetchAllRepos(username);
+
+        const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+        const totalForks = repos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
+
+        totalStarsEl.textContent = formatNumber(totalStars);
+        totalForksEl.textContent = formatNumber(totalForks);
+      } catch (error) {
+        followersEl.textContent = "N/A";
+        totalStarsEl.textContent = "N/A";
+        totalForksEl.textContent = "N/A";
+        console.error("GitHub stats error:", error);
+      }
+    }
+
+    getGitHubStats();
+  </script>
+</body>
+</html>
