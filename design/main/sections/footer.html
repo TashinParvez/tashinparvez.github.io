@@ -1,462 +1,349 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+    :root {
+        --footer-text: #f3f4f6;
+        --footer-muted: #9ca3af;
+        --footer-line: rgba(255, 255, 255, 0.12);
+        --footer-card: rgba(255, 255, 255, 0.05);
+        --footer-accent: #8b5cf6;
+        --footer-accent-2: #60a5fa;
+    }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Updated Portfolio Footer</title>
+    .portfolio-footer *,
+    .portfolio-footer *::before,
+    .portfolio-footer *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    .portfolio-footer {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.14), transparent 28%),
+            linear-gradient(135deg, #050509 0%, #090914 55%, #06060a 100%);
+        padding: 90px 8% 34px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        color: var(--footer-text);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        width: 100%;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    .portfolio-footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+        background-size: 42px 42px;
+        opacity: 0.08;
+        pointer-events: none;
+    }
+
+    .portfolio-footer .footer-wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+
+    .portfolio-footer .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+        padding-bottom: 42px;
+        border-bottom: 1px solid var(--footer-line);
+    }
+
+    .portfolio-footer .footer-left {
+        flex: 1;
+    }
+
+    .portfolio-footer .footer-left h2 {
+        font-size: clamp(2.3rem, 5vw, 5rem);
+        line-height: 0.98;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        margin-bottom: 14px;
+        max-width: 760px;
+        color: var(--footer-text);
+    }
+
+    .portfolio-footer .footer-left p {
+        max-width: 620px;
+        font-size: 1.02rem;
+        line-height: 1.9;
+        color: var(--footer-muted);
+    }
+
+    .portfolio-footer .footer-right {
+        display: grid;
+        gap: 14px;
+        justify-content: flex-end;
+    }
+
+    .portfolio-footer .footer-socials {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-footer .contact-pill,
+    .portfolio-footer .social-link {
+        height: 56px;
+        border-radius: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--footer-text);
+        border: 1px solid var(--footer-line);
+        background: var(--footer-card);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: 0.3s ease;
+    }
+
+    .portfolio-footer .contact-pill {
+        padding: 0 22px;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .portfolio-footer .contact-pill i {
+        font-size: 1.1rem;
+        color: #d8b4fe;
+    }
+
+    .portfolio-footer .social-link {
+        width: 56px;
+        font-size: 1.28rem;
+    }
+
+    .portfolio-footer .contact-pill:hover,
+    .portfolio-footer .social-link:hover {
+        transform: translateY(-4px);
+        border-color: rgba(139, 92, 246, 0.45);
+        background: rgba(139, 92, 246, 0.14);
+        box-shadow: 0 12px 30px rgba(139, 92, 246, 0.16);
+    }
+
+    .portfolio-footer .footer-bottom {
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 26px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-footer .footer-meta {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-footer .metric-group {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-footer .metric {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .portfolio-footer .metric-value {
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: #fff;
+    }
+
+    .portfolio-footer .metric-label {
+        font-size: 0.92rem;
+        color: var(--footer-muted);
+        line-height: 1.4;
+    }
+
+    .portfolio-footer .footer-divider {
+        width: 1px;
+        height: 52px;
+        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.22), transparent);
+        align-self: center;
+    }
+
+    .portfolio-footer .footer-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .portfolio-footer .footer-copy .name-line {
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: -0.03em;
+    }
+
+    .portfolio-footer .footer-copy .copyright {
+        color: var(--footer-muted);
+    }
+
+    .portfolio-footer .footer-copy .name {
+        color: #fff;
+    }
+
+    .portfolio-footer .footer-copy .tag-line {
+        font-size: 0.98rem;
+        color: var(--footer-muted);
+        line-height: 1.6;
+    }
+
+    .portfolio-footer .keep-building {
+        font-size: clamp(2.8rem, 8vw, 7rem);
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+        white-space: nowrap;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 980px) {
+        .portfolio-footer .footer-top {
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        :root {
-            --bg: #07070b;
-            --bg-soft: #0d0d14;
-            --card: rgba(255, 255, 255, 0.04);
-            --text: #f3f4f6;
-            --muted: #9ca3af;
-            --line: rgba(255, 255, 255, 0.12);
-            --accent: #7c3aed;
-            --accent-soft: rgba(124, 58, 237, 0.16);
-            --blue-soft: rgba(59, 130, 246, 0.16);
+        .portfolio-footer .footer-right {
+            justify-content: flex-start;
+            width: 100%;
         }
 
-        body {
-            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-            background: #111;
-            color: var(--text);
+        .portfolio-footer .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .footer {
-            position: relative;
-            overflow: hidden;
-            background:
-                radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 30%),
-                radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.14), transparent 25%),
-                linear-gradient(135deg, #050509 0%, #090914 55%, #06060a 100%);
-            padding: 90px 8% 35px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        .portfolio-footer .keep-building {
+            white-space: normal;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .portfolio-footer {
+            padding: 72px 6% 28px;
         }
 
-        .footer::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
-            background-size: 42px 42px;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .footer-wrapper {
-            position: relative;
-            z-index: 1;
-            max-width: 1320px;
-            margin: 0 auto;
-        }
-
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 56px;
-            align-items: start;
-            padding-bottom: 56px;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .footer-left h2 {
-            font-size: clamp(2.2rem, 5vw, 5rem);
-            line-height: 0.98;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            margin-bottom: 18px;
-            max-width: 780px;
-        }
-
-        .footer-left p {
-            max-width: 640px;
-            font-size: 1.04rem;
-            line-height: 1.85;
-            color: var(--muted);
-            margin-bottom: 28px;
-        }
-
-        .footer-contact {
-            display: inline-flex;
-            align-items: center;
+        .portfolio-footer .footer-socials {
             gap: 12px;
-            margin-bottom: 26px;
-            text-decoration: none;
-            color: var(--text);
-            font-size: clamp(1.25rem, 3vw, 2.2rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            transition: 0.3s ease;
-            word-break: break-word;
         }
 
-        .footer-contact i {
-            font-size: 1.2em;
-            color: #d8b4fe;
+        .portfolio-footer .contact-pill {
+            width: 100%;
+            justify-content: center;
         }
 
-        .footer-contact:hover {
-            color: #c4b5fd;
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .social-links a {
+        .portfolio-footer .social-link {
             width: 52px;
             height: 52px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text);
-            border: 1px solid var(--line);
-            background: var(--card);
-            font-size: 1.3rem;
-            transition: 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
-        .social-links a:hover {
-            transform: translateY(-4px);
-            border-color: rgba(124, 58, 237, 0.5);
-            background: var(--accent-soft);
-            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.16);
-        }
-
-        .footer-right {
-            display: flex;
-            flex-direction: column;
+        .portfolio-footer .metric-group {
             gap: 18px;
-            align-items: stretch;
         }
 
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 14px;
-            margin-bottom: 10px;
+        .portfolio-footer .metric-value {
+            font-size: 1.3rem;
         }
 
-        .footer-nav span {
-            display: block;
-            font-size: 0.88rem;
-            color: #c4b5fd;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+        .portfolio-footer .footer-divider {
+            display: none;
         }
+    }
+</style>
 
-        .footer-nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 14px 18px;
-        }
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 
-        .footer-nav-links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-size: 1rem;
-            transition: 0.25s ease;
-        }
+<footer class="portfolio-footer">
+    <div class="footer-wrapper">
+        <div class="footer-top">
+            <div class="footer-left">
+                <h2>Let’s build something together</h2>
+                <p>
+                    Open to meaningful collaborations, ambitious ideas, and products that deserve
+                    clean design and solid frontend execution.
+                </p>
+            </div>
 
-        .footer-nav-links a:hover {
-            color: var(--text);
-        }
+            <div class="footer-right">
+                <a class="contact-pill" href="mailto:tashinparvez2002@gmail.com">
+                    <i class="ri-mail-line"></i>
+                    <span>tashinparvez2002@gmail.com</span>
+                </a>
 
-        .github-stats-box {
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.035);
-            backdrop-filter: blur(12px);
-            padding: 22px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .github-stats-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-        }
-
-        .github-stats-head p {
-            font-size: 0.95rem;
-            color: var(--muted);
-        }
-
-        .github-stats-head a {
-            color: #c4b5fd;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .github-stats-head a:hover {
-            text-decoration: underline;
-        }
-
-        .github-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            justify-content: flex-end;
-        }
-
-        .stat-chip {
-            min-width: 105px;
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-        }
-
-        .stat-chip .icon {
-            font-size: 1rem;
-            margin-bottom: 8px;
-            color: #d1d5db;
-        }
-
-        .stat-chip .value {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .stat-chip .label {
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-        }
-
-        .footer-bottom {
-            padding-top: 34px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .footer-bottom-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .footer-signature {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .footer-signature .name {
-            font-size: clamp(1.2rem, 2vw, 1.6rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .footer-signature .meta {
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .footer-note {
-            max-width: 420px;
-            text-align: right;
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .keep-building {
-            font-size: clamp(2.8rem, 8vw, 7rem);
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 0.95;
-            white-space: nowrap;
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
-        }
-
-        @media (max-width: 980px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-nav {
-                align-items: flex-start;
-            }
-
-            .footer-nav-links {
-                justify-content: flex-start;
-            }
-
-            .github-stats {
-                justify-content: flex-start;
-            }
-
-            .footer-bottom-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-note {
-                text-align: left;
-            }
-
-            .keep-building {
-                white-space: normal;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .footer {
-                padding: 72px 6% 28px;
-            }
-
-            .social-links a {
-                width: 48px;
-                height: 48px;
-            }
-
-            .footer-left p {
-                font-size: 1rem;
-            }
-
-            .footer-contact {
-                font-size: 1.1rem;
-            }
-
-            .stat-chip {
-                min-width: calc(50% - 7px);
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <footer class="footer">
-        <div class="footer-wrapper">
-
-            <div class="footer-top">
-                <div class="footer-left">
-                    <h2>Let’s build something togather</h2>
-                    <p>
-                        Open to meaningful collaborations, ambitious ideas, and products that deserve
-                        clean design and solid frontend execution.
-                    </p>
-
-                    <a class="footer-contact" href="mailto:tashinparvez2002@gmail.com">
-                        <i class="ri-mail-line"></i>
-                        tashinparvez2002@gmail.com
+                <div class="footer-socials">
+                    <a class="social-link" href="https://github.com/TashinParvez" target="_blank"
+                        rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="ri-github-fill"></i>
                     </a>
 
-                    <div class="social-links">
-                        <a href="https://github.com/TashinParvez" target="_blank" aria-label="GitHub">
-                            <i class="ri-github-fill"></i>
-                        </a>
-                        <a href="#" target="_blank" aria-label="LinkedIn">
-                            <i class="ri-linkedin-box-fill"></i>
-                        </a>
-                        <a href="#" target="_blank" aria-label="Twitter/X">
-                            <i class="ri-twitter-x-line"></i>
-                        </a>
-                        <a href="mailto:tashinparvez2002@gmail.com" aria-label="Email">
-                            <i class="ri-mail-line"></i>
-                        </a>
-                    </div>
+                    <a class="social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="ri-linkedin-box-fill"></i>
+                    </a>
+
+                    <a class="social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
                 </div>
-
-                <div class="footer-right">
-                    <div class="footer-nav">
-                        <span>[ Navigation ]</span>
-                        <div class="footer-nav-links">
-                            <a href="#home">Home</a>
-                            <a href="#work">Work</a>
-                            <a href="#about">About</a>
-                            <a href="#projects">Projects</a>
-                            <a href="#contact">Contact</a>
-                        </div>
-                    </div>
-
-                    <div class="github-stats-box">
-                        <div class="github-stats-head">
-                            <p>GitHub highlights</p>
-                            <a href="https://github.com/TashinParvez" target="_blank">@TashinParvez</a>
-                        </div>
-
-                        <div class="github-stats">
-                            <div class="stat-chip">
-                                <div class="icon"><i class="ri-star-line"></i></div>
-                                <div class="value" id="totalStars">--</div>
-                                <div class="label">Stars</div>
-                            </div>
-
-                            <div class="stat-chip">
-                                <div class="icon"><i class="ri-user-follow-line"></i></div>
-                                <div class="value" id="followers">--</div>
-                                <div class="label">Followers</div>
-                            </div>
-
-                            <div class="stat-chip">
-                                <div class="icon"><i class="ri-git-fork-line"></i></div>
-                                <div class="value" id="totalForks">--</div>
-                                <div class="label">Forks</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="footer-bottom-top">
-                    <div class="footer-signature">
-                        <div class="name">Tashin Parvez</div>
-                        <div class="meta">
-                            Frontend Developer · Portfolio crafted with clean UI, smooth interaction,
-                            and modern web standards.
-                        </div>
-                    </div>
-
-                    <div class="footer-note">
-                        Designed and built with attention to detail, performance, and visual clarity.
-                    </div>
-                </div>
-
-                <div class="keep-building">Keep_Building()</div>
             </div>
         </div>
-    </footer>
 
-    <script>
+        <div class="footer-bottom">
+            <div class="footer-meta">
+                <div class="metric-group">
+                    <div class="metric">
+                        <div class="metric-value" id="footerTotalStars">--</div>
+                        <div class="metric-label">Stars</div>
+                    </div>
+
+                    <div class="metric">
+                        <div class="metric-value" id="footerTotalForks">--</div>
+                        <div class="metric-label">Forks</div>
+                    </div>
+                </div>
+
+                <div class="footer-divider" aria-hidden="true"></div>
+
+                <div class="footer-copy">
+                    <div class="name-line">
+                        <span class="copyright">© 2026 </span><span class="name">Tashin Parvez</span>
+                    </div>
+                    <div class="tag-line">Built with intent, not just code.</div>
+                </div>
+            </div>
+
+            <div class="keep-building">Keep_Building()</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function () {
         const username = "TashinParvez";
+        const totalStarsEl = document.getElementById("footerTotalStars");
+        const totalForksEl = document.getElementById("footerTotalForks");
 
         function formatNumber(num) {
             if (num === null || num === undefined || Number.isNaN(num)) return "--";
@@ -466,13 +353,13 @@
             }).format(num);
         }
 
-        async function fetchAllRepos(username) {
+        async function fetchAllRepos(user) {
             let page = 1;
             let repos = [];
             let hasMore = true;
 
             while (hasMore) {
-                const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+                const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&page=${page}`);
                 if (!res.ok) throw new Error("Failed to fetch repositories");
 
                 const data = await res.json();
@@ -489,26 +376,16 @@
         }
 
         async function getGitHubStats() {
-            const followersEl = document.getElementById("followers");
-            const totalStarsEl = document.getElementById("totalStars");
-            const totalForksEl = document.getElementById("totalForks");
+            if (!totalStarsEl || !totalForksEl) return;
 
             try {
-                const userRes = await fetch(`https://api.github.com/users/${username}`);
-                if (!userRes.ok) throw new Error("Failed to fetch user profile");
-
-                const userData = await userRes.json();
-                followersEl.textContent = formatNumber(userData.followers);
-
                 const repos = await fetchAllRepos(username);
-
                 const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
                 const totalForks = repos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
 
                 totalStarsEl.textContent = formatNumber(totalStars);
                 totalForksEl.textContent = formatNumber(totalForks);
             } catch (error) {
-                followersEl.textContent = "N/A";
                 totalStarsEl.textContent = "N/A";
                 totalForksEl.textContent = "N/A";
                 console.error("GitHub stats error:", error);
@@ -516,8 +393,5 @@
         }
 
         getGitHubStats();
-    </script>
-
-</body>
-
-</html>
+    })();
+</script>

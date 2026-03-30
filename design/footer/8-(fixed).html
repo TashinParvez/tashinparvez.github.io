@@ -149,7 +149,7 @@
 
         .footer-meta {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             gap: 28px;
             flex-wrap: wrap;
         }
@@ -180,6 +180,13 @@
             line-height: 1.4;
         }
 
+        .footer-divider {
+            width: 1px;
+            height: 52px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.22), transparent);
+            align-self: center;
+        }
+
         .footer-copy {
             display: flex;
             flex-direction: column;
@@ -187,9 +194,17 @@
         }
 
         .footer-copy .name-line {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.82);
-            line-height: 1.6;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+        }
+
+        .footer-copy .copyright {
+            color: var(--muted);
+        }
+
+        .footer-copy .name {
+            color: #fff;
         }
 
         .footer-copy .tag-line {
@@ -254,6 +269,10 @@
             .metric-value {
                 font-size: 1.3rem;
             }
+
+            .footer-divider {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -274,13 +293,13 @@
 
                 <div class="footer-right" style="display: grid;">
                     <div>
-
                         <a class="contact-pill" href="mailto:tashinparvez2002@gmail.com">
                             <i class="ri-mail-line"></i>
                             <span>tashinparvez2002@gmail.com</span>
                         </a>
                     </div>
-                    <div style="">
+
+                    <div>
                         <a class="social-link" href="https://github.com/TashinParvez" target="_blank"
                             aria-label="GitHub">
                             <i class="ri-github-fill"></i>
@@ -314,12 +333,13 @@
                             <div class="metric-label">Forks</div>
                         </div>
                     </div>
-                    <div>
-                        |<br>
-                        |
-                    </div>
+
+                    <div class="footer-divider" aria-hidden="true"></div>
+
                     <div class="footer-copy">
-                        <div class="name-line">© 2026 Tashin Parvez</div>
+                        <div class="name-line">
+                            <span class="copyright">© 2026 </span><span class="name">Tashin Parvez</span>
+                        </div>
                         <div class="tag-line">Built with intent, not just code.</div>
                     </div>
                 </div>

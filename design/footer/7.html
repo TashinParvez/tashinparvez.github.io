@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updated Portfolio Footer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-calendar/2.3.4/github-calendar-responsive.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07070b;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --line: rgba(255, 255, 255, 0.12);
+            --card: rgba(255, 255, 255, 0.05);
+            --accent: #8b5cf6;
+            --accent-2: #60a5fa;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background: #111;
+            color: var(--text);
+        }
+
+        .footer {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.14), transparent 28%),
+                linear-gradient(135deg, #050509 0%, #090914 55%, #06060a 100%);
+            padding: 90px 8% 34px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+            background-size: 42px 42px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .footer-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 32px;
+            padding-bottom: 42px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .footer-left {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .footer-left h2 {
+            font-size: clamp(2.3rem, 5vw, 5rem);
+            line-height: 0.98;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 14px;
+            max-width: 760px;
+        }
+
+        .footer-left p {
+            max-width: 620px;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .footer-contact-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .contact-pill,
+        .social-link {
+            height: 56px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--line);
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease;
+        }
+
+        .contact-pill {
+            padding: 0 22px;
+            gap: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            min-width: 280px;
+            justify-content: flex-start;
+        }
+
+        .contact-pill i {
+            font-size: 1.15rem;
+            color: #d8b4fe;
+            flex-shrink: 0;
+        }
+
+        .contact-pill .mail-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .contact-pill .mail-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 4px;
+        }
+
+        .contact-pill .mail-address {
+            font-size: 0.96rem;
+            color: #fff;
+            word-break: break-word;
+        }
+
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 56px;
+            font-size: 1.28rem;
+        }
+
+        .contact-pill:hover,
+        .social-link:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.45);
+            background: rgba(139, 92, 246, 0.14);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.16);
+        }
+
+        .footer-right {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .contribution-card {
+            height: 100%;
+            border: 1px solid var(--line);
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 22px 22px 18px;
+            overflow: hidden;
+        }
+
+        .contrib-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .contrib-title-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contrib-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .contrib-subtitle {
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .contrib-link {
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            height: 44px;
+            padding: 0 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s ease;
+        }
+
+        .contrib-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(139, 92, 246, 0.45);
+            background: rgba(139, 92, 246, 0.14);
+            box-shadow: 0 10px 24px rgba(139, 92, 246, 0.16);
+        }
+
+        .calendar {
+            width: 100%;
+            overflow-x: auto;
+            color: var(--text);
+        }
+
+        .calendar::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .calendar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+        }
+
+        /* GitHub Calendar dark theme overrides */
+        .calendar .width-full {
+            min-width: 720px;
+        }
+
+        .calendar .contrib-column {
+            display: none !important;
+        }
+
+        .calendar .float-left.text-gray {
+            color: var(--muted) !important;
+            fill: var(--muted) !important;
+        }
+
+        .calendar text {
+            fill: var(--muted) !important;
+            font-size: 10px !important;
+        }
+
+        .calendar rect.ContributionCalendar-day,
+        .calendar .day {
+            shape-rendering: geometricPrecision;
+            rx: 3px;
+            ry: 3px;
+        }
+
+        .calendar .ContributionCalendar-label,
+        .calendar .month {
+            fill: var(--muted) !important;
+        }
+
+        .calendar .ContributionCalendar-day[data-level="0"],
+        .calendar .day[data-level="0"] {
+            fill: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .calendar .ContributionCalendar-day[data-level="1"],
+        .calendar .day[data-level="1"] {
+            fill: rgba(96, 165, 250, 0.24) !important;
+        }
+
+        .calendar .ContributionCalendar-day[data-level="2"],
+        .calendar .day[data-level="2"] {
+            fill: rgba(96, 165, 250, 0.42) !important;
+        }
+
+        .calendar .ContributionCalendar-day[data-level="3"],
+        .calendar .day[data-level="3"] {
+            fill: rgba(139, 92, 246, 0.55) !important;
+        }
+
+        .calendar .ContributionCalendar-day[data-level="4"],
+        .calendar .day[data-level="4"] {
+            fill: rgba(139, 92, 246, 0.88) !important;
+        }
+
+        .calendar .sr-only,
+        .calendar .sr-only+div,
+        .calendar .float-right,
+        .calendar .Link--muted,
+        .calendar .contrib-footer {
+            display: none !important;
+        }
+
+        .footer-bottom {
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 26px;
+            flex-wrap: wrap;
+        }
+
+        .footer-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .metric-group {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: #fff;
+        }
+
+        .metric-label {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .footer-divider {
+            width: 1px;
+            min-height: 54px;
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(255, 255, 255, 0.22),
+                    transparent);
+        }
+
+        .footer-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-copy .name-line {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+        }
+
+        .footer-copy .copyright {
+            color: var(--muted);
+        }
+
+        .footer-copy .name {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .footer-copy .tag-line {
+            font-size: 0.98rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .keep-building {
+            font-size: clamp(2.8rem, 8vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.95;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+        }
+
+        @media (max-width: 980px) {
+            .footer-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .footer-left,
+            .footer-right {
+                flex: 1 1 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .keep-building {
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer {
+                padding: 72px 6% 28px;
+            }
+
+            .contact-pill {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .social-row {
+                gap: 12px;
+            }
+
+            .social-link {
+                width: 52px;
+                height: 52px;
+            }
+
+            .metric-group {
+                gap: 18px;
+            }
+
+            .metric-value {
+                font-size: 1.3rem;
+            }
+
+            .footer-divider {
+                width: 100%;
+                height: 1px;
+                min-height: 1px;
+            }
+
+            .calendar .width-full {
+                min-width: 650px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <footer class="footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-top">
+                <div class="footer-left">
+                    <h2>Let’s build something togather</h2>
+                    <p>
+                        Open to meaningful collaborations, ambitious ideas, and products that deserve
+                        clean design and solid frontend execution.
+                    </p>
+
+                    <div class="footer-contact-stack">
+                        <a class="contact-pill" href="mailto:tashinparvez2002@gmail.com"
+                            aria-label="Send email to Tashin Parvez">
+                            <i class="ri-mail-line"></i>
+                            <span class="mail-text">
+                                <span class="mail-label">Drop a line anytime</span>
+                                <span class="mail-address">tashinparvez2002@gmail.com</span>
+                            </span>
+                        </a>
+
+                        <div class="social-row">
+                            <a class="social-link" href="https://github.com/TashinParvez" target="_blank"
+                                rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="ri-github-fill"></i>
+                            </a>
+
+                            <a class="social-link" href="#" target="_blank" rel="noopener noreferrer"
+                                aria-label="LinkedIn">
+                                <i class="ri-linkedin-box-fill"></i>
+                            </a>
+
+                            <a class="social-link" href="#" target="_blank" rel="noopener noreferrer"
+                                aria-label="Twitter/X">
+                                <i class="ri-twitter-x-line"></i>
+                            </a>
+
+                            <a class="social-link" href="#" target="_blank" rel="noopener noreferrer"
+                                aria-label="Another social link">
+                                <i class="ri-links-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <div class="contribution-card">
+                        <div class="contrib-header">
+                            <div class="contrib-title-wrap">
+                                <div class="contrib-title" id="contribTitle">Loading contributions...</div>
+                                <div class="contrib-subtitle">GitHub contribution activity</div>
+                            </div>
+
+                            <a class="contrib-link" href="https://github.com/TashinParvez" target="_blank"
+                                rel="noopener noreferrer" aria-label="Open GitHub profile">
+                                <i class="ri-github-fill"></i>
+                                <span>@TashinParvez</span>
+                            </a>
+                        </div>
+
+                        <div class="calendar">
+                            Loading the contribution graph...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-meta">
+                    <div class="metric-group text-center">
+                        <div class="metric">
+                            <div class="metric-value" id="totalStars">--</div>
+                            <div class="metric-label">Stars</div>
+                        </div>
+
+                        <div class="metric">
+                            <div class="metric-value" id="totalForks">--</div>
+                            <div class="metric-label">Forks</div>
+                        </div>
+                    </div>
+
+                    <div class="footer-divider" aria-hidden="true"></div>
+
+                    <div class="footer-copy">
+                        <div class="name-line">
+                            <span class="copyright">© 2026</span>
+                            <span class="name">Tashin Parvez</span>
+                        </div>
+                        <div class="tag-line">Built with intent, not just code.</div>
+                    </div>
+                </div>
+
+                <div class="keep-building">Keep_Building()</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/github-calendar/2.3.4/github-calendar.min.js"></script>
+
+    <script>
+        const username = "TashinParvez";
+
+        function formatNumber(num) {
+            if (num === null || num === undefined || Number.isNaN(num)) return "--";
+            return new Intl.NumberFormat("en", {
+                notation: num > 999 ? "compact" : "standard",
+                maximumFractionDigits: 1
+            }).format(num);
+        }
+
+        async function fetchAllRepos(username) {
+            let page = 1;
+            let repos = [];
+            let hasMore = true;
+
+            while (hasMore) {
+                const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&page=${page}`);
+                if (!res.ok) throw new Error("Failed to fetch repositories");
+
+                const data = await res.json();
+                repos = repos.concat(data);
+
+                if (data.length < 100) {
+                    hasMore = false;
+                } else {
+                    page++;
+                }
+            }
+
+            return repos;
+        }
+
+        async function getGitHubStats() {
+            const totalStarsEl = document.getElementById("totalStars");
+            const totalForksEl = document.getElementById("totalForks");
+
+            try {
+                const repos = await fetchAllRepos(username);
+
+                const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+                const totalForks = repos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0);
+
+                totalStarsEl.textContent = formatNumber(totalStars);
+                totalForksEl.textContent = formatNumber(totalForks);
+            } catch (error) {
+                totalStarsEl.textContent = "N/A";
+                totalForksEl.textContent = "N/A";
+                console.error("GitHub stats error:", error);
+            }
+        }
+
+        function loadGitHubCalendar() {
+            const titleEl = document.getElementById("contribTitle");
+
+            GitHubCalendar(".calendar", username, {
+                responsive: true,
+                tooltips: true
+            });
+
+            const tryReadContributionTitle = () => {
+                const calendar = document.querySelector(".calendar");
+                if (!calendar) return;
+
+                const textNodes = Array.from(calendar.querySelectorAll("h2, .f4.text-normal.mb-2, .js-yearly-contributions h2, .float-left.text-gray"));
+                const matched = textNodes.find(node =>
+                    /contributions? in the last year/i.test(node.textContent || "")
+                );
+
+                if (matched && matched.textContent.trim()) {
+                    titleEl.textContent = matched.textContent.trim();
+                } else {
+                    titleEl.textContent = `${username}'s contribution graph`;
+                }
+            };
+
+            setTimeout(tryReadContributionTitle, 1200);
+            setTimeout(tryReadContributionTitle, 2200);
+        }
+
+        getGitHubStats();
+        loadGitHubCalendar();
+    </script>
+
+</body>
+
+</html>
