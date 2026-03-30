@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Stats Dashboard</title>
+    <style>
+        :root {
+            --bg: #060816;
+            --bg-2: #0b1020;
+            --panel: #0e152b;
+            --panel-2: #121c36;
+            --line: #1e2a4d;
+            --text: #eef4ff;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --accent-2: #22d3ee;
+            --success: #34d399;
+            --danger: #fb7185;
+            --warning: #fbbf24;
+            --shadow: 0 0 0 1px rgba(96, 165, 250, .10), 0 14px 40px rgba(0, 0, 0, .45), 0 0 30px rgba(34, 211, 238, .08);
+            --glow: 0 0 18px rgba(96, 165, 250, .18), 0 0 34px rgba(34, 211, 238, .10);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 18px;
+            --radius-sm: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 15%, rgba(34, 211, 238, .14), transparent 22%),
+                radial-gradient(circle at 85% 8%, rgba(96, 165, 250, .14), transparent 20%),
+                radial-gradient(circle at 50% 120%, rgba(59, 130, 246, .12), transparent 35%),
+                linear-gradient(180deg, #050814 0%, #070b17 35%, #09101d 100%);
+            padding: 28px 18px 42px;
+            overflow-x: hidden;
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, .06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, .06) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+            opacity: .45;
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 999px;
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: .42;
+        }
+
+        .orb.one {
+            width: 260px;
+            height: 260px;
+            background: rgba(34, 211, 238, .18);
+            top: -60px;
+            left: -60px;
+        }
+
+        .orb.two {
+            width: 280px;
+            height: 280px;
+            background: rgba(96, 165, 250, .18);
+            right: -70px;
+            top: 80px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: min(1240px, 100%);
+            margin: 0 auto;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.25fr .85fr;
+            gap: 18px;
+            padding: 28px;
+            margin-bottom: 22px;
+            border-radius: var(--radius-xl);
+            background:
+                linear-gradient(180deg, rgba(13, 21, 43, .92), rgba(9, 15, 31, .92)),
+                linear-gradient(135deg, rgba(96, 165, 250, .06), rgba(34, 211, 238, .04));
+            border: 1px solid rgba(96, 165, 250, .14);
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .03);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, .35), rgba(34, 211, 238, .18), rgba(96, 165, 250, .10));
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: .7;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: max-content;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(10, 16, 32, .92);
+            border: 1px solid rgba(96, 165, 250, .16);
+            color: #c4ddff;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            box-shadow: var(--glow);
+            margin-bottom: 16px;
+        }
+
+        .eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 0 14px rgba(34, 211, 238, .85);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 4.4rem);
+            line-height: .98;
+            letter-spacing: -.05em;
+            margin-bottom: 12px;
+            max-width: 11ch;
+        }
+
+        .hero p {
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: var(--muted);
+            max-width: 64ch;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .chip {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(16, 25, 47, .9), rgba(12, 19, 38, .9));
+            border: 1px solid rgba(96, 165, 250, .14);
+            color: #d8e8ff;
+            font-size: .9rem;
+            font-weight: 600;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .02), 0 0 16px rgba(96, 165, 250, .08);
+        }
+
+        .hero-right {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .overview-card {
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, rgba(16, 25, 47, .96), rgba(10, 16, 32, .96));
+            border: 1px solid rgba(96, 165, 250, .14);
+            box-shadow: var(--shadow);
+            min-height: 122px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .overview-label {
+            color: #9ab0d1;
+            font-size: .88rem;
+            font-weight: 600;
+        }
+
+        .overview-value {
+            font-size: clamp(1.9rem, 3vw, 2.7rem);
+            font-weight: 800;
+            letter-spacing: -.05em;
+            text-shadow: 0 0 18px rgba(96, 165, 250, .16);
+        }
+
+        .overview-sub {
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 10px 4px 18px;
+        }
+
+        .section-head h2 {
+            font-size: 1.12rem;
+            letter-spacing: -.02em;
+            margin-bottom: 4px;
+        }
+
+        .section-head span {
+            color: var(--muted);
+            font-size: .94rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 215px;
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            background:
+                linear-gradient(180deg, rgba(15, 23, 42, .96), rgba(9, 14, 28, .96)),
+                linear-gradient(135deg, rgba(96, 165, 250, .03), rgba(34, 211, 238, .03));
+            border: 1px solid rgba(96, 165, 250, .14);
+            box-shadow: var(--shadow);
+            transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, .26);
+            box-shadow:
+                0 0 0 1px rgba(96, 165, 250, .16),
+                0 20px 44px rgba(0, 0, 0, .5),
+                0 0 26px rgba(34, 211, 238, .10),
+                0 0 50px rgba(96, 165, 250, .10);
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            inset: auto -20px -20px auto;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, .12), transparent 70%);
+            pointer-events: none;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .logo-wrap {
+            width: 48px;
+            height: 48px;
+            flex: 0 0 48px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, rgba(17, 26, 50, .98), rgba(10, 16, 32, .98));
+            border: 1px solid rgba(96, 165, 250, .14);
+            box-shadow: 0 0 18px rgba(96, 165, 250, .09), inset 0 1px 0 rgba(255, 255, 255, .04);
+        }
+
+        .logo-wrap img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, .10));
+        }
+
+        .brand-text {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .brand-text h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -.02em;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+
+        .brand-text .sub {
+            margin-top: 6px;
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.45;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: #0b1225;
+            border: 1px solid rgba(96, 165, 250, .12);
+            color: #a9bddb;
+            font-size: .74rem;
+            font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #64748b;
+            box-shadow: 0 0 0 4px rgba(100, 116, 139, .10);
+        }
+
+        .status.loading .status-dot {
+            background: var(--warning);
+            box-shadow: 0 0 0 4px rgba(251, 191, 36, .10), 0 0 10px rgba(251, 191, 36, .35);
+            animation: pulse 1.35s infinite ease-in-out;
+        }
+
+        .status.done .status-dot {
+            background: var(--success);
+            box-shadow: 0 0 0 4px rgba(52, 211, 153, .10), 0 0 10px rgba(52, 211, 153, .35);
+        }
+
+        .status.error .status-dot {
+            background: var(--danger);
+            box-shadow: 0 0 0 4px rgba(251, 113, 133, .10), 0 0 10px rgba(251, 113, 133, .35);
+        }
+
+        .handle {
+            display: inline-flex;
+            align-items: center;
+            width: max-content;
+            max-width: 100%;
+            padding: 8px 10px;
+            border-radius: 12px;
+            background: rgba(8, 13, 27, .92);
+            border: 1px solid rgba(96, 165, 250, .12);
+            color: #d9e7ff;
+            font-size: .82rem;
+            font-weight: 600;
+            line-height: 1.4;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+
+        .value {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -.05em;
+            text-shadow: 0 0 18px rgba(96, 165, 250, .14);
+            margin-top: 2px;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+
+        .meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--muted);
+            font-size: .83rem;
+            line-height: 1.45;
+        }
+
+        .meta span {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+
+        .footer-note {
+            margin-top: 18px;
+            text-align: center;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            50% {
+                transform: scale(1.14);
+                opacity: .8
+            }
+        }
+
+        @media (max-width:1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .hero h1 {
+                max-width: none;
+            }
+        }
+
+        @media (max-width:760px) {
+            body {
+                padding: 16px 14px 30px;
+            }
+
+            .hero {
+                padding: 18px;
+            }
+
+            .hero-right {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .section-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width:520px) {
+
+            .hero-right,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card {
+                min-height: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+
+    <main class="container">
+        <section class="hero">
+            <div>
+                <div class="eyebrow">
+                    <span class="dot"></span>
+                    Live Developer Matrix
+                </div>
+                <h1>My Coding Stats</h1>
+                <p>
+                    Sleek dark dashboard with live competitive programming metrics, glowing panels,
+                    real platform logos, and clean handle visibility inside every card.
+                </p>
+                <div class="hero-actions">
+                    <div class="chip">Dark Tech Theme</div>
+                    <div class="chip">Glow Effects</div>
+                    <div class="chip">Actual Platform Logos</div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="overview-card">
+                    <div class="overview-label">Platforms</div>
+                    <div class="overview-value">10</div>
+                    <div class="overview-sub">Tracked sources</div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-label">Loaded</div>
+                    <div class="overview-value" id="loaded-count">0</div>
+                    <div class="overview-sub">Cards updated</div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-label">Status</div>
+                    <div class="overview-value" id="dashboard-status">Live</div>
+                    <div class="overview-sub">Fetching latest stats</div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="overview-label">Profile</div>
+                    <div class="overview-value" style="font-size:1.1rem; line-height:1.35;">Tashin Parvez</div>
+                    <div class="overview-sub">Competitive coding snapshot</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-head">
+            <div>
+                <h2>Performance Overview</h2>
+                <span>Developer ecosystem and problem solving metrics</span>
+            </div>
+            <span id="last-updated">Updating now...</span>
+        </div>
+
+        <section class="stats-grid">
+
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>GitHub Stars</h3>
+                            <div class="sub">Total repository stars</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: TashinParvez</div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="github-stars">—</div>
+                    <div class="status loading" id="status-github-stars"><span class="status-dot"></span>Loading</div>
+                </div>
+
+                <!-- <div class="meta">
+                    <span>GitHub</span>
+                    <span>Repositories</span>
+                </div> -->
+
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>GitHub Followers</h3>
+                            <div class="sub">Audience and profile reach</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="handle">Handle: TashinParvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="github-followers">—</div>
+                    <div class="status loading" id="status-github-followers"><span class="status-dot"></span>Loading
+                    </div>
+                    <!-- <div class="meta">
+                    <span>GitHub</span>
+                    <span>Community</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/codeforces/ffffff" alt="Codeforces logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>Codeforces Solved</h3>
+                            <div class="sub">Accepted unique problems</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="handle">Handle: Tashin.Parvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="codeforces-solved">—</div>
+                    <div class="status loading" id="status-codeforces-solved"><span class="status-dot"></span>Loading
+                    </div>
+                    <!-- <div class="meta">
+                    <span>Codeforces</span>
+                    <span>Contest and practice</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/leetcode/ffffff" alt="LeetCode logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>LeetCode Solved</h3>
+                            <div class="sub">Total solved questions</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="handle">Handle: tashinParvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="leetcode-solved">—</div>
+                    <div class="status loading" id="status-leetcode-solved"><span class="status-dot"></span>Loading
+                    </div>
+                </div>
+                <!-- <div class="meta">
+                    <span>LeetCode</span>
+                    <span>Interview prep</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/codechef/ffffff" alt="CodeChef logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>CodeChef Solved</h3>
+                            <div class="sub">Practice completion count</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: tashin_parvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="codechef-solved">—</div>
+                    <div class="status loading" id="status-codechef-solved"><span class="status-dot"></span>Loading
+                    </div>
+                </div>
+                <!-- <div class="meta">
+                    <span>CodeChef</span>
+                    <span>Problem archive</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/v/ffffff" alt="VJudge logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>VJudge Solved</h3>
+                            <div class="sub">Cross-platform judge progress</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: Tashin_Parvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="vjudge-solved">—</div>
+                    <div class="status loading" id="status-vjudge-solved"><span class="status-dot"></span>Loading</div>
+                </div>
+                <!-- <div class="meta">
+                    <span>VJudge</span>
+                    <span>Unified practice</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/atcoder/ffffff" alt="AtCoder logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>AtCoder Solved</h3>
+                            <div class="sub">Algorithm problem total</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: Tashin_Parvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="atcoder-solved">—</div>
+                    <div class="status loading" id="status-atcoder-solved"><span class="status-dot"></span>Loading</div>
+                </div>
+                <!-- <div class="meta">
+                    <span>AtCoder</span>
+                    <span>Precision and speed</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/hackerrank/ffffff" alt="HackerRank logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>HackerRank Solved</h3>
+                            <div class="sub">Skill track progress</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: tashinparvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="hackerrank-solved">—</div>
+                    <div class="status loading" id="status-hackerrank-solved"><span class="status-dot"></span>Loading</div>
+                </div>
+                <!-- <div class="meta">
+                    <span>HackerRank</span>
+                    <span>Skills practice</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/c/ffffff" alt="CSES logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>CSES Solved</h3>
+                            <div class="sub">Core set completion</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: Tashin.Parvez</div>
+                
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="cses-solved">—</div>
+                    <div class="status loading" id="status-cses-solved"><span class="status-dot"></span>Loading</div>
+                </div>
+                <!-- <div class="meta">
+                    <span>CSES</span>
+                    <span>Foundational set</span>
+                </div> -->
+            </article>
+
+            <article class="stat-card">
+                <div class="card-top">
+                    <div class="brand">
+                        <div class="logo-wrap">
+                            <img src="https://cdn.simpleicons.org/spoj/ffffff" alt="SPOJ logo">
+                        </div>
+                        <div class="brand-text">
+                            <h3>SPOJ Solved</h3>
+                            <div class="sub">Classic archive solved</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handle">Handle: tashin_parvez</div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="value" id="spoj-solved">—</div>
+                    <div class="status loading" id="status-spoj-solved"><span class="status-dot"></span>Loading</div>
+                </div>
+                <!-- <div class="meta">
+                    <span>SPOJ</span>
+                    <span>Legacy challenge set</span>
+                </div> -->
+            </article>
+        </section>
+
+        <p class="footer-note">Dark futuristic interface with real platform branding and full handle visibility.</p>
+    </main>
+
+    <script>
+        const usernames = {
+            github: "TashinParvez",
+            codeforces: "Tashin.Parvez",
+            leetcode: "tashinParvez",
+            codechef: "tashin_parvez",
+            vjudge: "Tashin_Parvez",
+            atcoder: "Tashin_Parvez",
+            hackerrank: "tashinparvez",
+            cses: "Tashin.Parvez",
+            spoj: "tashin_parvez"
+        };
+
+        const totalCards = 10;
+        const completed = new Set();
+
+        function formatNumber(value) {
+            if (value === null || value === undefined || value === "Error") return "Error";
+            const num = Number(value);
+            if (Number.isNaN(num)) return String(value);
+            return new Intl.NumberFormat().format(num);
+        }
+
+        function markStatus(id, state, label) {
+            const el = document.getElementById(`status-${id}`);
+            if (!el) return;
+            el.className = `status ${state}`;
+            el.innerHTML = `<span class="status-dot"></span>${label}`;
+        }
+
+        function registerComplete(id) {
+            if (!completed.has(id)) {
+                completed.add(id);
+            }
+            document.getElementById("loaded-count").textContent = completed.size;
+        }
+
+        function setValue(id, value, state = "done") {
+            const el = document.getElementById(id);
+            if (el) el.textContent = formatNumber(value);
+
+            if (state === "done") {
+                markStatus(id, "done", "Updated");
+                registerComplete(id);
+            } else if (state === "error") {
+                markStatus(id, "error", "Error");
+            } else {
+                markStatus(id, "loading", "Loading");
+            }
+
+            updateSummary();
+        }
+
+        function setError(id) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = "Error";
+            markStatus(id, "error", "Error");
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const done = document.querySelectorAll(".status.done").length;
+            const errors = document.querySelectorAll(".status.error").length;
+
+            let statusText = "Live";
+            if (done === totalCards) statusText = "Ready";
+            if (errors > 0 && done < totalCards) statusText = "Partial";
+            if (errors > 0 && done === 0) statusText = "Error";
+
+            document.getElementById("dashboard-status").textContent = statusText;
+
+            const now = new Date();
+            document.getElementById("last-updated").textContent =
+                `Last refresh: ${now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+        }
+
+        async function fetchJSON(url) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+            return res.json();
+        }
+
+        async function fetchGitHub() {
+            try {
+                const repos = await fetchJSON(`https://api.github.com/users/${usernames.github}/repos?per_page=100`);
+                const user = await fetchJSON(`https://api.github.com/users/${usernames.github}`);
+
+                const stars = Array.isArray(repos)
+                    ? repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0)
+                    : 0;
+
+                setValue("github-stars", stars);
+                setValue("github-followers", user.followers ?? 0);
+            } catch (error) {
+                console.error("GitHub error:", error);
+                setError("github-stars");
+                setError("github-followers");
+            }
+        }
+
+        async function fetchCodeforces() {
+            try {
+                const data = await fetchJSON(`https://codeforces.com/api/user.status?handle=${encodeURIComponent(usernames.codeforces)}`);
+                if (data.status === "OK" && Array.isArray(data.result)) {
+                    const solved = new Set(
+                        data.result
+                            .filter(item => item.verdict === "OK")
+                            .map(item => `${item.problem?.contestId || ""}-${item.problem?.index || ""}-${item.problem?.name || ""}`)
+                    ).size;
+                    setValue("codeforces-solved", solved);
+                } else {
+                    setError("codeforces-solved");
+                }
+            } catch (error) {
+                console.error("Codeforces error:", error);
+                setError("codeforces-solved");
+            }
+        }
+
+        async function fetchLeetCode() {
+            try {
+                const data = await fetchJSON(`https://leetcode-stats-api.herokuapp.com/${usernames.leetcode}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("leetcode-solved", data.totalSolved);
+                } else {
+                    setError("leetcode-solved");
+                }
+            } catch (error) {
+                console.error("LeetCode error:", error);
+                setError("leetcode-solved");
+            }
+        }
+
+        async function fetchCodeChef() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/codechef/${usernames.codechef}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("codechef-solved", data.totalSolved);
+                } else {
+                    setError("codechef-solved");
+                }
+            } catch (error) {
+                console.error("CodeChef error:", error);
+                setError("codechef-solved");
+            }
+        }
+
+        async function fetchVJudge() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/vjudge/${usernames.vjudge}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("vjudge-solved", data.totalSolved);
+                } else {
+                    setError("vjudge-solved");
+                }
+            } catch (error) {
+                console.error("VJudge error:", error);
+                setError("vjudge-solved");
+            }
+        }
+
+        async function fetchAtCoder() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/atcoder/${usernames.atcoder}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("atcoder-solved", data.totalSolved);
+                } else {
+                    setError("atcoder-solved");
+                }
+            } catch (error) {
+                console.error("AtCoder error:", error);
+                setError("atcoder-solved");
+            }
+        }
+
+        async function fetchHackerRank() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/hackerrank/${usernames.hackerrank}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("hackerrank-solved", data.totalSolved);
+                } else {
+                    setError("hackerrank-solved");
+                }
+            } catch (error) {
+                console.error("HackerRank error:", error);
+                setError("hackerrank-solved");
+            }
+        }
+
+        async function fetchCSES() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/cses/${usernames.cses}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("cses-solved", data.totalSolved);
+                } else {
+                    setError("cses-solved");
+                }
+            } catch (error) {
+                console.error("CSES error:", error);
+                setError("cses-solved");
+            }
+        }
+
+        async function fetchSPOJ() {
+            try {
+                const data = await fetchJSON(`https://competitive-coding-api.herokuapp.com/api/spoj/${usernames.spoj}`);
+                if (data && data.totalSolved !== undefined) {
+                    setValue("spoj-solved", data.totalSolved);
+                } else {
+                    setError("spoj-solved");
+                }
+            } catch (error) {
+                console.error("SPOJ error:", error);
+                setError("spoj-solved");
+            }
+        }
+
+        async function initDashboard() {
+            updateSummary();
+            await Promise.allSettled([
+                fetchGitHub(),
+                fetchCodeforces(),
+                fetchLeetCode(),
+                fetchCodeChef(),
+                fetchVJudge(),
+                fetchAtCoder(),
+                fetchHackerRank(),
+                fetchCSES(),
+                fetchSPOJ()
+            ]);
+            updateSummary();
+        }
+
+        initDashboard();
+    </script>
+</body>
+
+</html>
