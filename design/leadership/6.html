@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leadership & Extracurriculars</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-2: rgba(255, 255, 255, 0.045);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #63b3ed;
+            --accent2: #3b82f6;
+            --text-1: #f1f5f9;
+            --text-2: #cbd5e1;
+            --text-3: #94a3b8;
+            --text-4: #475569;
+            --green: #22c55e;
+            --purple: #8b5cf6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top center, rgba(99, 179, 237, 0.06), transparent 30%),
+                #080b10;
+            color: var(--text-1);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 84px 24px 120px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 720px;
+            height: 420px;
+            background: radial-gradient(ellipse, rgba(99, 179, 237, 0.06) 0%, transparent 72%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            margin-bottom: 68px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .7s .08s ease forwards;
+        }
+
+        .page-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            line-height: 0.98;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 18px;
+            color: var(--text-1);
+        }
+
+        .page-title span {
+            background: linear-gradient(90deg, var(--accent), var(--purple), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-sub {
+            max-width: 620px;
+            color: var(--text-3);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .section-block {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeUp .7s ease forwards;
+            animation-delay: .18s;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .section-label-text {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-4);
+        }
+
+        .section-label-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(99, 179, 237, 0.16), transparent);
+        }
+
+        .creative-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .creative-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr);
+            gap: 0;
+            border-radius: 28px;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03)),
+                var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+            transition: transform .38s ease, border-color .38s ease, box-shadow .38s ease, background .38s ease;
+            isolation: isolate;
+        }
+
+        .creative-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at var(--mx, 80%) var(--my, 20%), rgba(99, 179, 237, 0.18), transparent 28%),
+                linear-gradient(130deg, transparent 0%, rgba(99, 179, 237, 0.035) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity .35s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .creative-card::after {
+            content: '';
+            position: absolute;
+            inset: auto 24px 0 24px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 179, 237, 0.18), transparent);
+            opacity: 0;
+            transition: opacity .35s ease;
+            z-index: 0;
+        }
+
+        .creative-card:hover {
+            transform: translateY(-6px) scale(1.005);
+            border-color: rgba(99, 179, 237, 0.2);
+            box-shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
+            background:
+                linear-gradient(180deg, rgba(99, 179, 237, 0.03), rgba(255, 255, 255, 0.03)),
+                rgba(255, 255, 255, 0.04);
+        }
+
+        .creative-card:hover::before,
+        .creative-card:hover::after {
+            opacity: 1;
+        }
+
+        .creative-rail {
+            position: relative;
+            padding: 24px 16px;
+            background:
+                linear-gradient(180deg, rgba(99, 179, 237, 0.12), rgba(59, 130, 246, 0.04));
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            z-index: 1;
+        }
+
+        .rail-year {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(241, 245, 249, 0.92);
+        }
+
+        .rail-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-width: 54px;
+            min-height: 54px;
+            padding: 10px;
+            border-radius: 16px;
+            border: 1px solid rgba(99, 179, 237, 0.18);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-2);
+            font-size: 10px;
+            line-height: 1.25;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .creative-main {
+            position: relative;
+            padding: 28px 28px 24px;
+            z-index: 1;
+        }
+
+        .topline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 12px;
+        }
+
+        .role-wrap {
+            min-width: 0;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-3);
+        }
+
+        .status-pill.current {
+            color: var(--green);
+            border-color: rgba(34, 197, 94, 0.2);
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        .status-pill.accent {
+            color: var(--accent);
+            border-color: rgba(99, 179, 237, 0.16);
+            background: rgba(99, 179, 237, 0.08);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .lead-role {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+            color: var(--text-1);
+            margin-bottom: 6px;
+        }
+
+        .lead-org {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--accent);
+            line-height: 1.55;
+        }
+
+        .top-meta {
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .meta-date {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface-2);
+            color: var(--text-3);
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-bottom: 8px;
+        }
+
+        .meta-location {
+            font-size: 0.82rem;
+            color: var(--text-4);
+            line-height: 1.55;
+        }
+
+        .lead-desc {
+            color: var(--text-3);
+            font-size: 0.93rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            max-width: 700px;
+        }
+
+        .lead-points {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .lead-points li {
+            position: relative;
+            padding-left: 20px;
+            color: var(--text-2);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+
+        .lead-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.82em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(180deg, var(--accent), var(--purple));
+            box-shadow: 0 0 14px rgba(99, 179, 237, 0.28);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--text-3);
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            transition: border-color .3s ease, color .3s ease, background .3s ease;
+        }
+
+        .creative-card:hover .tag {
+            color: var(--text-2);
+            border-color: rgba(99, 179, 237, 0.16);
+            background: rgba(99, 179, 237, 0.05);
+        }
+
+        .creative-card.featured {
+            grid-template-columns: 180px minmax(0, 1fr);
+        }
+
+        .creative-card.featured .creative-rail {
+            background:
+                linear-gradient(180deg, rgba(99, 179, 237, 0.14), rgba(139, 92, 246, 0.06));
+        }
+
+        .creative-card.featured .rail-chip {
+            border-color: rgba(139, 92, 246, 0.18);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .creative-card,
+            .creative-card.featured {
+                grid-template-columns: 1fr;
+            }
+
+            .creative-rail {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                padding: 18px 20px;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .rail-year {
+                writing-mode: initial;
+                transform: none;
+                letter-spacing: 0.08em;
+            }
+
+            .topline {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .top-meta {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 60px 16px 84px;
+            }
+
+            .creative-main {
+                padding: 22px 20px 20px;
+            }
+
+            .lead-role {
+                font-size: 1.08rem;
+            }
+
+            .lead-desc,
+            .lead-points li {
+                font-size: 0.88rem;
+            }
+
+            .page-header {
+                margin-bottom: 54px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <div class="page-eyebrow">Beyond Academics</div>
+            <h1 class="page-title">Leadership &amp;<br><span>Extracurriculars</span></h1>
+            <p class="page-sub">
+                A more expressive view of the leadership roles, mentoring efforts, and student initiatives that shaped
+                my contribution beyond coursework.
+            </p>
+        </div>
+
+        <div class="section-block">
+            <div class="section-label">
+                <span class="section-label-text">Selected Roles</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="creative-stack">
+
+                <article class="creative-card featured">
+                    <div class="creative-rail">
+                        <div class="rail-year">2023 — Present</div>
+                        <div class="rail-chip">Founder</div>
+                    </div>
+
+                    <div class="creative-main">
+                        <div class="topline">
+                            <div class="role-wrap">
+                                <div class="status-row">
+                                    <span class="status-pill current"><span class="status-dot"></span>Current</span>
+                                    <span class="status-pill accent">Student Initiative</span>
+                                </div>
+                                <h3 class="lead-role">Founder &amp; Instructor</h3>
+                                <div class="lead-org">UIU Scholar&apos;s Squad</div>
+                            </div>
+
+                            <div class="top-meta">
+                                <div class="meta-date">2023 — Present</div>
+                                <div class="meta-location">Dhaka, Bangladesh</div>
+                            </div>
+                        </div>
+
+                        <p class="lead-desc">
+                            Founded a student-focused academic support initiative to help UIU students prepare
+                            effectively for examinations and technical courses through structured learning and
+                            peer-centered guidance.
+                        </p>
+
+                        <ul class="lead-points">
+                            <li>Conduct preparatory sessions to explain key course concepts and strengthen exam
+                                readiness.</li>
+                            <li>Mentor students in structured problem solving, concept clarity, and academic improvement
+                                strategies.</li>
+                            <li>Built a collaborative learning environment that encouraged peer engagement and
+                                consistent progress.</li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag">Academic Support</span>
+                            <span class="tag">Instruction</span>
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Community Building</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="creative-card">
+                    <div class="creative-rail">
+                        <div class="rail-year">2025 — Present</div>
+                        <div class="rail-chip">CP Wing</div>
+                    </div>
+
+                    <div class="creative-main">
+                        <div class="topline">
+                            <div class="role-wrap">
+                                <div class="status-row">
+                                    <span class="status-pill current"><span class="status-dot"></span>Current</span>
+                                    <span class="status-pill accent">Club Role</span>
+                                </div>
+                                <h3 class="lead-role">Competitive Programming Wing Associate</h3>
+                                <div class="lead-org">UIU Computer Club</div>
+                            </div>
+
+                            <div class="top-meta">
+                                <div class="meta-date">2025 — Present</div>
+                                <div class="meta-location">Dhaka, Bangladesh</div>
+                            </div>
+                        </div>
+
+                        <p class="lead-desc">
+                            Contribute to competitive programming activities, peer learning initiatives, and
+                            community-driven problem-solving practice within the programming wing.
+                        </p>
+
+                        <ul class="lead-points">
+                            <li>Support peer learning and technical growth inside the competitive programming community.
+                            </li>
+                            <li>Collaborate with team members to encourage active participation in programming-related
+                                activities.</li>
+                            <li>Help sustain a problem-solving culture centered on consistency, curiosity, and shared
+                                learning.</li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag">Competitive Programming</span>
+                            <span class="tag">Peer Learning</span>
+                            <span class="tag">Technical Community</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="creative-card">
+                    <div class="creative-rail">
+                        <div class="rail-year">2023 — 2025</div>
+                        <div class="rail-chip">Exec</div>
+                    </div>
+
+                    <div class="creative-main">
+                        <div class="topline">
+                            <div class="role-wrap">
+                                <div class="status-row">
+                                    <span class="status-pill"><span class="status-dot"></span>Previous</span>
+                                    <span class="status-pill accent">Programming Wing</span>
+                                </div>
+                                <h3 class="lead-role">Executive, Programming Wing</h3>
+                                <div class="lead-org">UIU Computer Club</div>
+                            </div>
+
+                            <div class="top-meta">
+                                <div class="meta-date">2023 — 2025</div>
+                                <div class="meta-location">Dhaka, Bangladesh</div>
+                            </div>
+                        </div>
+
+                        <p class="lead-desc">
+                            Helped organize programming-focused events, student engagement activities, and
+                            coding-related club initiatives that supported technical development.
+                        </p>
+
+                        <ul class="lead-points">
+                            <li>Contributed to club activities focused on programming, student engagement, and technical
+                                growth.</li>
+                            <li>Supported initiatives that encouraged participation and stronger interest in coding
+                                practice.</li>
+                            <li>Worked with fellow members to maintain momentum across programming wing activities.</li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Event Support</span>
+                            <span class="tag">Student Engagement</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="creative-card">
+                    <div class="creative-rail">
+                        <div class="rail-year">2023 — 2024</div>
+                        <div class="rail-chip">Junior</div>
+                    </div>
+
+                    <div class="creative-main">
+                        <div class="topline">
+                            <div class="role-wrap">
+                                <div class="status-row">
+                                    <span class="status-pill"><span class="status-dot"></span>Previous</span>
+                                    <span class="status-pill accent">Programming Wing</span>
+                                </div>
+                                <h3 class="lead-role">Junior Executive, Programming Wing</h3>
+                                <div class="lead-org">UIU Computer Club</div>
+                            </div>
+
+                            <div class="top-meta">
+                                <div class="meta-date">2023 — 2024</div>
+                                <div class="meta-location">Dhaka, Bangladesh</div>
+                            </div>
+                        </div>
+
+                        <p class="lead-desc">
+                            Supported the programming wing in coordinating events, student participation, and technical
+                            community activities during the early phase of leadership involvement.
+                        </p>
+
+                        <ul class="lead-points">
+                            <li>Assisted with organizing programming-related activities and coordination tasks.</li>
+                            <li>Helped encourage student participation across club initiatives and learning sessions.
+                            </li>
+                            <li>Contributed to a collaborative and supportive environment within the technical
+                                community.</li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag">Coordination</span>
+                            <span class="tag">Community Support</span>
+                            <span class="tag">Leadership Growth</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="creative-card featured">
+                    <div class="creative-rail">
+                        <div class="rail-year">Across Roles</div>
+                        <div class="rail-chip">Support</div>
+                    </div>
+
+                    <div class="creative-main">
+                        <div class="topline">
+                            <div class="role-wrap">
+                                <div class="status-row">
+                                    <span class="status-pill current"><span class="status-dot"></span>Ongoing</span>
+                                    <span class="status-pill accent">Academic Impact</span>
+                                </div>
+                                <h3 class="lead-role">Mentoring, Peer Support &amp; Academic Engagement</h3>
+                                <div class="lead-org">Informal Mentorship / Teaching Assistant &amp; Grading Support
+                                </div>
+                            </div>
+
+                            <div class="top-meta">
+                                <div class="meta-date">Across Roles</div>
+                                <div class="meta-location">CSE Academic Community</div>
+                            </div>
+                        </div>
+
+                        <p class="lead-desc">
+                            Alongside formal leadership positions, consistently supported students through mentoring,
+                            technical guidance, and academic engagement across multiple learning contexts.
+                        </p>
+
+                        <ul class="lead-points">
+                            <li>Assisted junior students in understanding programming concepts and solving technical
+                                problems.</li>
+                            <li>Shared study materials, guidance, and learning strategies to support academic progress.
+                            </li>
+                            <li>Supported course activities as a Teaching Assistant and grader across multiple CSE
+                                subjects.</li>
+                            <li>Helped students navigate complex topics and improve their problem-solving approaches.
+                            </li>
+                        </ul>
+
+                        <div class="tag-row">
+                            <span class="tag">Mentorship</span>
+                            <span class="tag">Teaching Support</span>
+                            <span class="tag">Academic Engagement</span>
+                            <span class="tag">Peer Guidance</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.creative-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const r = card.getBoundingClientRect();
+                const x = ((e.clientX - r.left) / r.width * 100).toFixed(1);
+                const y = ((e.clientY - r.top) / r.height * 100).toFixed(1);
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+            });
+        });
+
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.page-header, .section-block').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            obs.observe(el);
+        });
+    </script>
+</body>
+
+</html>

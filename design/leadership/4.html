@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leadership & Extracurriculars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #080b10;
+            --surface: rgba(255,255,255,0.032);
+            --surface-2: rgba(255,255,255,0.045);
+            --border: rgba(255,255,255,0.07);
+            --accent: #63b3ed;
+            --accent2: #3b82f6;
+            --text-1: #f1f5f9;
+            --text-2: #cbd5e1;
+            --text-3: #94a3b8;
+            --text-4: #475569;
+            --green: #22c55e;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 80px 24px 140px;
+            overflow-x: hidden;
+        }
+
+        /* Ambient glow */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(99,179,237,0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .7s .06s ease forwards;
+        }
+
+        .page-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: var(--text-1);
+            margin-bottom: 18px;
+        }
+
+        .page-title span {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-sub {
+            font-size: 0.97rem;
+            color: var(--text-3);
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .section-label-text {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-4);
+            white-space: nowrap;
+        }
+
+        .section-label-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+
+        /* ── Grid layout ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Featured card spans full width */
+        .card.featured {
+            grid-column: 1 / -1;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .6s ease forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99,179,237,0.22);
+            background: rgba(99,179,237,0.04);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.36);
+        }
+
+        /* Shimmer on hover */
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(99,179,237,0.04) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity .3s ease;
+            pointer-events: none;
+        }
+        .card:hover::after { opacity: 1; }
+
+        /* Accent line top */
+        .card.accent-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 28px;
+            right: 28px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.4;
+        }
+
+        /* ── Card header ── */
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(99,179,237,0.1);
+            border: 1px solid rgba(99,179,237,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .badge.current {
+            color: var(--green);
+            border: 1px solid rgba(34,197,94,0.22);
+            background: rgba(34,197,94,0.08);
+        }
+
+        .badge.prev {
+            color: var(--text-4);
+            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .badge .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .date-pill {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-4);
+            padding: 2px 9px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        /* ── Card body ── */
+        .card-role {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-1);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .card-org {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-3);
+            line-height: 1.78;
+            margin-bottom: 16px;
+        }
+
+        /* Featured card bigger desc */
+        .card.featured .card-desc {
+            font-size: 0.9rem;
+        }
+
+        .points {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .points li {
+            position: relative;
+            padding-left: 16px;
+            font-size: 0.86rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        .points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(180deg, var(--accent), var(--accent2));
+            box-shadow: 0 0 8px rgba(99,179,237,0.3);
+        }
+
+        .card-footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            padding: 3px 9px;
+            border-radius: 999px;
+            color: var(--text-4);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            transition: color .25s, border-color .25s;
+        }
+
+        .card:hover .tag {
+            color: var(--text-3);
+            border-color: rgba(99,179,237,0.14);
+        }
+
+        .location-text {
+            font-size: 11px;
+            color: var(--text-4);
+        }
+
+        /* ── Stagger delays ── */
+        .card:nth-child(1) { animation-delay: .15s; }
+        .card:nth-child(2) { animation-delay: .22s; }
+        .card:nth-child(3) { animation-delay: .29s; }
+        .card:nth-child(4) { animation-delay: .36s; }
+        .card:nth-child(5) { animation-delay: .43s; }
+
+        /* ── Compact pair: 2-col side-by-side mini info ── */
+        .featured-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .featured-col-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-4);
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .card.featured { grid-column: 1; }
+            .featured-cols { grid-template-columns: 1fr; }
+            .card-header { flex-direction: column; gap: 10px; }
+            .card-meta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+            body { padding: 56px 16px 100px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="page-header">
+        <div class="page-eyebrow">Beyond the Classroom</div>
+        <h1 class="page-title">Leadership &amp;<br><span>Extracurriculars</span></h1>
+        <p class="page-sub">A timeline of leadership, mentoring, and community-driven contributions across academic and technical spaces.</p>
+    </div>
+
+    <!-- Section -->
+    <div>
+        <div class="section-label">
+            <span class="section-label-text">Leadership</span>
+            <span class="section-label-line"></span>
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- Card 1 — Featured founder -->
+            <div class="card featured accent-line">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <!-- graduation cap icon -->
+                        <svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12.5V17c0 1.657 2.686 3 6 3s6-1.343 6-3v-4.5"/><line x1="22" y1="10" x2="22" y2="15"/></svg>
+                    </div>
+                    <div class="card-meta">
+                        <span class="badge current"><span class="dot"></span>Current</span>
+                        <span class="date-pill">2023 — Present</span>
+                    </div>
+                </div>
+
+                <div class="card-role">Founder &amp; Instructor</div>
+                <div class="card-org">UIU Scholar's Squad · Dhaka, Bangladesh</div>
+
+                <div class="card-desc">
+                    Founded a student-focused academic support initiative to help UIU students prepare effectively for examinations and technical courses through structured guidance and collaborative learning.
+                </div>
+
+                <div class="featured-cols">
+                    <div>
+                        <div class="featured-col-title">Highlights</div>
+                        <ul class="points">
+                            <li>Conduct preparatory sessions covering key course concepts and exam-focused learning.</li>
+                            <li>Mentor students in structured problem solving and academic improvement strategies.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="featured-col-title">Impact</div>
+                        <ul class="points">
+                            <li>Built a collaborative environment that encouraged peer engagement and consistent progress.</li>
+                            <li>Grew the initiative into a trusted resource across multiple CSE cohorts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Academic Support</span>
+                        <span class="tag">Instruction</span>
+                        <span class="tag">Student Mentoring</span>
+                    </div>
+                    <span class="location-text">Initiative</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="card-meta">
+                        <span class="badge current"><span class="dot"></span>Current</span>
+                        <span class="date-pill">2025 — Present</span>
+                    </div>
+                </div>
+
+                <div class="card-role">CP Wing Associate</div>
+                <div class="card-org">UIU Computer Club · Dhaka, Bangladesh</div>
+
+                <div class="card-desc">
+                    Contribute to competitive programming activities, peer learning initiatives, and community engagement within the programming wing.
+                </div>
+
+                <ul class="points">
+                    <li>Support peer learning and problem-solving practice in CP community.</li>
+                    <li>Encourage active participation in technical activities.</li>
+                    <li>Sustain a learning-focused environment centered on growth.</li>
+                </ul>
+
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Competitive Programming</span>
+                        <span class="tag">Peer Learning</span>
+                    </div>
+                    <span class="location-text">Club Role</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <div class="card-meta">
+                        <span class="badge prev"><span class="dot"></span>Previous</span>
+                        <span class="date-pill">2023 — 2025</span>
+                    </div>
+                </div>
+
+                <div class="card-role">Executive, Programming Wing</div>
+                <div class="card-org">UIU Computer Club · Dhaka, Bangladesh</div>
+
+                <div class="card-desc">
+                    Helped organize programming-focused events, student engagement activities, and club initiatives related to coding and technical development.
+                </div>
+
+                <ul class="points">
+                    <li>Contributed to programming-centered club operations.</li>
+                    <li>Supported activities that strengthened technical interest.</li>
+                    <li>Built continuity across programming wing initiatives.</li>
+                </ul>
+
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Event Organization</span>
+                        <span class="tag">Leadership</span>
+                    </div>
+                    <span class="location-text">Club Role</span>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                    </div>
+                    <div class="card-meta">
+                        <span class="badge prev"><span class="dot"></span>Previous</span>
+                        <span class="date-pill">2023 — 2024</span>
+                    </div>
+                </div>
+
+                <div class="card-role">Junior Executive, Programming Wing</div>
+                <div class="card-org">UIU Computer Club · Dhaka, Bangladesh</div>
+
+                <div class="card-desc">
+                    Supported the programming wing in coordinating events, student participation, and technical community activities during an early stage of involvement.
+                </div>
+
+                <ul class="points">
+                    <li>Assisted with event coordination and smooth execution of activities.</li>
+                    <li>Encouraged student participation across technical initiatives.</li>
+                    <li>Contributed to a collaborative learning atmosphere.</li>
+                </ul>
+
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Coordination</span>
+                        <span class="tag">Growth Journey</span>
+                    </div>
+                    <span class="location-text">Club Role</span>
+                </div>
+            </div>
+
+            <!-- Card 5 — Full width support role -->
+            <div class="card featured">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="card-meta">
+                        <span class="badge current"><span class="dot"></span>Ongoing</span>
+                        <span class="date-pill">Across Roles</span>
+                    </div>
+                </div>
+
+                <div class="card-role">Mentoring, Peer Support &amp; Academic Engagement</div>
+                <div class="card-org">Informal Mentorship / Teaching Support · CSE Academic Community</div>
+
+                <div class="card-desc">
+                    Alongside formal leadership positions, continuously supported students through mentoring, academic guidance, and technical assistance across multiple learning contexts.
+                </div>
+
+                <div class="featured-cols">
+                    <div>
+                        <div class="featured-col-title">Support Activities</div>
+                        <ul class="points">
+                            <li>Assisted junior students in understanding programming concepts and solving technical problems.</li>
+                            <li>Shared study materials, learning strategies, and practical guidance for academic improvement.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="featured-col-title">Teaching Assistance</div>
+                        <ul class="points">
+                            <li>Supported course activities as a TA and grader across multiple CSE subjects.</li>
+                            <li>Helped students navigate complex topics and improve problem-solving approaches.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Mentorship</span>
+                        <span class="tag">Teaching Assistance</span>
+                        <span class="tag">Academic Engagement</span>
+                        <span class="tag">Peer Support</span>
+                    </div>
+                    <span class="location-text">Support Role</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.style.animationPlayState = 'running'; obs.unobserve(e.target); }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.page-header, .card').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        obs.observe(el);
+    });
+</script>
+</body>
+</html>

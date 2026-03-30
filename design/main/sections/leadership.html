@@ -1,0 +1,718 @@
+<style>
+    .leadership-section {
+        --lead-bg: transparent;
+        --lead-border: rgba(255, 255, 255, 0.07);
+        --lead-border-strong: rgba(255, 255, 255, 0.13);
+        --lead-accent: #63b3ed;
+        --lead-accent-2: #3b82f6;
+        --lead-text-1: #f1f5f9;
+        --lead-text-2: #cbd5e1;
+        --lead-text-3: #94a3b8;
+        --lead-text-4: #64748b;
+        --lead-green: #22c55e;
+        --lead-dim: rgba(255, 255, 255, 0.03);
+        --lead-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+        width: 100%;
+        background: var(--lead-bg);
+        color: var(--lead-text-1);
+        position: relative;
+        overflow: hidden;
+        padding: 110px 0 90px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .leadership-section * {
+        box-sizing: border-box;
+    }
+
+    .leadership-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 18% 18%, rgba(99, 179, 237, 0.08), transparent 28%), radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.05), transparent 24%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 28%, rgba(255, 255, 255, 0.01));
+        pointer-events: none;
+    }
+
+    .leadership-wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .leadership-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 32px;
+    }
+
+    .leadership-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--lead-accent);
+        margin-bottom: 18px;
+    }
+
+    .leadership-kicker::before {
+        content: '';
+        width: 34px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--lead-accent), transparent);
+    }
+
+    .leadership-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 700;
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+        color: var(--lead-text-1);
+        margin: 0 0 18px;
+    }
+
+    .leadership-title .accent {
+        background: linear-gradient(100deg, var(--lead-accent), var(--lead-accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .leadership-subtitle {
+        max-width: 650px;
+        font-size: 1rem;
+        line-height: 1.85;
+        color: var(--lead-text-3);
+        margin: 0;
+    }
+
+    .leadership-count {
+        text-align: right;
+        padding-bottom: 6px;
+    }
+
+    .leadership-count-number {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(3rem, 7vw, 5rem);
+        line-height: 0.9;
+        font-weight: 700;
+        letter-spacing: -0.06em;
+        color: rgba(255, 255, 255, 0.09);
+        margin: 0;
+    }
+
+    .leadership-count-label {
+        margin-top: 8px;
+        font-size: 0.86rem;
+        color: var(--lead-text-4);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .leadership-meta {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 40px;
+    }
+
+    .leadership-meta-card {
+        border: 1px solid var(--lead-border);
+        background: rgba(15, 23, 42, 0.34);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 18px;
+        padding: 18px 18px 16px;
+        box-shadow: var(--lead-shadow);
+    }
+
+    .leadership-meta-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--lead-text-4);
+        margin-bottom: 10px;
+    }
+
+    .leadership-meta-value {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--lead-text-2);
+    }
+
+    .leadership-grid {
+        display: grid;
+        gap: 18px;
+    }
+
+    .leadership-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 70px minmax(0, 1fr) auto;
+        gap: 24px;
+        padding: 28px;
+        border-radius: 24px;
+        border: 1px solid var(--lead-border);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.015)), rgba(10, 14, 22, 0.58);
+        box-shadow: var(--lead-shadow);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(24px);
+        transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .leadership-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(99, 179, 237, 0.09), transparent 42%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        pointer-events: none;
+    }
+
+    .leadership-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(99, 179, 237, 0.18);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.3);
+    }
+
+    .leadership-card:hover::before {
+        opacity: 1;
+    }
+
+    .leadership-card.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .leadership-index {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.06em;
+        color: rgba(255, 255, 255, 0.08);
+        user-select: none;
+        padding-top: 4px;
+    }
+
+    .leadership-card:hover .leadership-index {
+        color: rgba(99, 179, 237, 0.22);
+    }
+
+    .leadership-main {
+        min-width: 0;
+    }
+
+    .leadership-topline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 12px;
+        margin-bottom: 12px;
+    }
+
+    .leadership-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--lead-border);
+        background: var(--lead-dim);
+        color: var(--lead-text-3);
+        white-space: nowrap;
+    }
+
+    .leadership-pill .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
+    }
+
+    .leadership-pill.active {
+        color: var(--lead-green);
+        background: rgba(34, 197, 94, 0.09);
+        border-color: rgba(34, 197, 94, 0.18);
+    }
+
+    .leadership-type {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--lead-text-4);
+    }
+
+    .leadership-role {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(1.4rem, 2vw, 1.9rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        color: var(--lead-text-1);
+        margin: 0 0 6px;
+    }
+
+    .leadership-org {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--lead-accent);
+        letter-spacing: 0.01em;
+        margin-bottom: 14px;
+    }
+
+    .leadership-desc {
+        max-width: 700px;
+        font-size: 0.96rem;
+        line-height: 1.8;
+        color: var(--lead-text-3);
+        margin-bottom: 18px;
+    }
+
+    .leadership-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    .leadership-column {
+        min-width: 0;
+    }
+
+    .leadership-column-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--lead-text-4);
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--lead-border);
+    }
+
+    .leadership-points {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+    }
+
+    .leadership-points li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 0.9rem;
+        line-height: 1.75;
+        color: var(--lead-text-2);
+    }
+
+    .leadership-points li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.78em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(135deg, var(--lead-accent), var(--lead-accent-2));
+        box-shadow: 0 0 10px rgba(99, 179, 237, 0.28);
+    }
+
+    .leadership-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .leadership-tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 6px 11px;
+        border-radius: 999px;
+        border: 1px solid var(--lead-border);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: var(--lead-text-3);
+        transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .leadership-card:hover .leadership-tag {
+        color: var(--lead-text-2);
+        border-color: rgba(99, 179, 237, 0.16);
+    }
+
+    .leadership-side {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 9px;
+        text-align: right;
+        flex-shrink: 0;
+        padding-top: 4px;
+    }
+
+    .leadership-date {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.04rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--lead-text-2);
+        white-space: nowrap;
+    }
+
+    .leadership-location {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--lead-text-4);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+        .leadership-meta {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .leadership-card {
+            grid-template-columns: 56px minmax(0, 1fr);
+        }
+
+        .leadership-side {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            padding-top: 0;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--lead-border);
+        }
+    }
+
+    @media (max-width: 720px) {
+        .leadership-section {
+            padding: 84px 0 72px;
+        }
+
+        .leadership-wrap {
+            padding: 0 20px;
+        }
+
+        .leadership-header {
+            grid-template-columns: 1fr;
+            align-items: start;
+            gap: 14px;
+        }
+
+        .leadership-count {
+            text-align: left;
+            padding-bottom: 0;
+        }
+
+        .leadership-meta {
+            grid-template-columns: 1fr;
+        }
+
+        .leadership-card {
+            grid-template-columns: 1fr;
+            gap: 18px;
+            padding: 22px;
+        }
+
+        .leadership-index {
+            font-size: 2rem;
+            padding-top: 0;
+        }
+
+        .leadership-columns {
+            grid-template-columns: 1fr;
+        }
+
+        .leadership-side {
+            order: -1;
+            margin-bottom: 0;
+        }
+
+        .leadership-role {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+<section class="leadership-section">
+    <div class="leadership-wrap">
+        <div class="leadership-header">
+            <div>
+                <div class="leadership-kicker">Beyond the Classroom</div>
+                <h2 class="leadership-title">Leadership &amp; <span class="accent">Extracurriculars</span></h2>
+                <p class="leadership-subtitle"> A record of leadership, mentoring, and community-driven contributions
+                    across academic, technical, and collaborative spaces. </p>
+            </div>
+            <div class="leadership-count">
+                <div class="leadership-count-number">05</div>
+                <div class="leadership-count-label">Featured Roles</div>
+            </div>
+        </div>
+
+        <div class="leadership-meta">
+            <div class="leadership-meta-card">
+                <div class="leadership-meta-label">Roles</div>
+                <div class="leadership-meta-value">05 Positions</div>
+            </div>
+            <div class="leadership-meta-card">
+                <div class="leadership-meta-label">Current</div>
+                <div class="leadership-meta-value">03 Active</div>
+            </div>
+            <div class="leadership-meta-card">
+                <div class="leadership-meta-label">Since</div>
+                <div class="leadership-meta-value">2023</div>
+            </div>
+            <div class="leadership-meta-card">
+                <div class="leadership-meta-label">Base</div>
+                <div class="leadership-meta-value">Dhaka, BD</div>
+            </div>
+        </div>
+
+        <div class="leadership-grid">
+            <article class="leadership-card">
+                <div class="leadership-index">01</div>
+
+                <div class="leadership-main">
+                    <div class="leadership-topline">
+                        <span class="leadership-pill active"><span class="dot"></span>Current</span>
+                        <span class="leadership-type">Initiative</span>
+                    </div>
+
+                    <h3 class="leadership-role">Founder &amp; Instructor</h3>
+                    <div class="leadership-org">UIU Scholar's Squad</div>
+
+                    <div class="leadership-desc">
+                        Founded a student-focused academic support initiative to help UIU students prepare more
+                        effectively for examinations and technical courses through structured guidance, mentoring, and
+                        collaborative learning.
+                    </div>
+
+                    <div class="leadership-columns">
+                        <div class="leadership-column">
+                            <div class="leadership-column-label">Highlights</div>
+                            <ul class="leadership-points">
+                                <li>Conduct preparatory sessions covering key course concepts and exam-focused learning.
+                                </li>
+                                <li>Mentor students in structured problem solving and academic improvement strategies.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="leadership-column">
+                            <div class="leadership-column-label">Impact</div>
+                            <ul class="leadership-points">
+                                <li>Built a collaborative environment that encouraged peer engagement and consistent
+                                    progress.</li>
+                                <li>Grew the initiative into a trusted resource across multiple CSE cohorts.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="leadership-tags">
+                        <span class="leadership-tag">Academic Support</span>
+                        <span class="leadership-tag">Instruction</span>
+                        <span class="leadership-tag">Student Mentoring</span>
+                    </div>
+                </div>
+
+                <div class="leadership-side">
+                    <div class="leadership-date">2023 — Present</div>
+                    <div class="leadership-location">Dhaka, Bangladesh</div>
+                </div>
+            </article>
+
+            <article class="leadership-card">
+                <div class="leadership-index">02</div>
+
+                <div class="leadership-main">
+                    <div class="leadership-topline">
+                        <span class="leadership-pill active"><span class="dot"></span>Current</span>
+                        <span class="leadership-type">Club Role</span>
+                    </div>
+
+                    <h3 class="leadership-role">CP Wing Associate</h3>
+                    <div class="leadership-org">UIU Computer Club</div>
+
+                    <div class="leadership-desc">
+                        Contribute to competitive programming activities, peer learning initiatives, and community
+                        engagement within the programming wing.
+                    </div>
+
+                    <ul class="leadership-points" style="margin-bottom: 18px;">
+                        <li>Support peer learning and problem-solving practice within the competitive programming
+                            community.</li>
+                        <li>Collaborate with team members to encourage active participation in technical activities.
+                        </li>
+                        <li>Help sustain a learning-focused environment centered on consistency and growth.</li>
+                    </ul>
+
+                    <div class="leadership-tags">
+                        <span class="leadership-tag">Competitive Programming</span>
+                        <span class="leadership-tag">Peer Learning</span>
+                        <span class="leadership-tag">Community Engagement</span>
+                    </div>
+                </div>
+
+                <div class="leadership-side">
+                    <div class="leadership-date">2025 — Present</div>
+                    <div class="leadership-location">Dhaka, Bangladesh</div>
+                </div>
+            </article>
+
+            <article class="leadership-card">
+                <div class="leadership-index">03</div>
+
+                <div class="leadership-main">
+                    <div class="leadership-topline">
+                        <span class="leadership-pill"><span class="dot"></span>Previous</span>
+                        <span class="leadership-type">Club Role</span>
+                    </div>
+
+                    <h3 class="leadership-role">Executive, Programming Wing</h3>
+                    <div class="leadership-org">UIU Computer Club</div>
+
+                    <div class="leadership-desc">
+                        Helped organize programming-focused events, student engagement activities, and club initiatives
+                        related to coding and technical development.
+                    </div>
+
+                    <ul class="leadership-points" style="margin-bottom: 18px;">
+                        <li>Contributed to programming-centered club operations and student engagement efforts.</li>
+                        <li>Supported activities that strengthened technical interest and collaborative participation.
+                        </li>
+                        <li>Played an active role in building continuity across programming wing initiatives.</li>
+                    </ul>
+
+                    <div class="leadership-tags">
+                        <span class="leadership-tag">Event Organization</span>
+                        <span class="leadership-tag">Leadership</span>
+                        <span class="leadership-tag">Technical Activities</span>
+                    </div>
+                </div>
+
+                <div class="leadership-side">
+                    <div class="leadership-date">2023 — 2025</div>
+                    <div class="leadership-location">Dhaka, Bangladesh</div>
+                </div>
+            </article>
+
+            <article class="leadership-card">
+                <div class="leadership-index">04</div>
+
+                <div class="leadership-main">
+                    <div class="leadership-topline">
+                        <span class="leadership-pill"><span class="dot"></span>Previous</span>
+                        <span class="leadership-type">Club Role</span>
+                    </div>
+
+                    <h3 class="leadership-role">Junior Executive, Programming Wing</h3>
+                    <div class="leadership-org">UIU Computer Club</div>
+
+                    <div class="leadership-desc">
+                        Supported the programming wing in coordinating events, student participation, and technical
+                        community activities during an early stage of leadership involvement.
+                    </div>
+
+                    <ul class="leadership-points" style="margin-bottom: 18px;">
+                        <li>Assisted with event coordination and smooth execution of programming-related activities.
+                        </li>
+                        <li>Helped encourage student participation across technical and club-based initiatives.</li>
+                        <li>Contributed to a collaborative and supportive learning atmosphere.</li>
+                    </ul>
+
+                    <div class="leadership-tags">
+                        <span class="leadership-tag">Coordination</span>
+                        <span class="leadership-tag">Student Participation</span>
+                        <span class="leadership-tag">Growth Journey</span>
+                    </div>
+                </div>
+
+                <div class="leadership-side">
+                    <div class="leadership-date">2023 — 2024</div>
+                    <div class="leadership-location">Dhaka, Bangladesh</div>
+                </div>
+            </article>
+
+            <article class="leadership-card">
+                <div class="leadership-index">05</div>
+
+                <div class="leadership-main">
+                    <div class="leadership-topline">
+                        <span class="leadership-pill active"><span class="dot"></span>Ongoing</span>
+                        <span class="leadership-type">Support Role</span>
+                    </div>
+
+                    <h3 class="leadership-role">Mentoring &amp; Academic Engagement</h3>
+                    <div class="leadership-org">Informal Mentorship / Teaching Support · CSE Academic Community</div>
+
+                    <div class="leadership-desc">
+                        Alongside formal leadership positions, continuously supported students through mentoring,
+                        academic guidance, and technical assistance across multiple learning contexts.
+                    </div>
+
+                    <div class="leadership-columns">
+                        <div class="leadership-column">
+                            <div class="leadership-column-label">Support Activities</div>
+                            <ul class="leadership-points">
+                                <li>Assisted junior students in understanding programming concepts and solving technical
+                                    problems.</li>
+                                <li>Shared study materials, learning strategies, and practical guidance for academic
+                                    improvement.</li>
+                            </ul>
+                        </div>
+
+                        <div class="leadership-column">
+                            <div class="leadership-column-label">Teaching Assistance</div>
+                            <ul class="leadership-points">
+                                <li>Supported course activities as a TA and grader across multiple CSE subjects.</li>
+                                <li>Helped students navigate complex topics and improve problem-solving approaches.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="leadership-tags">
+                        <span class="leadership-tag">Mentorship</span>
+                        <span class="leadership-tag">Teaching Assistance</span>
+                        <span class="leadership-tag">Academic Engagement</span>
+                        <span class="leadership-tag">Peer Support</span>
+                    </div>
+                </div>
+
+                <div class="leadership-side">
+                    <div class="leadership-date">Across Roles</div>
+                    <div class="leadership-location">CSE Community</div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<script> (() => { const cards = document.querySelectorAll('.leadership-card'); if (!cards.length) return; const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 }); cards.forEach((card, index) => { card.style.transitionDelay = `${index * 80}ms`; observer.observe(card); }); })(); </script>
