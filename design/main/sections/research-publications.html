@@ -1,0 +1,337 @@
+<style>
+    .research-publication-section {
+        --surface: rgba(255, 255, 255, 0.03);
+        --border: rgba(255, 255, 255, 0.08);
+        --accent: #63b3ed;
+        --accent2: #3b82f6;
+        --text-1: #f1f5f9;
+        --text-2: #cbd5e1;
+        --text-3: #94a3b8;
+        --text-4: #475569;
+
+        width: 100%;
+        color: var(--text-1);
+        line-height: 1.6;
+        padding: 120px 24px 80px;
+    }
+
+    .research-publication-section *,
+    .research-publication-section *::before,
+    .research-publication-section *::after {
+        box-sizing: border-box;
+    }
+
+    .research-publication-section .container {
+        max-width: 860px;
+        margin: 0 auto;
+    }
+
+    .research-publication-section .page-header {
+        margin-bottom: 36px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: researchFadeUp .7s .1s ease forwards;
+    }
+
+    .research-publication-section .page-eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+
+    .research-publication-section .page-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.3rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        color: var(--text-1);
+        margin-bottom: 12px;
+    }
+
+    .research-publication-section .page-title span {
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .research-publication-section .page-sub {
+        font-size: 0.96rem;
+        font-weight: 400;
+        color: var(--text-3);
+        line-height: 1.7;
+        max-width: 560px;
+    }
+
+    .research-publication-section .section-block {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: researchFadeUp .7s ease forwards;
+        animation-delay: .2s;
+    }
+
+    @keyframes researchFadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .research-publication-section .section-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .research-publication-section .section-label-text {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-4);
+        white-space: nowrap;
+    }
+
+    .research-publication-section .section-label-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .research-publication-section .publication-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .research-publication-section .publication-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 18px;
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        transition: border-color .25s, background .25s, transform .25s;
+    }
+
+    .research-publication-section .publication-card:hover {
+        border-color: rgba(99, 179, 237, 0.2);
+        background: rgba(99, 179, 237, 0.05);
+        transform: translateY(-1px);
+    }
+
+    .research-publication-section .publication-main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .research-publication-section .publication-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+
+    .research-publication-section .meta-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-3);
+    }
+
+    .research-publication-section .publication-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text-1);
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .research-publication-section .publication-summary {
+        font-size: 0.86rem;
+        font-weight: 400;
+        color: var(--text-3);
+        line-height: 1.55;
+    }
+
+    .research-publication-section .publication-side {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .research-publication-section .publication-links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .research-publication-section .publication-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .research-publication-section .publication-link.primary {
+        background: linear-gradient(90deg, rgba(99, 179, 237, 0.16), rgba(59, 130, 246, 0.14));
+        border: 1px solid rgba(99, 179, 237, 0.18);
+        color: var(--text-1);
+    }
+
+    .research-publication-section .publication-link.primary:hover {
+        transform: translateY(-1px);
+        border-color: rgba(99, 179, 237, 0.28);
+        background: linear-gradient(90deg, rgba(99, 179, 237, 0.22), rgba(59, 130, 246, 0.2));
+    }
+
+    .research-publication-section .publication-link.secondary {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        color: var(--text-2);
+    }
+
+    .research-publication-section .publication-link.secondary:hover {
+        transform: translateY(-1px);
+        border-color: rgba(99, 179, 237, 0.18);
+        background: rgba(99, 179, 237, 0.06);
+        color: var(--text-1);
+    }
+
+    @media (max-width: 700px) {
+        .research-publication-section .publication-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .research-publication-section .publication-side {
+            width: 100%;
+        }
+
+        .research-publication-section .publication-links {
+            justify-content: flex-start;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .research-publication-section {
+            padding: 100px 14px 64px;
+        }
+
+        .research-publication-section .publication-card {
+            padding: 14px;
+        }
+
+        .research-publication-section .page-title {
+            font-size: 2rem;
+        }
+
+        .research-publication-section .publication-title {
+            font-size: 0.95rem;
+        }
+
+        .research-publication-section .publication-summary {
+            font-size: 0.83rem;
+        }
+    }
+</style>
+
+<div class="research-publication-section">
+    <div class="container">
+        <div class="page-header">
+            <div class="page-eyebrow">Research Work</div>
+            <h1 class="page-title">Research &amp;<br><span>Publications</span></h1>
+            <p class="page-sub">
+                Selected publication showcasing applied computer vision research, model experimentation, and route
+                reconstruction from multi-camera CCTV inputs.
+            </p>
+        </div>
+
+        <div class="section-block">
+            <div class="section-label">
+                <span class="section-label-text">Publication</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="publication-list">
+                <article class="publication-card">
+                    <div class="publication-main">
+                        <div class="publication-meta">
+                            <span class="meta-chip">IEEE TENSYMP</span>
+                            <span class="meta-chip">2025</span>
+                            <span class="meta-chip">83% Accuracy</span>
+                        </div>
+
+                        <h3 class="publication-title">
+                            AutoTrack: A Deep Learning Approach on a Novel Dataset for Vehicle Detection and Route
+                            Tracking from CCTV Images
+                        </h3>
+
+                        <p class="publication-summary">
+                            YOLO-based system for vehicle detection, license plate recognition, and route
+                            reconstruction from multiple CCTV feeds with approximately 83% tracking accuracy.
+                        </p>
+                    </div>
+
+                    <div class="publication-side">
+                        <div class="publication-links">
+                            <a class="publication-link primary" href="https://ieeexplore.ieee.org/document/11144993"
+                                target="_blank" rel="noopener noreferrer">Paper</a>
+
+                            <a class="publication-link secondary"
+                                href="https://github.com/itsrifathridoy/Hit-And-Run-Case" target="_blank"
+                                rel="noopener noreferrer">Code</a>
+
+                            <a class="publication-link secondary"
+                                href="https://universe.roboflow.com/neural-flow/autotrack-33yyf" target="_blank"
+                                rel="noopener noreferrer">Dataset</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const root = document.querySelector('.research-publication-section');
+        if (!root) return;
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        root.querySelectorAll('.section-block, .page-header').forEach((el) => {
+            el.style.animationPlayState = 'paused';
+            obs.observe(el);
+        });
+    })();
+</script>
