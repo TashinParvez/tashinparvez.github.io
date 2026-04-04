@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal Snapshot</title>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --card: #0a0a0a;
+      --border: rgba(255,255,255,0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      padding: 60px 20px;
+    }
+
+    .snapshot {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: white;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .domains {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .chip:hover {
+      color: white;
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .snapshot {
+        padding: 30px 0;
+      }
+
+      .value {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="snapshot">
+    <div class="snapshot-grid">
+
+      <div class="item">
+        <div class="value">3.93</div>
+        <div class="label">Education</div>
+        <div class="desc">BSc in Computer Science & Engineering</div>
+        <div class="sub">CGPA: 3.93</div>
+      </div>
+
+      <div class="item">
+        <div class="value">4+</div>
+        <div class="label">Achievements</div>
+        <div class="desc">Competitive Programming Awards</div>
+        <div class="sub">Champion ×2 · Runner-up ×2</div>
+      </div>
+
+      <div class="item">
+        <div class="value">16th</div>
+        <div class="label">Ranking</div>
+        <div class="desc">UAP Intra University Contest</div>
+        <div class="sub">Algorithmic problem solving</div>
+      </div>
+
+    </div>
+
+    <div class="domains">
+      <div class="chip">Productivity</div>
+      <div class="chip">EdTech</div>
+      <div class="chip">AI Apps</div>
+      <div class="chip">Multi-user Systems</div>
+      <div class="chip">Operations</div>
+      <div class="chip">Consumer Products</div>
+    </div>
+  </section>
+
+</body>
+</html>

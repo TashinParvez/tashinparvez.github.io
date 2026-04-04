@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snapshot Divider</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #050509;
+            --bg-dark-2: #090914;
+            --bg-dark-3: #06060a;
+            --footer-text: #f3f4f6;
+            --footer-muted: #9ca3af;
+            --footer-line: rgba(255, 255, 255, 0.08);
+            --footer-accent: #8b5cf6;
+            --footer-accent-2: #60a5fa;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(139, 92, 246, 0.12), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.10), transparent 24%),
+                linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-2) 55%, var(--bg-dark-3) 100%);
+            color: var(--footer-text);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+        }
+
+        /* ── DIVIDER WRAPPER ── */
+        .snap-divider {
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .snap-divider::before,
+        .snap-divider::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--footer-line) 20%, var(--footer-line) 80%, transparent);
+        }
+
+        .snap-divider::before {
+            margin-bottom: 52px;
+        }
+
+        .snap-divider::after {
+            margin-top: 28px;
+        }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .stat {
+            flex: 1;
+            padding: 0 44px;
+            border-right: 1px solid var(--footer-line);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat:first-child {
+            padding-left: 0;
+        }
+
+        .stat:last-child {
+            padding-right: 0;
+            border-right: none;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(139, 92, 246, 0.65);
+            margin: 0 0px 2px 0px;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            color: #fff;
+            margin: 4px 0 4px 0;
+        }
+
+        .stat-title {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--footer-text);
+            line-height: 1.45;
+        }
+
+        .stat-sub {
+            font-size: 0.81rem;
+            color: var(--footer-muted);
+            line-height: 1.5;
+        }
+
+        /* ── CHIPS ── */
+        .chips-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 28px;
+            border-top: 1px solid var(--footer-line);
+        }
+
+        .chips-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--footer-muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .chips-track {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .chip {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--footer-muted);
+            padding: 5px 13px;
+            border: 1px solid var(--footer-line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.025);
+            transition: color .22s, border-color .22s, background .22s;
+            white-space: nowrap;
+            cursor: default;
+        }
+
+        .chip:hover {
+            color: var(--footer-text);
+            border-color: rgba(139, 92, 246, 0.32);
+            background: rgba(139, 92, 246, 0.07);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:700px) {
+            .stats-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .stat {
+                padding: 24px 0;
+                border-right: none;
+                border-bottom: 1px solid var(--footer-line);
+            }
+
+            .stat:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .stat:first-child {
+                padding-top: 0;
+            }
+
+            .chips-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="snap-divider">
+
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">3.93</div>
+                <div class="stat-label">Education</div>
+                <div class="stat-title">BSc in Computer Science &amp; Engineering</div>
+                <!-- <div class="stat-sub">Strong academic consistency with engineering focus</div> -->
+                <div class="stat-sub">Strong academic consistency in engineering</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4+</div>
+                <div class="stat-label">Awards</div>
+                <div class="stat-title">Competitive project awards across 3 years</div>
+                <div class="stat-sub">Champion ×2, 1st Runner-Up, 2nd Runner-Up</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">16th</div>
+                <div class="stat-label">Coding Contest</div>
+                <div class="stat-title">UAP Intra University Coding Contest</div>
+                <div class="stat-sub">Problem solving, speed, and algorithmic thinking</div>
+            </div>
+        </div>
+
+        <div class="chips-row">
+            <span class="chips-label">Focused On</span>
+            <div class="chips-track">
+                <span class="chip">User-centric Product Design</span>
+                <span class="chip">AI-powered Applications</span>
+                <span class="chip">Multi-user Platforms</span>
+                <span class="chip">Scalable Web Applications</span>
+                <span class="chip">Problem Solving</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

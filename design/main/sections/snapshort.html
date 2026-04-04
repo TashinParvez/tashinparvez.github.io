@@ -1,0 +1,211 @@
+<!-- snapshot.html -->
+<section class="snapshot-section" id="snapshot-divider">
+    <div class="snapshot-divider">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">3.93</div>
+                <div class="stat-label">Education</div>
+                <div class="stat-title">BSc in Computer Science &amp; Engineering</div>
+                <div class="stat-sub">Strong academic consistency in engineering</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value">4+</div>
+                <div class="stat-label">Awards</div>
+                <div class="stat-title">Competitive project awards across 3 years</div>
+                <div class="stat-sub">Champion ×2, 1st Runner-Up, 2nd Runner-Up</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-value">16th</div>
+                <div class="stat-label">Coding Contest</div>
+                <div class="stat-title">UAP Intra University Coding Contest</div>
+                <div class="stat-sub">Problem solving, speed, and algorithmic thinking</div>
+            </div>
+        </div>
+
+        <div class="chips-row">
+            <span class="chips-label">Focused On</span>
+
+            <div class="chips-track">
+                <span class="chip">User-centric Product Design</span>
+                <span class="chip">AI-powered Applications</span>
+                <span class="chip">Multi-user Platforms</span>
+                <span class="chip">Scalable Web Applications</span>
+                <span class="chip">Problem Solving</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .snapshot-section {
+        width: 100%;
+        min-height: auto;
+        padding: 40px 60px 24px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .snapshot-divider {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .snapshot-divider::before,
+    .snapshot-divider::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.08) 18%,
+                rgba(99, 179, 237, 0.22) 50%,
+                rgba(255, 255, 255, 0.08) 82%,
+                transparent);
+    }
+
+    .snapshot-divider::before {
+        margin-bottom: 40px;
+    }
+
+    .snapshot-divider::after {
+        margin-top: 24px;
+    }
+
+    .stats-row {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .stat {
+        flex: 1;
+        padding: 0 36px;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: relative;
+    }
+
+    .stat:first-child {
+        padding-left: 0;
+    }
+
+    .stat:last-child {
+        padding-right: 0;
+        border-right: none;
+    }
+
+    .stat-value {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.05em;
+        color: #f8fafc;
+        margin-bottom: 2px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(147, 197, 253, 0.72);
+        margin-bottom: 4px;
+    }
+
+    .stat-title {
+        font-size: 0.92rem;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #e2e8f0;
+    }
+
+    .stat-sub {
+        font-size: 0.82rem;
+        line-height: 1.55;
+        color: #94a3b8;
+    }
+
+    .chips-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 32px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .chips-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .chips-track {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .chip {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        color: #94a3b8;
+        padding: 6px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.025);
+        transition: color .22s, border-color .22s, background .22s, transform .22s;
+        white-space: nowrap;
+        cursor: default;
+    }
+
+    .chip:hover {
+        color: #e2e8f0;
+        border-color: rgba(99, 179, 237, 0.28);
+        background: rgba(99, 179, 237, 0.08);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+        .snapshot-section {
+            padding: 32px 24px 20px;
+        }
+
+        .stats-row {
+            flex-direction: column;
+        }
+
+        .stat {
+            padding: 22px 0;
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat:first-child {
+            padding-top: 0;
+        }
+
+        .stat:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .chips-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+    }
+</style>
