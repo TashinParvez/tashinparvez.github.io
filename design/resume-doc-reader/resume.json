@@ -1,0 +1,172 @@
+{
+    "name": "Tashin Parvez",
+    "headline": "Software Engineering Student | Frontend & Product-Focused Developer",
+    "summary": "Computer Science & Engineering student building practical web products and student-facing tools with a strong focus on clean UI, real-world usability, and engineering fundamentals. Interested in scalable web applications, AI-powered products, and systems that solve operational or academic problems.",
+    "contact": [
+        {
+            "label": "Email",
+            "value": "tashinparvez2002@gmail.com",
+            "href": "mailto:tashinparvez2002@gmail.com"
+        },
+        {
+            "label": "GitHub",
+            "value": "github.com/TashinParvez",
+            "href": "https://github.com/TashinParvez"
+        },
+        {
+            "label": "LinkedIn",
+            "value": "linkedin.com/in/your-linkedin",
+            "href": "#"
+        },
+        {
+            "label": "Portfolio",
+            "value": "yourportfolio.com",
+            "href": "#"
+        },
+        {
+            "label": "Location",
+            "value": "Dhaka, Bangladesh"
+        }
+    ],
+    "skills": [
+        {
+            "label": "Languages",
+            "value": "JavaScript, TypeScript, Python, C++, SQL"
+        },
+        {
+            "label": "Frontend",
+            "value": "React, HTML, CSS, Tailwind CSS, Responsive UI, Component-based Design"
+        },
+        {
+            "label": "Backend",
+            "value": "Node.js, Express.js, REST APIs, Authentication"
+        },
+        {
+            "label": "Database & Tools",
+            "value": "MongoDB, MySQL, Git, GitHub, Postman, Figma"
+        },
+        {
+            "label": "Focus Areas",
+            "value": "Product Design Thinking, Multi-user Platforms, Student Tools, AI-powered Applications"
+        }
+    ],
+    "education": [
+        {
+            "degree": "BSc in Computer Science & Engineering",
+            "school": "United International University",
+            "date": "2022 — Present",
+            "detail": "CGPA: 3.93"
+        }
+    ],
+    "additional": [
+        {
+            "label": "Leadership",
+            "value": "Computer Club Executive, Teaching Assistant, Grader"
+        },
+        {
+            "label": "Contest",
+            "value": "16th Place — UAP Intra University Coding Contest"
+        },
+        {
+            "label": "Research",
+            "value": "1 IEEE Publication in AI & Computer Vision"
+        },
+        {
+            "label": "Tools Built",
+            "value": "UIU Faculty Schedule App"
+        }
+    ],
+    "interests": [
+        "User-centric Product Design",
+        "AI-powered Applications",
+        "Multi-user Platforms",
+        "Scalable Web Applications",
+        "EdTech & Student Tools",
+        "Problem Solving"
+    ],
+    "experience": [
+        {
+            "title": "Teaching Assistant / Academic Support Role",
+            "company": "University Academic Department",
+            "date": "Add date range",
+            "bullets": [
+                "Supported students through coursework, problem-solving sessions, and academic guidance.",
+                "Assisted with grading, evaluation, and maintaining academic quality in assigned courses.",
+                "Strengthened communication, mentoring, and technical explanation skills through direct student support."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Kairos",
+            "subtitle": "Productivity / habit-oriented application",
+            "date": "Add project date",
+            "link": "#",
+            "tech": "React, Node.js, MongoDB",
+            "bullets": [
+                "Built a product-focused application aimed at improving user productivity and habit consistency.",
+                "Designed the UI around clarity, usability, and low-friction interaction for repeat engagement.",
+                "Worked on feature design, frontend structure, and practical implementation for real user workflows."
+            ]
+        },
+        {
+            "title": "DirectEdge",
+            "subtitle": "Supply chain / operations-oriented system",
+            "date": "Add project date",
+            "link": "#",
+            "tech": "React, API Integration, Database",
+            "bullets": [
+                "Developed a system-oriented product addressing workflow and operational coordination problems.",
+                "Focused on usability, structured information presentation, and role-based process support.",
+                "Improved technical problem solving through architecture and feature tradeoff decisions."
+            ]
+        },
+        {
+            "title": "Wayout",
+            "subtitle": "Consumer-facing or multi-user platform",
+            "date": "Add project date",
+            "link": "#",
+            "tech": "React, JavaScript, Backend APIs",
+            "bullets": [
+                "Built a user-facing platform with attention to responsive design and practical product flow.",
+                "Handled feature implementation, interface decisions, and clean interaction patterns.",
+                "Used iterative development to improve clarity, layout structure, and overall UX."
+            ]
+        },
+        {
+            "title": "UIU Faculty Schedule App",
+            "subtitle": "Real-world student utility tool",
+            "date": "Add project date",
+            "link": "#",
+            "tech": "Web App, UI Design, Data Handling",
+            "bullets": [
+                "Created a real-world tool to help students access faculty schedule information more efficiently.",
+                "Focused on solving a specific campus usability problem with a simple, useful interface.",
+                "Demonstrated practical product thinking by building for a real audience with a clear use case."
+            ]
+        }
+    ],
+    "achievements": [
+        {
+            "title": "Competitive Awards Across 3 Years",
+            "subtitle": "Champion ×2, 1st Runner-Up, 2nd Runner-Up"
+        },
+        {
+            "title": "16th Place in UAP Intra University Coding Contest",
+            "subtitle": "Recognition for competitive problem solving and algorithmic thinking"
+        }
+    ],
+    "publications": [
+        {
+            "title": "IEEE Publication",
+            "subtitle": "Research in AI & Computer Vision",
+            "date": "Add publication year",
+            "bullets": [
+                "Contributed to research work in AI and computer vision.",
+                "Demonstrated academic writing, research collaboration, and technical analysis."
+            ]
+        }
+    ],
+    "footerLeft": "Built as a dynamic single-page HTML resume using external JSON data.",
+    "footerRight": "Edit resume.json to update the page automatically."
+}

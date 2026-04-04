@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tashin Parvez — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #070b11;
+      --bg-2: #0b1018;
+      --panel: rgba(255, 255, 255, 0.04);
+      --panel-2: rgba(255, 255, 255, 0.03);
+      --text: #edf2f7;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-2: rgba(255, 255, 255, 0.12);
+      --accent: #7dd3fc;
+      --max: 1080px;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top center, rgba(96, 165, 250, 0.07), transparent 28%),
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.06), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.04;
+      z-index: 0;
+    }
+
+    .resume-page {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 32px));
+      margin: 36px auto 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 0.86rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.22s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(125, 211, 252, 0.28);
+      background: rgba(96, 165, 250, 0.08);
+    }
+
+    .sheet {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+        rgba(7, 11, 17, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 42px 36px 26px;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .name {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+      color: #f8fbff;
+      margin-bottom: 12px;
+    }
+
+    .role {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .summary {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 10px;
+      justify-content: end;
+    }
+
+    .contact-line {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .contact-line a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-line a:hover {
+      color: var(--accent);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 0;
+    }
+
+    .sidebar {
+      padding: 28px 26px 32px;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.015));
+    }
+
+    .main {
+      padding: 28px 30px 36px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .skill-group {
+      margin-bottom: 16px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #dbe7f5;
+      margin-bottom: 8px;
+    }
+
+    .skill-value {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .meta-item {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .meta-item strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .entry {
+      padding: 0 0 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .entry-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f8fbff;
+    }
+
+    .entry-subtitle {
+      font-size: 0.93rem;
+      color: #cbd5e1;
+      margin-top: 3px;
+    }
+
+    .entry-date {
+      color: var(--muted);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .entry-bullets {
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .entry-bullets li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.93rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      color: #d8e4f0;
+      border: 1px solid var(--line-2);
+      background: var(--panel-2);
+      border-radius: 999px;
+      padding: 7px 11px;
+      line-height: 1;
+    }
+
+    .footer-note {
+      padding: 18px 30px 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+      /* display: flex; */
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .loading,
+    .error {
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .error {
+      color: #fda4af;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111827;
+      }
+
+      body::before,
+      .topbar {
+        display: none;
+      }
+
+      .resume-page {
+        width: 100%;
+        margin: 0;
+      }
+
+      .sheet {
+        border: none;
+        box-shadow: none;
+        background: white;
+      }
+
+      .hero,
+      .sidebar,
+      .main,
+      .footer-note {
+        background: white !important;
+      }
+
+      .hero,
+      .sidebar,
+      .main,
+      .footer-note,
+      .sheet,
+      .entry,
+      .sidebar {
+        color: #111827 !important;
+        border-color: #d1d5db !important;
+      }
+
+      .name,
+      .entry-title,
+      .skill-label,
+      .meta-item strong,
+      .contact-line a {
+        color: #111827 !important;
+      }
+
+      .role,
+      .summary,
+      .skill-value,
+      .meta-item,
+      .entry-subtitle,
+      .entry-date,
+      .entry-bullets li,
+      .footer-note,
+      .contact-line {
+        color: #4b5563 !important;
+      }
+
+      .section-title,
+      .project-link {
+        color: #2563eb !important;
+      }
+
+      .chip {
+        color: #111827 !important;
+        border-color: #d1d5db !important;
+        background: #f9fafb !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        justify-content: start;
+      }
+
+      .contact-line {
+        text-align: left;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .resume-page {
+        width: min(100%, calc(100% - 18px));
+        margin-top: 18px;
+      }
+
+      .hero {
+        padding: 28px 18px 22px;
+      }
+
+      .sidebar,
+      .main {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .footer-note {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .name {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resume-page">
+    <div class="topbar">
+      <div class="brand">Resume</div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()">Download PDF</button>
+        <button class="btn" id="copyMarkdownBtn">Copy Markdown</button>
+      </div>
+    </div>
+
+    <div class="sheet" id="resumeSheet">
+      <div class="loading" id="resumeLoading">Loading resume data...</div>
+    </div>
+  </div>
+
+  <script>
+    function contactItem(item) {
+      if (item.href) {
+        return '<div class="contact-line"><strong>' + item.label + ':</strong> <a href="' + item.href + '" target="_blank" rel="noopener noreferrer">' + item.value + '</a></div>';
+      }
+      return '<div class="contact-line"><strong>' + item.label + ':</strong> ' + item.value + '</div>';
+    }
+
+    function skillItem(item) {
+      return `
+        <div class="skill-group">
+          <div class="skill-label">${item.label}</div>
+          <div class="skill-value">${item.value}</div>
+        </div>
+      `;
+    }
+
+    function educationItem(item) {
+      return `
+        <div class="entry">
+          <div class="entry-top">
+            <div>
+              <div class="entry-title">${item.degree}</div>
+              <div class="entry-subtitle">${item.school}</div>
+            </div>
+            <div class="entry-date">${item.date}</div>
+          </div>
+          <ul class="entry-bullets">
+            <li>${item.detail}</li>
+          </ul>
+        </div>
+      `;
+    }
+
+    function additionalItem(item) {
+      return `<div class="meta-item"><strong>${item.label}:</strong> ${item.value}</div>`;
+    }
+
+    function chipItem(item) {
+      return `<span class="chip">${item}</span>`;
+    }
+
+    function entryItem(item) {
+      const subtitle = item.link && item.link !== "#"
+        ? `<div class="entry-subtitle"><a class="project-link" href="${item.link}" target="_blank" rel="noopener noreferrer">${item.subtitle || item.link}</a>${item.tech ? ` | Tech: ${item.tech}` : ""}</div>`
+        : `<div class="entry-subtitle">${item.subtitle || ""}${item.tech ? `${item.subtitle ? " | " : ""}Tech: ${item.tech}` : ""}</div>`;
+
+      const bullets = (item.bullets || []).map(b => `<li>${b}</li>`).join("");
+
+      return `
+        <div class="entry">
+          <div class="entry-top">
+            <div>
+              <div class="entry-title">${item.title}</div>
+              ${subtitle}
+            </div>
+            <div class="entry-date">${item.date || ""}</div>
+          </div>
+          ${bullets ? `<ul class="entry-bullets">${bullets}</ul>` : ""}
+        </div>
+      `;
+    }
+
+    function achievementItem(item) {
+      return `
+        <div class="entry">
+          <div class="entry-title">${item.title}</div>
+          <div class="entry-subtitle">${item.subtitle || ""}</div>
+        </div>
+      `;
+    }
+
+    function buildResume(data) {
+      return `
+        <header class="hero">
+          <div>
+            <h1 class="name" id="name">${data.name || ""}</h1>
+            <div class="role" id="headline">${data.headline || ""}</div>
+            <p class="summary" id="summary">${data.summary || ""}</p>
+          </div>
+
+          <div class="hero-right" id="contact">
+            ${(data.contact || []).map(contactItem).join("")}
+          </div>
+        </header>
+
+        <div class="content">
+          <aside class="sidebar">
+            <section class="section">
+              <h2 class="section-title">Technical Skills</h2>
+              <div id="skills">${(data.skills || []).map(skillItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Education</h2>
+              <div id="education">${(data.education || []).map(educationItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Additional Info</h2>
+              <div class="meta-list" id="additional">${(data.additional || []).map(additionalItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Interests</h2>
+              <div class="chips" id="interests">${(data.interests || []).map(chipItem).join("")}</div>
+            </section>
+          </aside>
+
+          <main class="main">
+            <section class="section">
+              <h2 class="section-title">Experience</h2>
+              <div id="experience">${(data.experience || []).map(entryItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Projects</h2>
+              <div id="projects">${(data.projects || []).map(entryItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Achievements</h2>
+              <div id="achievements">${(data.achievements || []).map(achievementItem).join("")}</div>
+            </section>
+
+            <section class="section">
+              <h2 class="section-title">Publications</h2>
+              <div id="publications">${(data.publications || []).map(entryItem).join("")}</div>
+            </section>
+          </main>
+        </div>
+
+        <div class="footer-note">  
+          <span>
+
+          <div class="resume-social-footer">
+  <a class="resume-social-link" href="mailto:tashinparvez2002@gmail.com" target="_blank" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M2 4h20v16H2V4zm10 7L4 6h16l-8 5zm0 2l8-5v10H4V8l8 5z" />
+    </svg>
+    <span>Email</span>
+  </a>
+
+  <a class="resume-social-link" href="https://github.com/TashinParvez" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.43 7.9 10.96.58.1.79-.25.79-.55v-2.1c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.2 1.8 1.2 1.04 1.78 2.74 1.26 3.4.96.1-.75.4-1.26.72-1.55-2.56-.3-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.52.12-3.16 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.84 0c2.22-1.5 3.2-1.18 3.2-1.18.64 1.64.24 2.86.12 3.16.75.8 1.2 1.82 1.2 3.08 0 4.43-2.7 5.4-5.27 5.7.41.35.77 1.04.77 2.1v3.12c0 .3.21.66.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+    </svg>
+    <span>GitHub</span>
+  </a>
+
+  <a class="resume-social-link" href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C22 7.6 24 9.5 24 13.3V24h-5v-9.4c0-2.24-.04-5.1-3.1-5.1-3.1 0-3.58 2.42-3.58 4.93V24h-5V8z" />
+    </svg>
+    <span>LinkedIn</span>
+  </a>
+
+  <a class="resume-social-link" href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M10 2h4v4h-4V2zM4 6h16v14H4V6zm2 2v10h12V8H6zm2 2h8v2H8v-2z" />
+    </svg>
+    <span>Portfolio</span>
+  </a>
+</div>
+
+<style>
+  .resume-social-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0px 0 0px;
+  }
+
+  .resume-social-link {
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #dbe7f5;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
+  }
+
+  .resume-social-link:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(125, 211, 252, 0.22);
+  }
+
+  .resume-social-link svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #a5b4fc;
+  }
+
+  .resume-social-link span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  @media (max-width: 640px) {
+    .resume-social-footer {
+      gap: 10px;
+    }
+
+    .resume-social-link {
+      height: 42px;
+      padding: 0 14px;
+    }
+
+    .resume-social-link span {
+      font-size: 0.84rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .resume-social-link {
+      min-width: calc(50% - 10px);
+    }
+  }
+</style>
+             
+          </span>
+
+
+
+        </div>
+      `;
+    }
+
+    function toMarkdown(data) {
+      const lines = [];
+      lines.push(`# ${data.name || ""}`);
+      lines.push("");
+      lines.push(`${data.headline || ""}`);
+      lines.push("");
+      lines.push((data.contact || []).map(c => c.href ? `[${c.value}](${c.href})` : c.value).join(" | "));
+      lines.push("");
+      lines.push("## Professional Summary");
+      lines.push(data.summary || "");
+      lines.push("");
+      lines.push("## Technical Skills");
+      (data.skills || []).forEach(s => lines.push(`- **${s.label}:** ${s.value}`));
+      lines.push("");
+      lines.push("## Experience");
+      (data.experience || []).forEach(e => {
+        lines.push(`### ${e.title}`);
+        lines.push(`${e.company || ""}${e.date ? ` | ${e.date}` : ""}`.trim());
+        (e.bullets || []).forEach(b => lines.push(`- ${b}`));
+        lines.push("");
+      });
+      lines.push("## Projects");
+      (data.projects || []).forEach(p => {
+        lines.push(`### ${p.title}`);
+        lines.push(`${p.subtitle || ""}${p.tech ? ` | Tech: ${p.tech}` : ""}`.trim());
+        if (p.link && p.link !== "#") lines.push(p.link);
+        (p.bullets || []).forEach(b => lines.push(`- ${b}`));
+        lines.push("");
+      });
+      lines.push("## Education");
+      (data.education || []).forEach(e => {
+        lines.push(`- **${e.degree}** — ${e.school} (${e.date})`);
+        lines.push(`  - ${e.detail}`);
+      });
+      lines.push("");
+      lines.push("## Additional Information");
+      (data.additional || []).forEach(a => lines.push(`- **${a.label}:** ${a.value}`));
+      lines.push("");
+      lines.push("## Interests");
+      lines.push((data.interests || []).join(", "));
+      return lines.join("\n");
+    }
+
+    let resumeData = null;
+
+    async function loadResume() {
+      const sheet = document.getElementById("resumeSheet");
+
+      try {
+        const response = await fetch("./resume.json");
+        if (!response.ok) throw new Error("Could not load resume.json");
+
+        resumeData = await response.json();
+        sheet.innerHTML = buildResume(resumeData);
+      } catch (error) {
+        sheet.innerHTML = `<div class="error">Failed to load resume.json</div>`;
+        console.error(error);
+      }
+    }
+
+    document.getElementById("copyMarkdownBtn").addEventListener("click", async () => {
+      if (!resumeData) return;
+
+      const markdown = toMarkdown(resumeData);
+
+      try {
+        await navigator.clipboard.writeText(markdown);
+        const btn = document.getElementById("copyMarkdownBtn");
+        const old = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(() => btn.textContent = old, 1200);
+      } catch (error) {
+        alert("Could not copy markdown.");
+      }
+    });
+
+    loadResume();
+  </script>
+</body>
+
+</html>
