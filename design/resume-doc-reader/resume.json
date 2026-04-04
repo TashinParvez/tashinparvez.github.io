@@ -1,172 +1,200 @@
 {
-    "name": "Tashin Parvez",
-    "headline": "Software Engineering Student | Frontend & Product-Focused Developer",
-    "summary": "Computer Science & Engineering student building practical web products and student-facing tools with a strong focus on clean UI, real-world usability, and engineering fundamentals. Interested in scalable web applications, AI-powered products, and systems that solve operational or academic problems.",
-    "contact": [
-        {
-            "label": "Email",
-            "value": "tashinparvez2002@gmail.com",
-            "href": "mailto:tashinparvez2002@gmail.com"
-        },
-        {
-            "label": "GitHub",
-            "value": "github.com/TashinParvez",
-            "href": "https://github.com/TashinParvez"
-        },
-        {
-            "label": "LinkedIn",
-            "value": "linkedin.com/in/your-linkedin",
-            "href": "#"
-        },
-        {
-            "label": "Portfolio",
-            "value": "yourportfolio.com",
-            "href": "#"
-        },
-        {
-            "label": "Location",
-            "value": "Dhaka, Bangladesh"
-        }
-    ],
-    "skills": [
-        {
-            "label": "Languages",
-            "value": "JavaScript, TypeScript, Python, C++, SQL"
-        },
-        {
-            "label": "Frontend",
-            "value": "React, HTML, CSS, Tailwind CSS, Responsive UI, Component-based Design"
-        },
-        {
-            "label": "Backend",
-            "value": "Node.js, Express.js, REST APIs, Authentication"
-        },
-        {
-            "label": "Database & Tools",
-            "value": "MongoDB, MySQL, Git, GitHub, Postman, Figma"
-        },
-        {
-            "label": "Focus Areas",
-            "value": "Product Design Thinking, Multi-user Platforms, Student Tools, AI-powered Applications"
-        }
-    ],
-    "education": [
-        {
-            "degree": "BSc in Computer Science & Engineering",
-            "school": "United International University",
-            "date": "2022 — Present",
-            "detail": "CGPA: 3.93"
-        }
-    ],
-    "additional": [
-        {
-            "label": "Leadership",
-            "value": "Computer Club Executive, Teaching Assistant, Grader"
-        },
-        {
-            "label": "Contest",
-            "value": "16th Place — UAP Intra University Coding Contest"
-        },
-        {
-            "label": "Research",
-            "value": "1 IEEE Publication in AI & Computer Vision"
-        },
-        {
-            "label": "Tools Built",
-            "value": "UIU Faculty Schedule App"
-        }
-    ],
-    "interests": [
-        "User-centric Product Design",
-        "AI-powered Applications",
-        "Multi-user Platforms",
-        "Scalable Web Applications",
-        "EdTech & Student Tools",
-        "Problem Solving"
-    ],
-    "experience": [
-        {
-            "title": "Teaching Assistant / Academic Support Role",
-            "company": "University Academic Department",
-            "date": "Add date range",
-            "bullets": [
-                "Supported students through coursework, problem-solving sessions, and academic guidance.",
-                "Assisted with grading, evaluation, and maintaining academic quality in assigned courses.",
-                "Strengthened communication, mentoring, and technical explanation skills through direct student support."
-            ]
-        }
-    ],
-    "projects": [
-        {
-            "title": "Kairos",
-            "subtitle": "Productivity / habit-oriented application",
-            "date": "Add project date",
-            "link": "#",
-            "tech": "React, Node.js, MongoDB",
-            "bullets": [
-                "Built a product-focused application aimed at improving user productivity and habit consistency.",
-                "Designed the UI around clarity, usability, and low-friction interaction for repeat engagement.",
-                "Worked on feature design, frontend structure, and practical implementation for real user workflows."
-            ]
-        },
-        {
-            "title": "DirectEdge",
-            "subtitle": "Supply chain / operations-oriented system",
-            "date": "Add project date",
-            "link": "#",
-            "tech": "React, API Integration, Database",
-            "bullets": [
-                "Developed a system-oriented product addressing workflow and operational coordination problems.",
-                "Focused on usability, structured information presentation, and role-based process support.",
-                "Improved technical problem solving through architecture and feature tradeoff decisions."
-            ]
-        },
-        {
-            "title": "Wayout",
-            "subtitle": "Consumer-facing or multi-user platform",
-            "date": "Add project date",
-            "link": "#",
-            "tech": "React, JavaScript, Backend APIs",
-            "bullets": [
-                "Built a user-facing platform with attention to responsive design and practical product flow.",
-                "Handled feature implementation, interface decisions, and clean interaction patterns.",
-                "Used iterative development to improve clarity, layout structure, and overall UX."
-            ]
-        },
-        {
-            "title": "UIU Faculty Schedule App",
-            "subtitle": "Real-world student utility tool",
-            "date": "Add project date",
-            "link": "#",
-            "tech": "Web App, UI Design, Data Handling",
-            "bullets": [
-                "Created a real-world tool to help students access faculty schedule information more efficiently.",
-                "Focused on solving a specific campus usability problem with a simple, useful interface.",
-                "Demonstrated practical product thinking by building for a real audience with a clear use case."
-            ]
-        }
-    ],
-    "achievements": [
-        {
-            "title": "Competitive Awards Across 3 Years",
-            "subtitle": "Champion ×2, 1st Runner-Up, 2nd Runner-Up"
-        },
-        {
-            "title": "16th Place in UAP Intra University Coding Contest",
-            "subtitle": "Recognition for competitive problem solving and algorithmic thinking"
-        }
-    ],
-    "publications": [
-        {
-            "title": "IEEE Publication",
-            "subtitle": "Research in AI & Computer Vision",
-            "date": "Add publication year",
-            "bullets": [
-                "Contributed to research work in AI and computer vision.",
-                "Demonstrated academic writing, research collaboration, and technical analysis."
-            ]
-        }
-    ],
-    "footerLeft": "Built as a dynamic single-page HTML resume using external JSON data.",
-    "footerRight": "Edit resume.json to update the page automatically."
+  "name": "Md. Tashin Parvez",
+  "headline": "Product Analyst | Product Discovery, Requirement Analysis, User Workflows, Cross-Functional Delivery",
+  "summary": "Product Analyst with hands-on experience in product discovery, requirement analysis, workflow design, and cross-functional coordination for digital products across SaaS, platform, and workflow-driven use cases. Worked with clients, designers, and engineers to translate business and user needs into scoped requirements, PRDs, user stories, and delivery-ready documentation. Strong foundation in user-centered problem solving, feature prioritization, and structured execution, backed by a Computer Science background and multiple award-winning product projects.",
+  "contact": [
+    {
+      "label": "Email",
+      "value": "tashinparvez2002@gmail.com",
+      "href": "mailto:tashinparvez2002@gmail.com"
+    },
+    {
+      "label": "GitHub",
+      "value": "github.com/TashinParvez",
+      "href": "https://github.com/TashinParvez"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/tashinparvez",
+      "href": "https://linkedin.com/in/tashinparvez"
+    },
+    {
+      "label": "Portfolio",
+      "value": "codeforces.com/profile/Tashin.Parvez",
+      "href": "https://codeforces.com/profile/Tashin.Parvez"
+    },
+    {
+      "label": "Location",
+      "value": "Dhaka, Bangladesh"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Product",
+      "value": "Product Discovery, Requirement Gathering, Requirement Analysis, PRD Writing, User Stories, Workflow Design, Feature Prioritization, Competitor Analysis, Stakeholder Management, Cross-Functional Collaboration, User Feedback Analysis"
+    },
+    {
+      "label": "Analytics",
+      "value": "Data Analysis, KPI Tracking, Excel, Google Sheets, SQL"
+    },
+    {
+      "label": "Tools",
+      "value": "Jira, Notion, Figma, Git, GitHub"
+    },
+    {
+      "label": "Technical",
+      "value": "C, C++, Java, Python, SQL, MySQL, PHP, HTML, CSS, JavaScript, Bootstrap"
+    },
+    {
+      "label": "Methods",
+      "value": "Agile, Scrum, User-Centered Design, MVP Scoping, Acceptance Criteria, Structured Problem Solving"
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Sc. in Computer Science and Engineering",
+      "school": "United International University",
+      "date": "Feb 2021 — Feb 2026",
+      "detail": "CGPA: 3.93 | Relevant coursework: Database Management Systems, Software Engineering, System Analysis and Design, Project Management, Artificial Intelligence, Data Mining"
+    }
+  ],
+  "additional": [
+    {
+      "label": "Leadership",
+      "value": "UIU Computer Club — Programming Wing | Jr. Executive → Executive → Competitive Programming Wing Associate (2023 — Present)"
+    },
+    {
+      "label": "Contest",
+      "value": "16th Place — UAP Intra University Coding Contest"
+    },
+    {
+      "label": "Research",
+      "value": "IEEE TENSYMP 2025 publication in AI & Computer Vision"
+    },
+    {
+      "label": "Tools Built",
+      "value": "UIU Faculty Schedule App"
+    }
+  ],
+  "interests": [
+    "Product Discovery",
+    "Requirement Analysis",
+    "Workflow Design",
+    "User-Centered Problem Solving",
+    "SaaS & Platform Products",
+    "Cross-Functional Product Delivery"
+  ],
+  "experience": [
+    {
+      "title": "Product Analyst",
+      "company": "Ontik Technology",
+      "date": "Oct 2025 — Present",
+      "bullets": [
+        "Led discovery and requirement analysis across 20+ client engagements, translating business problems into structured scopes, user workflows, feature requirements, and implementation-ready documentation.",
+        "Worked with clients, engineers, and designers to define user flows, clarify requirements, and prioritize features based on business value, usability, and technical feasibility.",
+        "Reduced requirement ambiguity during pre-sales and early planning by documenting assumptions, edge cases, and workflow dependencies before development kickoff.",
+        "Supported solution planning and delivery readiness by aligning stakeholders on scope, open questions, and feature expectations across cross-functional teams.",
+        "Independently coordinated end-to-end planning and client handover for a production platform, managing requirement clarification, development alignment, and stakeholder communication.",
+        "Prepared PRDs, SRS documents, user stories, and workflow specifications to improve development clarity and reduce miscommunication during handoff and execution."
+      ]
+    },
+    {
+      "title": "Product Analyst Intern",
+      "company": "Ontik Technology",
+      "date": "May 2025 — Sep 2025",
+      "bullets": [
+        "Supported product discovery, competitor review, and requirement breakdown for client product initiatives across fintech, education, and operations-focused workflows.",
+        "Partnered with senior team members to map user journeys, organize feature requirements, and convert business needs into structured documentation for delivery teams."
+      ]
+    },
+    {
+      "title": "Undergraduate Teaching Assistant, Department of CSE",
+      "company": "United International University",
+      "date": "Jan 2024 — Feb 2026",
+      "bullets": [
+        "Supported instruction for ICS, SPL, OOP, and DSA-I courses, strengthening communication, structured problem solving, and technical mentoring skills.",
+        "Helped students break down complex programming concepts into understandable steps, improving clarity in technical communication."
+      ]
+    },
+    {
+      "title": "Grader",
+      "company": "United International University",
+      "date": "2023 — 2024",
+      "bullets": [
+        "Supported course evaluation and academic assistance for Structured Programming, Object-Oriented Programming, Discrete Mathematics, and Electrical Circuits."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Kairos",
+      "subtitle": "Personal Growth & Habit Management Platform",
+      "date": "2024",
+      "link": "#",
+      "tech": "MySQL, PHP, HTML, CSS, JavaScript",
+      "bullets": [
+        "Designed a personal growth platform to address routine inconsistency and procrastination, defining core user journeys for habit tracking, journaling, progress visibility, and community engagement.",
+        "Prioritized MVP modules and structured backend/data requirements to support personalized goal management, user-generated content, and scalable admin operations.",
+        "Champion among 71 teams at the UIU CSE Project Show (2024)."
+      ]
+    },
+    {
+      "title": "DirectEdge",
+      "subtitle": "Agricultural Supply Chain & Shop Management Platform",
+      "date": "2025",
+      "link": "#",
+      "tech": "Workflow Design, Supply Chain Planning, Multi-stakeholder Platform",
+      "bullets": [
+        "Designed a supply chain and shop management platform to improve visibility and coordination across farmers, agents, warehouses, distributors, and retailers.",
+        "Mapped multi-stakeholder workflows and prioritized modules for inventory visibility, warehouse operations, order flow, notifications, and analytics.",
+        "1st Runner-Up among 55 teams at the UIU CSE Project Show (2025)."
+      ]
+    },
+    {
+      "title": "Wayout",
+      "subtitle": "Tour & Trip Management Platform",
+      "date": "2023",
+      "link": "#",
+      "tech": "Travel Platform Design, Role-based Workflow Design",
+      "bullets": [
+        "Conceptualized a travel planning platform to simplify destination discovery, package booking, guide hiring, and trip coordination in a unified flow.",
+        "Mapped role-based user journeys for travelers, guides, and administrators, prioritizing core modules for booking, reminders, navigation, and guide management.",
+        "2nd Runner-Up among 66 teams at the UIU CSE Project Show (2023)."
+      ]
+    },
+    {
+      "title": "UIU Faculty Schedule App",
+      "subtitle": "Faculty Routine & Availability Search Tool",
+      "date": "2025",
+      "link": "#",
+      "tech": "Campus Utility Tool, Search Workflow, Schedule Visualization",
+      "bullets": [
+        "Built a campus utility to reduce friction in finding faculty availability, designing search and schedule-visualization workflows for faster academic planning.",
+        "Focused on usability and information accessibility across mobile and desktop experiences."
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "UIU Merit-Based Scholarship",
+      "subtitle": "Awarded 100% (6 times), 50% (2 times), and 25% (4 times)"
+    },
+    {
+      "title": "Competitive Awards Across Project Shows",
+      "subtitle": "Champion ×2, 1st Runner-Up, 2nd Runner-Up"
+    }
+  ],
+  "publications": [
+    {
+      "title": "AutoTrack: A Deep Learning Approach on a Novel Dataset for Vehicle Detection and Route Tracking from CCTV Images",
+      "subtitle": "IEEE TENSYMP, 2025",
+      "date": "2025",
+      "bullets": [
+        "Developed an automated hit-and-run investigation system using YOLOv5 for vehicle detection and YOLOv8 for license plate recognition.",
+        "Reconstructed vehicle routes from CCTV feeds with 83% tracking accuracy."
+      ]
+    }
+  ],
+  "footerLeft": "Built as a dynamic single-page HTML resume using external JSON data.",
+  "footerRight": "Edit resume.json to update the page automatically."
 }
