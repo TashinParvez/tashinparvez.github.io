@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources CTA Banner</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --surface: rgba(255, 255, 255, 0.032);
+            --surface-2: rgba(99, 179, 237, 0.045);
+            --border: rgba(255, 255, 255, 0.07);
+            --border-strong: rgba(99, 179, 237, 0.18);
+            --accent: #63b3ed;
+            --accent-2: #3b82f6;
+            --text-1: #f1f5f9;
+            --text-2: #cbd5e1;
+            --text-3: #94a3b8;
+            --text-4: #475569;
+            --success: #22c55e;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            min-height: 100vh;
+            padding: 48px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 760px;
+            height: 420px;
+            background: radial-gradient(ellipse, rgba(99, 179, 237, 0.06) 0%, transparent 72%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .resources-cta {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+                radial-gradient(circle at top right, rgba(99, 179, 237, 0.12), transparent 32%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.08), transparent 34%),
+                var(--surface);
+            backdrop-filter: blur(16px);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            isolation: isolate;
+        }
+
+        .resources-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 20%, rgba(99, 179, 237, 0.05) 50%, transparent 80%);
+            opacity: 0;
+            transform: translateX(-20%);
+            transition: opacity .5s ease, transform .7s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .resources-cta:hover::before {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+
+        .resources-cta::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 27px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cta-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(99, 179, 237, 0.9);
+        }
+
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 700;
+            margin-bottom: 18px;
+            max-width: 720px;
+        }
+
+        .title .grad {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            max-width: 660px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-3);
+            margin-bottom: 24px;
+        }
+
+        .points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .point {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            font-size: 0.84rem;
+            font-weight: 500;
+            transition: border-color .3s ease, background .3s ease, transform .3s ease;
+        }
+
+        .point:hover {
+            border-color: var(--border-strong);
+            background: rgba(99, 179, 237, 0.06);
+            transform: translateY(-1px);
+        }
+
+        .point i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+            flex-shrink: 0;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            outline: 0;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 200px;
+            padding: 15px 22px;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, background .28s ease;
+        }
+
+        .btn-primary {
+            color: #06111d;
+            background: linear-gradient(135deg, var(--accent), #8cc9f5);
+            box-shadow: 0 10px 30px rgba(99, 179, 237, 0.22);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(99, 179, 237, 0.28);
+        }
+
+        .btn-secondary {
+            color: var(--text-1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+            background: var(--surface-2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+
+        .side-card {
+            position: relative;
+            border-radius: 22px;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.028);
+            border: 1px solid rgba(99, 179, 237, 0.11);
+            backdrop-filter: blur(12px);
+            min-height: 100%;
+        }
+
+        .side-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            background: radial-gradient(circle at top, rgba(99, 179, 237, 0.11), transparent 62%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .side-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .side-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-4);
+            margin-bottom: 18px;
+        }
+
+        .quote {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text-2);
+            margin-bottom: 18px;
+        }
+
+        .quote strong {
+            color: var(--text-1);
+            font-weight: 600;
+        }
+
+        .mini-line {
+            width: 72px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            margin-bottom: 14px;
+        }
+
+        .foot {
+            font-size: 0.85rem;
+            color: var(--text-4);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 900px) {
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-cta {
+                padding: 30px 22px;
+            }
+
+            .title {
+                max-width: 100%;
+            }
+
+            .subtitle {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 20px 14px;
+            }
+
+            .resources-cta {
+                border-radius: 22px;
+                padding: 24px 18px;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .points {
+                gap: 8px;
+            }
+
+            .point {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <section class="resources-cta" aria-labelledby="resources-title">
+            <div class="cta-grid">
+                <div class="content">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Shared Resources
+                    </div>
+
+                    <h2 class="title" id="resources-title">
+                        Learning, organizing, and turning it into something
+                        <span class="grad">useful for others.</span>
+                    </h2>
+
+                    <p class="subtitle">
+                        Over time, I’ve naturally become someone people rely on for structured notes, study support,
+                        and thoughtful writing. I don’t just collect knowledge for myself—I try to shape it into
+                        reusable resources that help others move faster and learn better.
+                    </p>
+
+                    <div class="points">
+                        <span class="point"><i></i>Shared study support for juniors</span>
+                        <span class="point"><i></i>Built reusable learning systems</span>
+                        <span class="point"><i></i>Open, collaborative mindset</span>
+                        <span class="point"><i></i>Consistency backed by discipline</span>
+                    </div>
+
+                    <div class="actions">
+                        <a class="btn btn-primary" href="sections/study-materials.html">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 6.5C7 5.67157 7.67157 5 8.5 5H18C18.5523 5 19 5.44772 19 6V17.5C19 18.3284 18.3284 19 17.5 19H8.5C7.67157 19 7 18.3284 7 17.5V6.5Z"
+                                    stroke="currentColor" stroke-width="1.7" />
+                                <path d="M7 7C6.17157 7 5.5 7.67157 5.5 8.5V17C5.5 18.3807 6.61929 19.5 8 19.5H17"
+                                    stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                                <path d="M10 9H16M10 12H16M10 15H14" stroke="currentColor" stroke-width="1.7"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Study Materials
+                        </a>
+
+                        <a class="btn btn-secondary" href="sections/blogs.html">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 5.5H17C18.1046 5.5 19 6.39543 19 7.5V16.5C19 17.6046 18.1046 18.5 17 18.5H7C5.89543 18.5 5 17.6046 5 16.5V7.5C5 6.39543 5.89543 5.5 7 5.5Z"
+                                    stroke="currentColor" stroke-width="1.7" />
+                                <path d="M8.5 9H15.5M8.5 12H15.5M8.5 15H12.5" stroke="currentColor" stroke-width="1.7"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Writings / Blogs
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="side-card" aria-label="Resource philosophy">
+                    <div class="side-inner">
+                        <div class="side-label">What this reflects</div>
+                        <div class="mini-line"></div>
+                        <p class="quote">
+                            <strong>Not just learning—building systems that others can use.</strong>
+                            From study sheets to structured writings, this space reflects a mindset of sharing early,
+                            organizing clearly, and making knowledge more accessible to the community.
+                        </p>
+                        <p class="foot">
+                            A small collection of materials and thoughts shaped by curiosity, consistency, and the
+                            habit of helping others grow alongside me.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.querySelectorAll('.resources-cta, .side-card, .btn').forEach((el) => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                el.style.setProperty('--mx', `${x}%`);
+                el.style.setProperty('--my', `${y}%`);
+            });
+        });
+    </script>
+</body>
+
+</html>

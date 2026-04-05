@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Minimal Resources Banner</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06080d;
+            --surface: rgba(255, 255, 255, 0.035);
+            --surface-2: rgba(99, 179, 237, 0.07);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(99, 179, 237, 0.22);
+            --accent: #63b3ed;
+            --accent-2: #8fd0ff;
+            --accent-deep: #3b82f6;
+            --text-1: #f5f8fc;
+            --text-2: #d7e0ea;
+            --text-3: #96a6b8;
+            --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.42);
+            --shadow-accent: 0 18px 40px rgba(99, 179, 237, 0.16);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top center, rgba(99, 179, 237, 0.08), transparent 30%),
+                linear-gradient(180deg, #05070b 0%, #080b10 55%, #05070c 100%);
+            color: var(--text-1);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 460px;
+            background: radial-gradient(ellipse, rgba(99, 179, 237, 0.08) 0%, transparent 72%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(8px);
+        }
+
+        .resources-banner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 64px clamp(20px, 4vw, 56px);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012)),
+                radial-gradient(circle at top right, rgba(99, 179, 237, 0.10), transparent 26%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.08), transparent 30%),
+                var(--surface);
+            backdrop-filter: blur(18px);
+            overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .resources-banner::before {
+            content: '';
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            pointer-events: none;
+        }
+
+        .resources-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    transparent 24%,
+                    rgba(99, 179, 237, 0.055) 50%,
+                    transparent 76%);
+            opacity: 0.55;
+            pointer-events: none;
+        }
+
+        .banner-inner {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(99, 179, 237, 0.06);
+            border: 1px solid rgba(99, 179, 237, 0.14);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.7rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+            font-weight: 700;
+            max-width: 760px;
+            color: var(--text-1);
+            text-wrap: balance;
+        }
+
+        .title span {
+            background: linear-gradient(90deg, #a8ddff 0%, var(--accent) 45%, var(--accent-deep) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 24px rgba(99, 179, 237, 0.18);
+        }
+
+        .text {
+            max-width: 660px;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text-3);
+            letter-spacing: 0.01em;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .btn {
+            appearance: none;
+            border: none;
+            outline: none;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 196px;
+            padding: 15px 22px;
+            border-radius: 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            transition:
+                transform .28s ease,
+                border-color .28s ease,
+                background .28s ease,
+                box-shadow .28s ease;
+        }
+
+        .btn-primary {
+            color: #07111c;
+            background: linear-gradient(135deg, #8fd0ff 0%, var(--accent) 45%, #4d9fe8 100%);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 42px rgba(99, 179, 237, 0.22);
+        }
+
+        .btn-secondary {
+            color: var(--text-1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+                var(--surface-2);
+            box-shadow:
+                0 20px 44px rgba(0, 0, 0, 0.34),
+                0 10px 28px rgba(99, 179, 237, 0.09);
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 560px) {
+            .resources-banner {
+                padding: 38px 16px;
+            }
+
+            .resources-banner::before {
+                inset: 8px;
+                border-radius: 22px;
+            }
+
+            .actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="resources-banner" aria-labelledby="resources-title">
+        <div class="banner-inner">
+            <div class="eyebrow">Resources</div>
+
+            <h2 class="title" id="resources-title">
+                Built to <span>share what helps.</span>
+            </h2>
+
+            <p class="text">
+                Notes, materials, and writings shaped by a habit of learning clearly and making it useful for others.
+            </p>
+
+            <div class="actions">
+                <a class="btn btn-primary" href="sections/study-materials.html">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M7 6.5C7 5.67157 7.67157 5 8.5 5H18C18.5523 5 19 5.44772 19 6V17.5C19 18.3284 18.3284 19 17.5 19H8.5C7.67157 19 7 18.3284 7 17.5V6.5Z"
+                            stroke="currentColor" stroke-width="1.7" />
+                        <path d="M7 7C6.17157 7 5.5 7.67157 5.5 8.5V17C5.5 18.3807 6.61929 19.5 8 19.5H17"
+                            stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                        <path d="M10 9H16M10 12H16M10 15H14" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" />
+                    </svg>
+                    Study Materials
+                </a>
+
+                <a class="btn btn-secondary" href="sections/blogs.html">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M7 5.5H17C18.1046 5.5 19 6.39543 19 7.5V16.5C19 17.6046 18.1046 18.5 17 18.5H7C5.89543 18.5 5 17.6046 5 16.5V7.5C5 6.39543 5.89543 5.5 7 5.5Z"
+                            stroke="currentColor" stroke-width="1.7" />
+                        <path d="M8.5 9H15.5M8.5 12H15.5M8.5 15H12.5" stroke="currentColor" stroke-width="1.7"
+                            stroke-linecap="round" />
+                    </svg>
+                    Writings / Blogs
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
