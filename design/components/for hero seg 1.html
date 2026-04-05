@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hero Terminal</title>
+  <style>
+    body {
+      background: #0b0f14;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: monospace;
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background: #111827;
+      border-radius: 12px;
+      border: 1px solid #374151;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .terminal:hover {
+      transform: scale(1.05);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #374151;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .red { background: #ef4444; }
+    .yellow { background: #facc15; }
+    .green { background: #22c55e; }
+
+    .file-name {
+      margin-left: 10px;
+      font-size: 12px;
+      color: #9ca3af;
+      letter-spacing: 1px;
+    }
+
+    .content {
+      color: #34d399;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      min-height: 180px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: #34d399;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      transform: translateY(3px);
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="terminal">
+  <!-- Header -->
+  <div class="header">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="file-name">~/portfolio/init_sequence.tsx</span>
+  </div>
+
+  <!-- Content -->
+  <div class="content" id="typed-text"></div>
+</div>
+
+<script>
+  const fullText = `> Executing PM_SWE_Protocol.ts...
+> Compiling React & Tailwind modules...
+> Analyzing user requirements...
+> Optimizing graph-based routing algorithms...
+> Deploying scalable, multi-tenant architecture...
+> System Efficiency: 100% Green
+> Ready to build the next big thing.`;
+
+  const element = document.getElementById("typed-text");
+
+  let i = 0;
+
+  function typeEffect() {
+    if (i < fullText.length) {
+      element.innerHTML = fullText.slice(0, i) + '<span class="cursor"></span>';
+      i++;
+      setTimeout(typeEffect, 45);
+    } else {
+      element.innerHTML = fullText + '<span class="cursor"></span>';
+    }
+  }
+
+  typeEffect();
+</script>
+
+</body>
+</html>
