@@ -1,0 +1,395 @@
+<style>
+  .testimonials {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top left, rgba(99, 179, 237, 0.08), transparent 26%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.06), transparent 24%),
+      linear-gradient(135deg, #050816 0%, #09111f 55%, #060b14 100%);
+    padding: 100px 0 90px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .testimonials-head {
+    position: relative;
+    z-index: 2;
+    max-width: 1320px;
+    margin: 0 auto 48px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .testimonials-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #63b3ed;
+  }
+
+  .testimonials-title {
+    font-size: clamp(2.4rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    max-width: 760px;
+  }
+
+  .testimonials-title span {
+    color: transparent;
+    -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.25);
+  }
+
+  .testimonials-text {
+    max-width: 420px;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #94a3b8;
+  }
+
+  .carousel-shell {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: max-content;
+    will-change: transform;
+    animation: marquee 55s linear infinite;
+    padding: 18px 0 28px;
+  }
+
+  .carousel-shell:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  .testimonial-card {
+    width: 400px;
+    min-height: 420px;
+    border-radius: 22px;
+    padding: 28px 30px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .testimonial-card.dark {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.015)),
+      rgba(10, 14, 22, 0.72);
+    color: #f1f5f9;
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.16);
+  }
+
+  .testimonial-card.light {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+      rgba(15, 23, 42, 0.78);
+    color: #dbeafe;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.30);
+  }
+
+  .testimonial-card:nth-child(odd) {
+    margin-top: -34px;
+    transform: rotate(-1.6deg);
+    z-index: 1;
+  }
+
+  .testimonial-card:nth-child(even) {
+    margin-top: 44px;
+    margin-left: -70px;
+    transform: rotate(1.8deg);
+    z-index: 2;
+  }
+
+  .testimonial-card:nth-child(3n) {
+    margin-left: -82px;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-8px) rotate(0deg) !important;
+    z-index: 20;
+  }
+
+  .quote-top {
+    font-size: 5rem;
+    line-height: 0.75;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    margin-bottom: 20px;
+    color: #63b3ed;
+  }
+
+  .light .quote-top,
+  .light .quote-bottom {
+    color: #93c5fd;
+  }
+
+  .testimonial-text-main {
+    font-size: 1.05rem;
+    line-height: 1.58;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    max-width: 95%;
+  }
+
+  .testimonial-footer {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .writer-name {
+    font-size: 1.06rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .writer-role {
+    font-size: 0.92rem;
+    font-weight: 500;
+    opacity: 0.82;
+  }
+
+  .quote-bottom {
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    font-size: 4rem;
+    line-height: 0.7;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    opacity: 0.95;
+    color: #63b3ed;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 1100px) {
+    .testimonial-card {
+      width: 350px;
+      min-height: 390px;
+    }
+
+    .testimonial-card:nth-child(even),
+    .testimonial-card:nth-child(3n) {
+      margin-left: -56px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 78px 0 68px;
+    }
+
+    .testimonials-head {
+      padding: 0 6%;
+      margin-bottom: 34px;
+    }
+
+    .testimonial-card {
+      width: 300px;
+      min-height: 345px;
+      padding: 22px;
+      border-radius: 18px;
+    }
+
+    .testimonial-card:nth-child(odd) {
+      margin-top: -20px;
+    }
+
+    .testimonial-card:nth-child(even) {
+      margin-top: 30px;
+      margin-left: -40px;
+    }
+
+    .testimonial-card:nth-child(3n) {
+      margin-left: -44px;
+    }
+
+    .quote-top {
+      font-size: 4rem;
+      margin-bottom: 14px;
+    }
+
+    .quote-bottom {
+      font-size: 3.2rem;
+      right: 18px;
+      bottom: 14px;
+    }
+
+    .testimonial-text-main {
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .writer-name {
+      font-size: 1rem;
+    }
+
+    .writer-role {
+      font-size: 0.86rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .testimonials-title {
+      font-size: 2.4rem;
+    }
+
+    .testimonial-card {
+      width: 260px;
+      min-height: 320px;
+    }
+
+    .testimonial-card:nth-child(even),
+    .testimonial-card:nth-child(3n) {
+      margin-left: -28px;
+    }
+
+    .carousel-track {
+      animation-duration: 42s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+      animation: none;
+    }
+  }
+</style>
+
+<section class="testimonials">
+  <div class="testimonials-head">
+    <div>
+      <div class="testimonials-label">Testimonials</div>
+      <h2 class="testimonials-title">Words from <span>people</span></h2>
+    </div>
+
+    <p class="testimonials-text">
+      Feedback from people who have seen my problem-solving mindset, consistency,
+      collaboration, and growth in action.
+    </p>
+  </div>
+
+  <div class="carousel-shell">
+    <div class="carousel-track" id="carouselTrack"></div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const testimonials = [
+      {
+        text: "Working with Tashin was a game-changer. His problem-solving mindset and ability to break down complex logic into simple steps really stood out.",
+        name: "Arif Hasan",
+        role: "Software Engineer"
+      },
+      {
+        text: "Tashin has an impressive analytical mind. Whether it's competitive programming or real-world coding challenges, he consistently delivers efficient solutions.",
+        name: "Nusrat Jahan",
+        role: "Computer Science Lecturer"
+      },
+      {
+        text: "I’ve rarely seen someone so dedicated to improving every single day. Tashin doesn’t just code—he thinks deeply about problems.",
+        name: "Mahmud Rahman",
+        role: "Tech Lead"
+      },
+      {
+        text: "His ability to teach and explain concepts clearly makes him stand out. He helped me understand algorithms I struggled with for weeks.",
+        name: "Fahim Ahmed",
+        role: "Undergraduate Student"
+      },
+      {
+        text: "Tashin approaches every challenge with creativity and persistence. That combination makes him a strong future leader in tech.",
+        name: "Sabrina Karim",
+        role: "Product Manager"
+      },
+      {
+        text: "What impressed me most is his consistency. Competitive programming requires discipline, and Tashin has mastered that.",
+        name: "Rakib Chowdhury",
+        role: "Competitive Programmer"
+      },
+      {
+        text: "He’s not just focused on solving problems but also on understanding the “why” behind them. That mindset is rare and valuable.",
+        name: "Tanvir Hossain",
+        role: "Backend Developer"
+      },
+      {
+        text: "Tashin brings energy and curiosity into everything he does. He’s always exploring new ideas and pushing his limits.",
+        name: "Jannatul Ferdous",
+        role: "UI/UX Designer"
+      },
+      {
+        text: "A highly motivated individual who is always willing to help others grow. His collaborative mindset makes him a great team member.",
+        name: "Imran Kabir",
+        role: "Team Coordinator"
+      },
+      {
+        text: "Tashin has a strong foundation in algorithms and problem-solving. With his mindset, he’s definitely on track for big achievements.",
+        name: "Shafiq Islam",
+        role: "Senior Software Engineer"
+      }
+    ];
+
+    const track = document.getElementById("carouselTrack");
+    if (!track) return;
+
+    function createCard(item, index) {
+      const card = document.createElement("article");
+      card.className = `testimonial-card ${index % 2 === 0 ? "dark" : "light"}`;
+
+      card.innerHTML = `
+        <div>
+          <div class="quote-top">“</div>
+          <p class="testimonial-text-main">${item.text}</p>
+        </div>
+        <div class="testimonial-footer">
+          <div class="writer-name">${item.name}</div>
+          <div class="writer-role">${item.role}</div>
+        </div>
+        ${index % 2 !== 0 ? `<div class="quote-bottom">”</div>` : ""}
+      `;
+      return card;
+    }
+
+    [...testimonials, ...testimonials].forEach((item, index) => {
+      track.appendChild(createCard(item, index));
+    });
+  })();
+</script>
