@@ -79,7 +79,8 @@
     gap: 0;
     width: max-content;
     will-change: transform;
-    animation: marquee 55s linear infinite;
+    /* animation: marquee 55s linear infinite; */
+    animation: marquee 165s linear infinite;
     padding: 18px 0 28px;
   }
 
@@ -196,8 +197,13 @@
   }
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   @media (max-width: 1100px) {
