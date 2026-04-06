@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Achievements</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080b10;
+            --line: rgba(255, 255, 255, 0.07);
+            --line-2: rgba(255, 255, 255, 0.12);
+            --text: #f1f5f9;
+            --text-soft: #cbd5e1;
+            --muted: #94a3b8;
+            --accent: #63b3ed;
+            --accent-2: #93c5fd;
+            --green: #22c55e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(99, 179, 237, 0.07), transparent 30%),
+                radial-gradient(circle at 85% 85%, rgba(99, 179, 237, 0.04), transparent 26%),
+                var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            padding: 80px 24px;
+        }
+
+        .achievements {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .achievements::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+            margin-bottom: 64px;
+        }
+
+        .achievements-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4.4vw, 3.25rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.02;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #fff 0%, var(--accent-2) 60%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .head-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 14px;
+        }
+
+        .head-desc {
+            max-width: 320px;
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent-2);
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(99, 179, 237, 0.2);
+            background: rgba(99, 179, 237, 0.06);
+        }
+
+        .section-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px rgba(99, 179, 237, 0.8);
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .achievement-card {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.015));
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            cursor: default;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: riseIn .6s cubic-bezier(.22, 1, .36, 1) forwards;
+            transition:
+                border-color .28s ease,
+                transform .28s ease,
+                box-shadow .28s ease,
+                background .28s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 179, 237, 0.16);
+            box-shadow: 0 18px 44px rgba(2, 8, 23, 0.24);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.018));
+        }
+
+        @keyframes riseIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            background: #0b1220;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .65s cubic-bezier(.22, 1, .36, 1), filter .65s ease;
+            filter: brightness(0.72) saturate(0.88);
+        }
+
+        .achievement-card:hover .card-image img {
+            transform: scale(1.04);
+            filter: brightness(0.82) saturate(0.96);
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(8, 11, 16, 0.36), transparent 52%);
+            pointer-events: none;
+        }
+
+        .image-top-overlay,
+        .image-bottom-overlay {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .image-top-overlay {
+            top: 0;
+            justify-content: space-between;
+            padding: 8px;
+        }
+
+        .image-bottom-overlay {
+            bottom: 0;
+            justify-content: center;
+            min-height: 40px;
+            padding: 8px;
+        }
+
+        .image-project-title {
+            font-weight: 700;
+        }
+
+        .image-rank,
+        .image-date {
+            position: static;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(5, 8, 14, 0.48);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #eef6ff;
+        }
+
+        .image-rank {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            max-width: calc(100% - 110px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .image-rank::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(99, 179, 237, 0.95);
+        }
+
+        .image-date {
+            padding: 7px 11px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.84);
+            white-space: nowrap;
+        }
+
+        .card-body {
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--text);
+        }
+
+        .card-subtitle {
+            font-size: 0.86rem;
+            line-height: 1.72;
+            color: var(--muted);
+        }
+
+        .card-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .meta-label {
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-value {
+            font-size: 0.82rem;
+            color: var(--text-soft);
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+        .card-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .skill-tag {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.025);
+            color: rgba(255, 255, 255, 0.44);
+            transition: color .22s, border-color .22s, background .22s;
+        }
+
+        .achievement-card:hover .skill-tag {
+            color: var(--text-soft);
+            border-color: rgba(99, 179, 237, 0.14);
+            background: rgba(99, 179, 237, 0.04);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding-top: 2px;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 10px;
+            transition: transform .2s, box-shadow .2s, border-color .2s, background .2s, color .2s;
+        }
+
+        .action-link.primary {
+            color: #0f172a;
+            background: linear-gradient(135deg, var(--accent-2), var(--accent));
+        }
+
+        .action-link.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(99, 179, 237, 0.2);
+        }
+
+        .action-link.ghost {
+            color: var(--text-soft);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .action-link.ghost:hover {
+            transform: translateY(-2px);
+            color: var(--accent-2);
+            border-color: rgba(99, 179, 237, 0.22);
+            background: rgba(99, 179, 237, 0.05);
+        }
+
+        .achievement-card.academic {
+            grid-column: 1 / -1;
+        }
+
+        .academic .card-image {
+            aspect-ratio: 21/6;
+        }
+
+        .academic .card-meta {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 26px;
+        }
+
+        .more-btn {
+            border: 1px solid rgba(99, 179, 237, 0.18);
+            background: rgba(99, 179, 237, 0.05);
+            color: var(--accent-2);
+            border-radius: 999px;
+            padding: 10px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform .22s, border-color .22s, background .22s;
+        }
+
+        .more-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 179, 237, 0.28);
+            background: rgba(99, 179, 237, 0.08);
+        }
+
+        .more-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform .28s;
+        }
+
+        .more-btn.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .bottom-rule {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line-2) 20%, var(--line-2) 80%, transparent);
+            margin-top: 64px;
+        }
+
+        @media(max-width: 780px) {
+            .achievements-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .head-right {
+                align-items: flex-start;
+            }
+
+            .head-desc {
+                text-align: left;
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .achievement-card.academic {
+                grid-column: auto;
+            }
+
+            .academic .card-image {
+                aspect-ratio: 16/8;
+            }
+
+            .card-meta,
+            .academic .card-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .image-rank {
+                max-width: calc(100% - 96px);
+            }
+        }
+
+        @media(max-width: 480px) {
+            .image-top-overlay {
+                padding: 12px;
+            }
+
+            .image-bottom-overlay {
+                min-height: 44px;
+                padding: 12px;
+            }
+
+            .image-rank {
+                padding: 6px 10px;
+                font-size: 9.5px;
+            }
+
+            .image-date {
+                padding: 6px 9px;
+                font-size: 9.5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="achievements" id="achievements">
+
+        <div class="achievements-head">
+            <div>
+                <div class="eyebrow"><span class="eyebrow-dot"></span>Achievements</div>
+                <h2 class="section-title">Recognitions backed by<br><span>real execution.</span></h2>
+            </div>
+            <div class="head-right">
+                <p class="head-desc">A focused collection of project wins and academic milestones reflecting product
+                    thinking, consistency, and high-quality execution.</p>
+                <span class="section-badge"><span class="section-badge-dot"></span>Selected achievements</span>
+            </div>
+        </div>
+
+        <div class="achievement-grid" id="achievementGrid"></div>
+
+        <div class="controls" id="controls" hidden>
+            <button class="more-btn" id="toggleBtn" type="button" aria-expanded="false">
+                <span id="toggleBtnText">Show more</span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="bottom-rule"></div>
+    </section>
+
+    <script>
+        const achievements = [
+            {
+                rank: "Champion",
+                title: "Kairos",
+                subtitle: "Ranked 1st among 71 teams in the DBMS Lab Project and also recognised as Champion in the DBMS Poster Presentation.",
+                date: "2024",
+                teamName: "Team Kairos",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=900&auto=format&fit=crop",
+                organization: "UIU CSE Project Show",
+                category: "DBMS Lab Project",
+                link: "https://github.com/TashinParvez/Kairos",
+                recognition: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion"
+            },
+            {
+                rank: "1st Runner-Up",
+                title: "DirectEdge",
+                subtitle: "Ranked 2nd among 55 teams in the Software Engineering Lab for strong execution, structure, and delivery quality.",
+                date: "2025",
+                teamName: "Team DirectEdge",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop",
+                organization: "UIU CSE Project Show",
+                category: "Software Eng. Lab",
+                link: "https://github.com/TashinParvez/direct-edge",
+                recognition: "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up"
+            },
+            {
+                rank: "2nd Runner-Up",
+                title: "Wayout",
+                subtitle: "Ranked 3rd among 66 teams with a tour planning project recognised for concept quality and polished implementation.",
+                date: "2023",
+                teamName: "Team Wayout",
+                image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=900&auto=format&fit=crop",
+                organization: "UIU CSE Project Show",
+                category: "AOOP Lab Project",
+                link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner",
+                recognition: ""
+            },
+            {
+                rank: "Champion",
+                title: "DBMS Poster Presentation",
+                subtitle: "Won the poster presentation category for visually communicating technical concepts with clarity and precision.",
+                date: "2024",
+                teamName: "Team Kairos",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop",
+                organization: "UIU CSE Project Show",
+                category: "Poster Presentation",
+                link: "",
+                recognition: ""
+            },
+            {
+                rank: "Merit Scholarship",
+                title: "Academic Scholarships",
+                subtitle: "Received merit-based scholarships across multiple semesters for sustained academic performance at UIU.",
+                date: "Ongoing",
+                teamName: "United International University",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop",
+                organization: "United International University",
+                category: "Academic Achievement",
+                link: "",
+                recognition: "",
+                academic: true
+            }
+        ];
+
+        const INITIAL = 4;
+        const grid = document.getElementById('achievementGrid');
+        const controls = document.getElementById('controls');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const toggleBtnText = document.getElementById('toggleBtnText');
+        let expanded = false;
+
+        function createCard(item, index) {
+            const card = document.createElement('article');
+            card.className = 'achievement-card' + (item.academic ? ' academic' : '');
+            card.style.animationDelay = `${index * 60}ms`;
+
+            const skills = (item.skills || []).map(s => `<span class="skill-tag">${s}</span>`).join('');
+            const primaryLink = item.link ? `<a class="action-link primary" href="${item.link}" target="_blank" rel="noopener">Project ↗</a>` : '';
+            const recogLink = item.recognition ? `<a class="action-link ghost" href="${item.recognition}" target="_blank" rel="noopener">Recognition ↗</a>` : '';
+            const hasActions = primaryLink || recogLink;
+
+            card.innerHTML = `
+        <div class="card-image">
+          <img src="${item.image}" alt="${item.title}" loading="lazy"/>
+          <div class="image-top-overlay">
+            <span class="image-rank">${item.rank}</span>
+            <span class="image-date">${item.date}</span>
+          </div>
+          <div class="image-bottom-overlay"><span class="image-project-title">${item.title}</span></div>
+        </div>
+        
+        <div class="card-body"> 
+          <p class="card-subtitle">${item.subtitle}</p>
+
+          <div class="card-meta">
+            <div class="meta-item">
+              <span class="meta-label">Organisation</span>
+              <span class="meta-value">${item.organization}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Category</span>
+              <span class="meta-value">${item.category}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Team</span>
+              <span class="meta-value">${item.teamName}</span>
+            </div>
+          </div>
+
+          <div class="card-skills">${skills}</div>
+          ${hasActions ? `<div class="card-actions">${primaryLink}${recogLink}</div>` : ''}
+        </div>
+      `;
+            return card;
+        }
+
+        function render() {
+            grid.innerHTML = '';
+            const visible = expanded ? achievements : achievements.slice(0, INITIAL);
+            visible.forEach((item, i) => grid.appendChild(createCard(item, i)));
+
+            if (achievements.length > INITIAL) {
+                controls.hidden = false;
+                toggleBtn.classList.toggle('expanded', expanded);
+                toggleBtn.setAttribute('aria-expanded', String(expanded));
+                toggleBtnText.textContent = expanded
+                    ? 'Show less'
+                    : `Show more (${achievements.length - INITIAL} more)`;
+            }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            render();
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
