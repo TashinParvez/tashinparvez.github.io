@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeChef Solved Problems - tashin_parvez</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f4f7fb, #e9eef7);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 700px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 32px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stat-box {
+      flex: 1;
+      min-width: 180px;
+      background: #f7f9fc;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .value {
+      font-size: 36px;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .bar-section {
+      margin-top: 10px;
+    }
+
+    .bar-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .bar-container {
+      width: 100%;
+      height: 36px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 67%;
+      background: linear-gradient(90deg, #2563eb, #60a5fa);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+      color: white;
+      font-weight: bold;
+      transition: width 1s ease;
+    }
+
+    .note {
+      margin-top: 18px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>CodeChef Profile Visualization</h1>
+    <div class="subtitle">User: <strong>tashin_parvez</strong></div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="label">Problems Solved</div>
+        <div class="value">201</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="label">Current Rating</div>
+        <div class="value">1340</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="label">Contests Participated</div>
+        <div class="value">21</div>
+      </div>
+    </div>
+
+    <div class="bar-section">
+      <div class="bar-title">Solved Problems Progress</div>
+      <div class="bar-container">
+        <div class="bar-fill">201 solved</div>
+      </div>
+    </div>
+
+    <div class="note">
+      This page visualizes your current CodeChef stats in a simple way.
+      You can change the bar width manually if you want to compare against a target,
+      such as 300 or 500 solved problems.
+    </div>
+
+    <div class="footer">
+      Profile: <a href="https://www.codechef.com/users/tashin_parvez" target="_blank">CodeChef - tashin_parvez</a>
+    </div>
+  </div>
+</body>
+</html>

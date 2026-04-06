@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Coding Stats Dashboard</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --panel: rgba(15, 23, 42, 0.96);
+      --line: rgba(96, 165, 250, 0.16);
+      --text: #eef4ff;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent2: #22d3ee;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --danger: #fb7185;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(34,211,238,.12), transparent 22%),
+        radial-gradient(circle at 88% 8%, rgba(96,165,250,.14), transparent 22%),
+        linear-gradient(180deg, #050814 0%, #08101b 45%, #09101d 100%);
+      padding: 24px;
+    }
+
+    .container {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(13,21,43,.92), rgba(9,15,31,.92));
+      border: 1px solid var(--line);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .box, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .box .label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .box .num {
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .handle {
+      color: #dbeafe;
+      font-size: 13px;
+      background: rgba(8,13,27,.92);
+      border: 1px solid rgba(96,165,250,.12);
+      border-radius: 12px;
+      padding: 8px 10px;
+      width: fit-content;
+    }
+
+    .value-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .value {
+      font-size: 36px;
+      font-weight: 800;
+    }
+
+    .status {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #0b1225;
+    }
+
+    .ok { color: var(--success); }
+    .warn { color: var(--warning); }
+    .err { color: var(--danger); }
+
+    .meta {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+      min-height: 40px;
+    }
+
+    .link {
+      margin-top: auto;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
+      padding: 10px 12px;
+      border-radius: 14px;
+      display: inline-block;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .summary, .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .summary, .grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Tashin Parvez</h1>
+      <p>Fully dynamic dashboard using a backend proxy. No solved count is hardcoded in this page.</p>
+
+      <div class="summary">
+        <div class="box">
+          <div class="label">Platforms</div>
+          <div class="num">10</div>
+        </div>
+        <div class="box">
+          <div class="label">Loaded</div>
+          <div class="num" id="loadedCount">0</div>
+        </div>
+        <div class="box">
+          <div class="label">Known Total</div>
+          <div class="num" id="knownTotal">0</div>
+        </div>
+        <div class="box">
+          <div class="label">Updated</div>
+          <div class="num" id="updatedAt">--:--</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="cards"></section>
+  </main>
+
+  <script>
+    const PLATFORM_META = [
+      { key: "codeforces", title: "Codeforces Solved", url: "https://codeforces.com/profile/Tashin.Parvez", handle: "Tashin.Parvez" },
+      { key: "codechef", title: "CodeChef Solved", url: "https://www.codechef.com/users/tashin_parvez", handle: "tashin_parvez" },
+      { key: "hackerrank", title: "HackerRank Solved", url: "https://www.hackerrank.com/tashinparvez?hr_r=1", handle: "tashinparvez" },
+      { key: "hackerearth", title: "HackerEarth Solved", url: "https://www.hackerearth.com/@tashinparvez2002", handle: "tashinparvez2002" },
+      { key: "vjudge", title: "VJudge Solved", url: "https://vjudge.net/user/Tashin_Parvez", handle: "Tashin_Parvez" },
+      { key: "leetcode", title: "LeetCode Solved", url: "https://leetcode.com/tashinParvez/", handle: "tashinParvez" },
+      { key: "atcoder", title: "AtCoder Solved", url: "https://atcoder.jp/users/Tashin_Parvez", handle: "Tashin_Parvez" },
+      { key: "beecrowd", title: "beecrowd Solved", url: "https://www.beecrowd.com.br/judge/en/profile/648820", handle: "648820" },
+      { key: "lightoj", title: "LightOJ Solved", url: "https://lightoj.com/user/tashinparvez", handle: "tashinparvez" },
+      { key: "github", title: "GitHub Followers", url: "https://github.com/TashinParvez", handle: "TashinParvez" }
+    ];
+
+    function fmt(n) {
+      return n == null ? "N/A" : new Intl.NumberFormat().format(n);
+    }
+
+    function statusClass(item) {
+      if (item?.ok && item?.value != null) return "ok";
+      if (item?.ok && item?.value == null) return "warn";
+      return "err";
+    }
+
+    function statusText(item) {
+      if (item?.ok && item?.value != null) return "Live";
+      if (item?.ok && item?.value == null) return "No parse";
+      return "Error";
+    }
+
+    function renderCards(stats) {
+      const cards = document.getElementById("cards");
+      cards.innerHTML = "";
+
+      let loaded = 0;
+      let total = 0;
+
+      for (const meta of PLATFORM_META) {
+        const item = stats[meta.key];
+        if (item && item.ok) loaded++;
+        if (typeof item?.value === "number") total += item.value;
+
+        const el = document.createElement("article");
+        el.className = "card";
+        el.innerHTML = `
+          <div class="title">${meta.title}</div>
+          <div class="handle">Handle: ${meta.handle}</div>
+          <div class="value-row">
+            <div class="value">${fmt(item?.value)}</div>
+            <div class="status ${statusClass(item)}">${statusText(item)}</div>
+          </div>
+          <div class="meta">${item?.error || item?.note || "Fetched dynamically from backend."}</div>
+          <a class="link" href="${meta.url}" target="_blank" rel="noopener noreferrer">Open profile</a>
+        `;
+        cards.appendChild(el);
+      }
+
+      document.getElementById("loadedCount").textContent = loaded;
+      document.getElementById("knownTotal").textContent = fmt(total);
+    }
+
+    async function init() {
+      try {
+        const res = await fetch("http://localhost:3000/api/stats");
+        const data = await res.json();
+
+        renderCards(data.stats);
+
+        const dt = new Date(data.updatedAt);
+        document.getElementById("updatedAt").textContent =
+          dt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      } catch (err) {
+        console.error(err);
+        document.getElementById("cards").innerHTML =
+          '<div class="card"><div class="title">Server error</div><div class="meta">Could not load dynamic stats. Start server.js first.</div></div>';
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

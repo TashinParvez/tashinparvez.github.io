@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tashin Parvez - Coding Profiles Dashboard</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #0b1220;
+      --panel: rgba(13, 20, 39, 0.92);
+      --panel2: rgba(17, 27, 50, 0.92);
+      --line: rgba(96, 165, 250, 0.16);
+      --line-strong: rgba(96, 165, 250, 0.28);
+      --text: #eef4ff;
+      --muted: #9fb0c9;
+      --accent: #60a5fa;
+      --accent2: #22d3ee;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --danger: #fb7185;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --shadow:
+        0 0 0 1px rgba(96,165,250,.10),
+        0 18px 40px rgba(0,0,0,.45),
+        0 0 30px rgba(34,211,238,.07);
+      --shadow-hover:
+        0 0 0 1px rgba(96,165,250,.18),
+        0 22px 46px rgba(0,0,0,.52),
+        0 0 26px rgba(34,211,238,.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(34,211,238,.12), transparent 22%),
+        radial-gradient(circle at 88% 8%, rgba(96,165,250,.14), transparent 22%),
+        radial-gradient(circle at 50% 120%, rgba(59,130,246,.10), transparent 36%),
+        linear-gradient(180deg, #050814 0%, #08101b 45%, #09101d 100%);
+      padding: 28px 18px 42px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      gap: 18px;
+      padding: 28px;
+      margin-bottom: 22px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(13, 21, 43, .92), rgba(9, 15, 31, .92));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: max-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(10, 16, 32, .92);
+      border: 1px solid rgba(96,165,250,.16);
+      color: #c4ddff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 4.1rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 62ch;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(16,25,47,.9), rgba(12,19,38,.9));
+      border: 1px solid rgba(96,165,250,.14);
+      color: #d8e8ff;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .hero-right {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .overview-card {
+      min-height: 122px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(16,25,47,.96), rgba(10,16,32,.96));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .overview-label {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .overview-value {
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -.05em;
+    }
+
+    .overview-sub {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 10px 4px 18px;
+    }
+
+    .section-head h2 {
+      font-size: 1.14rem;
+      margin-bottom: 4px;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      min-height: 235px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(15,23,42,.96), rgba(9,14,28,.96));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .logo-wrap {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(17,26,50,.98), rgba(10,16,32,.98));
+      border: 1px solid rgba(96,165,250,.14);
+    }
+
+    .logo-wrap img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .brand-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      word-break: break-word;
+    }
+
+    .brand-text .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .83rem;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-width: 92px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #0b1225;
+      border: 1px solid rgba(96,165,250,.12);
+      color: #a9bddb;
+      font-size: .74rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .status.loading .status-dot { background: var(--warning); }
+    .status.done .status-dot { background: var(--success); }
+    .status.manual .status-dot { background: var(--accent); }
+    .status.warn .status-dot { background: var(--warning); }
+    .status.error .status-dot { background: var(--danger); }
+
+    .handle {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      max-width: 100%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(8,13,27,.92);
+      border: 1px solid rgba(96,165,250,.12);
+      color: #d9e7ff;
+      font-size: .82rem;
+      font-weight: 600;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .value-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .value {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.05em;
+      word-break: break-word;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.55;
+      min-height: 42px;
+    }
+
+    .profile-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, rgba(37,99,235,.95), rgba(14,165,233,.95));
+      border: 1px solid rgba(96,165,250,.18);
+      border-radius: 14px;
+      padding: 11px 14px;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .progress-wrap {
+      margin-top: 8px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(8,13,27,.72);
+      border: 1px solid rgba(96,165,250,.10);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: #dbeafe;
+      font-size: .9rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(148,163,184,.16);
+      overflow: hidden;
+      border: 1px solid rgba(96,165,250,.08);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width .9s ease;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 16px 14px 30px; }
+      .hero { padding: 18px; }
+      .hero-right { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .value { font-size: 2.05rem; }
+    }
+
+    @media (max-width: 520px) {
+      .hero-right, .stats-grid { grid-template-columns: 1fr; }
+      .value-row { flex-direction: column; align-items: flex-start; }
+      .stat-card { min-height: unset; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Competitive Programming Matrix
+        </div>
+        <h1>Tashin Parvez</h1>
+        <p>
+          Fixed version. Every platform now shows a number instead of the word
+          “Profile”. Live values are fetched when possible, and the rest are
+          taken from one manual counts object.
+        </p>
+        <div class="hero-actions">
+          <div class="chip">All Cards Show Numbers</div>
+          <div class="chip">Manual + Live Hybrid</div>
+          <div class="chip">Easy To Edit</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="overview-card">
+          <div class="overview-label">Platforms</div>
+          <div class="overview-value">10</div>
+          <div class="overview-sub">Tracked accounts</div>
+        </div>
+
+        <div class="overview-card">
+          <div class="overview-label">Loaded</div>
+          <div class="overview-value" id="loaded-count">0</div>
+          <div class="overview-sub">Cards initialized</div>
+        </div>
+
+        <div class="overview-card">
+          <div class="overview-label">Known solved total</div>
+          <div class="overview-value" id="known-total">0</div>
+          <div class="overview-sub">Sum of visible counts</div>
+        </div>
+
+        <div class="overview-card">
+          <div class="overview-label">Status</div>
+          <div class="overview-value" id="dashboard-status">Loading</div>
+          <div class="overview-sub" id="last-updated">Updating now...</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h2>Performance Overview</h2>
+        <span>Edit only the numbers in <code>MANUAL_COUNTS</code> if you want to change values.</span>
+      </div>
+      <span>No more “Profile” placeholders</span>
+    </div>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/codeforces/ffffff" alt="Codeforces"></div>
+            <div class="brand-text">
+              <h3>Codeforces Solved</h3>
+              <div class="sub">Accepted unique problems</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: Tashin.Parvez</div>
+        <div class="value-row">
+          <div class="value" id="codeforces-solved">0</div>
+          <div class="status loading" id="status-codeforces-solved"><span class="status-dot"></span>Loading</div>
+        </div>
+        <div class="meta">Live from Codeforces API when available.</div>
+        <a class="profile-link" href="https://codeforces.com/profile/Tashin.Parvez" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/codechef/ffffff" alt="CodeChef"></div>
+            <div class="brand-text">
+              <h3>CodeChef Solved</h3>
+              <div class="sub">Total problems solved</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: tashin_parvez</div>
+        <div class="value-row">
+          <div class="value" id="codechef-solved">0</div>
+          <div class="status manual" id="status-codechef-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Manual pinned value.</div>
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span>Solved progress</span>
+            <span id="codechef-progress-text">0 / 300</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="codechef-progress"></div>
+          </div>
+        </div>
+        <a class="profile-link" href="https://www.codechef.com/users/tashin_parvez" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/hackerrank/ffffff" alt="HackerRank"></div>
+            <div class="brand-text">
+              <h3>HackerRank Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: tashinparvez</div>
+        <div class="value-row">
+          <div class="value" id="hackerrank-solved">0</div>
+          <div class="status manual" id="status-hackerrank-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://www.hackerrank.com/tashinparvez?hr_r=1" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/hackerearth/ffffff" alt="HackerEarth"></div>
+            <div class="brand-text">
+              <h3>HackerEarth Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: tashinparvez2002</div>
+        <div class="value-row">
+          <div class="value" id="hackerearth-solved">0</div>
+          <div class="status manual" id="status-hackerearth-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://www.hackerearth.com/@tashinparvez2002" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/v/ffffff" alt="VJudge"></div>
+            <div class="brand-text">
+              <h3>VJudge Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: Tashin_Parvez</div>
+        <div class="value-row">
+          <div class="value" id="vjudge-solved">0</div>
+          <div class="status manual" id="status-vjudge-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://vjudge.net/user/Tashin_Parvez" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/leetcode/ffffff" alt="LeetCode"></div>
+            <div class="brand-text">
+              <h3>LeetCode Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: tashinParvez</div>
+        <div class="value-row">
+          <div class="value" id="leetcode-solved">0</div>
+          <div class="status manual" id="status-leetcode-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Manual pinned value.</div>
+        <a class="profile-link" href="https://leetcode.com/tashinParvez/" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/atcoder/ffffff" alt="AtCoder"></div>
+            <div class="brand-text">
+              <h3>AtCoder Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: Tashin_Parvez</div>
+        <div class="value-row">
+          <div class="value" id="atcoder-solved">0</div>
+          <div class="status manual" id="status-atcoder-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://atcoder.jp/users/Tashin_Parvez" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/codewars/ffffff" alt="beecrowd"></div>
+            <div class="brand-text">
+              <h3>beecrowd / URI Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Profile ID: 648820</div>
+        <div class="value-row">
+          <div class="value" id="beecrowd-solved">0</div>
+          <div class="status manual" id="status-beecrowd-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://www.beecrowd.com.br/judge/en/profile/648820" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/openaccess/ffffff" alt="UVA"></div>
+            <div class="brand-text">
+              <h3>UVA Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">UVA profile link</div>
+        <div class="value-row">
+          <div class="value" id="uva-solved">0</div>
+          <div class="status manual" id="status-uva-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Set your total manually here.</div>
+        <a class="profile-link" href="https://onlinejudge.org/index.php?option=com_comprofiler&Itemid=3" target="_blank">Open profile</a>
+      </article>
+
+      <article class="stat-card">
+        <div class="card-top">
+          <div class="brand">
+            <div class="logo-wrap"><img src="https://cdn.simpleicons.org/light/ffffff" alt="LightOJ"></div>
+            <div class="brand-text">
+              <h3>LightOJ Solved</h3>
+              <div class="sub">Manual solved count</div>
+            </div>
+          </div>
+        </div>
+        <div class="handle">Handle: tashinparvez</div>
+        <div class="value-row">
+          <div class="value" id="lightoj-solved">0</div>
+          <div class="status manual" id="status-lightoj-solved"><span class="status-dot"></span>Manual</div>
+        </div>
+        <div class="meta">Manual pinned value.</div>
+        <a class="profile-link" href="https://lightoj.com/user/tashinparvez" target="_blank">Open profile</a>
+      </article>
+    </section>
+
+    <p class="footer-note">
+      Change only the numbers inside the JavaScript <strong>MANUAL_COUNTS</strong> object.
+    </p>
+  </main>
+
+  <script>
+    const MANUAL_COUNTS = {
+      codechef: 201,
+      hackerrank: 0,
+      hackerearth: 0,
+      vjudge: 0,
+      leetcode: 39,
+      atcoder: 0,
+      beecrowd: 0,
+      uva: 0,
+      lightoj: 20
+    };
+
+    const idsToRegister = [
+      "codechef-solved",
+      "hackerrank-solved",
+      "hackerearth-solved",
+      "vjudge-solved",
+      "leetcode-solved",
+      "atcoder-solved",
+      "beecrowd-solved",
+      "uva-solved",
+      "lightoj-solved"
+    ];
+
+    const completed = new Set();
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat().format(Number(value || 0));
+    }
+
+    function register(id) {
+      completed.add(id);
+      document.getElementById("loaded-count").textContent = completed.size;
+      updateSummary();
+    }
+
+    function setStatus(id, type, label) {
+      const el = document.getElementById(`status-${id}`);
+      if (!el) return;
+      el.className = `status ${type}`;
+      el.innerHTML = `<span class="status-dot"></span>${label}`;
+    }
+
+    function setValue(id, value, type, label) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = formatNumber(value);
+      setStatus(id, type, label);
+      register(id);
+      updateKnownTotal();
+    }
+
+    function updateKnownTotal() {
+      const ids = [
+        "codeforces-solved",
+        "codechef-solved",
+        "hackerrank-solved",
+        "hackerearth-solved",
+        "vjudge-solved",
+        "leetcode-solved",
+        "atcoder-solved",
+        "beecrowd-solved",
+        "uva-solved",
+        "lightoj-solved"
+      ];
+
+      let total = 0;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const n = Number(String(el.textContent).replace(/,/g, ""));
+        if (!Number.isNaN(n)) total += n;
+      }
+
+      document.getElementById("known-total").textContent = formatNumber(total);
+    }
+
+    function updateSummary() {
+      const now = new Date();
+      const loading = document.querySelectorAll(".status.loading").length;
+      document.getElementById("dashboard-status").textContent = loading > 0 ? "Loading" : "Ready";
+      document.getElementById("last-updated").textContent =
+        `Last refresh: ${now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+    }
+
+    function initManualValues() {
+      setValue("codechef-solved", MANUAL_COUNTS.codechef, "manual", "Manual");
+      setValue("hackerrank-solved", MANUAL_COUNTS.hackerrank, "manual", "Manual");
+      setValue("hackerearth-solved", MANUAL_COUNTS.hackerearth, "manual", "Manual");
+      setValue("vjudge-solved", MANUAL_COUNTS.vjudge, "manual", "Manual");
+      setValue("leetcode-solved", MANUAL_COUNTS.leetcode, "manual", "Manual");
+      setValue("atcoder-solved", MANUAL_COUNTS.atcoder, "manual", "Manual");
+      setValue("beecrowd-solved", MANUAL_COUNTS.beecrowd, "manual", "Manual");
+      setValue("uva-solved", MANUAL_COUNTS.uva, "manual", "Manual");
+      setValue("lightoj-solved", MANUAL_COUNTS.lightoj, "manual", "Manual");
+
+      const codechef = MANUAL_COUNTS.codechef;
+      const target = 300;
+      const percent = Math.min(100, Math.round((codechef / target) * 100));
+      document.getElementById("codechef-progress").style.width = `${percent}%`;
+      document.getElementById("codechef-progress-text").textContent = `${formatNumber(codechef)} / ${target}`;
+    }
+
+    async function loadCodeforcesSolved() {
+      try {
+        const res = await fetch("https://codeforces.com/api/user.status?handle=Tashin.Parvez");
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        if (data.status === "OK" && Array.isArray(data.result)) {
+          const solved = new Set(
+            data.result
+              .filter(item => item.verdict === "OK" && item.problem)
+              .map(item => `${item.problem.contestId || ""}-${item.problem.index || ""}-${item.problem.name || ""}`)
+          ).size;
+
+          setValue("codeforces-solved", solved, "done", "Live");
+        } else {
+          setValue("codeforces-solved", 0, "warn", "No data");
+        }
+      } catch (err) {
+        console.error(err);
+        setValue("codeforces-solved", 0, "warn", "Blocked");
+      }
+    }
+
+    async function initDashboard() {
+      initManualValues();
+      await loadCodeforcesSolved();
+      updateSummary();
+    }
+
+    initDashboard();
+  </script>
+</body>
+</html>
