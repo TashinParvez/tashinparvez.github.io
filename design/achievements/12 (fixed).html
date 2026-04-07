@@ -157,6 +157,18 @@
             transition: border-color .28s ease, transform .28s ease, background .28s ease, box-shadow .28s ease;
         }
 
+        .achievement-card.gold {
+            border-left: 3px solid var(--gold);
+        }
+
+        .achievement-card.silver {
+            border-left: 3px solid var(--silver);
+        }
+
+        .achievement-card.bronze {
+            border-left: 3px solid var(--bronze);
+        }
+
         .achievement-card:hover {
             transform: translateY(-2px);
             border-color: rgba(99, 179, 237, 0.16);
@@ -782,7 +794,7 @@
             const article = document.createElement("article");
             const achievementIcon = getAchievementIcon(item.tag);
 
-            article.className = `achievement-card ${index >= initialVisibleCount ? "hidden" : ""}`;
+            article.className = `achievement-card ${achievementIcon.type} ${index >= initialVisibleCount ? "hidden" : ""}`;
 
             article.innerHTML = `
                 <button class="achievement-trigger" type="button" aria-expanded="false">
@@ -903,30 +915,3 @@
 </body>
 
 </html>
-
-
-<!-- 
-
-
-.achievement-card.gold {
-            border-left: 3px solid var(--gold);
-        }
-
-        .achievement-card.silver {
-            border-left: 3px solid var(--silver);
-        }
-
-        .achievement-card.bronze {
-            border-left: 3px solid var(--bronze);
-        }
-
-
-
-add this 
-
-give me full code
-
-
-
-form now on give me full code here, dont need to create file. dont need to give me extra things rather than code from now on all code you will provide me will be full code file code not code snippet. code in html css js. code in modern minimalistic premium style
--->
