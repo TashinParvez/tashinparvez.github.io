@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Achievements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07090d;
+            --card: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.08);
+            --line-soft: rgba(255, 255, 255, 0.05);
+            --text: #f8fafc;
+            --text-soft: #dbe7f3;
+            --muted: #8ea0b5;
+            --gold-1: #fff3bf;
+            --gold-2: #facc15;
+            --gold-3: #f59e0b;
+            --blue: #7dd3fc;
+            --blue-soft: #93c5fd;
+            --green: #22c55e;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(250, 204, 21, 0.08), transparent 28%),
+                radial-gradient(circle at 85% 85%, rgba(125, 211, 252, 0.06), transparent 24%),
+                var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            padding: 38px 16px;
+        }
+
+        .achievements {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .achievements::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            margin-bottom: 24px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+        }
+
+        .achievements-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.04;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-1) 35%, var(--gold-2) 70%, var(--gold-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .head-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .head-desc {
+            max-width: 270px;
+            font-size: 0.74rem;
+            color: var(--muted);
+            line-height: 1.45;
+            text-align: right;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fef3c7;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(250, 204, 21, 0.22);
+            background: rgba(250, 204, 21, 0.08);
+        }
+
+        .section-badge-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold-2);
+            box-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
+        }
+
+        .achievement-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .achievement-card {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 58px 1fr;
+            gap: 12px;
+            align-items: start;
+            padding: 13px 14px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018)),
+                var(--card);
+            transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.04) 32%, transparent 64%);
+            transform: translateX(-120%);
+            transition: transform .8s ease;
+            pointer-events: none;
+        }
+
+        .achievement-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(250, 204, 21, 0.10), transparent 30%);
+            pointer-events: none;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(250, 204, 21, 0.24);
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025)),
+                rgba(255,255,255,0.04);
+            box-shadow:
+                0 14px 28px rgba(0, 0, 0, 0.22),
+                0 0 0 1px rgba(250, 204, 21, 0.05),
+                0 0 26px rgba(250, 204, 21, 0.07);
+        }
+
+        .achievement-card:hover::before {
+            transform: translateX(120%);
+        }
+
+        .trophy-wrap {
+            position: relative;
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(135deg, rgba(250, 204, 21, 0.16), rgba(245, 158, 11, 0.08));
+            border: 1px solid rgba(250, 204, 21, 0.16);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.08),
+                0 8px 20px rgba(245, 158, 11, 0.08);
+            flex-shrink: 0;
+        }
+
+        .trophy-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trophy-icon {
+            width: 26px;
+            height: 26px;
+            color: var(--gold-2);
+            filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.22));
+        }
+
+        .trophy-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-content {
+            min-width: 0;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .title-side {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .badge-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .rank-badge,
+        .card-year {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 4px 8px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .rank-badge {
+            color: #fff7d6;
+            border: 1px solid rgba(250, 204, 21, 0.18);
+            background: linear-gradient(135deg, rgba(250, 204, 21, 0.16), rgba(245, 158, 11, 0.08));
+        }
+
+        .card-year {
+            color: var(--blue-soft);
+            background: rgba(125, 211, 252, 0.07);
+            border: 1px solid rgba(125, 211, 252, 0.12);
+        }
+
+        .card-subtitle {
+            font-size: 0.79rem;
+            line-height: 1.45;
+            color: var(--muted);
+            margin-bottom: 9px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            padding-top: 8px;
+            border-top: 1px solid var(--line-soft);
+        }
+
+        .meta-top,
+        .meta-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+            align-items: center;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .meta-row.right {
+            justify-content: flex-end;
+        }
+
+        .meta-icon {
+            width: 19px;
+            height: 19px;
+            flex: 0 0 19px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue-soft);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-icon svg {
+            width: 10px;
+            height: 10px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .meta-text {
+            min-width: 0;
+            font-size: 0.73rem;
+            color: var(--text-soft);
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            font-size: 0.67rem;
+            font-weight: 700;
+            padding: 6px 9px;
+            border-radius: 8px;
+            transition: .2s ease;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .action-link.primary {
+            color: #161616;
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
+            box-shadow: 0 6px 14px rgba(245, 158, 11, 0.14);
+        }
+
+        .action-link.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(245, 158, 11, 0.2);
+        }
+
+        .action-link.ghost {
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .action-link.ghost:hover {
+            color: #fff4c2;
+            border-color: rgba(250, 204, 21, 0.18);
+            background: rgba(250, 204, 21, 0.05);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .more-btn {
+            border: 1px solid rgba(250, 204, 21, 0.18);
+            background: rgba(250, 204, 21, 0.06);
+            color: #fde68a;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.74rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .more-btn svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform .25s ease;
+        }
+
+        .more-btn.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .bottom-rule {
+            width: 100%;
+            height: 1px;
+            margin-top: 28px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+        }
+
+        @media (max-width: 780px) {
+            body {
+                padding: 30px 14px;
+            }
+
+            .achievements-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .head-right {
+                align-items: flex-start;
+            }
+
+            .head-desc {
+                text-align: left;
+            }
+
+            .achievement-card {
+                grid-template-columns: 50px 1fr;
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .trophy-wrap {
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+            }
+
+            .trophy-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .meta-top,
+            .meta-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-row.right,
+            .card-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .achievement-card {
+                grid-template-columns: 1fr;
+            }
+
+            .trophy-wrap {
+                width: 46px;
+                height: 46px;
+                margin-bottom: 2px;
+            }
+
+            .card-subtitle {
+                -webkit-line-clamp: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="achievements" id="achievements">
+        <div class="achievements-head">
+            <div>
+                <div class="eyebrow"><span class="eyebrow-dot"></span>Achievements</div>
+                <h2 class="section-title">Moments that earned<br><span>real recognition.</span></h2>
+            </div>
+            <div class="head-right">
+                <p class="head-desc">
+                    Selected wins, awards, and academic milestones that reflect consistency, execution, and impact.
+                </p>
+                <span class="section-badge"><span class="section-badge-dot"></span>Highlighted achievements</span>
+            </div>
+        </div>
+
+        <div class="achievement-grid" id="achievementGrid"></div>
+
+        <div class="controls" id="controls" hidden>
+            <button class="more-btn" id="toggleBtn" type="button" aria-expanded="false">
+                <span id="toggleBtnText">Show more</span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="bottom-rule"></div>
+    </section>
+
+    <script>
+        const achievements = [
+            {
+                rank: "Champion",
+                title: "Kairos",
+                subtitle: "Ranked 1st among 71 teams in the DBMS Lab Project and also won the DBMS Poster Presentation.",
+                date: "2024",
+                teamName: "Team Kairos",
+                organization: "UIU CSE Project Show",
+                category: "DBMS Lab Project",
+                link: "https://github.com/TashinParvez/Kairos",
+                recognition: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion"
+            },
+            {
+                rank: "1st Runner-Up",
+                title: "DirectEdge",
+                subtitle: "Ranked 2nd among 55 teams in the Software Engineering Lab for strong execution and delivery quality.",
+                date: "2025",
+                teamName: "Team DirectEdge",
+                organization: "UIU CSE Project Show",
+                category: "Software Engineering Lab",
+                link: "https://github.com/TashinParvez/direct-edge",
+                recognition: "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up"
+            },
+            {
+                rank: "2nd Runner-Up",
+                title: "Wayout",
+                subtitle: "Ranked 3rd among 66 teams for a tour planning project with polished implementation.",
+                date: "2023",
+                teamName: "Team Wayout",
+                organization: "UIU CSE Project Show",
+                category: "AOOP Lab Project",
+                link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner",
+                recognition: ""
+            },
+            {
+                rank: "Champion",
+                title: "DBMS Poster",
+                subtitle: "Won the poster presentation category through strong and polished technical communication.",
+                date: "2024",
+                teamName: "Team Kairos",
+                organization: "UIU CSE Project Show",
+                category: "Poster Presentation",
+                link: "",
+                recognition: ""
+            },
+            {
+                rank: "Scholarship",
+                title: "Academic Scholarships",
+                subtitle: "Received merit-based scholarships across 13 semesters for sustained academic performance.",
+                date: "Ongoing",
+                teamName: "United International University",
+                organization: "United International University",
+                category: "Academic Achievement",
+                link: "",
+                recognition: ""
+            }
+        ];
+
+        const INITIAL = 4;
+        const grid = document.getElementById('achievementGrid');
+        const controls = document.getElementById('controls');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const toggleBtnText = document.getElementById('toggleBtnText');
+        let expanded = false;
+
+        function trophyIcon() {
+            return `
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 21h8"></path>
+                    <path d="M12 17v4"></path>
+                    <path d="M7 4h10v4a5 5 0 0 1-10 0V4z"></path>
+                    <path d="M17 6h2a2 2 0 0 1-2 5"></path>
+                    <path d="M7 6H5a2 2 0 0 0 2 5"></path>
+                </svg>
+            `;
+        }
+
+        function iconBuilding() {
+            return `
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 21h18"></path>
+                    <path d="M5 21V7l7-4 7 4v14"></path>
+                    <path d="M9 10h.01"></path>
+                    <path d="M9 14h.01"></path>
+                    <path d="M15 10h.01"></path>
+                    <path d="M15 14h.01"></path>
+                </svg>
+            `;
+        }
+
+        function iconGrid() {
+            return `
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="4" width="7" height="7" rx="1.5"></rect>
+                    <rect x="3" y="15" width="7" height="7" rx="1.5"></rect>
+                    <rect x="14" y="15" width="7" height="7" rx="1.5"></rect>
+                </svg>
+            `;
+        }
+
+        function iconTeam() {
+            return `
+                <svg viewBox="0 0 24 24">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            `;
+        }
+
+        function createMetaRow(icon, text, right = false) {
+            return `
+                <div class="meta-row ${right ? 'right' : ''}">
+                    <span class="meta-icon">${icon}</span>
+                    <span class="meta-text">${text}</span>
+                </div>
+            `;
+        }
+
+        function createCard(item) {
+            const card = document.createElement('article');
+            card.className = 'achievement-card';
+
+            const primaryLink = item.link
+                ? `<a class="action-link primary" href="${item.link}" target="_blank" rel="noopener">Project ↗</a>`
+                : '';
+
+            const recogLink = item.recognition
+                ? `<a class="action-link ghost" href="${item.recognition}" target="_blank" rel="noopener">Recognition ↗</a>`
+                : '';
+
+            card.innerHTML = `
+                <div class="trophy-wrap">
+                    <div class="trophy-icon">${trophyIcon()}</div>
+                </div>
+
+                <div class="card-content">
+                    <div class="card-top">
+                        <div class="title-side">
+                            <h3 class="card-title">${item.title}</h3>
+                            <div class="badge-row">
+                                <span class="rank-badge">${item.rank}</span>
+                                <span class="card-year">${item.date}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="card-subtitle">${item.subtitle}</p>
+
+                    <div class="card-meta-wrap">
+                        <div class="meta-top">
+                            ${createMetaRow(iconBuilding(), item.organization)}
+                            ${createMetaRow(iconGrid(), item.category, true)}
+                        </div>
+
+                        <div class="meta-bottom">
+                            ${createMetaRow(iconTeam(), item.teamName)}
+                            <div class="card-actions">
+                                ${primaryLink}
+                                ${recogLink}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function render() {
+            grid.innerHTML = '';
+            const visible = expanded ? achievements : achievements.slice(0, INITIAL);
+            visible.forEach(item => grid.appendChild(createCard(item)));
+
+            if (achievements.length > INITIAL) {
+                controls.hidden = false;
+                toggleBtn.classList.toggle('expanded', expanded);
+                toggleBtn.setAttribute('aria-expanded', String(expanded));
+                toggleBtnText.textContent = expanded
+                    ? 'Show less'
+                    : `Show more (${achievements.length - INITIAL} more)`;
+            }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            render();
+        });
+
+        render();
+    </script>
+</body>
+</html>
