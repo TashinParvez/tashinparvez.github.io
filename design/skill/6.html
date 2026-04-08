@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg: #08090b;
+            --surface: #0d1014;
+            --surface-2: #111418;
+            --line: rgba(255, 255, 255, 0.07);
+            --line-md: rgba(255, 255, 255, 0.11);
+            --text: #ede9e3;
+            --text-2: #8a8680;
+            --text-3: #4a4744;
+            --accent: #c8a97e;
+            --accent-dim: rgba(200, 169, 126, 0.12);
+            --accent-line: rgba(200, 169, 126, 0.22);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 56px 20px 80px;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .wrap {
+            width: min(100%, 920px);
+            margin: 0 auto
+        }
+
+        /* ── header ── */
+        .head {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 24px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--line-md);
+            margin-bottom: 32px;
+        }
+
+        .head-kicker {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .head-kicker::before {
+            content: '';
+            width: 22px;
+            height: 1px;
+            background: var(--text-3)
+        }
+
+        .head-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(38px, 7vw, 72px);
+            line-height: .9;
+            letter-spacing: -.01em;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .head-title em {
+            font-style: italic;
+            color: var(--text-2)
+        }
+
+        .head-right {
+            text-align: right;
+            padding-bottom: 4px
+        }
+
+        .head-count {
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(44px, 8vw, 72px);
+            line-height: 1;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.05);
+            letter-spacing: -.04em;
+        }
+
+        .head-count-label {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-top: 6px;
+        }
+
+        /* ── part divider ── */
+        .part-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 40px 0 24px;
+        }
+
+        .part-row:first-of-type {
+            margin-top: 0
+        }
+
+        .part-name {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-2);
+            letter-spacing: -.01em;
+        }
+
+        .part-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: var(--text-3);
+            white-space: nowrap;
+        }
+
+        /* ── skill rows ── */
+        .skill-row {
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            gap: 0 18px;
+            align-items: start;
+            padding: 18px 0;
+            border-top: 1px solid var(--line);
+            position: relative;
+            transition: background .2s;
+        }
+
+        .skill-row::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        .skill-row:hover::after {
+            opacity: 1
+        }
+
+        .skill-row:hover {
+            background: rgba(200, 169, 126, 0.03)
+        }
+
+        .skill-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-3);
+            padding-top: 3px;
+            user-select: none;
+            text-align: right;
+            padding-right: 4px;
+        }
+
+        .skill-body {
+            min-width: 0
+        }
+
+        .skill-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .skill-kicker {
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--text-3);
+            letter-spacing: .08em;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-2);
+            padding: 4px 11px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.02);
+            transition: border-color .18s, color .18s, background .18s;
+            line-height: 1.4;
+        }
+
+        .skill-row:hover .tag {
+            border-color: rgba(200, 169, 126, 0.2);
+            color: var(--text);
+            background: rgba(200, 169, 126, 0.05);
+        }
+
+        /* part separator line */
+        .part-sep {
+            height: 1px;
+            background: var(--line-md);
+            margin: 8px 0 0;
+        }
+
+        @media(max-width:560px) {
+            .head {
+                grid-template-columns: 1fr;
+                gap: 12px
+            }
+
+            .head-right {
+                text-align: left
+            }
+
+            .skill-row {
+                grid-template-columns: 32px 1fr;
+                gap: 0 12px
+            }
+
+            .skill-top {
+                flex-direction: column;
+                gap: 4px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header class="head">
+            <div>
+                <div class="head-kicker">Engineering & Product Depth</div>
+                <h1 class="head-title">Skills &amp;<br><em>capabilities</em></h1>
+            </div>
+            <div class="head-right">
+                <div class="head-count">13</div>
+                <div class="head-count-label">Capability groups</div>
+            </div>
+        </header>
+
+        <div id="skillsRoot"></div>
+
+    </div>
+    <script>
+        const parts = [
+            {
+                name: "Product",
+                count: "06 categories",
+                skills: [
+                    { n: "01", kicker: "Foundation", name: "Engineering & Product Foundation", tags: ["Product Thinking", "Product Strategy", "System Thinking", "Requirement Gathering", "Feature Scoping", "Stakeholder Management", "Business Analysis", "Agile", "Scrum"] },
+                    { n: "02", kicker: "Analytics", name: "Product Analytics & Data", tags: ["Python", "Pandas", "NumPy", "MySQL", "Excel", "Google Sheets"] },
+                    { n: "03", kicker: "Research", name: "User Research & Validation", tags: ["User Research", "User Interviews", "Survey Design", "Usability Testing", "Competitive Analysis", "Market Research", "Journey Mapping", "User-Centered Design"] },
+                    { n: "04", kicker: "Execution", name: "Product Execution & Collaboration", tags: ["PRD Writing", "User Stories", "Acceptance Criteria", "Documentation", "Task Planning", "Cross-functional Collaboration", "Jira", "Notion"] },
+                    { n: "05", kicker: "Design", name: "Design & Prototyping", tags: ["Figma", "Wireframing", "Prototyping", "Information Architecture", "UX Thinking", "Photoshop"] },
+                    { n: "06", kicker: "Leadership", name: "Communication & Leadership", tags: ["Stakeholder Communication", "Presentation", "Team Coordination", "Leadership", "Mentoring", "Workshop Facilitation", "Decision Making"] },
+                ]
+            },
+            {
+                name: "Software Development",
+                count: "07 categories",
+                skills: [
+                    { n: "07", kicker: "Core", name: "Core Engineering", tags: ["Data Structures & Algorithms", "OOP", "System Design"] },
+                    { n: "08", kicker: "Languages", name: "Programming Languages", tags: ["C", "C++", "Java", "Python", "JavaScript", "PHP"] },
+                    { n: "09", kicker: "Application", name: "Web Development", tags: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "React", "Next.js", "Node.js", "PHP"] },
+                    { n: "10", kicker: "Storage", name: "Databases", tags: ["MySQL", "Database Design"] },
+                    { n: "11", kicker: "Infrastructure", name: "DevOps & Systems", tags: ["Git", "GitHub", "Linux", "Bash"] },
+                    { n: "12", kicker: "Quality", name: "APIs & Testing", tags: ["REST APIs", "Postman", "Selenium"] },
+                    { n: "13", kicker: "Tools", name: "AI & Development Environment", tags: ["Machine Learning", "Google Colab", "Roboflow", "Pandas", "NumPy", "Visual Studio Code", "Arduino", "Overleaf"] },
+                ]
+            }
+        ];
+
+        const root = document.getElementById('skillsRoot');
+
+        parts.forEach((part, pi) => {
+            const partRow = document.createElement('div');
+            partRow.className = 'part-row';
+            partRow.innerHTML = `<div class="part-name">${part.name}</div><div class="part-meta">${part.count}</div>`;
+            root.appendChild(partRow);
+
+            const sep = document.createElement('div');
+            sep.className = 'part-sep';
+            root.appendChild(sep);
+
+            part.skills.forEach(s => {
+                const row = document.createElement('div');
+                row.className = 'skill-row';
+                row.innerHTML = `
+      <div class="skill-num">${s.n}</div>
+      <div class="skill-body">
+        <div class="skill-top">
+          <span class="skill-name">${s.name}</span>
+          <span class="skill-kicker">${s.kicker}</span>
+        </div>
+        <div class="tags">${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+    `;
+                root.appendChild(row);
+            });
+        });
+    </script>
+</body>
+
+</html>
