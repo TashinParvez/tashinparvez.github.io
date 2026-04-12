@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #080b10;
+      --bg-soft: #0d1220;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-2: rgba(255, 255, 255, 0.025);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(99, 179, 237, 0.18);
+      --text-1: #f1f5f9;
+      --text-2: #cbd5e1;
+      --text-3: #94a3b8;
+      --text-4: #64748b;
+      --accent: #63b3ed;
+      --accent-2: #3b82f6;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(99, 179, 237, 0.08), transparent 26%),
+        radial-gradient(circle at 85% 18%, rgba(59, 130, 246, 0.08), transparent 24%),
+        linear-gradient(160deg, #080b10 0%, #0d1220 55%, #080b10 100%);
+      color: var(--text-2);
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-wrap {
+      width: 100%;
+      max-width: 1160px;
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .about-visual,
+    .about-content {
+      border-radius: 28px;
+      background: rgba(12, 16, 24, 0.72);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual::before,
+    .about-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(99, 179, 237, 0.10), transparent 32%);
+      pointer-events: none;
+    }
+
+    .about-visual {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 660px;
+    }
+
+    .visual-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(99, 179, 237, 0.18);
+      background: rgba(99, 179, 237, 0.08);
+      color: var(--text-2);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .mini-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+    }
+
+    .mini-line {
+      width: 58px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(99, 179, 237, 0.45), transparent);
+      flex-shrink: 0;
+    }
+
+    .image-shell {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-height: 0;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+        rgba(255, 255, 255, 0.02);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .image-shell img {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.02) contrast(1.03);
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(10, 14, 22, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+    }
+
+    .floating-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(147, 197, 253, 0.78);
+      margin-bottom: 8px;
+    }
+
+    .floating-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+
+    .floating-text {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-3);
+    }
+
+    .about-content {
+      padding: 42px 42px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      color: var(--text-1);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      max-width: 720px;
+      font-size: 1.04rem;
+      line-height: 1.9;
+      color: var(--text-3);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lead strong {
+      color: var(--text-2);
+      font-weight: 600;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      background: rgba(99, 179, 237, 0.05);
+    }
+
+    .info-kicker {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(147, 197, 253, 0.72);
+      margin-bottom: 8px;
+    }
+
+    .info-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+
+    .info-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-3);
+    }
+
+    .focus-box {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(99, 179, 237, 0.08), rgba(59, 130, 246, 0.03)),
+        rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(99, 179, 237, 0.12);
+      margin-bottom: 22px;
+    }
+
+    .focus-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .focus-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text-1);
+    }
+
+    .focus-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(99, 179, 237, 0.26), transparent);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text-2);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+      border-color: rgba(99, 179, 237, 0.22);
+      background: rgba(99, 179, 237, 0.08);
+    }
+
+    .bottom-note {
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .bottom-text {
+      max-width: 640px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-3);
+    }
+
+    .bottom-text strong {
+      color: var(--text-2);
+      font-weight: 600;
+    }
+
+    .signature {
+      flex-shrink: 0;
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .signature-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -0.03em;
+    }
+
+    .signature-role {
+      font-size: 0.84rem;
+      color: var(--text-4);
+      margin-top: 4px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .about-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: auto;
+      }
+
+      .image-shell img {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .about-section {
+        padding: 28px 16px;
+      }
+
+      .about-content,
+      .about-visual {
+        border-radius: 22px;
+      }
+
+      .about-content {
+        padding: 28px 22px 24px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-note {
+        flex-direction: column;
+      }
+
+      .signature {
+        text-align: left;
+      }
+
+      .image-shell img {
+        min-height: 360px;
+      }
+
+      .floating-card {
+        position: static;
+        margin-top: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="about-section">
+    <div class="about-wrap">
+      <div class="about-visual reveal">
+        <div class="visual-top">
+          <div class="mini-badge">
+            <span class="mini-dot"></span>
+            About Me
+          </div>
+          <div class="mini-line"></div>
+        </div>
+
+        <div class="image-shell">
+          <img src="https://scontent-sin2-1.xx.fbcdn.net/v/t39.30808-6/349299836_991411121934653_7461298287642662667_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeHkaG79KsavuwJBOw4yjCML68uk7QofQiDry6TtCh9CIBkiWWh-SO0pqQfoXWHouq9vbhU7GWjCqFcPZJrHR1Wj&_nc_ohc=ENa1cWfN77MQ7kNvwGWziuA&_nc_oc=AdqG2XwQl55HcjIjNn1eTB4V1Y1qJSbKMznr9k38_iL1kZvkRxTBRD0FyHUTgDi1tFkuebZyn3YmpU_9ViTMOwQw&_nc_zt=23&_nc_ht=scontent-sin2-1.xx&_nc_gid=9dOjfpFNc_wqRGNzCFqe-Q&_nc_ss=7a3a8&oh=00_Af2LMro6WF0aOpCxrV12OqnIVwVuOUoDU9Obu-n-ImsJcA&oe=69E18E71" alt="Md Tashin Parvez" />
+          <div class="floating-card">
+            <div class="floating-label">Profile</div>
+            <div class="floating-title">Product-minded builder</div>
+            <div class="floating-text">
+              I enjoy turning unclear problems into structured product decisions, usable workflows, and practical digital experiences.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="eyebrow">Who I Am</div>
+
+        <h1 class="title">
+          Building products with
+          <span>clarity, empathy, and structure.</span>
+        </h1>
+
+        <p class="lead">
+          I am a <strong>Computer Science graduate</strong> with a strong interest in product management and digital systems that solve real user problems. My journey started through project work and grew through my experience as a <strong>Product Analyst</strong>, where I worked closely with product managers and engineers on requirement analysis, research, and product documentation.
+        </p>
+
+        <div class="about-grid">
+          <div class="info-card">
+            <div class="info-kicker">Foundation</div>
+            <div class="info-title">Technical background</div>
+            <div class="info-text">
+              With a BSc in Computer Science and Engineering and a CGPA of 3.93, I built a strong base in software engineering, systems thinking, data, and structured problem solving.
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-kicker">Mindset</div>
+            <div class="info-title">User-first thinking</div>
+            <div class="info-text">
+              What draws me to product is the ability to connect user needs with execution — understanding behavior, shaping features, and helping teams move from ambiguity to clarity.
+            </div>
+          </div>
+        </div>
+
+        <div class="focus-box">
+          <div class="focus-head">
+            <div class="focus-title">Areas I care about</div>
+            <div class="focus-line"></div>
+          </div>
+
+          <div class="chip-row">
+            <span class="chip">Productivity tools</span>
+            <span class="chip">Student experiences</span>
+            <span class="chip">Multi-user systems</span>
+            <span class="chip">Workflows & coordination</span>
+            <span class="chip">Usability-driven products</span>
+          </div>
+        </div>
+
+        <div class="bottom-note">
+          <div class="bottom-text">
+            I am especially interested in products that simplify complex processes and make everyday tasks more efficient and accessible. Right now, I am looking for opportunities in <strong>Product Management</strong> where I can contribute meaningfully, learn from strong teams, and grow into a thoughtful product leader over time.
+          </div>
+
+          <div class="signature">
+            <div class="signature-name">Md Tashin Parvez</div>
+            <div class="signature-role">Aspiring Product Manager</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+
+</html>
