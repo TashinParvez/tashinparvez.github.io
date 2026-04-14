@@ -12,6 +12,11 @@
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 
+
+    <!-- =============================================== Styles ================================================ -->
+    <!-- =============================================== Styles ================================================ -->
+    <!-- =============================================== Styles ================================================ -->
+
     <style>
         /* ============================================================
    RESET & TOKENS
@@ -792,7 +797,7 @@
    ============================================================ */
         .snapshot {
             width: 100%;
-            max-width: 1050px;
+            max-width: 1130px;
             margin: 0 auto;
             padding: 0 40px;
         }
@@ -802,7 +807,7 @@
         }
 
         .snapshot .section-rule.bottom {
-            margin-top: 48px;
+            margin-top: 24px;
             margin-bottom: 0;
         }
 
@@ -940,7 +945,7 @@
         .about-wrap {
             max-width: 1050px;
             margin: 0 auto;
-            padding: 80px 40px 100px;
+            padding: 80px 40px 0px;
         }
 
         .about-wrap>.section-rule {
@@ -1246,7 +1251,7 @@
         }
 
         .edu-exp-header {
-            margin-bottom: 72px;
+            margin-bottom: 36px;
         }
 
         .edu-exp-header .page-eyebrow {
@@ -1278,7 +1283,7 @@
             font-size: .93rem;
             color: var(--text-3);
             line-height: 1.75;
-            max-width: 480px;
+            /* max-width: 480px; */
         }
 
         .section-label {
@@ -1672,7 +1677,7 @@
         .leadership {
             max-width: 1050px;
             margin: 0 auto;
-            padding: 80px 40px 100px;
+            padding: 80px 40px 50px;
             color: var(--text-1);
         }
 
@@ -1680,8 +1685,8 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 52px;
+            /* gap: 24px; */
+            margin-bottom: 32px;
             flex-wrap: wrap;
         }
 
@@ -1706,8 +1711,9 @@
             font-size: .9rem;
             color: var(--text-3);
             line-height: 1.8;
-            max-width: 320px;
+            /* max-width: 320px; */
             text-align: right;
+            padding: 0 0 20px 0;
         }
 
         .leadership-entries {
@@ -3799,18 +3805,22 @@
             }
         }
     </style>
+
 </head>
 
 <body>
 
-    <!-- ============================================================ NAVBAR ============================================================ -->
+    <!-- =============================================== NAVBAR ================================================ -->
+    <!-- =============================================== NAVBAR ================================================ -->
+    <!-- =============================================== NAVBAR ================================================ -->
     <nav class="navbar" id="navbar">
         <a href="#home" class="logo"><span class="logo-dot"></span>Tashin Parvez</a>
         <div class="nav-links">
             <a href="#home" class="nav-link active">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#experience" class="nav-link">Experience</a>
-            <!-- <a href="#works" class="nav-link">Works</a> --> 
+            <a href="#projects" class="nav-link">Projects</a>
+            <!-- <a href="#works" class="nav-link">Works</a> -->
             <a href="#contact" class="nav-link">Contact</a>
         </div>
         <a href="sections/resume-doc-reader/resume.html" class="nav-cta">Resume →</a>
@@ -3818,7 +3828,9 @@
 
     <main>
 
-        <!-- ============================================================ HERO ============================================================ -->
+        <!-- ============================================== HERO ================================================= -->
+        <!-- ============================================== HERO ================================================= -->
+        <!-- ============================================== HERO ================================================= -->
         <section id="home">
             <div class="hero">
                 <div class="hero-left">
@@ -3831,11 +3843,16 @@
                         <span class="title-sep"></span>
                         <span>Aspiring Product Manager</span>
                     </div>
-                    <p class="hero-desc">I build user-focused digital products by combining product research, structured
-                        thinking, and hands-on execution.</p>
+                    <!-- <p class="hero-desc">I build user-focused digital products by combining product research, structured
+                        thinking, and hands-on execution.</p> -->
+
+                    <p class="hero-desc">I turn user research, product analysis, and structured execution into clear
+                        product requirements, workflows, and better user experiences.</p>
+
                     <div class="hero-btns">
                         <a href="#works" class="btn btn-primary">View My Work →</a>
-                        <a href="sections/resume-doc-reader/resume.html" class="btn btn-secondary" download>Download Resume ↓</a>
+                        <a href="sections/resume-doc-reader/resume.html" class="btn btn-secondary" download>Download
+                            Resume ↓</a>
                         <a href="#contact" class="btn btn-ghost">Contact Me</a>
                     </div>
                     <div class="hero-meta">
@@ -3846,6 +3863,10 @@
                         <span>Product · Systems · Users</span>
                     </div>
                 </div>
+
+                <!-- ============================ Right Hero ==================================== -->
+                <!-- ============================ Right Hero ==================================== -->
+                <!-- ============================ Right Hero ==================================== -->
 
                 <div class="hero-right">
                     <div class="cube-glow"></div>
@@ -3902,10 +3923,13 @@
                         <div class="cube-hint">Move cursor to interact</div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- ============================================================ SNAPSHOT ============================================================ -->
+        <!-- ============================================ SNAPSHOT =============================================== -->
+        <!-- ============================================ SNAPSHOT =============================================== -->
+        <!-- ============================================ SNAPSHOT =============================================== -->
         <div style="padding:48px 0 0;">
             <div class="snapshot">
                 <div class="section-rule"></div>
@@ -3923,20 +3947,20 @@
                         <div class="snap-sub">Champion ×2, 1st Runner-Up, 2nd Runner-Up</div>
                     </div>
                     <div class="snap-stat">
-                        <div class="snap-lbl">Coding Contest</div>
+                        <div class="snap-lbl">Coding Contest Ranking</div>
                         <div class="snap-val">16th</div>
                         <div class="snap-title">UAP Intra University Coding Contest</div>
                         <div class="snap-sub">Problem solving &amp; algorithmic thinking</div>
                     </div>
                 </div>
-                <div class="snap-chips">
+                <div class="snap-chips" style="display: flex; justify-content: center;">
                     <span class="snap-chips-lbl">Focused On</span>
                     <div class="snap-chips-track">
                         <span class="snap-chip">User-centric Product Design</span>
                         <span class="snap-chip">AI-powered Applications</span>
                         <span class="snap-chip">Multi-user Platforms</span>
-                        <span class="snap-chip">Real-time Systems</span>
-                        <span class="snap-chip">Scalable Web Applications</span>
+                        <!-- <span class="snap-chip">Real-time Systems</span> -->
+                        <!-- <span class="snap-chip">Scalable Web Applications</span> -->
                         <span class="snap-chip">Algorithmic Problem Solving</span>
                     </div>
                 </div>
@@ -3944,15 +3968,21 @@
             </div>
         </div>
 
-        <!-- ============================================================ ABOUT ============================================================ -->
+        <!-- ============================================== ABOUT ================================================= -->
+        <!-- ============================================== ABOUT ================================================= -->
+        <!-- ============================================== ABOUT ================================================= -->
         <section id="about">
             <div class="about-wrap">
                 <div class="section-rule"></div>
 
                 <div class="about-header">
-                    <div class="eyebrow"><span class="eyebrow-dot"></span>About Me</div>
-                    <h2 class="about-title">Personal <em>Introduction</em></h2>
-                    <p class="about-sub">Computer Science Graduate · Product Analyst · Aspiring Product Manager</p>
+                    <!-- <div class="eyebrow"><span class="eyebrow-dot"></span>About Me</div> -->
+                    <div class="eyebrow"><span></span>About Me</div>
+                    <!-- <h2 class="about-title">Personal <em>Introduction</em></h2> -->
+
+                    <h2 class="about-title">Who <em>I Am</em></h2>
+
+                    <p class="about-sub">CSE Graduate · Product Analyst · Aspiring Product Manager</p>
                 </div>
 
                 <div class="about-grid">
@@ -3967,20 +3997,20 @@
                         </div>
                         <div class="stat-grid">
                             <div class="stat-box">
-                                <div class="stat-box-val">3.93</div>
-                                <div class="stat-box-lbl">CGPA</div>
+                                <div class="stat-box-val">3+</div>
+                                <div class="stat-box-lbl">Yrs in Product</div>
                             </div>
                             <div class="stat-box">
                                 <div class="stat-box-val">4+</div>
                                 <div class="stat-box-lbl">Awards</div>
                             </div>
                             <div class="stat-box">
-                                <div class="stat-box-val">3+</div>
-                                <div class="stat-box-lbl">Yrs building</div>
-                            </div>
-                            <div class="stat-box">
                                 <div class="stat-box-val">13×</div>
                                 <div class="stat-box-lbl">Scholarships</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-box-val">3.93</div>
+                                <div class="stat-box-lbl">CGPA</div>
                             </div>
                         </div>
                     </div>
@@ -3989,45 +4019,82 @@
                         <div class="about-intro">
                             <div class="about-name">Md Tashin Parvez</div>
                             <div class="role-tags">
-                                <span class="role-tag">CSE Graduate</span>
+                                <!-- <span class="role-tag">CSE Graduate</span>
                                 <span class="role-sep"></span>
                                 <span class="role-tag">Product Analyst</span>
                                 <span class="role-sep"></span>
-                                <span class="role-tag">Aspiring PM</span>
+                                <span class="role-tag">Aspiring PM</span> -->
+
+                                <span class="role-tag">Product Analyst @Ontik Technology</span>
+
                             </div>
                         </div>
 
                         <div class="prose-block">
                             <div class="prose-lbl">Background</div>
-                            <p>I'm a <strong>Computer Science graduate</strong> with a genuine interest in building
+
+                            <p style="text-align: justify;">I’m a <strong>Computer Science graduate</strong> currently
+                                working as a <strong>Product Analyst</strong>. My interest in
+                                product management grew through hands-on projects and through collaborating with PMs and
+                                engineers on research, requirement analysis, and product documentation.</p>
+
+                            <!-- <p style="text-align: justify;">I'm a <strong>Computer Science graduate</strong> with a genuine interest in building
                                 products that solve real user problems. My path into product management started through
                                 hands-on project work and deepened through my role as a <strong>Product
                                     Analyst</strong>, where I worked closely with PMs and engineers on requirement
-                                analysis, research, and product documentation.</p>
-                            <p>I graduated with a <strong>CGPA of 3.93</strong>, building a solid foundation in software
+                                analysis, research, and product documentation.</p> -->
+
+                            <p style="text-align: justify;">My academic background gave me a strong foundation in
+                                software engineering, systems thinking, and data. <strong>Competitive
+                                    programming</strong> further sharpened how I break down complex problems and think
+                                structurally under constraints.</p>
+
+
+
+                            <!-- <p style="text-align: justify;">I graduated with a <strong>CGPA of 3.93</strong>, building a
+                                solid foundation in software
                                 engineering, system design, and data — while staying deeply active in competitive
-                                programming, which sharpened how I break down and approach complex problems.</p>
+                                programming, which sharpened how I break down and approach complex problems.</p> -->
+
+
                         </div>
+
+
                         <div class="prose-sep"></div>
                         <div class="prose-block">
                             <div class="prose-lbl">What drives me</div>
-                            <p>What draws me to product management is the chance to <strong>bridge user needs with
+                            <p style="text-align: justify;">What draws me to product management is the opportunity to
+                                <strong>turn ambiguous user problems into structured solutions</strong>. I enjoy
+                                understanding behavior, <strong>clarifying requirements</strong>, and shaping features
+                                that <strong>balance usability, feasibility, and product goals</strong>.
+                            </p>
+
+                            <!-- <p style="text-align: justify;">What draws me to product management is the chance to
+                                <strong>bridge user needs with
                                     execution</strong> — breaking down ambiguous problems, understanding behaviour, and
-                                translating insights into structured features and product decisions.</p>
-                            <p>I'm especially interested in <strong>productivity tools, student experiences, and
+                                translating insights into structured features and product decisions.
+                            </p> -->
+
+
+                            <!-- <p style="text-align: justify;">I'm especially interested in <strong>productivity tools,
+                                    student experiences, and
                                     multi-user systems</strong> where coordination, workflows, and usability play a
-                                critical role.</p>
+                                critical role.</p> -->
+
                         </div>
+
                         <div class="prose-sep"></div>
-                        <div class="prose-block">
+
+                        <div class="prose-block" style="padding-bottom: 10px;">
                             <div class="prose-lbl">Beyond the work</div>
-                            <p>I genuinely enjoy <strong>helping others grow</strong>. I regularly share study
-                                materials, problem-solving approaches, and learning resources with peers — a habit that
-                                sharpened how I communicate complex ideas and naturally developed a leadership mindset.
+
+                            <p style="text-align: justify;">During university, I actively helped others learn by sharing
+                                study materials, problem-solving methods, and practical guidance. That experience
+                                strengthened my <strong>communication, peer support, and leadership skills</strong>.
                             </p>
                         </div>
 
-                        <div class="about-traits">
+                        <!-- <div class="about-traits">
                             <span class="tag-pill">User Research</span>
                             <span class="tag-pill">System Thinking</span>
                             <span class="tag-pill">Problem Solving</span>
@@ -4036,12 +4103,13 @@
                             <span class="tag-pill">Peer Mentoring</span>
                             <span class="tag-pill">Product Documentation</span>
                             <span class="tag-pill">Student-Centred Products</span>
-                        </div>
+                        </div> -->
 
                         <div class="about-cta">
                             <a href="#contact" class="btn btn-primary">Get in touch →</a>
                             <a href="resume.pdf" download class="btn btn-secondary">Download Resume ↓</a>
                         </div>
+
                     </div>
                 </div>
 
@@ -4049,7 +4117,9 @@
             </div>
         </section>
 
-        <!-- ============================================================ EXPERIENCE & EDUCATION ============================================================ -->
+        <!-- ==================================== EXPERIENCE & EDUCATION ========================================= -->
+        <!-- ==================================== EXPERIENCE & EDUCATION ========================================= -->
+        <!-- ==================================== EXPERIENCE & EDUCATION ========================================= -->
         <section id="experience">
             <div class="edu-exp">
                 <div class="edu-exp-header">
@@ -4059,22 +4129,35 @@
                         my product thinking.</p>
                 </div>
 
+                <!-- ==================================== EDUCATION ========================================= -->
+                <!-- ==================================== EDUCATION ========================================= -->
+
                 <div class="exp-section">
                     <div class="section-label"><span class="section-label-text">Experience</span><span
                             class="section-label-line"></span></div>
                     <div class="exp-list">
 
+
+
+
+                        <!-- ==================== Product Analyst ======================== -->
+                        <!-- ==================== Product Analyst ======================== -->
                         <div class="exp-card">
+
                             <div class="exp-main">
                                 <div class="current-badge"><span class="cdot"></span>Current</div>
                                 <div class="exp-role">Product Analyst</div>
                                 <div class="exp-org">Ontik Technology<span class="exp-org-sep">·</span><span
                                         class="exp-loc">Dhaka, Bangladesh</span></div>
-                                <div class="exp-desc">Leading product analysis initiatives, conducting user research,
+
+                                <div class="exp-desc" style="text-align: justify;">
+                                    Leading product analysis initiatives, conducting user research,
                                     and translating insights into structured product requirements. Supporting roadmap
-                                    decisions with data-driven documentation and cross-functional collaboration.</div>
+                                    decisions with data-driven documentation and cross-functional collaboration.
+                                </div>
                             </div>
-                            <div class="exp-side">
+
+                            <div class=" exp-side">
                                 <div class="exp-date">Feb 2025 – Present</div>
                                 <div class="exp-logo-wrap"><img class="exp-logo"
                                         src="https://rest.techbehemoths.com/storage/images/users/main/company-avatar-67cff5e907342-x2.png"
@@ -4082,20 +4165,23 @@
                             </div>
                         </div>
 
+
+
+                        <!-- ==================== Product Analyst Intern ======================== -->
+                        <!-- ==================== Product Analyst Intern ======================== -->
+
                         <div class="exp-card">
                             <div class="exp-main">
                                 <div class="exp-role">Product Analyst Intern</div>
                                 <div class="exp-org">Ontik Technology<span class="exp-org-sep">·</span><span
                                         class="exp-loc">Dhaka, Bangladesh</span></div>
-                                <div class="exp-desc">
-                                    <ul style="padding-left:16px;display:flex;flex-direction:column;gap:4px;">
-                                        <li>Assisted in requirement gathering, feature analysis, and product
-                                            documentation across ongoing product initiatives.</li>
-                                        <li>Participated in cross-functional discussions to align product improvements
-                                            and workflow optimisation.</li>
-                                        <li>Contributed to organising product information and supporting communication
-                                            between product and engineering teams.</li>
-                                    </ul>
+
+                                <div class="exp-desc" style="text-align: justify;">
+                                    Supported requirement gathering and feature analysis across active product
+                                    initiatives
+                                    Documented product workflows and feature details for cross-functional use
+                                    Helped align product and engineering communication through organized
+                                    documentation
                                 </div>
                             </div>
                             <div class="exp-side">
@@ -4106,42 +4192,59 @@
                             </div>
                         </div>
 
+
+                        <!-- ==================== Undergraduate Teaching Assistant UIU UGA TA ======================== -->
+                        <!-- ==================== Undergraduate Teaching Assistant UIU UGA TA ======================== -->
+
+
                         <div class="exp-card">
                             <div class="exp-main">
-                                <div class="exp-role">Undergraduate Assistant, Department of CSE</div>
+                                <div class="exp-role">Undergraduate Teaching Assistant, Department of CSE</div>
                                 <div class="exp-org">United International University<span
-                                        class="exp-org-sep">·</span><span class="exp-loc">Dhaka, Bangladesh</span></div>
-                                <div class="exp-desc">
-                                    <ul style="padding-left:16px;display:flex;flex-direction:column;gap:4px;">
-                                        <li>Supported instruction and academic activities for ICS, SPL, OOP, and DSA-I
-                                            courses.</li>
-                                        <li>Guided students in core programming concepts, problem solving, and
-                                            coursework preparation.</li>
+                                        class="exp-org-sep">·</span><span class="exp-loc">Dhaka, Bangladesh</span>
+                                </div>
+                                <div class="exp-desc" style="text-align: justify;">
+                                    <ul style=" padding-left:16px;display:flex;flex-direction:column;gap:4px;">
+                                        <li>Supported instruction and academic activities for ICS, SPL, OOP, and
+                                            DSA-I
+                                            courses</li>
+                                        <li>Mentored students in programming, problem-solving, and coursework
+                                            preparation</li>
                                         <li>Collaborated with faculty on course support, student mentoring, and
-                                            lab-related tasks.</li>
+                                            lab-related tasks</li>
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="exp-side">
                                 <div class="exp-date">Feb 2024 – Jan 2026</div>
                                 <div class="exp-logo-wrap"><img class="exp-logo"
                                         src="https://upload.wikimedia.org/wikipedia/en/6/6b/United_International_University_Monogram.svg"
                                         alt="UIU" /></div>
                             </div>
+
                         </div>
+
+
+                        <!-- ==================== Grader UIU ======================== -->
+                        <!-- ==================== Grader UIU ======================== -->
+
 
                         <div class="exp-card">
                             <div class="exp-main">
                                 <div class="exp-role">Grader</div>
                                 <div class="exp-org">United International University<span
-                                        class="exp-org-sep">·</span><span class="exp-loc">Dhaka, Bangladesh</span></div>
-                                <div class="exp-desc">
-                                    <ul style="padding-left:16px;display:flex;flex-direction:column;gap:4px;">
-                                        <li>Evaluated assignments for SPL, OOP, Discrete Mathematics, and Electrical
-                                            Circuits.</li>
-                                        <li>Maintained accuracy and consistency while coordinating with instructors on
-                                            grading standards.</li>
-                                    </ul>
+                                        class="exp-org-sep">·</span><span class="exp-loc">Dhaka, Bangladesh</span>
+                                </div>
+                                <div class="exp-desc" style="text-align: justify;">
+                                    <!-- Evaluated assignments for SPL, OOP, Discrete Mathematics, and Electrical 
+                                            Circuits -->
+
+                                    Evaluated coursework across multiple CSE subjects like SPL, OOP, Discrete
+                                    Mathematics, and Electrical
+                                    Circuits while maintaining grading
+                                    consistency with instructors
+
                                 </div>
                             </div>
                             <div class="exp-side">
@@ -4151,13 +4254,24 @@
                                         alt="UIU" /></div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
 
                 <div>
+
+                    <!-- ==================================== EDUCATION ========================================= -->
+                    <!-- ==================================== EDUCATION ========================================= -->
+                    <!-- ==================================== EDUCATION ========================================= -->
+
+
                     <div class="section-label"><span class="section-label-text">Education</span><span
                             class="section-label-line"></span></div>
                     <div class="edu-list">
+
+                        <!-- ====================== UIU ======================== -->
+                        <!-- ====================== UIU ======================== -->
 
                         <div class="edu-card">
                             <div class="edu-logo-pill"><img class="edu-logo"
@@ -4178,6 +4292,10 @@
                             </div>
                         </div>
 
+
+                        <!-- ====================== HSC ======================== -->
+                        <!-- ====================== HSC ======================== -->
+
                         <div class="edu-card">
                             <div class="edu-logo-pill"><img class="edu-logo"
                                     src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Logo_of_Shaheed_Ramiz_Uddin_Cantonment_College.jpeg/250px-Logo_of_Shaheed_Ramiz_Uddin_Cantonment_College.jpeg"
@@ -4197,6 +4315,9 @@
                             </div>
                         </div>
 
+                        <!-- ====================== SSC ======================== -->
+                        <!-- ====================== SSC ======================== -->
+
                         <div class="edu-card">
                             <div class="edu-logo-pill"><img class="edu-logo"
                                     src="https://upload.wikimedia.org/wikipedia/bn/7/70/%E0%A6%86%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%A1_%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6_%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%A8_%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2_%E0%A6%85%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1_%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C-%E0%A6%8F%E0%A6%B0_%E0%A6%AE%E0%A6%A8%E0%A7%8B%E0%A6%97%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%AE.png"
@@ -4215,12 +4336,20 @@
                                         Top 5</span></div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+            <div class="section-rule bottom"></div>
+
         </section>
 
-        <!-- ============================================================ LEADERSHIP ============================================================ -->
+
+        <!-- ============================================= LEADERSHIP ============================================= -->
+        <!-- ============================================= LEADERSHIP ============================================= -->
+        <!-- ============================================= LEADERSHIP ============================================= -->
+
         <section id="leadership">
             <div class="leadership">
                 <div class="leadership-header">
@@ -4228,8 +4357,12 @@
                         <div class="eyebrow"><span class="eyebrow-dot"></span>Beyond the Classroom</div>
                         <h2 class="leadership-title">Leadership &amp; <em>Extracurriculars</em></h2>
                     </div>
-                    <p class="leadership-desc">A record of leadership, mentoring, and community-driven contributions
-                        across academic and technical spaces.</p>
+                    <p class="leadership-desc">
+                        A record of leadership, mentoring, and community-driven contributions
+                        across academic and technical spaces.
+                    </p>
+
+                    <div class="section-rule bottom"></div>
                 </div>
 
                 <div class="leadership-entries">
@@ -4237,8 +4370,10 @@
                     <div class="l-entry">
                         <div class="l-num">01</div>
                         <div class="l-body">
-                            <div class="l-head"><span class="l-pill active"><span class="dot"></span>Current</span><span
-                                    class="l-type">Initiative</span></div>
+
+                            <!-- <div class="l-head"><span class="l-pill active"><span class="dot"></span>Current</span><span
+                                    class="l-type">Initiative</span></div> -->
+
                             <div class="l-role">Founder &amp; Instructor</div>
                             <div class="l-org">UIU Scholar's Squad</div>
                             <div class="l-desc">Founded a student-focused academic support initiative to help UIU
@@ -4267,7 +4402,7 @@
                             </div>
                         </div>
                         <div class="l-side">
-                            <div class="l-date">2023 — Present</div>
+                            <div class="l-date">2023 — 2026</div>
                             <div class="l-loc">Dhaka, Bangladesh</div>
                         </div>
                     </div>
@@ -4275,8 +4410,8 @@
                     <div class="l-entry">
                         <div class="l-num">02</div>
                         <div class="l-body">
-                            <div class="l-head"><span class="l-pill active"><span class="dot"></span>Current</span><span
-                                    class="l-type">Club Role</span></div>
+                            <!-- <div class="l-head"><span class="l-pill active"><span class="dot"></span>Current</span><span
+                                    class="l-type">Club Role</span></div> -->
                             <div class="l-role">CP Wing Associate</div>
                             <div class="l-org">UIU Computer Club</div>
                             <div class="l-desc">Contribute to competitive programming activities, peer learning, and
@@ -4291,7 +4426,7 @@
                                     Engagement</span></div>
                         </div>
                         <div class="l-side">
-                            <div class="l-date">2025 — Present</div>
+                            <div class="l-date">2025 — 2026</div>
                             <div class="l-loc">Dhaka, Bangladesh</div>
                         </div>
                     </div>
@@ -4382,9 +4517,14 @@
                     </div>
                 </div>
             </div>
+            <div class="section-rule bottom"></div>
         </section>
 
-        <!-- ============================================================ SKILLS ============================================================ -->
+
+        <!-- ======================================= SKILLS ============================================== -->
+        <!-- ======================================= SKILLS ============================================== -->
+        <!-- ======================================= SKILLS ============================================== -->
+
         <section id="skills">
             <div class="skills-wrap">
                 <div class="skills-head">
@@ -4715,7 +4855,7 @@
                 { closedTitle: "Champion — DBMS Poster Presentation", closedSub: "UIU CSE Project Show, Dhaka, Bangladesh", projName: "DBMS Poster", projDetails: "Awarded for clear technical communication, visual structure, and strong presentation of database concepts in a concise poster format.", cat: "Poster Presentation", team: "Team Kairos", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80", tag: "Champion", link: "", recog: "" },
 
                 { closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "assets/images/scholarship.jpg", tag: "Scholarship", link: "", recog: "" },
-                
+
             ];
 
             const getType = (tag) => {
