@@ -3564,9 +3564,296 @@
             }
         }
 
-        /* ============================================================
-   FOOTER
-   ============================================================ */
+        /* ======================================== CERTIFICATES ================================================ */
+        /* ======================================== CERTIFICATES ================================================ */
+        /* ======================================== CERTIFICATES ================================================ */
+        /* ======================================== CERTIFICATES ================================================ */
+
+
+        .certifications-section {
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto;
+            color: #eaf2ff;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 24px;
+        }
+
+        .certifications-section::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, transparent);
+            margin-bottom: 64px;
+        }
+
+        .certifications-section::after {
+            content: "";
+            position: absolute;
+            top: 90px;
+            left: -120px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 179, 237, 0.11), transparent 68%);
+            pointer-events: none;
+            filter: blur(8px);
+        }
+
+        .certifications-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .head-left {
+            max-width: 640px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #63b3ed;
+            margin-bottom: 14px;
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+        }
+
+        .certifications-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: #dbeafe;
+        }
+
+        .certifications-title span {
+            background: linear-gradient(135deg, #cfe7ff 0%, #93c5fd 55%, #63b3ed 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .head-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .head-desc {
+            max-width: 320px;
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #93c5fd;
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(99, 179, 237, 0.22);
+            background: rgba(99, 179, 237, 0.06);
+        }
+
+        .meta-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #63b3ed;
+            box-shadow: 0 0 8px rgba(99, 179, 237, 0.7);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certificate-card {
+            position: relative;
+            display: block;
+            min-height: 128px;
+            padding: 22px 20px 20px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(180deg, rgba(10, 14, 22, 0.96), rgba(7, 10, 18, 0.98));
+            overflow: hidden;
+            isolation: isolate;
+            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.34s ease, box-shadow 0.42s ease;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+        }
+
+        .certificate-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(99, 179, 237, 0.08), transparent 35%, transparent 70%, rgba(99, 179, 237, 0.05)),
+                radial-gradient(circle at top right, rgba(147, 197, 253, 0.12), transparent 30%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: -1;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px) scale(1.035);
+            border-color: rgba(99, 179, 237, 0.38);
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+        }
+
+        .certificate-card:hover::before {
+            opacity: 1;
+        }
+
+        .certificate-card-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+        }
+
+        .certificate-name {
+            margin: 0;
+            font-size: 1.45rem;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #eaf2ff;
+        }
+
+        .certificate-org {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+            font-size: 0.84rem;
+            line-height: 1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #63b3ed;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(99, 179, 237, 0.35);
+        }
+
+        .certificate-date {
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            letter-spacing: 0.05em;
+        }
+
+        .certificate-glow {
+            position: absolute;
+            inset: auto auto -60px -40px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(99, 179, 237, 0.12), transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.35s ease, transform 0.42s ease;
+            transform: scale(0.7);
+            pointer-events: none;
+        }
+
+        .certificate-card:hover .certificate-glow {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .certifications-bottom-rule {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12) 20%, rgba(255, 255, 255, 0.12) 80%, transparent);
+            margin-top: 64px;
+        }
+
+        @media (max-width: 900px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .certifications-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .head-right {
+                align-items: flex-start;
+            }
+
+            .head-desc {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .certifications-title {
+                font-size: 1.9rem;
+            }
+
+            .certificate-card {
+                min-height: 116px;
+                padding: 18px 16px;
+            }
+
+            .certificate-org {
+                font-size: 0.74rem;
+                letter-spacing: 0.14em;
+            }
+
+            .certificate-date {
+                font-size: 0.82rem;
+            }
+        }
+
+
+
+
+
+        /* ======================================== FOOTER ================================================ */
+        /* ======================================== FOOTER ================================================ */
+        /* ======================================== FOOTER ================================================ */
+        /* ======================================== FOOTER ================================================ */
         .footer {
             position: relative;
             overflow: hidden;
@@ -4603,6 +4890,93 @@
                 </div>
             </div>
         </section>
+
+
+        <!-- ======================================== certifications ========================================== -->
+        <!-- ======================================== certifications ========================================== -->
+        <!-- ======================================== certifications ========================================== -->
+        <!-- ======================================== certifications ========================================== -->
+
+        <section class="certifications-section" id="certifications">
+            <div class="certifications-head">
+                <div class="head-left">
+                    <div class="eyebrow">
+                        <!-- <span class="eyebrow-dot"></span> -->
+                        <span
+                            style="display:inline-block;width:16px;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:999px;vertical-align:middle;margin-right:8px;">
+                        </span>
+                        Certifications
+                    </div>
+                    <h2 class="certifications-title">Proof of continuous<br><span>learning</span></h2>
+                </div>
+
+                <div class="head-right">
+                    <p class="head-desc">
+                        Professional courses that reflect my focus on communication, presentation,
+                        interview readiness, and career growth.
+                    </p>
+                    <span class="meta-badge">
+                        <span class="meta-badge-dot"></span>
+                        5 Completed Courses
+                    </span>
+                </div>
+            </div>
+
+            <div class="certifications-grid">
+                <a href="https://www.grameenphone.academy/cert/9c417e418de0" class="certificate-card" target="_blank"
+                    rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">Art of Communication</h3>
+                        <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
+                        <div class="certificate-date">March 16, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+
+                <a href="https://www.grameenphone.academy/cert/bcf18bbd1c72" class="certificate-card" target="_blank"
+                    rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">Corporate Presentation Skills</h3>
+                        <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
+                        <div class="certificate-date">March 17, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+
+                <a href="https://www.grameenphone.academy/cert/ac760f66052a" class="certificate-card" target="_blank"
+                    rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">LinkedIn 101</h3>
+                        <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
+                        <div class="certificate-date">March 16, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+
+                <a href="https://www.grameenphone.academy/cert/68cf2c9215ea" class="certificate-card" target="_blank"
+                    rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">Sharpen Your Interview Skills</h3>
+                        <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
+                        <div class="certificate-date">April 02, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+
+                <a href="https://www.grameenphone.academy/cert/0a5899d9f40e" class="certificate-card" target="_blank"
+                    rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">Smart CV</h3>
+                        <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
+                        <div class="certificate-date">March 15, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+            </div>
+
+            <div class="certifications-bottom-rule"></div>
+        </section>
+
 
 
         <!-- ======================================== TESTIMONIALS ========================================== -->
