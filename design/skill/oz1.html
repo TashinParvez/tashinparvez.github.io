@@ -993,7 +993,7 @@
 
         .about-left {
             position: sticky;
-            top: 110px;
+            top: 40px;
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -4158,7 +4158,7 @@
                 <!-- ============================ Right Hero ==================================== -->
 
 
-
+<!-- 
                 <div class="hero-right">
                     <div class="cube-glow"></div>
                     <div class="cube-shadow-el"></div>
@@ -4213,7 +4213,7 @@
                         </div>
                         <div class="cube-hint">Move cursor to interact</div>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -4648,35 +4648,388 @@
 
 
 
-        <!-- ======================================= SKILLS ============================================== -->
+        <!-- ======================================= SKILLS tashin here ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
 
-        <section id="skills">
-            <div class="skills-wrap">
-                <div class="skills-head">
-                    <div>
-                        <div class="eyebrow">
-                            <span
-                                style="display:inline-block;width:16px;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:999px;vertical-align:middle;margin-right:8px;">
-                            </span>
-                            Engineering × Product Depth
-                        </div>
-                        <h2 class="skills-title">Skills &amp;<br><em>Capabilities</em></h2>
-                        <p class="skills-sub">A concise overview of my product, research, technical, and collaboration
-                            skills.</p>
-                    </div>
-                    <div class="skills-stat">
-                        <div class="skills-stat-num">13</div>
-                        <div class="skills-stat-lbl">Capability Groups</div>
-                    </div>
-                </div>
-                <div class="skills-main" id="skillsRoot"></div>
-            </div>
 
-            <div class="section-rule bottom"></div>
-        </section>
+        <section class="skills-section" id="skills">
+  <div class="skills-shell">
+    <div class="skills-head">
+      <p class="skills-kicker">Expertise</p>
+      <h2 class="skills-title">Skills & <span>Capabilities</span></h2>
+      <p class="skills-sub">
+        A focused view of product thinking and software capability — presented in a cleaner,
+        more polished way.
+      </p>
+    </div>
+
+    <div class="skills-panel">
+      <div class="skills-sidebar" id="skillsSidebar"></div>
+
+      <div class="skills-content">
+        <div class="skills-topline">
+          <span class="skills-track" id="skillsTrack">Product</span>
+          <div class="skills-nav">
+            <button id="skillsPrev" aria-label="Previous">←</button>
+            <button id="skillsNext" aria-label="Next">→</button>
+          </div>
+        </div>
+
+        <div class="skills-main" id="skillsMain"></div>
+
+        <div class="skills-bottom">
+          <div class="skills-tags" id="skillsTags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    --nav-h: 80px;
+    --bg: #0a0a0a;
+    --panel: #111111;
+    --soft: #181818;
+    --line: rgba(255,255,255,0.08);
+    --text: #f5f5f5;
+    --muted: rgba(255,255,255,0.58);
+    --accent: #ffffff;
+    min-height: calc(100svh - var(--nav-h));
+    max-height: calc(100svh - var(--nav-h));
+    padding: 20px 0;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .skills-shell {
+    width: min(1240px, calc(100% - 32px));
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+  }
+
+  .skills-head {
+    display: grid;
+    gap: 8px;
+  }
+
+  .skills-kicker {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .skills-title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 4.4rem);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .skills-title span {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .skills-sub {
+    margin: 0;
+    max-width: 620px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .skills-panel {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    gap: 28px;
+  }
+
+  .skills-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .skill-tab {
+    background: transparent;
+    border: 0;
+    border-left: 2px solid transparent;
+    color: var(--muted);
+    padding: 10px 0 10px 14px;
+    text-align: left;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .skill-tab:hover,
+  .skill-tab.active {
+    border-left-color: var(--accent);
+    color: var(--text);
+  }
+
+  .skills-content {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 18px;
+  }
+
+  .skills-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .skills-track {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+
+  .skills-nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .skills-nav button {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .skills-nav button:hover {
+    background: var(--soft);
+  }
+
+  .skills-main {
+    min-height: 0;
+    display: grid;
+    align-content: center;
+    gap: 20px;
+    animation: fadeUp .35s ease;
+  }
+
+  .skills-main h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+    max-width: 700px;
+  }
+
+  .skills-main p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  .skills-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skills-points span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .skills-bottom {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skills-tags span {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .skills-tags span::after {
+    content: "—";
+    margin-left: 10px;
+    color: rgba(255,255,255,0.18);
+  }
+
+  .skills-tags span:last-child::after {
+    display: none;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .skills-section {
+      --nav-h: 72px;
+      max-height: none;
+      min-height: auto;
+      overflow: visible;
+    }
+
+    .skills-panel {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .skills-sidebar {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 16px;
+    }
+
+    .skill-tab {
+      white-space: nowrap;
+      border-left: 0;
+      border-bottom: 2px solid transparent;
+      padding: 0 0 8px 0;
+    }
+
+    .skill-tab:hover,
+    .skill-tab.active {
+      border-bottom-color: var(--accent);
+    }
+
+    .skills-main {
+      align-content: start;
+    }
+  }
+</style>
+
+<script>
+  const skillsData = [
+    {
+      track: "Product",
+      title: "Product Thinking & Requirement Strategy",
+      desc: "I work across requirement analysis, feature framing, user flows, and documentation to turn ideas into clear product direction. The goal is always to reduce ambiguity and make decisions feel intentional.",
+      points: ["Requirement Analysis", "Feature Planning", "PRD Writing", "User Flow Thinking"],
+      tags: ["Business Analysis", "Product Research", "Market Research", "User-centered Design", "Agile", "Scrum"]
+    },
+    {
+      track: "Product",
+      title: "Research, Validation & UX Understanding",
+      desc: "I use research, feedback, and early structure to understand user problems before execution. That includes insight gathering, comparing alternatives, mapping journeys, and shaping cleaner experiences.",
+      points: ["User Research", "Journey Mapping", "Wireframing", "Prototyping"],
+      tags: ["Figma", "Usability Testing", "Interaction Thinking", "Information Architecture"]
+    },
+    {
+      track: "Software",
+      title: "Software Development with Strong Technical Foundation",
+      desc: "My software background helps me think beyond visuals and documentation. I can reason through implementation constraints, engineering workflow, and system behavior while staying aligned with product goals.",
+      points: ["DSA", "OOP", "Frontend Development", "API-aware Thinking"],
+      tags: ["C", "C++", "Java", "Python", "HTML", "CSS", "JavaScript", "React", "Next.js", "Node.js", "PHP"]
+    },
+    {
+      track: "Software",
+      title: "Tools, Workflow & Delivery Support",
+      desc: "I’m comfortable with the tools and environments that support collaboration, testing, iteration, and day-to-day execution. That helps bridge product discussions and actual delivery work more smoothly.",
+      points: ["Documentation", "Version Control", "Testing Support", "Data Handling"],
+      tags: ["Git", "GitHub", "Linux", "MySQL", "Postman", "Selenium", "Excel", "Google Sheets", "Pandas", "NumPy"]
+    }
+  ];
+
+  const sidebar = document.getElementById("skillsSidebar");
+  const main = document.getElementById("skillsMain");
+  const tags = document.getElementById("skillsTags");
+  const track = document.getElementById("skillsTrack");
+  const prev = document.getElementById("skillsPrev");
+  const next = document.getElementById("skillsNext");
+
+  let current = 0;
+
+  function renderTabs() {
+    sidebar.innerHTML = skillsData.map((item, i) => `
+      <button class="skill-tab ${i === current ? 'active' : ''}" data-index="${i}">
+        ${item.title}
+      </button>
+    `).join("");
+
+    [...sidebar.querySelectorAll(".skill-tab")].forEach(btn => {
+      btn.addEventListener("click", () => {
+        current = +btn.dataset.index;
+        renderContent();
+        renderTabs();
+      });
+    });
+  }
+
+  function renderContent() {
+    const item = skillsData[current];
+    track.textContent = item.track;
+
+    main.innerHTML = `
+      <h3>${item.title}</h3>
+      <p>${item.desc}</p>
+      <div class="skills-points">
+        ${item.points.map(p => `<span>${p}</span>`).join("")}
+      </div>
+    `;
+
+    tags.innerHTML = item.tags.map(t => `<span>${t}</span>`).join("");
+  }
+
+  prev.addEventListener("click", () => {
+    current = (current - 1 + skillsData.length) % skillsData.length;
+    renderTabs();
+    renderContent();
+  });
+
+  next.addEventListener("click", () => {
+    current = (current + 1) % skillsData.length;
+    renderTabs();
+    renderContent();
+  });
+
+  renderTabs();
+  renderContent();
+</script>
+        
+        
+
+
+
 
 
         <!-- ============================================= Projects ============================================= -->
@@ -5315,47 +5668,8 @@
             })();
         })();
 
-        /* ── SKILLS ── */
-        (() => {
-            const parts = [
-                {
-                    name: 'Product', count: '06 categories', skills: [
-                        { n: '01', k: 'Foundation', name: 'Engineering & Product Foundation', tags: ['Product Thinking', 'Product Strategy', 'System Thinking', 'Requirement Gathering', 'Feature Scoping', 'Stakeholder Management', 'Business Analysis', 'Agile', 'Scrum'] },
-                        { n: '02', k: 'Analytics', name: 'Product Analytics & Data', tags: ['Python', 'Pandas', 'NumPy', 'MySQL', 'Excel', 'Google Sheets'] },
-                        { n: '03', k: 'Research', name: 'User Research & Validation', tags: ['User Research', 'User Interviews', 'Survey Design', 'Usability Testing', 'Competitive Analysis', 'Market Research', 'Journey Mapping', 'User-Centered Design'] },
-                        { n: '04', k: 'Execution', name: 'Product Execution & Collaboration', tags: ['PRD Writing', 'User Stories', 'Acceptance Criteria', 'Documentation', 'Task Planning', 'Cross-functional Collaboration', 'Jira', 'Notion'] },
-                        { n: '05', k: 'Design', name: 'Design & Prototyping', tags: ['Figma', 'Wireframing', 'Prototyping', 'Information Architecture', 'UX Thinking', 'Photoshop'] },
-                        { n: '06', k: 'Leadership', name: 'Communication & Leadership', tags: ['Stakeholder Communication', 'Presentation', 'Team Coordination', 'Leadership', 'Mentoring', 'Decision Making'] },
-                    ]
-                },
-                {
-                    name: 'Software Development', count: '07 categories', skills: [
-                        { n: '07', k: 'Core', name: 'Core Engineering', tags: ['Data Structures & Algorithms', 'OOP', 'System Design'] },
-                        { n: '08', k: 'Languages', name: 'Programming Languages', tags: ['C', 'C++', 'Java', 'Python', 'JavaScript', 'PHP'] },
-                        { n: '09', k: 'Application', name: 'Web Development', tags: ['HTML5', 'CSS3', 'Bootstrap', 'JavaScript', 'React', 'Next.js', 'Node.js', 'PHP'] },
-                        { n: '10', k: 'Storage', name: 'Databases', tags: ['MySQL', 'Database Design'] },
-                        { n: '11', k: 'Infrastructure', name: 'DevOps & Systems', tags: ['Git', 'GitHub', 'Linux', 'Bash'] },
-                        { n: '12', k: 'Quality', name: 'APIs & Testing', tags: ['Postman', 'Selenium'] },
-                        { n: '13', k: 'Tools', name: 'AI & Dev Environment', tags: ['Machine Learning', 'Google Colab', 'Roboflow', 'Pandas', 'NumPy', 'VS Code', 'Arduino', 'Overleaf'] },
-                    ]
-                },
-            ];
-            const root = document.getElementById('skillsRoot');
-            if (!root) return;
-            parts.forEach(part => {
-                const g = document.createElement('section'); g.className = 'skills-group';
-                const row = document.createElement('div'); row.className = 'skills-group-row';
-                row.innerHTML = `<div class="skills-group-name">${part.name}</div><div class="skills-group-meta">${part.count}</div>`;
-                const sep = document.createElement('div'); sep.className = 'skills-group-sep';
-                g.appendChild(row); g.appendChild(sep);
-                part.skills.forEach(s => {
-                    const r = document.createElement('article'); r.className = 'skill-row';
-                    r.innerHTML = `<div class="skill-num">${s.n}</div><div class="skill-body"><div class="skill-top"><span class="skill-name">${s.name}</span><span class="skill-kicker">${s.k}</span></div><div class="skill-tags">${s.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div></div>`;
-                    g.appendChild(r);
-                });
-                root.appendChild(g);
-            });
-        })();
+
+
 
         /* ── ACHIEVEMENTS ── */
         (() => {

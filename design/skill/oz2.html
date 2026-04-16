@@ -993,7 +993,7 @@
 
         .about-left {
             position: sticky;
-            top: 110px;
+            top: 40px;
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -4158,7 +4158,7 @@
                 <!-- ============================ Right Hero ==================================== -->
 
 
-
+                <!-- 
                 <div class="hero-right">
                     <div class="cube-glow"></div>
                     <div class="cube-shadow-el"></div>
@@ -4213,7 +4213,7 @@
                         </div>
                         <div class="cube-hint">Move cursor to interact</div>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>
@@ -4648,35 +4648,627 @@
 
 
 
-        <!-- ======================================= SKILLS ============================================== -->
+        <!-- ======================================= SKILLS tashin here ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
         <!-- ======================================= SKILLS ============================================== -->
 
-        <section id="skills">
-            <div class="skills-wrap">
-                <div class="skills-head">
-                    <div>
-                        <div class="eyebrow">
-                            <span
-                                style="display:inline-block;width:16px;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:999px;vertical-align:middle;margin-right:8px;">
-                            </span>
-                            Engineering × Product Depth
-                        </div>
-                        <h2 class="skills-title">Skills &amp;<br><em>Capabilities</em></h2>
-                        <p class="skills-sub">A concise overview of my product, research, technical, and collaboration
-                            skills.</p>
-                    </div>
-                    <div class="skills-stat">
-                        <div class="skills-stat-num">13</div>
-                        <div class="skills-stat-lbl">Capability Groups</div>
-                    </div>
-                </div>
-                <div class="skills-main" id="skillsRoot"></div>
-            </div>
 
-            <div class="section-rule bottom"></div>
-        </section>
+
+        <section class="sc-section" id="skills">
+  <div class="sc-wrap">
+    <div class="sc-left">
+      <p class="sc-kicker">Expertise</p>
+      <h2 class="sc-title">Skills & <span>Capabilities</span></h2>
+      <p class="sc-desc">
+        A compact, curated presentation of my product and software strengths —
+        designed to feel sharper, cleaner, and more intentional.
+      </p>
+    </div>
+
+    <div class="sc-right">
+      <div class="sc-topbar">
+        <div class="sc-domain-switch" id="scDomainSwitch"></div>
+        <div class="sc-counter">
+          <span id="scCurrent">01</span>
+          <span class="sc-counter-line"></span>
+          <span id="scTotal">06</span>
+        </div>
+      </div>
+
+      <div class="sc-panel">
+        <aside class="sc-list" id="scList"></aside>
+
+        <article class="sc-stage" id="scStage">
+          <!-- dynamic -->
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc-section {
+    --nav-h: 84px; /* change if your navbar height is different */
+    --bg: #0b0b0d;
+    --panel: #111214;
+    --panel-2: #16171a;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.14);
+    --text: #f4f4f2;
+    --muted: rgba(244,244,242,0.58);
+    --muted-2: rgba(244,244,242,0.38);
+    --accent: #f4f4f2;
+    --radius: 28px;
+
+    position: relative;
+    min-height: calc(100svh - var(--nav-h));
+    max-height: calc(100svh - var(--nav-h));
+    padding: 20px 0;
+    background:
+      radial-gradient(circle at top right, rgba(255,255,255,0.04), transparent 28%),
+      radial-gradient(circle at bottom left, rgba(255,255,255,0.03), transparent 22%),
+      var(--bg);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  .sc-wrap {
+    width: min(1280px, calc(100% - 36px));
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+  }
+
+  .sc-left,
+  .sc-right,
+  .sc-panel,
+  .sc-stage,
+  .sc-list {
+    min-height: 0;
+  }
+
+  .sc-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(10px, 2vw, 28px) 0;
+  }
+
+  .sc-kicker {
+    margin: 0 0 14px;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .sc-title {
+    margin: 0;
+    font-size: clamp(2.6rem, 6vw, 5.6rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    font-weight: 700;
+    max-width: 7.5ch;
+  }
+
+  .sc-title span {
+    color: rgba(244,244,242,0.5);
+  }
+
+  .sc-desc {
+    margin: 22px 0 0;
+    max-width: 38ch;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+
+  .sc-right {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+  }
+
+  .sc-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .sc-domain-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  .sc-domain-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    padding: 12px 18px;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .sc-domain-btn.active {
+    background: var(--accent);
+    color: #0b0b0d;
+  }
+
+  .sc-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .sc-counter-line {
+    width: 40px;
+    height: 1px;
+    background: var(--line-strong);
+  }
+
+  .sc-panel {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .sc-list,
+  .sc-stage {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: var(--radius);
+  }
+
+  .sc-list {
+    padding: 12px;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    overflow: auto;
+  }
+
+  .sc-item {
+    appearance: none;
+    width: 100%;
+    text-align: left;
+    border: 1px solid transparent;
+    background: transparent;
+    color: inherit;
+    border-radius: 20px;
+    padding: 14px 14px 15px;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .sc-item:hover {
+    background: rgba(255,255,255,0.03);
+    border-color: var(--line);
+  }
+
+  .sc-item.active {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--line-strong);
+  }
+
+  .sc-item-no {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  .sc-item-title {
+    display: block;
+    font-size: 15px;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .sc-stage {
+    padding: clamp(20px, 2vw, 30px);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 20px;
+    overflow: hidden;
+  }
+
+  .sc-stage-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .sc-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .sc-nav {
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  .sc-nav button {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .sc-nav button:hover {
+    background: rgba(255,255,255,0.04);
+    border-color: var(--line-strong);
+  }
+
+  .sc-stage h3 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 650;
+    max-width: 12ch;
+  }
+
+  .sc-stage p {
+    margin: 0;
+    max-width: 62ch;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+
+  .sc-focus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: start;
+  }
+
+  .sc-focus span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: rgba(244,244,242,0.86);
+    font-size: 14px;
+  }
+
+  .sc-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .sc-tools span {
+    position: relative;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 12px;
+  }
+
+  .sc-tools span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.58em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(244,244,242,0.55);
+    transform: translateY(-50%);
+  }
+
+  .sc-fade {
+    animation: scFade 0.32s ease;
+  }
+
+  @keyframes scFade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .sc-section {
+      max-height: none;
+      min-height: auto;
+      overflow: visible;
+    }
+
+    .sc-wrap {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+
+    .sc-left {
+      padding: 0;
+    }
+
+    .sc-title {
+      max-width: none;
+    }
+
+    .sc-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .sc-list {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 1fr);
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sc-section {
+      --nav-h: 72px;
+      padding: 16px 0 22px;
+    }
+
+    .sc-wrap {
+      width: min(100%, calc(100% - 20px));
+      gap: 18px;
+    }
+
+    .sc-topbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .sc-domain-switch {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .sc-domain-btn {
+      flex: 1;
+      text-align: center;
+    }
+
+    .sc-stage {
+      padding: 18px;
+    }
+
+    .sc-stage-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .sc-stage h3 {
+      max-width: none;
+      font-size: clamp(1.6rem, 8vw, 2.3rem);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const skillData = {
+      product: [
+        {
+          title: "Requirement Analysis",
+          summary:
+            "I turn raw ideas into structured requirements by identifying user needs, business goals, constraints, and execution priorities with clarity.",
+          focus: ["Problem Framing", "Feature Scope", "Acceptance Logic", "Prioritization"],
+          tools: ["Business Analysis", "PRD Writing", "Agile", "Scrum", "Stakeholder Alignment"]
+        },
+        {
+          title: "Product Research",
+          summary:
+            "I explore user behavior, competitor patterns, and opportunity spaces to shape features with stronger reasoning before they move into execution.",
+          focus: ["User Insight", "Competitive Review", "Market Context", "Opportunity Mapping"],
+          tools: ["User Research", "Market Research", "Survey Thinking", "Insight Synthesis"]
+        },
+        {
+          title: "UX Strategy",
+          summary:
+            "I think through structure, flow, and clarity so experiences are easier to understand, use, and refine across product conversations.",
+          focus: ["User Flow", "Journey Mapping", "Interaction Clarity", "Information Structure"],
+          tools: ["User-centered Design", "Wireframing", "Usability Testing", "Experience Planning"]
+        }
+      ],
+      software: [
+        {
+          title: "Programming Foundations",
+          summary:
+            "My technical base helps me reason deeply about systems, implementation constraints, and engineering trade-offs rather than staying surface-level.",
+          focus: ["DSA", "OOP", "Problem Solving", "System Thinking"],
+          tools: ["C", "C++", "Java", "Python"]
+        },
+        {
+          title: "Web Development",
+          summary:
+            "I understand how digital products are structured and built on the web, which helps me bridge design intent, interaction, and development feasibility.",
+          focus: ["Frontend Logic", "Responsive UI", "Component Thinking", "API-aware Flow"],
+          tools: ["HTML", "CSS", "JavaScript", "Bootstrap", "React", "Next.js", "Node.js", "PHP"]
+        },
+        {
+          title: "Tools & Workflow",
+          summary:
+            "I work comfortably with the tools that support collaboration, testing, debugging, versioning, data handling, and efficient day-to-day delivery.",
+          focus: ["Version Control", "Testing Support", "Documentation", "Data Work"],
+          tools: ["Git", "GitHub", "Linux", "MySQL", "Postman", "Selenium", "Pandas", "NumPy", "Excel", "Google Sheets"]
+        }
+      ]
+    };
+
+    const domains = [
+      { key: "product", label: "Product" },
+      { key: "software", label: "Software Development" }
+    ];
+
+    const domainSwitch = document.getElementById("scDomainSwitch");
+    const list = document.getElementById("scList");
+    const stage = document.getElementById("scStage");
+    const currentEl = document.getElementById("scCurrent");
+    const totalEl = document.getElementById("scTotal");
+
+    let activeDomain = "product";
+    let activeIndex = 0;
+
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function renderDomains() {
+      domainSwitch.innerHTML = domains.map(domain => `
+        <button
+          class="sc-domain-btn ${domain.key === activeDomain ? "active" : ""}"
+          data-domain="${domain.key}"
+          type="button"
+        >
+          ${domain.label}
+        </button>
+      `).join("");
+
+      domainSwitch.querySelectorAll(".sc-domain-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeDomain = btn.dataset.domain;
+          activeIndex = 0;
+          renderAll();
+        });
+      });
+    }
+
+    function renderList() {
+      const items = skillData[activeDomain];
+      totalEl.textContent = pad(items.length);
+
+      list.innerHTML = items.map((item, index) => `
+        <button
+          class="sc-item ${index === activeIndex ? "active" : ""}"
+          data-index="${index}"
+          type="button"
+        >
+          <span class="sc-item-no">${pad(index + 1)}</span>
+          <span class="sc-item-title">${item.title}</span>
+        </button>
+      `).join("");
+
+      list.querySelectorAll(".sc-item").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeIndex = Number(btn.dataset.index);
+          renderList();
+          renderStage();
+        });
+      });
+    }
+
+    function renderStage() {
+      const items = skillData[activeDomain];
+      const item = items[activeIndex];
+      currentEl.textContent = pad(activeIndex + 1);
+
+      stage.classList.remove("sc-fade");
+      void stage.offsetWidth;
+      stage.classList.add("sc-fade");
+
+      stage.innerHTML = `
+        <div class="sc-stage-top">
+          <span class="sc-label">${activeDomain === "product" ? "Product Capability" : "Software Capability"}</span>
+          <div class="sc-nav">
+            <button type="button" id="scPrevBtn" aria-label="Previous">←</button>
+            <button type="button" id="scNextBtn" aria-label="Next">→</button>
+          </div>
+        </div>
+
+        <h3>${item.title}</h3>
+
+        <p>${item.summary}</p>
+
+        <div class="sc-focus">
+          ${item.focus.map(point => `<span>${point}</span>`).join("")}
+        </div>
+
+        <div class="sc-tools">
+          ${item.tools.map(tool => `<span>${tool}</span>`).join("")}
+        </div>
+      `;
+
+      document.getElementById("scPrevBtn").addEventListener("click", prevItem);
+      document.getElementById("scNextBtn").addEventListener("click", nextItem);
+    }
+
+    function prevItem() {
+      const len = skillData[activeDomain].length;
+      activeIndex = (activeIndex - 1 + len) % len;
+      renderList();
+      renderStage();
+    }
+
+    function nextItem() {
+      const len = skillData[activeDomain].length;
+      activeIndex = (activeIndex + 1) % len;
+      renderList();
+      renderStage();
+    }
+
+    function renderAll() {
+      renderDomains();
+      renderList();
+      renderStage();
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") prevItem();
+      if (e.key === "ArrowRight") nextItem();
+    });
+
+    renderAll();
+  })();
+</script>
+
+
+
 
 
         <!-- ============================================= Projects ============================================= -->
@@ -5315,47 +5907,8 @@
             })();
         })();
 
-        /* ── SKILLS ── */
-        (() => {
-            const parts = [
-                {
-                    name: 'Product', count: '06 categories', skills: [
-                        { n: '01', k: 'Foundation', name: 'Engineering & Product Foundation', tags: ['Product Thinking', 'Product Strategy', 'System Thinking', 'Requirement Gathering', 'Feature Scoping', 'Stakeholder Management', 'Business Analysis', 'Agile', 'Scrum'] },
-                        { n: '02', k: 'Analytics', name: 'Product Analytics & Data', tags: ['Python', 'Pandas', 'NumPy', 'MySQL', 'Excel', 'Google Sheets'] },
-                        { n: '03', k: 'Research', name: 'User Research & Validation', tags: ['User Research', 'User Interviews', 'Survey Design', 'Usability Testing', 'Competitive Analysis', 'Market Research', 'Journey Mapping', 'User-Centered Design'] },
-                        { n: '04', k: 'Execution', name: 'Product Execution & Collaboration', tags: ['PRD Writing', 'User Stories', 'Acceptance Criteria', 'Documentation', 'Task Planning', 'Cross-functional Collaboration', 'Jira', 'Notion'] },
-                        { n: '05', k: 'Design', name: 'Design & Prototyping', tags: ['Figma', 'Wireframing', 'Prototyping', 'Information Architecture', 'UX Thinking', 'Photoshop'] },
-                        { n: '06', k: 'Leadership', name: 'Communication & Leadership', tags: ['Stakeholder Communication', 'Presentation', 'Team Coordination', 'Leadership', 'Mentoring', 'Decision Making'] },
-                    ]
-                },
-                {
-                    name: 'Software Development', count: '07 categories', skills: [
-                        { n: '07', k: 'Core', name: 'Core Engineering', tags: ['Data Structures & Algorithms', 'OOP', 'System Design'] },
-                        { n: '08', k: 'Languages', name: 'Programming Languages', tags: ['C', 'C++', 'Java', 'Python', 'JavaScript', 'PHP'] },
-                        { n: '09', k: 'Application', name: 'Web Development', tags: ['HTML5', 'CSS3', 'Bootstrap', 'JavaScript', 'React', 'Next.js', 'Node.js', 'PHP'] },
-                        { n: '10', k: 'Storage', name: 'Databases', tags: ['MySQL', 'Database Design'] },
-                        { n: '11', k: 'Infrastructure', name: 'DevOps & Systems', tags: ['Git', 'GitHub', 'Linux', 'Bash'] },
-                        { n: '12', k: 'Quality', name: 'APIs & Testing', tags: ['Postman', 'Selenium'] },
-                        { n: '13', k: 'Tools', name: 'AI & Dev Environment', tags: ['Machine Learning', 'Google Colab', 'Roboflow', 'Pandas', 'NumPy', 'VS Code', 'Arduino', 'Overleaf'] },
-                    ]
-                },
-            ];
-            const root = document.getElementById('skillsRoot');
-            if (!root) return;
-            parts.forEach(part => {
-                const g = document.createElement('section'); g.className = 'skills-group';
-                const row = document.createElement('div'); row.className = 'skills-group-row';
-                row.innerHTML = `<div class="skills-group-name">${part.name}</div><div class="skills-group-meta">${part.count}</div>`;
-                const sep = document.createElement('div'); sep.className = 'skills-group-sep';
-                g.appendChild(row); g.appendChild(sep);
-                part.skills.forEach(s => {
-                    const r = document.createElement('article'); r.className = 'skill-row';
-                    r.innerHTML = `<div class="skill-num">${s.n}</div><div class="skill-body"><div class="skill-top"><span class="skill-name">${s.name}</span><span class="skill-kicker">${s.k}</span></div><div class="skill-tags">${s.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}</div></div>`;
-                    g.appendChild(r);
-                });
-                root.appendChild(g);
-            });
-        })();
+
+
 
         /* ── ACHIEVEMENTS ── */
         (() => {
