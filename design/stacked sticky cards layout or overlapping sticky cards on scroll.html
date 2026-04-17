@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Sticky Stacked Cards</title>
+ <style>
+   * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+
+
+   body {
+     font-family: Arial, sans-serif;
+     background: #f2f2f2;
+     color: #111;
+   }
+
+
+   .wrapper {
+     width: min(1200px, 92%);
+     margin: 0 auto;
+     padding: 40px 0 120px;
+   }
+
+
+   .stack {
+     position: relative;
+   }
+
+
+   .card {
+     position: sticky;
+     top: 30px;
+     min-height: 75vh;
+     border-radius: 28px;
+     padding: 40px;
+     margin-bottom: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 40px;
+     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+     overflow: hidden;
+   }
+
+
+   /* Each card stops a little lower than the previous one */
+   .card:nth-child(1) { top: 30px; background: #bcc4f3; }
+   .card:nth-child(2) { top: 80px; background: #efb2ad; }
+   .card:nth-child(3) { top: 130px; background: #eadb98; }
+   .card:nth-child(4) { top: 180px; background: #9edce7; }
+
+
+   .content {
+     width: 52%;
+     z-index: 2;
+   }
+
+
+   .tag {
+     display: inline-block;
+     font-size: 18px;
+     font-weight: 700;
+     font-style: italic;
+     margin-bottom: 20px;
+   }
+
+
+   h2 {
+     font-size: clamp(32px, 5vw, 60px);
+     line-height: 1.05;
+     margin-bottom: 20px;
+   }
+
+
+   p {
+     font-size: 20px;
+     line-height: 1.6;
+     max-width: 700px;
+     color: rgba(0,0,0,0.72);
+   }
+
+
+   .visual {
+     width: 40%;
+     min-height: 380px;
+     border-radius: 24px;
+     position: relative;
+     background: rgba(255,255,255,0.2);
+     backdrop-filter: blur(2px);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+
+
+   /* decorative gradient block */
+   .visual::before {
+     content: "";
+     position: absolute;
+     inset: 0;
+     border-radius: 24px;
+     background:
+       linear-gradient(
+         90deg,
+         rgba(255,255,255,0.08) 0%,
+         rgba(255,255,255,0.28) 18%,
+         rgba(255,255,255,0.08) 34%,
+         rgba(255,255,255,0.22) 50%,
+         rgba(255,255,255,0.08) 66%,
+         rgba(255,255,255,0.22) 82%,
+         rgba(255,255,255,0.08) 100%
+       );
+     opacity: 0.9;
+   }
+
+
+   .mockup {
+     position: relative;
+     z-index: 1;
+     width: 70%;
+     aspect-ratio: 9 / 16;
+     border-radius: 36px;
+     background: #111;
+     box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+     border: 8px solid #222;
+   }
+
+
+   .mockup::before {
+     content: "";
+     position: absolute;
+     top: 12px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 35%;
+     height: 22px;
+     border-radius: 20px;
+     background: #222;
+   }
+
+
+   @media (max-width: 900px) {
+     .card {
+       flex-direction: column;
+       justify-content: center;
+       padding: 28px;
+       min-height: 85vh;
+     }
+
+
+     .content,
+     .visual {
+       width: 100%;
+     }
+
+
+     .visual {
+       min-height: 280px;
+     }
+
+
+     p {
+       font-size: 18px;
+     }
+
+
+     .card:nth-child(1) { top: 20px; }
+     .card:nth-child(2) { top: 55px; }
+     .card:nth-child(3) { top: 90px; }
+     .card:nth-child(4) { top: 125px; }
+   }
+ </style>
+</head>
+<body>
+ <div class="wrapper">
+   <div class="stack">
+     <section class="card">
+       <div class="content">
+         <div class="tag">Travel</div>
+         <h2>Blue Card</h2>
+         <p>
+           This is the first sticky card. When you scroll, it stays in place
+           until the next card pushes into the stack.
+         </p>
+       </div>
+       <div class="visual">
+         <div class="mockup"></div>
+       </div>
+     </section>
+
+
+     <section class="card">
+       <div class="content">
+         <div class="tag">Restaurant</div>
+         <h2>Red Card</h2>
+         <p>
+           The second card comes from the bottom while scrolling and stops a bit
+           lower than the first one, creating the layered effect.
+         </p>
+       </div>
+       <div class="visual">
+         <div class="mockup"></div>
+       </div>
+     </section>
+
+
+     <section class="card">
+       <div class="content">
+         <div class="tag">SaaS</div>
+         <h2>Yellow Card</h2>
+         <p>
+           This is the same pattern again. Each card gets a larger top value,
+           so they stack nicely like your screenshot.
+         </p>
+       </div>
+       <div class="visual">
+         <div class="mockup"></div>
+       </div>
+     </section>
+
+
+     <section class="card">
+       <div class="content">
+         <div class="tag">Healthcare</div>
+         <h2>Pastel Blue Card</h2>
+         <p>
+           The last card enters from below and joins the stack. This creates
+           that modern portfolio-style scrolling layout.
+         </p>
+       </div>
+       <div class="visual">
+         <div class="mockup"></div>
+       </div>
+     </section>
+   </div>
+ </div>
+</body>
+</html>
