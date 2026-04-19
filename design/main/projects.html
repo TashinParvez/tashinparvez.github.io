@@ -1248,6 +1248,32 @@
                 max-height: 96vh;
             }
         }
+
+        /* ====================== breadcrumbs ====================== */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            font-size: 0.82rem;
+            color: var(--text-4);
+        }
+
+        .breadcrumbs a {
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--accent-2);
+        }
+
+        .breadcrumbs .current {
+            color: var(--text-2);
+        }
+
+        /* ============================================ */
     </style>
 </head>
 
@@ -1268,7 +1294,15 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header">
-            <div class="page-eyebrow"><span class="page-eyebrow-dot"></span>Portfolio</div>
+
+            <!--================ Breadcrumbs ================-->
+            <div class="breadcrumbs">
+                <a href="oz.html">Home</a>
+                <span>/</span>
+                <span class="current">Projects</span>
+            </div>
+
+            <!-- <div class="page-eyebrow"><span class="page-eyebrow-dot"></span>Portfolio</div> -->
             <h1 class="page-title">Projects &amp; <em>Works</em></h1>
             <p class="page-sub">A curated collection of product systems, research, and engineering work built with
                 intent and execution.</p>
