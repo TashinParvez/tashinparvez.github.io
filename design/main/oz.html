@@ -944,7 +944,7 @@
    ============================================================ */
         .about-wrap {
             max-width: 1050px;
-            margin: 0 auto;
+            margin: 34px auto 0;
             padding: 80px 40px 0px;
         }
 
@@ -4246,7 +4246,10 @@
         <!-- ============================================ SNAPSHOT =============================================== -->
         <!-- ============================================ SNAPSHOT =============================================== -->
         <!-- ============================================ SNAPSHOT =============================================== -->
-        <div style="padding:48px 0 0;">
+
+        <div style="padding:48px 0 0; background: #0B1018;">
+            <!-- <div style="padding:48px 0 0; background: linear-gradient(0deg, #0D1525 0%, #0C121B 55%, #0A0F14 100%);"> -->
+
             <div class="snapshot">
                 <div class="section-rule"></div>
                 <div class="snap-stats">
@@ -4290,7 +4293,7 @@
         <!-- ============================================== ABOUT ================================================= -->
         <section id="about">
             <div class="about-wrap">
-                <div class="section-rule"></div>
+                <!-- <div class="section-rule"></div> -->
 
                 <div class="about-header">
                     <!-- <div class="eyebrow"><span class="eyebrow-dot"></span>About Me</div> -->
@@ -5394,15 +5397,35 @@
         (() => {
             const achData = [
 
-                { closedTitle: "Champion — UIU CSE Project Show", closedSub: "DBMS Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Kairos", projDetails: "Ranked 1st among 71 teams in the DBMS Lab Project and also won the DBMS Poster Presentation through strong execution, technical clarity, and presentation quality.", cat: "DBMS Lab Project", team: "Team Kairos", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80", tag: "Champion", link: "https://github.com/TashinParvez/Kairos", recog: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion" },
+                {
+                    closedTitle: "Champion — UIU CSE Project Show", closedSub: "DBMS Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Kairos", projDetails: "Ranked 1st among 71 teams in the DBMS Lab Project and also won the DBMS Poster Presentation through strong execution, technical clarity, and presentation quality.", cat: "DBMS Lab Project",
+                    team: "Team Kairos",
+                    img: "../../assets/images/projects/Kairos.png",
+                    tag: "Champion", link: "https://github.com/TashinParvez/Kairos", recog: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion"
+                },
 
-                { closedTitle: "1st Runner-Up — UIU CSE Project Show", closedSub: "Software Engineering Lab · UIU CSE, Dhaka, Bangladesh", projName: "DirectEdge", projDetails: "Ranked 2nd among 55 teams for strong execution, polished delivery, and well-structured system analysis.", cat: "Software Engineering Lab", team: "Team DirectEdge", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80", tag: "1st Runner-Up", link: "https://github.com/TashinParvez/direct-edge", recog: "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up" },
+                {
+                    closedTitle: "1st Runner-Up — UIU CSE Project Show", closedSub: "Software Engineering Lab · UIU CSE, Dhaka, Bangladesh", projName: "DirectEdge", projDetails: "Ranked 2nd among 55 teams for strong execution, polished delivery, and well-structured system analysis.", cat: "Software Engineering Lab", team: "Team DirectEdge",
+                    img: "../../assets/images/projects/DirectEdge.png",
+                    tag: "1st Runner-Up", link: "https://github.com/TashinParvez/direct-edge", recog: "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up"
+                },
 
-                { closedTitle: "2nd Runner-Up — UIU CSE Project Show", closedSub: "AOOP Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Wayout", projDetails: "A tour planning project recognised for thoughtful implementation, clean experience design, and polished academic presentation.", cat: "AOOP Lab Project", team: "Team Wayout", img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80", tag: "2nd Runner-Up", link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner", recog: "" },
+                {
+                    closedTitle: "2nd Runner-Up — UIU CSE Project Show", closedSub: "AOOP Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Wayout", projDetails: "A tour planning project recognised for thoughtful implementation, clean experience design, and polished academic presentation.", cat: "AOOP Lab Project", team: "Team Wayout",
+                    img: "../../assets/images/projects/Wayout.png",
+                    tag: "2nd Runner-Up", link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner", recog: ""
+                },
 
-                { closedTitle: "Champion — DBMS Poster Presentation", closedSub: "UIU CSE Project Show, Dhaka, Bangladesh", projName: "DBMS Poster", projDetails: "Awarded for clear technical communication, visual structure, and strong presentation of database concepts in a concise poster format.", cat: "Poster Presentation", team: "Team Kairos", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80", tag: "Champion", link: "", recog: "" },
+                {
+                    closedTitle: "Champion — DBMS Poster Presentation", closedSub: "UIU CSE Project Show, Dhaka, Bangladesh", projName: "DBMS Poster", projDetails: "Awarded for clear technical communication, visual structure, and strong presentation of database concepts in a concise poster format.", cat: "Poster Presentation", team: "Team Kairos",
+                    img: "../../assets/images/projects/Kairos.png",
+                    tag: "Champion", link: "", recog: ""
+                },
 
-                { closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "assets/images/scholarship.jpg", tag: "Scholarship", link: "", recog: "" },
+                {
+                    closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "../../assets/images/scholarship.jpg",
+                    tag: "Scholarship", link: "", recog: ""
+                },
 
             ];
 
