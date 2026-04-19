@@ -1,0 +1,751 @@
+[
+    {
+        "id": 1,
+        "title": "Kairos",
+        "subtitle": "Personal Growth & Habit Platform",
+        "desc": "Designed a structured habit and productivity platform to help users build routines, track goals, and reduce procrastination through thoughtful UX and system design.",
+        "points": [
+            "Defined user journeys for habit tracking, journaling, and progress monitoring",
+            "Designed system workflows for personalized goal management",
+            "Focused on improving engagement through structured productivity flows",
+            "Became Champion among 71 Teams at UIU Project Show for the DBMS Project"
+        ],
+        "tech": [
+            "HTML",
+            "CSS",
+            "JS",
+            "PHP",
+            "MySQL",
+            "System Design",
+            "UX Research",
+            "PRD Writing"
+        ],
+        "type": "Database Project",
+        "typeName": "Database Project",
+        "tags": [
+            "featured",
+            "web"
+        ],
+        "award": "Champion",
+        "awardClass": "award-gold",
+        "awardLabel": "🏆 Champion",
+        "year": 2024,
+        "links": [
+            {
+                "label": "Recognisation form UIU",
+                "icon": "link",
+                "href": "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Kairos",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/Kairos.png",
+        "featured": true
+    },
+    {
+        "id": 2,
+        "title": "DirectEdge",
+        "subtitle": "Agricultural Supply Chain Platform",
+        "desc": "Built a multi-stakeholder platform to improve coordination across farmers, distributors, and retailers with role-based dashboards and demand forecasting.",
+        "points": [
+            "Mapped workflows across multiple user roles (farmers, agents, warehouses)",
+            "Designed dashboards for inventory, order tracking, and operations",
+            "Prioritized features like demand forecasting and smart notifications",
+            "Became 1st Runner Up among 55 Teams at UIU Project Show for the Software Engineering Project"
+        ],
+        "tech": [
+            "Figma",
+            "HTML",
+            "CSS",
+            "JS",
+            "PHP",
+            "Tailwind CSS",
+            "MySQL",
+            "Selenium",
+            "Product Strategy",
+            "Agile",
+            "Testing",
+            "Multi-Stakeholder Design"
+        ],
+        "type": "Software Engineering Project",
+        "typeName": "SWE Project",
+        "tags": [
+            "featured",
+            "web"
+        ],
+        "award": "1st Runner-Up",
+        "awardClass": "award-silver",
+        "awardLabel": "🥈 1st Runner-Up",
+        "year": 2025,
+        "links": [
+            {
+                "label": "Recognisation form UIU",
+                "icon": "link",
+                "href": "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/direct-edge",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/DirectEdge.png",
+        "featured": true
+    },
+    {
+        "id": 3,
+        "title": "Wayout",
+        "subtitle": "Travel Planning Platform",
+        "desc": "Created an end-to-end travel planning system for destination discovery, booking, and trip coordination with role-based experiences for travelers and guides.",
+        "points": [
+            "Designed role-based experiences for travelers and local guides",
+            "Structured workflows for booking, reminders, and navigation",
+            "Focused on simplifying complex travel planning processes",
+            "Became 2nd Runner Up among 66 Teams at UIU Project Show for the Advanced Object-Oriented Programming Project"
+        ],
+        "tech": [
+            "JavaFX",
+            "OOP",
+            "MySQL"
+        ],
+        "type": "AOOP Project",
+        "typeName": "AOOP Project",
+        "tags": [
+            "featured",
+            "web"
+        ],
+        "award": "2nd Runner-Up",
+        "awardClass": "award-bronze",
+        "awardLabel": "🥉 2nd Runner-Up",
+        "year": 2023,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/Wayout.png",
+        "featured": true
+    },
+    {
+        "id": 4,
+        "title": "UIU Faculty Schedule Tool",
+        "subtitle": "Student Academic Utility",
+        "desc": "A student-focused tool that helps users quickly find faculty availability and class schedules. Designed for real student usage with accessibility across devices.",
+        "points": [
+            "Designed search and visualization workflows for quick information access",
+            "Reduced friction in academic planning and schedule discovery",
+            "Built for real student usage and accessibility across all devices",
+            "Conceived the original idea and developed the first version of this tool for use at our university"
+        ],
+        "tech": [
+            "PHP",
+            "MySQL",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Bootstrap"
+        ],
+        "type": "web-app",
+        "typeName": "Web App",
+        "tags": [
+            "web",
+            "has-demo"
+        ],
+        "award": null,
+        "awardClass": "",
+        "awardLabel": "",
+        "year": 2024,
+        "links": [
+            {
+                "label": "View Demo",
+                "icon": "play",
+                "href": "https://tashinparvez.github.io/uiu-faculty-schedule-app/index.html",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/uiu-faculty-schedule-app",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/FacultyScheduleTool.png",
+        "featured": false
+    },
+    {
+        "id": 5,
+        "title": "AutoTrack",
+        "subtitle": "Vehicle Detection & Route Tracking System",
+        "desc": "Developed an AI-based system for detecting vehicles and reconstructing movement paths using CCTV footage. Published at IEEE TENSYMP 2025 with ~83% tracking accuracy.",
+        "points": [
+            "Used YOLO models for vehicle detection and license plate recognition",
+            "Achieved approximately 83% route tracking accuracy",
+            "Focused on solving real-world criminal investigation challenges",
+            "Novel custom dataset contributed to Roboflow public registry"
+        ],
+        "tech": [
+            "Python",
+            "YOLOv8",
+            "OpenCV",
+            "Roboflow",
+            "Pandas",
+            "NumPy",
+            "Google Colab"
+        ],
+        "type": "research",
+        "typeName": "IEEE Research",
+        "tags": [
+            "research",
+            "data-science",
+            "featured"
+        ],
+        "award": "IEEE TENSYMP 2025",
+        "awardClass": "award-ieee",
+        "awardLabel": "📄 IEEE TENSYMP 2025",
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Paper",
+                "icon": "link",
+                "href": "https://ieeexplore.ieee.org/document/11144993",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Hit-And-Run-Case",
+                "type": "ghost"
+            },
+            {
+                "label": "Dataset",
+                "icon": "data",
+                "href": "https://universe.roboflow.com/neural-flow/autotrack-33yyf",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/AutoTrack.png",
+        "featured": true
+    },
+    {
+        "id": 6,
+        "title": "Cook Corner",
+        "subtitle": "Smart Cooking Assistant & Recipe Platform",
+        "desc": "Built a full-featured culinary platform focused on recipe discovery, meal planning, nutrition awareness, and ingredient-based cooking support for a smarter kitchen experience.",
+        "points": [
+            "Designed flows for recipe exploration, meal planning, and personalized cooking support",
+            "Integrated features like ingredient-based recommendations, nutrition guidance, and grocery assistance",
+            "Structured the platform to support recipe sharing, cooking courses, and kitchen tips",
+            "Focused on improving usability for home cooks, beginners, and health-conscious users"
+        ],
+        "tech": [
+            "PHP",
+            "MySQL",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap",
+            "Meal Planning",
+            "Nutrition-Aware Design",
+            "System Design",
+            "PRD"
+        ],
+        "type": "Web Platform",
+        "typeName": "Web Project",
+        "tags": [
+            "web"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Cook-Corner",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/cookcorner.png",
+        "featured": false
+    },
+    {
+        "id": 7,
+        "title": "Shopno Self Service Pickup System",
+        "subtitle": "In-Store Grocery Ordering System",
+        "desc": "Developed a web-based grocery ordering solution for in-store customers, enabling QR-based access, mobile ordering, and pickup-code driven fulfillment for faster service.",
+        "points": [
+            "Designed the customer journey from WiFi connection and QR scan to order placement and pickup",
+            "Built a workflow where shopkeepers prepare orders using unique pickup codes",
+            "Used a simple MVC structure to organize controllers, models, views, and database logic",
+            "Focused on improving in-store ordering efficiency and reducing service friction"
+        ],
+        "tech": [
+            "PHP",
+            "MySQL",
+            "HTML",
+            "CSS",
+            "Tailwind CSS",
+            "MVC Architecture",
+            "QR Workflow Design"
+        ],
+        "type": "Web Application",
+        "typeName": "Web App",
+        "tags": [
+            "web",
+            "system"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/shopno-self-service-pickup-system",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/shopno-self-service-pickup-system.png",
+        "featured": false
+    },
+    {
+        "id": 8,
+        "title": "Pigeon Trainer",
+        "subtitle": "Personal Portfolio & Pigeon Care Information Website",
+        "desc": "Developed a personal portfolio website for a pigeon enthusiast and farm owner, designed to showcase a passion for pigeons while also serving as an informational platform where visitors can learn about pigeon care, common health issues, and practical solutions.",
+        "points": [
+            "Created a front-end website that combines a personal portfolio with educational content about pigeons and pigeon farming",
+            "Designed dedicated sections to help visitors understand pigeon breeds, care methods, common problems, and their solutions",
+            "Focused on clear content structure and readability so users can easily explore pigeon-related information",
+            "Built the website using lightweight front-end technologies to ensure simplicity, accessibility, and smooth performance",
+            "Highlighted the owner’s love for pigeons and farm experience through a clean and visually engaging layout"
+        ],
+        "tech": [
+            "HTML",
+            "CSS",
+            "Static Website Design",
+            "Content Structuring"
+        ],
+        "type": "Frontend Project",
+        "typeName": "Frontend Project",
+        "tags": [
+            "web",
+            "frontend"
+        ],
+        "year": 2024,
+        "links": [
+            {
+                "label": "Live Demo",
+                "icon": "link",
+                "href": "https://tashinparvez.github.io/Pigeon-Trainer/index.html",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Pigeon-Trainer",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/pigeon-trainer.png",
+        "featured": false
+    },
+    {
+        "id": 9,
+        "title": "Eduford",
+        "subtitle": "University Website Concept",
+        "desc": "Built a multi-page university website concept with dedicated sections for courses, blog, contact, and about pages, focusing on clean layout and front-end structure.",
+        "points": [
+            "Created separate pages for home, about, blog, contact, and course-related content",
+            "Focused on building a polished educational website layout with clear navigation",
+            "Practiced multi-page front-end development using reusable styling patterns",
+            "Improved visual consistency across different pages and sections"
+        ],
+        "tech": [
+            "HTML",
+            "CSS",
+            "Multi-Page Website Design",
+            "Responsive Layout"
+        ],
+        "type": "Frontend Project",
+        "typeName": "Frontend Project",
+        "tags": [
+            "web",
+            "frontend"
+        ],
+        "year": 2024,
+        "links": [
+            {
+                "label": "Live Demo",
+                "icon": "link",
+                "href": "https://tashinparvez.github.io/Eduford/index.html",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Eduford",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/eduford.png",
+        "featured": false
+    },
+    {
+        "id": 10,
+        "title": "Ecology",
+        "subtitle": "Environmental Awareness Website",
+        "desc": "Designed a simple ecology-themed website to present environmental content in a visually engaging and accessible way.",
+        "points": [
+            "Built a static website focused on ecological and environmental presentation",
+            "Used clean HTML and CSS structure for a lightweight browsing experience",
+            "Focused on readability, layout clarity, and thematic visual styling",
+            "Practiced early-stage front-end design through topic-driven web presentation"
+        ],
+        "tech": [
+            "HTML",
+            "CSS",
+            "Bootstrap",
+            "Static Website Design"
+        ],
+        "type": "Frontend Project",
+        "typeName": "Frontend Project",
+        "tags": [
+            "web",
+            "frontend"
+        ],
+        "year": 2024,
+        "links": [
+            {
+                "label": "Live Demo",
+                "icon": "link",
+                "href": "https://tashinparvez.github.io/Ecology/index.html",
+                "type": "primary"
+            },
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Ecology",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/ecology.png",
+        "featured": false
+    },
+    {
+        "id": 11,
+        "title": "JABO Online eTicket System",
+        "subtitle": "Bus Passenger Ticketing System",
+        "desc": "Built a desktop-based e-ticketing solution for bus passengers to support ticket booking and transport service management through a Java Swing interface.",
+        "points": [
+            "Designed a ticketing workflow tailored for bus passenger services",
+            "Built the application using Java Swing for desktop-based interaction",
+            "Focused on simplifying booking and transport-related information handling",
+            "Practiced event-driven UI development through a transport management use case"
+        ],
+        "tech": [
+            "Java",
+            "Java Swing",
+            "Desktop Application Design",
+            "Ticketing Workflow"
+        ],
+        "type": "Desktop Application",
+        "typeName": "Java Project",
+        "tags": [
+            "desktop",
+            "java"
+        ],
+        "year": 2024,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Online_eTicket_System_JABO",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/jabo-online-eticket-system.png",
+        "featured": false
+    },
+    {
+        "id": 12,
+        "title": "Smart Cricket Stadium",
+        "subtitle": "Arduino-Based Stadium Automation System",
+        "desc": "Developed an Arduino-based smart cricket stadium system with automated pitch covering, boundary monitoring, power-play support, adaptive lighting, and solar tracking.",
+        "points": [
+            "Implemented an automated pitch-covering mechanism for unstable weather conditions",
+            "Built systems for boundary line fixing, player counting, and light brightness control",
+            "Integrated sensors and actuators including rain sensors, LDR, IR, stepper motors, and servo motors",
+            "Designed the project as an electronics lab solution to improve automation and decision support in cricket"
+        ],
+        "tech": [
+            "Arduino",
+            "Embedded Systems",
+            "IR Sensor",
+            "LDR Sensor",
+            "Stepper Motor",
+            "Servo Motor",
+            "Electronics Prototyping",
+            "Hardware System Design"
+        ],
+        "type": "Hardware Project",
+        "typeName": "Electronics Project",
+        "tags": [
+            "hardware",
+            "iot",
+            "featured",
+            "has-demo"
+        ],
+        "year": 2024,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Smart-Cricket-Stadium",
+                "type": "primary"
+            },
+            {
+                "label": "Demo Video",
+                "icon": "link",
+                "href": "https://www.youtube.com/watch?v=qhRFEcPciuE&t=25s",
+                "type": "ghost"
+            }
+        ],
+        "img": "../../../assets/images/projects/smart-cricket-stadium.png",
+        "featured": false
+    },
+    {
+        "id": 13,
+        "title": "Personal Assistant Robot for Elderly People",
+        "subtitle": "Elderly Care Support Robot",
+        "desc": "Worked on a personal assistant robot concept aimed at supporting elderly people through assistive services, monitoring, and human-centered system design.",
+        "points": [
+            "Explored assistive technology concepts focused on elderly care and support",
+            "Worked on a system combining robotics ideas with service-oriented interaction design",
+            "Focused on practical caregiving use cases such as monitoring, support, and accessibility",
+            "Contributed to building a project around real-life quality-of-life improvement"
+        ],
+        "tech": [
+            "Python",
+            "Flask",
+            "PHP",
+            "Health Monitoring",
+            "Assistive Robotics",
+            "Human-Centered Design"
+        ],
+        "type": "Robotics Project",
+        "typeName": "Robotics Project",
+        "tags": [
+            "robotics",
+            "healthcare",
+            "featured"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/Personal-Assistant-Robot-for-Elderly-Pepole",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/neocura.png",
+        "featured": false
+    },
+    {
+        "id": 14,
+        "title": "HEIC to JPG Converter",
+        "subtitle": "Batch Image Conversion Utility",
+        "desc": "Created a lightweight Python utility to convert HEIC images to JPG format in batch, making photo compatibility easier across platforms and workflows.",
+        "points": [
+            "Built a script to convert all HEIC files in a folder into JPG format",
+            "Added support for selecting source and destination folders through terminal input",
+            "Designed the tool to work across Windows, macOS, and Linux environments",
+            "Focused on simplicity and practical usability for everyday file conversion tasks"
+        ],
+        "tech": [
+            "Python",
+            "Pillow",
+            "pillow-heif",
+            "Batch Processing",
+            "CLI Utility"
+        ],
+        "type": "Utility Tool",
+        "typeName": "Python Tool",
+        "tags": [
+            "python",
+            "tool",
+            "utility"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/HEIC-to-JPG-Converter",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/heic-to-jpg-converter.png",
+        "featured": false
+    },
+    {
+        "id": 15,
+        "title": "UIU Enterprise Network Design",
+        "subtitle": "Cisco Packet Tracer Network Simulation",
+        "desc": "Designed and implemented a realistic enterprise network for United International University using Cisco Packet Tracer, focusing on routing, subnetting, NAT, and DHCP.",
+        "points": [
+            "Designed a functional enterprise-style network with routers, switches, and hosts",
+            "Implemented subnetting, routing, NAT, and DHCP based on real-world networking principles",
+            "Simulated and tested the topology in Cisco Packet Tracer",
+            "Completed the project as part of a Computer Network Lab assignment"
+        ],
+        "tech": [
+            "Cisco Packet Tracer",
+            "Networking",
+            "Subnetting",
+            "Routing",
+            "NAT",
+            "DHCP",
+            "Network Design"
+        ],
+        "type": "Networking Project",
+        "typeName": "Network Project",
+        "tags": [
+            "network",
+            "simulation",
+            "featured"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/UIU_Enterprise_Network_Design_PacketTracer",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/uiu-enterprise-network-design.png",
+        "featured": false
+    },
+    {
+        "id": 16,
+        "title": "UIU Question Bank",
+        "subtitle": "Academic Question Archive Contribution",
+        "desc": "Contributed academic question collection and learning support content for a UIU question bank initiative aimed at helping CSE students prepare more effectively.",
+        "points": [
+            "Supported a question-bank style academic resource for UIU CSE students",
+            "Helped organize and contribute exam-related learning materials and question collections",
+            "Focused on improving accessibility of previous questions for student preparation",
+            "Contributed to a student-centered educational support initiative"
+        ],
+        "tech": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Educational Resource Design",
+            "Content Organization"
+        ],
+        "type": "Educational Platform",
+        "typeName": "Academic Project",
+        "tags": [
+            "education",
+            "web",
+            "resource"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "Related Platform",
+                "icon": "link",
+                "href": "https://uiuqb.vercel.app/",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/uiu-question-bank.png",
+        "featured": false
+    },
+    {
+        "id": 17,
+        "title": "NeoCura",
+        "subtitle": "Personal Assistant Robot for Elderly People",
+        "desc": "Built a personal-assistant robot platform for elderly care with robot control, live camera feed, health monitoring, activity logging, and a service-oriented dashboard.",
+        "points": [
+            "Implemented robot movement control and live camera/video feed support",
+            "Built health monitoring endpoints for metrics like heart rate and steps",
+            "Added activity logging and emergency-related action tracking",
+            "Designed a basic dashboard and service UI using a Flask-based backend"
+        ],
+        "tech": [
+            "Python",
+            "Flask",
+            "PHP",
+            "Web Dashboard",
+            "Health Monitoring",
+            "Camera Integration",
+            "Assistive Robotics"
+        ],
+        "type": "Robotics Project",
+        "typeName": "Robotics Project",
+        "tags": [
+            "robotics",
+            "healthcare",
+            "iot",
+            "featured"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/musfiqurR661/NeoCura-Personal-Assistant-Robot-for-Elderly-Pepole",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/neocura-robot.png",
+        "featured": false
+    },
+    {
+        "id": 18,
+        "title": "DefectoMCU Inspection System",
+        "subtitle": "PCB Defect Detection Research Project",
+        "desc": "Worked on an AI-driven PCB inspection pipeline for detecting defects in microcontroller and circuit board imagery using computer vision and deep learning workflows.",
+        "points": [
+            "Explored defect detection workflows for PCB and MCU inspection use cases",
+            "Worked with image-based analysis and dataset preparation for visual inspection",
+            "Focused on improving defect identification using machine learning approaches",
+            "Contributed to an applied computer-vision research direction"
+        ],
+        "tech": [
+            "Python",
+            "Computer Vision",
+            "Deep Learning",
+            "Dataset Preparation",
+            "Image Processing"
+        ],
+        "type": "Research Project",
+        "typeName": "AI Research",
+        "tags": [
+            "research",
+            "data-science",
+            "featured"
+        ],
+        "year": 2025,
+        "links": [
+            {
+                "label": "View Code",
+                "icon": "code",
+                "href": "https://github.com/TashinParvez/DefectoMCU-Inspection-System",
+                "type": "primary"
+            }
+        ],
+        "img": "../../../assets/images/projects/defectomcu-inspection-system.png",
+        "featured": false
+    }
+]
