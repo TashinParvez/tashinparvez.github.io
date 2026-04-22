@@ -4139,7 +4139,7 @@
                         product requirements, workflows, and better user experiences.</p>
 
                     <div class="hero-btns">
-                        <a href="sections/study-materials.html" class="btn btn-primary">View My Work →</a>
+                        <a href="#projects" class="btn btn-primary">View My Work →</a>
                         <a href="sections/resume-doc-reader/resume.html" class="btn btn-secondary" download>Download
                             Resume ↓</a>
                         <a href="#contact" class="btn btn-ghost">Contact Me</a>
@@ -4715,12 +4715,1563 @@
         </section>
 
 
-        <!-- ============================================= Projects ============================================= -->
+        <!-- ============================================= Projects tashin here projects============================================= -->
         <!-- ============================================= Projects ============================================= -->
         <!-- ============================================= Projects ============================================= -->
         <!-- ============================================= Projects ============================================= -->
 
         <!-- tashin here projects  -->
+
+
+        <div class="projects">
+
+            <div class="page-wrap ">
+                <section class="projects-section" id="projects">
+                    <div class="section-rule"></div>
+
+                    <div class="projects-head">
+                        <div class="projects-eeyebrow">
+                            <div class="eyebrow-fprojects">Selected Work</div>
+                            <h2 class="projects-title">Projects & <em>Case Studies</em></h2>
+                            <p class="projects-sub" style="width: 100%; max-width: none;">
+                                A curated collection of product systems, research, and engineering work built with
+                                intent and
+                                execution.
+                            </p>
+                        </div>
+
+                        <div class="projects-stat">
+                            <div class="projects-stat-num" id="projectsStatNum" style="display: none;">00</div>
+                            <div class="projects-stat-lbl" style="display: none;">Projects Available</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-wrap" id="projectFilters" style="justify-content: center;"></div>
+
+                    <div class="projects-grid" id="projectsGrid"></div>
+
+                    <div class="projects-action">
+                        <a class="show-more-btn" href="./projects.html">
+                            <span>Show more projects</span>
+                            <span>↗</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <div class="project-modal" id="projectModal" aria-hidden="true">
+                <div class="project-modal-backdrop" id="projectModalBackdrop"></div>
+
+                <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+                    <div class="modal-topbar">
+                        <div class="modal-nav">
+                            <button class="modal-icon-btn" id="prevProjectBtn" type="button"
+                                aria-label="Previous project">←</button>
+                            <div class="modal-counter" id="modalCounter">01 / 06</div>
+                            <button class="modal-icon-btn" id="nextProjectBtn" type="button"
+                                aria-label="Next project">→</button>
+                        </div>
+
+                        <button class="modal-icon-btn" id="closeProjectModalBtn" type="button"
+                            aria-label="Close modal">✕</button>
+                    </div>
+
+                    <div class="modal-body" id="modalContent"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --bg: #080b10;
+                --bg-2: #0c1018;
+                --line: rgba(255, 255, 255, 0.07);
+                --line-2: rgba(255, 255, 255, 0.12);
+                --surface: rgba(255, 255, 255, 0.028);
+                --surface-2: rgba(255, 255, 255, 0.045);
+                --surface-3: rgba(255, 255, 255, 0.065);
+                --text-1: #f1f5f9;
+                --text-2: #cbd5e1;
+                --text-3: #94a3b8;
+                --text-4: #64748b;
+                --text-5: #334155;
+                --accent: #63b3ed;
+                --accent-2: #93c5fd;
+                --accent-3: #3b82f6;
+                --green: #22c55e;
+                --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+                --r-xl: 28px;
+                --r-lg: 20px;
+                --r-md: 14px;
+                --r-sm: 10px;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background:
+                    radial-gradient(circle at 20% 20%, rgba(99, 179, 237, .05), transparent 28%),
+                    radial-gradient(circle at 80% 0%, rgba(59, 130, 246, .06), transparent 32%),
+                    linear-gradient(180deg, #080b10 0%, #0a0f16 100%);
+                color: var(--text-2);
+                min-height: 100vh;
+                overflow-x: hidden;
+                position: relative;
+            }
+
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-image: linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
+                background-size: 42px 42px;
+                mask-image: radial-gradient(circle at center, black 28%, transparent 82%);
+                opacity: .32;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            body::after {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .page-wrap {
+                position: relative;
+                z-index: 1;
+            }
+
+            .projects-section {
+                max-width: 1180px;
+                margin: 0 auto;
+                padding: 90px 40px 110px;
+            }
+
+            .section-rule {
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--line-2) 18%, var(--line-2) 82%, transparent);
+                margin-bottom: 42px;
+            }
+
+            .projects-head {
+                display: grid;
+                grid-template-columns: 1.2fr auto;
+                gap: 24px;
+                align-items: end;
+                margin-bottom: 26px;
+            }
+
+            .projects .eyebrow-fprojects {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 10.5px;
+                font-weight: 700;
+                letter-spacing: .22em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 14px;
+            }
+
+            .eyebrow-fprojects::before {
+                content: '';
+                width: 16px;
+                height: 1px;
+                border-radius: 999px;
+                background: linear-gradient(90deg, var(--accent), var(--accent-3));
+            }
+
+            .projects-title {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: clamp(2.2rem, 4.9vw, 3.7rem);
+                font-weight: 700;
+                letter-spacing: -.05em;
+                line-height: .98;
+                color: var(--text-1);
+                margin-bottom: 12px;
+            }
+
+            .projects-title em {
+                font-style: normal;
+                background: linear-gradient(100deg, var(--accent-2), var(--accent));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .projects-sub {
+                max-width: 720px;
+                font-size: .95rem;
+                line-height: 1.85;
+                color: var(--text-3);
+            }
+
+            .projects-stat {
+                text-align: right;
+                padding-bottom: 8px;
+            }
+
+            .projects-stat-num {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: clamp(3rem, 6vw, 4.6rem);
+                font-weight: 700;
+                line-height: 1;
+                letter-spacing: -.06em;
+                color: rgba(255, 255, 255, .07);
+            }
+
+            .projects-stat-lbl {
+                margin-top: 6px;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: .16em;
+                text-transform: uppercase;
+                color: var(--text-4);
+            }
+
+            .filter-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 26px 0 34px;
+            }
+
+            .filter-btn {
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .025);
+                color: var(--text-3);
+                min-height: 38px;
+                padding: 0 15px;
+                border-radius: 999px;
+                cursor: pointer;
+                font: inherit;
+                font-size: .79rem;
+                font-weight: 600;
+                letter-spacing: .03em;
+                transition: .24s ease;
+            }
+
+            .filter-btn:hover {
+                color: var(--text-2);
+                border-color: rgba(99, 179, 237, .24);
+                background: rgba(99, 179, 237, .06);
+                transform: translateY(-1px);
+            }
+
+            .filter-btn.active {
+                color: #0f172a;
+                background: linear-gradient(135deg, var(--accent-2), var(--accent));
+                border-color: transparent;
+                box-shadow: 0 10px 28px rgba(99, 179, 237, .18);
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .project-card {
+                position: relative;
+                min-height: 430px;
+                border: 1px solid var(--line);
+                border-radius: 24px;
+                background:
+                    linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .018));
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .3s ease;
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+            }
+
+            .project-card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(120deg, rgba(99, 179, 237, .06), transparent 48%, rgba(59, 130, 246, .05));
+                opacity: 0;
+                transition: opacity .3s ease;
+                pointer-events: none;
+            }
+
+            .project-card::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 22px;
+                bottom: 22px;
+                width: 2px;
+                border-radius: 999px;
+                background: linear-gradient(180deg, var(--accent), var(--accent-3));
+                opacity: 0;
+                transition: opacity .3s ease, top .3s ease, bottom .3s ease;
+            }
+
+            .project-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(99, 179, 237, .2);
+                background: rgba(99, 179, 237, .04);
+                box-shadow: var(--shadow);
+            }
+
+            .project-card:hover::before,
+            .project-card:hover::after {
+                opacity: 1;
+            }
+
+            .project-card:hover::after {
+                top: 16px;
+                bottom: 16px;
+            }
+
+            .project-thumb {
+                position: relative;
+                height: 210px;
+                overflow: hidden;
+                background:
+                    linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(0, 0, 0, .2)),
+                    radial-gradient(circle at 20% 20%, rgba(99, 179, 237, .16), transparent 28%),
+                    linear-gradient(135deg, #0d1522, #0b1018);
+                border-bottom: 1px solid var(--line);
+            }
+
+            .project-thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                opacity: .9;
+                transition: transform .45s ease, opacity .45s ease;
+            }
+
+            .project-card:hover .project-thumb img {
+                transform: scale(1.04);
+                opacity: 1;
+            }
+
+            .thumb-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(8, 11, 16, .9) 0%, rgba(8, 11, 16, .12) 55%, transparent 100%);
+            }
+
+            .thumb-top {
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                top: 16px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .project-type {
+                display: inline-flex;
+                align-items: center;
+                min-height: 28px;
+                padding: 0 10px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, .1);
+                background: rgba(8, 11, 16, .6);
+                backdrop-filter: blur(10px);
+                color: var(--text-2);
+                font-size: .72rem;
+                font-weight: 700;
+                letter-spacing: .06em;
+                text-transform: uppercase;
+            }
+
+            .project-year {
+                display: inline-flex;
+                align-items: center;
+                min-height: 28px;
+                padding: 0 10px;
+                border-radius: 999px;
+                background: rgba(8, 11, 16, .6);
+                border: 1px solid rgba(255, 255, 255, .1);
+                color: var(--text-3);
+                font-size: .74rem;
+                font-weight: 600;
+            }
+
+            .thumb-bottom {
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .project-quick-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .quick-chip {
+                display: inline-flex;
+                align-items: center;
+                min-height: 28px;
+                padding: 0 10px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, .1);
+                background: rgba(8, 11, 16, .58);
+                backdrop-filter: blur(10px);
+                color: var(--text-2);
+                font-size: .72rem;
+                font-weight: 600;
+                white-space: nowrap;
+            }
+
+            .card-arrow {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 255, 255, .12);
+                background: rgba(8, 11, 16, .58);
+                color: var(--text-1);
+                display: grid;
+                place-items: center;
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+
+            .project-body {
+                padding: 18px 18px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .project-title {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1.18rem;
+                line-height: 1.15;
+                font-weight: 700;
+                letter-spacing: -.03em;
+                color: var(--text-1);
+            }
+
+            .project-subtitle {
+                font-size: .83rem;
+                line-height: 1.55;
+                color: var(--accent);
+                font-weight: 500;
+            }
+
+            .project-desc {
+                font-size: .89rem;
+                line-height: 1.75;
+                color: var(--text-3);
+            }
+
+            .project-tech {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tech-chip {
+                font-size: .76rem;
+                font-weight: 500;
+                color: var(--text-2);
+                padding: 6px 10px;
+                border-radius: 999px;
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .03);
+            }
+
+            .card-meta {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                padding-top: 4px;
+                border-top: 1px solid var(--line);
+            }
+
+            .card-meta-left {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .meta-mini {
+                font-size: .75rem;
+                color: var(--text-4);
+                font-weight: 600;
+            }
+
+            .meta-dot {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: var(--text-5);
+            }
+
+            .card-link-count {
+                font-size: .75rem;
+                color: var(--text-4);
+                font-weight: 600;
+            }
+
+            .projects-action {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
+
+            .show-more-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                min-height: 48px;
+                padding: 0 22px;
+                border-radius: 16px;
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .03);
+                color: var(--text-2);
+                text-decoration: none;
+                font-size: .9rem;
+                font-weight: 700;
+                letter-spacing: .01em;
+                transition: .25s ease;
+            }
+
+            .show-more-btn:hover {
+                transform: translateY(-2px);
+                border-color: rgba(99, 179, 237, .22);
+                background: rgba(99, 179, 237, .06);
+                color: var(--accent-2);
+                box-shadow: 0 14px 32px rgba(0, 0, 0, .22);
+            }
+
+            .empty-state {
+                grid-column: 1 / -1;
+                border: 1px solid var(--line);
+                border-radius: 24px;
+                background: rgba(255, 255, 255, .022);
+                padding: 42px 24px;
+                text-align: center;
+            }
+
+            .empty-state h3 {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1.35rem;
+                color: var(--text-1);
+                margin-bottom: 10px;
+                letter-spacing: -.03em;
+            }
+
+            .empty-state p {
+                max-width: 520px;
+                margin: 0 auto;
+                color: var(--text-3);
+                line-height: 1.8;
+                font-size: .92rem;
+            }
+
+            .project-modal {
+                position: fixed;
+                inset: 0;
+                z-index: 1000;
+                display: grid;
+                place-items: center;
+                padding: 22px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity .28s ease;
+            }
+
+            .project-modal.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .project-modal-backdrop {
+                position: absolute;
+                inset: 0;
+                background: rgba(2, 6, 12, .82);
+                backdrop-filter: blur(16px);
+            }
+
+            .project-modal-dialog {
+                position: relative;
+                width: min(1080px, 100%);
+                max-height: min(90vh, 900px);
+                overflow: auto;
+                border-radius: 28px;
+                border: 1px solid rgba(255, 255, 255, .08);
+                background:
+                    linear-gradient(180deg, rgba(12, 16, 24, .98), rgba(8, 11, 16, .98));
+                box-shadow: 0 34px 90px rgba(0, 0, 0, .5);
+            }
+
+            .modal-topbar {
+                position: sticky;
+                top: 0;
+                z-index: 3;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                padding: 16px 18px;
+                border-bottom: 1px solid var(--line);
+                background: rgba(10, 14, 20, .86);
+                backdrop-filter: blur(16px);
+            }
+
+            .modal-nav {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .modal-icon-btn {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .03);
+                color: var(--text-2);
+                cursor: pointer;
+                font: inherit;
+                font-size: 1rem;
+                transition: .22s ease;
+            }
+
+            .modal-icon-btn:hover {
+                background: rgba(99, 179, 237, .07);
+                border-color: rgba(99, 179, 237, .22);
+                color: var(--text-1);
+            }
+
+            .modal-counter {
+                font-size: .82rem;
+                color: var(--text-4);
+                font-weight: 700;
+                letter-spacing: .08em;
+                text-transform: uppercase;
+            }
+
+            .modal-body {
+                display: grid;
+                grid-template-columns: 1.02fr .98fr;
+                gap: 0;
+            }
+
+            .modal-left {
+                padding: 28px;
+                border-right: 1px solid var(--line);
+            }
+
+            .modal-right {
+                padding: 28px;
+            }
+
+            .modal-hero {
+                position: relative;
+                min-height: 340px;
+                border: 1px solid var(--line);
+                border-radius: 24px;
+                overflow: hidden;
+                background:
+                    linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(0, 0, 0, .18)),
+                    radial-gradient(circle at 20% 20%, rgba(99, 179, 237, .16), transparent 30%),
+                    linear-gradient(135deg, #0f1724, #0a1018);
+                margin-bottom: 22px;
+            }
+
+            .modal-hero img {
+                width: 100%;
+                height: 100%;
+                min-height: 340px;
+                object-fit: cover;
+                display: block;
+            }
+
+            .modal-hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(8, 11, 16, .94), rgba(8, 11, 16, .12) 58%, transparent);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 18px;
+            }
+
+            .modal-badges {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .modal-badge {
+                display: inline-flex;
+                align-items: center;
+                min-height: 30px;
+                padding: 0 11px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, .1);
+                background: rgba(8, 11, 16, .58);
+                color: var(--text-2);
+                font-size: .74rem;
+                font-weight: 700;
+                letter-spacing: .04em;
+            }
+
+            .modal-hero-bottom {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .modal-type-name {
+                color: var(--text-3);
+                font-size: .8rem;
+                margin-bottom: 4px;
+            }
+
+            .modal-project-name {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: clamp(1.8rem, 3vw, 2.55rem);
+                line-height: .98;
+                letter-spacing: -.04em;
+                color: var(--text-1);
+                font-weight: 700;
+            }
+
+            .modal-year-chip {
+                min-width: 58px;
+                height: 42px;
+                padding: 0 14px;
+                border-radius: 14px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(255, 255, 255, .1);
+                background: rgba(8, 11, 16, .58);
+                color: var(--text-2);
+                font-weight: 700;
+            }
+
+            .modal-title {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1.85rem;
+                line-height: 1.05;
+                letter-spacing: -.04em;
+                color: var(--text-1);
+                margin-bottom: 10px;
+            }
+
+            .modal-subtitle {
+                color: var(--accent);
+                font-size: .93rem;
+                line-height: 1.65;
+                margin-bottom: 18px;
+            }
+
+            .modal-desc {
+                color: var(--text-3);
+                font-size: .94rem;
+                line-height: 1.9;
+                margin-bottom: 24px;
+            }
+
+            .modal-sec {
+                margin-bottom: 24px;
+            }
+
+            .modal-sec:last-child {
+                margin-bottom: 0;
+            }
+
+            .modal-sec-label {
+                font-size: 10.5px;
+                font-weight: 700;
+                letter-spacing: .2em;
+                text-transform: uppercase;
+                color: var(--text-4);
+                margin-bottom: 12px;
+            }
+
+            .modal-points {
+                list-style: none;
+                display: grid;
+                gap: 10px;
+            }
+
+            .modal-points li {
+                position: relative;
+                padding-left: 18px;
+                color: var(--text-3);
+                font-size: .9rem;
+                line-height: 1.75;
+            }
+
+            .modal-points li::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: .78em;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+                box-shadow: 0 0 12px rgba(99, 179, 237, .45);
+                transform: translateY(-50%);
+            }
+
+            .modal-tech {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 9px;
+            }
+
+            .modal-tech .tech-chip {
+                padding: 7px 11px;
+            }
+
+            .modal-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .modal-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                min-height: 44px;
+                padding: 0 16px;
+                border-radius: 14px;
+                text-decoration: none;
+                font-size: .88rem;
+                font-weight: 700;
+                transition: .22s ease;
+            }
+
+            .modal-link.primary {
+                color: #0f172a;
+                background: linear-gradient(135deg, var(--accent-2), var(--accent));
+            }
+
+            .modal-link.primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 28px rgba(99, 179, 237, .2);
+            }
+
+            .modal-link.secondary {
+                color: var(--text-2);
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .03);
+            }
+
+            .modal-link.secondary:hover {
+                transform: translateY(-2px);
+                background: rgba(99, 179, 237, .06);
+                border-color: rgba(99, 179, 237, .22);
+            }
+
+            .modal-side-grid {
+                display: grid;
+                gap: 14px;
+            }
+
+            .side-card {
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .022);
+                border-radius: 18px;
+                padding: 18px;
+            }
+
+            .side-card-title {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1rem;
+                letter-spacing: -.02em;
+                color: var(--text-1);
+                margin-bottom: 12px;
+            }
+
+            .side-meta-list {
+                display: grid;
+                gap: 10px;
+            }
+
+            .side-meta-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .side-meta-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .side-meta-k {
+                color: var(--text-4);
+                font-size: .8rem;
+                font-weight: 600;
+            }
+
+            .side-meta-v {
+                color: var(--text-2);
+                font-size: .84rem;
+                font-weight: 600;
+                text-align: right;
+            }
+
+            .side-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .side-tags .tech-chip {
+                font-size: .74rem;
+            }
+
+            .modal-footer-note {
+                font-size: .82rem;
+                color: var(--text-4);
+                line-height: 1.75;
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            @media (max-width: 1040px) {
+                .projects-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .modal-body {
+                    grid-template-columns: 1fr;
+                }
+
+                .modal-left {
+                    border-right: none;
+                    border-bottom: 1px solid var(--line);
+                }
+            }
+
+            @media (max-width: 760px) {
+                .projects-section {
+                    padding: 70px 18px 90px;
+                }
+
+                .projects-head {
+                    grid-template-columns: 1fr;
+                    align-items: start;
+                }
+
+                .projects-stat {
+                    text-align: left;
+                    padding-bottom: 0;
+                }
+
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .project-card {
+                    min-height: auto;
+                }
+
+                .project-thumb {
+                    height: 220px;
+                }
+
+                .modal-topbar {
+                    padding: 14px;
+                }
+
+                .modal-left,
+                .modal-right {
+                    padding: 18px;
+                }
+
+                .modal-hero {
+                    min-height: 260px;
+                }
+
+                .modal-hero img {
+                    min-height: 260px;
+                }
+
+                .modal-hero-bottom {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+
+        <script>
+            const landingProjectTags = [
+                'All',
+                'Featured',
+                'Case Study',
+                'Has Demo',
+                'Web Development',
+                'AI / Data Science',
+                'Research'
+            ];
+
+            const projectsData = [
+                {
+                    id: 1,
+                    title: 'Kairos',
+                    subtitle: 'Personal Growth & Habit Platform',
+                    desc: 'Designed a structured habit and productivity platform to help users build routines, track goals, and reduce procrastination through guided workflows and a focused user experience.',
+                    points: [
+                        'Defined user journeys for habit tracking, journaling, and progress monitoring',
+                        'Designed system workflows for personalized goal management',
+                        'Focused on improving engagement through structured productivity flows',
+                        'Recognized as Champion at UIU CSE Project Show among 71 teams'
+                    ],
+                    tech: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'UX Flow Design', 'Product Thinking'],
+                    type: 'Web Platform',
+                    typeName: 'Case Study Project',
+                    tags: ['featured', 'case-study', 'has-demo', 'web-development'],
+                    year: 2025,
+                    links: [
+                        { label: 'View Case Study', icon: 'link', href: 'https://github.com/TashinParvez/Kairos', type: 'primary' },
+                        { label: 'Recognition', icon: 'award', href: 'https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion', type: 'secondary' }
+                    ],
+                    img: '../../assets/images/projects/Kairos.png',
+                    featured: true,
+                },
+                {
+                    id: 2,
+                    title: 'DirectEdge',
+                    subtitle: 'Agricultural Supply Chain Platform',
+                    desc: 'Built a multi-stakeholder platform concept to improve coordination across farmers, distributors, warehouses, and retailers with better visibility and operational flow.',
+                    points: [
+                        'Mapped workflows across farmers, agents, warehouses, and retailers',
+                        'Designed dashboards for inventory, order tracking, and operations',
+                        'Prioritized demand forecasting and notification-oriented features',
+                        'Awarded 1st Runner-Up at UIU CSE Project Show'
+                    ],
+                    tech: ['HTML', 'CSS', 'JavaScript', 'Workflow Mapping', 'System Design', 'Product Strategy'],
+                    type: 'Platform Design',
+                    typeName: 'Case Study Project',
+                    tags: ['featured', 'case-study', 'web-development', 'research'],
+                    year: 2025,
+                    links: [
+                        { label: 'View Case Study', icon: 'link', href: 'https://github.com/TashinParvez/direct-edge', type: 'primary' },
+                        { label: 'Recognition', icon: 'award', href: 'https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up', type: 'secondary' }
+                    ],
+                    img: '../../assets/images/projects/DirectEdge.png',
+                    featured: true,
+                },
+                {
+                    id: 3,
+                    title: 'Wayout',
+                    subtitle: 'Travel Planning Platform',
+                    desc: 'Created an end-to-end travel planning system for destination discovery, booking, trip coordination, and guided travel experiences.',
+                    points: [
+                        'Designed role-based experiences for travelers and guides',
+                        'Structured booking, reminder, and trip-navigation workflows',
+                        'Focused on simplifying complex travel planning processes',
+                        'Recognized as 2nd Runner-Up at UIU CSE Project Show'
+                    ],
+                    tech: ['Java', 'OOP', 'System Analysis', 'UX Planning', 'User Flow Design'],
+                    type: 'Travel Product',
+                    typeName: 'Case Study Project',
+                    tags: ['featured', 'case-study', 'research'],
+                    year: 2024,
+                    links: [
+                        { label: 'View Case Study', icon: 'link', href: 'https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner', type: 'primary' }
+                    ],
+                    img: '../../assets/images/projects/Wayout.png',
+                    featured: true,
+                },
+                {
+                    id: 4,
+                    title: 'UIU Faculty Schedule Tool',
+                    subtitle: 'Academic Schedule Discovery Tool',
+                    desc: 'A student-focused tool that helps users quickly find faculty availability and class schedules through a simpler, searchable experience.',
+                    points: [
+                        'Designed search and visualization workflows for quick access to faculty schedules',
+                        'Reduced friction in academic planning and schedule discovery',
+                        'Built for practical student usage across devices',
+                        'Focused on speed, clarity, and accessible information retrieval'
+                    ],
+                    tech: ['HTML', 'CSS', 'JavaScript', 'Search UX', 'Information Architecture'],
+                    type: 'Educational Tool',
+                    typeName: 'Academic Project',
+                    tags: ['has-demo', 'web-development'],
+                    year: 2025,
+                    links: [
+                        { label: 'View Tool', icon: 'link', href: 'https://uiu-faculty-schedule.vercel.app/', type: 'primary' }
+                    ],
+                    img: '../../assets/images/projects/FacultyScheduleTool.png',
+                    featured: false,
+                },
+                {
+                    id: 5,
+                    title: 'AutoTrack',
+                    subtitle: 'Vehicle Detection & Tracking System',
+                    desc: 'Developed an AI-based system for detecting vehicles and reconstructing movement paths using CCTV footage for investigation-oriented use cases.',
+                    points: [
+                        'Used YOLO-based models for vehicle detection and license plate recognition',
+                        'Worked on movement-path reconstruction from CCTV streams',
+                        'Achieved strong tracking performance for practical scenarios',
+                        'Focused on real-world investigation and monitoring challenges'
+                    ],
+                    tech: ['Python', 'YOLO', 'OpenCV', 'Machine Learning', 'Computer Vision'],
+                    type: 'AI System',
+                    typeName: 'Research Project',
+                    tags: ['featured', 'ai-data-science', 'research'],
+                    year: 2025,
+                    links: [
+                        { label: 'View Paper', icon: 'paper', href: 'https://example.com/paper', type: 'primary' },
+                        { label: 'View Code', icon: 'code', href: 'https://github.com/example/autotrack', type: 'secondary' }
+                    ],
+                    img: '../../assets/images/projects/autotrack.png',
+                    featured: true,
+                },
+                {
+                    id: 6,
+                    title: 'UIU Question Bank',
+                    subtitle: 'Academic Question Archive Contribution',
+                    desc: 'Contributed academic question collection and learning support content for a UIU question bank initiative aimed at helping CSE students prepare more effectively.',
+                    points: [
+                        'Supported a question-bank style academic resource for UIU CSE students',
+                        'Helped organize and contribute exam-related learning materials and question collections',
+                        'Focused on improving accessibility of previous questions for student preparation',
+                        'Contributed to a student-centered educational support initiative',
+                    ],
+                    tech: ['HTML', 'CSS', 'JavaScript', 'Educational Resource Design', 'Content Organization'],
+                    type: 'Educational Platform',
+                    typeName: 'Academic Project',
+                    tags: ['web-development'],
+                    year: 2025,
+                    links: [
+                        { label: 'Related Platform', icon: 'link', href: 'https://uiuqb.vercel.app/', type: 'primary' },
+                    ],
+                    img: '../../assets/images/projects/uiu-question-bank.png',
+                    featured: false,
+                },
+                {
+                    id: 7,
+                    title: 'Restaurant QR Menu SaaS',
+                    subtitle: 'Digital Menu Product Concept',
+                    desc: 'A product concept for restaurants to launch QR-based digital menus quickly with public browsing, item visibility, and lightweight analytics.',
+                    points: [
+                        'Designed onboarding for restaurant setup and menu creation',
+                        'Focused on public mobile-first menu browsing with featured items',
+                        'Structured freemium-ready product thinking for future monetization',
+                        'Built around simplicity, low friction, and quick launch value'
+                    ],
+                    tech: ['Product Strategy', 'SaaS Planning', 'UX Flow', 'Dashboard Design', 'Information Architecture'],
+                    type: 'Product Concept',
+                    typeName: 'Case Study Project',
+                    tags: ['case-study', 'research'],
+                    year: 2025,
+                    links: [
+                        { label: 'View Details', icon: 'link', href: '#', type: 'primary' }
+                    ],
+                    img: '../../assets/images/projects/restaurant-qr-menu.png',
+                    featured: false,
+                },
+                {
+                    id: 8,
+                    title: 'Portfolio Website',
+                    subtitle: 'Personal Brand & Case Study Website',
+                    desc: 'Designed and developed a premium portfolio website with a modern product-oriented narrative, clean sections, and strong visual hierarchy.',
+                    points: [
+                        'Built with a premium dark visual system and structured storytelling',
+                        'Focused on clarity across hero, skills, achievements, and project sections',
+                        'Designed reusable visual tokens for consistency across pages',
+                        'Optimized for responsive presentation and polished portfolio delivery'
+                    ],
+                    tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design', 'UI Design'],
+                    type: 'Portfolio Site',
+                    typeName: 'Web Project',
+                    tags: ['has-demo', 'web-development'],
+                    year: 2026,
+                    links: [
+                        { label: 'Live Demo', icon: 'link', href: '#', type: 'primary' }
+                    ],
+                    img: '../../assets/images/projects/portfolio-site.png',
+                    featured: false,
+                }
+            ];
+
+            const projectsGrid = document.getElementById('projectsGrid');
+            const projectFilters = document.getElementById('projectFilters');
+            const projectsStatNum = document.getElementById('projectsStatNum');
+
+            const projectModal = document.getElementById('projectModal');
+            const projectModalBackdrop = document.getElementById('projectModalBackdrop');
+            const closeProjectModalBtn = document.getElementById('closeProjectModalBtn');
+            const prevProjectBtn = document.getElementById('prevProjectBtn');
+            const nextProjectBtn = document.getElementById('nextProjectBtn');
+            const modalCounter = document.getElementById('modalCounter');
+            const modalContent = document.getElementById('modalContent');
+
+            let activeFilter = 'All';
+            let filteredProjects = [...projectsData];
+            let currentModalIndex = 0;
+
+            const MAX_PROJECTS_ON_LANDING = 6;
+            const FULL_PROJECTS_PAGE_URL = './projects.html';
+
+            function esc(value) {
+                return String(value ?? '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function getFilterKey(label) {
+                const map = {
+                    'Featured': 'featured',
+                    'Case Study': 'case-study',
+                    'Has Demo': 'has-demo',
+                    'Web Development': 'web-development',
+                    'AI / Data Science': 'ai-data-science',
+                    'Research': 'research'
+                };
+                return map[label] || '';
+            }
+
+            function renderFilters() {
+                projectFilters.innerHTML = '';
+
+                landingProjectTags.forEach(tag => {
+                    const btn = document.createElement('button');
+                    btn.className = `filter-btn ${activeFilter === tag ? 'active' : ''}`;
+                    btn.type = 'button';
+                    btn.textContent = tag;
+                    btn.addEventListener('click', () => {
+                        activeFilter = tag;
+                        applyFilter();
+                        renderFilters();
+                        renderProjects();
+                    });
+                    projectFilters.appendChild(btn);
+                });
+            }
+
+            function applyFilter() {
+                if (activeFilter === 'All') {
+                    filteredProjects = [...projectsData];
+                    return;
+                }
+
+                const key = getFilterKey(activeFilter);
+                filteredProjects = projectsData.filter(project => {
+                    if (key === 'featured') return project.featured === true;
+                    return project.tags.includes(key);
+                });
+            }
+
+            function buildQuickChips(project) {
+                const chips = [];
+
+                if (project.featured) chips.push('Featured');
+                if (project.tags.includes('case-study')) chips.push('Case Study');
+                if (project.tags.includes('has-demo')) chips.push('Has Demo');
+                if (project.tags.includes('web-development')) chips.push('Web Dev');
+                if (project.tags.includes('ai-data-science')) chips.push('AI / Data');
+                if (project.tags.includes('research')) chips.push('Research');
+
+                return chips.slice(0, 3);
+            }
+
+            function renderProjects() {
+                projectsGrid.innerHTML = '';
+                projectsStatNum.textContent = String(projectsData.length).padStart(2, '0');
+
+                if (!filteredProjects.length) {
+                    projectsGrid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No projects found</h3>
+                        <p>There is no project under this filter right now. Try another category to explore more work.</p>
+                    </div>
+                `;
+                    return;
+                }
+
+                const landingProjects = filteredProjects.slice(0, MAX_PROJECTS_ON_LANDING);
+
+                landingProjects.forEach((project, index) => {
+                    const quickChips = buildQuickChips(project);
+                    const techPreview = project.tech.slice(0, 4);
+
+                    const card = document.createElement('article');
+                    card.className = 'project-card';
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('role', 'button');
+                    card.setAttribute('aria-label', `Open details for ${project.title}`);
+
+                    card.innerHTML = `
+                    <div class="project-thumb">
+                        <img src="${esc(project.img)}" alt="${esc(project.title)} preview" onerror="this.style.display='none'">
+                        <div class="thumb-overlay"></div>
+
+                        <div class="thumb-top">
+                            <div class="project-type">${esc(project.type)}</div>
+                            <div class="project-year">${esc(project.year)}</div>
+                        </div>
+
+                        <div class="thumb-bottom">
+                            <div class="project-quick-tags">
+                                ${quickChips.map(chip => `<span class="quick-chip">${esc(chip)}</span>`).join('')}
+                            </div>
+                            <div class="card-arrow">↗</div>
+                        </div>
+                    </div>
+
+                    <div class="project-body">
+                        <div>
+                            <h3 class="project-title">${esc(project.title)}</h3>
+                            <div class="project-subtitle">${esc(project.subtitle)}</div>
+                        </div>
+
+                        <p class="project-desc">${esc(project.desc)}</p>
+
+                        <div class="project-tech">
+                            ${techPreview.map(item => `<span class="tech-chip">${esc(item)}</span>`).join('')}
+                        </div>
+
+                        <div class="card-meta">
+                            <div class="card-meta-left">
+                                <span class="meta-mini">${esc(project.typeName)}</span>
+                                <span class="meta-dot"></span>
+                                <span class="meta-mini">${project.points.length} highlights</span>
+                            </div>
+                            <div class="card-link-count">${project.links.length} link${project.links.length > 1 ? 's' : ''}</div>
+                        </div>
+                    </div>
+                `;
+
+                    card.addEventListener('click', () => openProjectModal(index));
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openProjectModal(index);
+                        }
+                    });
+
+                    projectsGrid.appendChild(card);
+                });
+            }
+
+            function renderModal(project) {
+                const modalTags = [];
+                if (project.featured) modalTags.push('Featured');
+                if (project.tags.includes('case-study')) modalTags.push('Case Study');
+                if (project.tags.includes('has-demo')) modalTags.push('Has Demo');
+                if (project.tags.includes('web-development')) modalTags.push('Web Development');
+                if (project.tags.includes('ai-data-science')) modalTags.push('AI / Data Science');
+                if (project.tags.includes('research')) modalTags.push('Research');
+
+                modalContent.innerHTML = `
+                <div class="modal-left">
+                    <div class="modal-hero">
+                        <img src="${esc(project.img)}" alt="${esc(project.title)} project image" onerror="this.style.display='none'">
+                        <div class="modal-hero-overlay">
+                            <div class="modal-badges">
+                                <span class="modal-badge">${esc(project.type)}</span>
+                                ${modalTags.map(tag => `<span class="modal-badge">${esc(tag)}</span>`).join('')}
+                            </div>
+
+                            <div class="modal-hero-bottom">
+                                <div>
+                                    <div class="modal-type-name">${esc(project.typeName)}</div>
+                                    <div class="modal-project-name">${esc(project.title)}</div>
+                                </div>
+                                <div class="modal-year-chip">${esc(project.year)}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="modal-title" id="modalProjectTitle">${esc(project.title)}</h2>
+                    <div class="modal-subtitle">${esc(project.subtitle)}</div>
+                    <p class="modal-desc">${esc(project.desc)}</p>
+
+                    <div class="modal-sec">
+                        <div class="modal-sec-label">Key Highlights</div>
+                        <ul class="modal-points">
+                            ${project.points.map(point => `<li>${esc(point)}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="modal-sec">
+                        <div class="modal-sec-label">Tech Stack & Focus Areas</div>
+                        <div class="modal-tech">
+                            ${project.tech.map(item => `<span class="tech-chip">${esc(item)}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    ${project.links.length ? `
+                        <div class="modal-sec">
+                            <div class="modal-sec-label">Project Links</div>
+                            <div class="modal-links">
+                                ${project.links.map((link, index) => `
+                                    <a class="modal-link ${index === 0 || link.type === 'primary' ? 'primary' : 'secondary'}"
+                                       href="${esc(link.href)}"
+                                       target="_blank"
+                                       rel="noopener">
+                                        <span>${esc(link.label)}</span>
+                                        <span>↗</span>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <div class="modal-right">
+                    <div class="modal-side-grid">
+                        <div class="side-card">
+                            <div class="side-card-title">Project Overview</div>
+                            <div class="side-meta-list">
+                                <div class="side-meta-item">
+                                    <div class="side-meta-k">Project ID</div>
+                                    <div class="side-meta-v">#${esc(project.id)}</div>
+                                </div>
+                                <div class="side-meta-item">
+                                    <div class="side-meta-k">Type</div>
+                                    <div class="side-meta-v">${esc(project.type)}</div>
+                                </div>
+                                <div class="side-meta-item">
+                                    <div class="side-meta-k">Category</div>
+                                    <div class="side-meta-v">${esc(project.typeName)}</div>
+                                </div>
+                                <div class="side-meta-item">
+                                    <div class="side-meta-k">Year</div>
+                                    <div class="side-meta-v">${esc(project.year)}</div>
+                                </div>
+                                <div class="side-meta-item">
+                                    <div class="side-meta-k">Featured</div>
+                                    <div class="side-meta-v">${project.featured ? 'Yes' : 'No'}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="side-card">
+                            <div class="side-card-title">Tags</div>
+                            <div class="side-tags">
+                                ${modalTags.length ? modalTags.map(tag => `<span class="tech-chip">${esc(tag)}</span>`).join('') : `<span class="tech-chip">General</span>`}
+                            </div>
+                        </div>
+
+                        <div class="side-card">
+                            <div class="side-card-title">Primary Technologies</div>
+                            <div class="side-tags">
+                                ${project.tech.slice(0, 8).map(item => `<span class="tech-chip">${esc(item)}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="side-card">
+                            <div class="side-card-title">Navigation</div>
+                            <p class="modal-footer-note">
+                                Use the previous and next buttons in the top bar to move through the currently visible
+                                landing-page projects without closing the modal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                modalCounter.textContent = `${String(currentModalIndex + 1).padStart(2, '0')} / ${String(filteredProjects.slice(0, MAX_PROJECTS_ON_LANDING).length).padStart(2, '0')}`;
+            }
+
+            function openProjectModal(index) {
+                const currentList = filteredProjects.slice(0, MAX_PROJECTS_ON_LANDING);
+                if (!currentList.length) return;
+
+                currentModalIndex = index < 0 ? currentList.length - 1 : index >= currentList.length ? 0 : index;
+                renderModal(currentList[currentModalIndex]);
+
+                projectModal.classList.add('open');
+                projectModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeProjectModal() {
+                projectModal.classList.remove('open');
+                projectModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                // Trigger scroll event to update navbar active state
+                window.dispatchEvent(new Event('scroll'));
+            }
+
+            function showPrevProject() {
+                const currentList = filteredProjects.slice(0, MAX_PROJECTS_ON_LANDING);
+                if (!currentList.length) return;
+                currentModalIndex = (currentModalIndex - 1 + currentList.length) % currentList.length;
+                renderModal(currentList[currentModalIndex]);
+            }
+
+            function showNextProject() {
+                const currentList = filteredProjects.slice(0, MAX_PROJECTS_ON_LANDING);
+                if (!currentList.length) return;
+                currentModalIndex = (currentModalIndex + 1) % currentList.length;
+                renderModal(currentList[currentModalIndex]);
+            }
+
+            closeProjectModalBtn.addEventListener('click', closeProjectModal);
+            projectModalBackdrop.addEventListener('click', closeProjectModal);
+            prevProjectBtn.addEventListener('click', showPrevProject);
+            nextProjectBtn.addEventListener('click', showNextProject);
+
+            document.addEventListener('keydown', (e) => {
+                if (!projectModal.classList.contains('open')) return;
+
+                if (e.key === 'Escape') closeProjectModal();
+                if (e.key === 'ArrowLeft') showPrevProject();
+                if (e.key === 'ArrowRight') showNextProject();
+            });
+
+            renderFilters();
+            applyFilter();
+            renderProjects();
+
+            // optional: change this if your full projects page path is different
+            document.querySelector('.show-more-btn').setAttribute('href', FULL_PROJECTS_PAGE_URL);
+        </script>
 
 
         <!-- ======================================== ACHIEVEMENTS ========================================== -->
@@ -5598,11 +7149,21 @@
             const links = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('section[id]');
             function update() {
+                const probe = window.scrollY + 160;
                 let cur = '';
-                sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) cur = s.id; });
-                links.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + cur); });
+                sections.forEach(s => {
+                    const top = s.getBoundingClientRect().top + window.scrollY;
+                    const bottom = top + s.offsetHeight;
+                    if (probe >= top && probe < bottom) {
+                        cur = s.id;
+                    }
+                });
+                links.forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+                });
             }
             window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
             update();
         })();
 
