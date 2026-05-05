@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BD PM Roadmap — bKash · Pathao · Shikho · 10MS · BrainStation · Enosis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #fdfbf6;
+  --bg-soft: #f3eee0;
+  --ink: #0d0d0d;
+  --ink-soft: #4a4a4a;
+  --paper-rule: #d8d2bf;
+  --accent: #006a4e;       /* BD bottle green */
+  --accent-2: #f42a41;     /* BD red */
+  --accent-soft: #e8f3ed;
+  --gold: #b88334;
+  --rule: #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(0,106,78,0.06), transparent 30%),
+    radial-gradient(circle at 92% 88%, rgba(244,42,65,0.04), transparent 35%);
+}
+
+/* =========== NEWSPAPER MASTHEAD =========== */
+.masthead {
+  border-top: 6px double var(--ink);
+  border-bottom: 6px double var(--ink);
+  padding: 20px 5vw;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 30px;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--bg);
+}
+.masthead .left { text-align: left; }
+.masthead .center {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.3em;
+}
+.masthead .right { text-align: right; color: var(--accent-2); }
+
+@media (max-width: 720px) {
+  .masthead { grid-template-columns: 1fr; gap: 8px; text-align: center; }
+  .masthead .left, .masthead .right { text-align: center; }
+}
+
+/* =========== HERO HEADLINE =========== */
+.hero {
+  padding: 80px 5vw 60px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+
+.hero .deck {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(48px, 9vw, 130px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-2);
+}
+
+.hero h1 .stroke {
+  -webkit-text-stroke: 2px var(--ink);
+  color: transparent;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-sub {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  border-top: 1px solid var(--ink);
+  padding-top: 24px;
+}
+
+.hero-sub .lead {
+  font-family: 'Tinos', serif;
+  font-size: 22px;
+  line-height: 1.4;
+  font-style: italic;
+  max-width: 50ch;
+}
+
+.hero-sub .lead::first-letter {
+  font-family: 'Tinos', serif;
+  font-size: 80px;
+  font-weight: 700;
+  float: left;
+  line-height: 0.85;
+  margin-right: 12px;
+  margin-top: 6px;
+  color: var(--accent-2);
+  font-style: normal;
+}
+
+.hero-sub .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.hero-sub .meta .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hero-sub .meta .key { color: var(--ink); }
+.hero-sub .meta .val { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .hero-sub { grid-template-columns: 1fr; }
+}
+
+/* =========== COMPANY STRIP =========== */
+.companies {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 50px 5vw;
+}
+
+.companies .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+
+.companies h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.1;
+  margin-bottom: 36px;
+  max-width: 30ch;
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(253,251,246,0.2);
+}
+
+.company-card {
+  padding: 24px 20px;
+  border-right: 1px solid rgba(253,251,246,0.2);
+  border-bottom: 1px solid rgba(253,251,246,0.2);
+}
+
+.company-card:last-child { border-right: none; }
+
+.company-card .name {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.company-card .domain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+}
+
+.company-card .note {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(253,251,246,0.75);
+}
+
+@media (max-width: 1000px) { .company-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .company-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* =========== PHASES =========== */
+.phases-intro {
+  padding: 100px 5vw 60px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.phases-intro .left .section-num {
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  font-size: 100px;
+  line-height: 0.9;
+  color: var(--accent-2);
+  font-weight: 400;
+}
+.phases-intro .left .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.phases-intro .right h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.phases-intro .right h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+.phases-intro .right p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 800px) { .phases-intro { grid-template-columns: 1fr; gap: 30px; } }
+
+.phase {
+  padding: 80px 5vw 60px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+
+.phase-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: end;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  border-bottom: 3px double var(--ink);
+}
+
+.phase-header .num {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(80px, 12vw, 160px);
+  line-height: 0.85;
+  color: var(--accent-2);
+  letter-spacing: -0.04em;
+}
+
+.phase-header h3 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.phase-header h3 em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+.phase-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 14px;
+}
+.phase-header .meta span { color: var(--accent-2); }
+
+.phase-header .timeblock {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.phase-header .timeblock .big {
+  display: block;
+  font-family: 'Tinos', serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .phase-header { grid-template-columns: 1fr; gap: 16px; align-items: start; }
+  .phase-header .timeblock { text-align: left; }
+}
+
+/* =========== NODE CARD =========== */
+.nodes { display: grid; gap: 28px; }
+
+.node {
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.node-banner {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.node-banner .id { color: var(--accent-2); }
+.node-banner .pri { color: rgba(253,251,246,0.7); }
+
+.node-body {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 0;
+}
+
+.node-body > div { padding: 32px; }
+.node-body .left {
+  background: var(--bg-soft);
+  border-right: 1px solid var(--paper-rule);
+}
+
+.node h4 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.node .why {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.node .why strong { color: var(--ink); }
+
+/* Mini-lesson box — the key new feature */
+.minilesson {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+.minilesson .ml-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.minilesson .ml-label::before {
+  content: '◉';
+  color: var(--accent-2);
+}
+.minilesson p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.minilesson p:last-child { margin-bottom: 0; }
+.minilesson p strong { color: var(--accent); }
+.minilesson .formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 12px;
+  display: inline-block;
+  margin-top: 6px;
+  letter-spacing: 0.03em;
+}
+
+/* node sections */
+.node-section {
+  margin-bottom: 24px;
+}
+.node-section:last-child { margin-bottom: 0; }
+
+.node-section .sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--paper-rule);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink);
+}
+.node-section .sec-label .glyph {
+  color: var(--accent-2);
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-size: 13px;
+}
+
+.node-section ul { list-style: none; padding: 0; }
+.node-section li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+.node-section li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-2);
+  font-family: 'Tinos', serif;
+}
+.node-section li strong { color: var(--ink); font-weight: 600; }
+
+.resource-list li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+.resource-list li::before { content: '○'; font-size: 9px; top: 9px; }
+
+@media (max-width: 800px) {
+  .node-body { grid-template-columns: 1fr; }
+  .node-body .left { border-right: none; border-bottom: 1px solid var(--paper-rule); }
+}
+
+/* =========== COMPANY DEEP DIVE =========== */
+.deepdive {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 100px 5vw;
+}
+
+.deepdive .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+
+.deepdive h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+  max-width: 18ch;
+}
+.deepdive h2 em { font-style: italic; font-weight: 400; color: var(--accent-2); }
+
+.dd-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(253,251,246,0.18);
+  border: 1px solid rgba(253,251,246,0.18);
+}
+
+.dd-card {
+  background: var(--ink);
+  padding: 36px 28px;
+}
+
+.dd-card .co-name {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.dd-card .co-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 24px;
+}
+
+.dd-card h5 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bg);
+  margin-bottom: 10px;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(253,251,246,0.18);
+}
+.dd-card h5:first-of-type { padding-top: 0; border-top: none; margin-top: 0;}
+
+.dd-card p, .dd-card ul {
+  font-size: 13.5px;
+  color: rgba(253,251,246,0.8);
+  line-height: 1.55;
+}
+
+.dd-card ul { list-style: none; padding: 0; }
+.dd-card ul li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+.dd-card ul li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) { .dd-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .dd-grid { grid-template-columns: 1fr; } }
+
+/* =========== EXTRA SKILLS =========== */
+.extra {
+  padding: 100px 5vw;
+  border-bottom: 1px solid var(--ink);
+}
+
+.extra .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+
+.extra h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.extra h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+.extra .sub {
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 60px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-card {
+  border: 1px solid var(--ink);
+  padding: 28px 24px;
+  background: var(--bg);
+  position: relative;
+}
+
+.skill-card .ico {
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  font-size: 36px;
+  color: var(--accent-2);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.skill-card h4 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.skill-card p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.skill-card .how {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  border-top: 1px dashed var(--paper-rule);
+  padding-top: 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+@media (max-width: 1000px) { .skill-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .skill-grid { grid-template-columns: 1fr; } }
+
+/* =========== INTERVIEW PREP =========== */
+.interview {
+  background: var(--bg-soft);
+  padding: 100px 5vw;
+  border-bottom: 1px solid var(--ink);
+}
+
+.interview .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+
+.interview h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.interview h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+.interview .sub {
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 60px;
+}
+
+.iv-stages {
+  display: grid;
+  gap: 24px;
+}
+
+.iv-stage {
+  display: grid;
+  grid-template-columns: 100px 1fr 1.5fr;
+  gap: 30px;
+  padding: 24px 0;
+  border-top: 1px solid var(--ink);
+}
+
+.iv-stage .num {
+  font-family: 'Tinos', serif;
+  font-style: italic;
+  font-size: 56px;
+  color: var(--accent-2);
+  line-height: 0.9;
+}
+
+.iv-stage h4 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+
+.iv-stage .stage-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.iv-stage p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.iv-stage .right .tip {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 14px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.55;
+  margin-top: 10px;
+  border-left: 3px solid var(--accent-2);
+}
+
+@media (max-width: 800px) {
+  .iv-stage { grid-template-columns: 1fr; gap: 12px; }
+  .iv-stage .num { font-size: 40px; }
+}
+
+/* =========== CHEAT SHEET =========== */
+.cheat {
+  padding: 100px 5vw;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cheat .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 16px;
+}
+
+.cheat h2 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+}
+.cheat h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+.cheat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.cheat-cell {
+  background: var(--bg);
+  padding: 28px;
+}
+
+.cheat-cell h4 {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.cheat-cell .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.cheat-cell p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 10px; }
+.cheat-cell .formula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  display: block;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+@media (max-width: 800px) { .cheat-grid { grid-template-columns: 1fr; } }
+
+/* =========== CLOSING =========== */
+.closing {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 120px 5vw;
+  text-align: center;
+}
+
+.closing blockquote {
+  font-family: 'Tinos', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(28px, 4.5vw, 56px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  margin: 0 auto 40px;
+}
+.closing blockquote span { color: var(--accent-2); }
+
+.closing cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(253,251,246,0.6);
+  font-style: normal;
+}
+
+.footer {
+  padding: 30px 5vw;
+  background: var(--bg);
+  border-top: 1px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 600px) { .footer { flex-direction: column; gap: 12px; text-align: center; } }
+</style>
+</head>
+<body>
+
+<!-- ===== MASTHEAD ===== -->
+<div class="masthead">
+  <div class="left">Vol. 02 · Dhaka Edition · 2026</div>
+  <div class="center">THE PM PLAYBOOK</div>
+  <div class="right">For the Local Hire</div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="deck">A Field Manual For Bangladeshi PM Roles · Companies Profiled · Frameworks Explained Inline</div>
+  <h1>
+    Become a PM<br />
+    at <em>bKash.</em><br />
+    Or <span class="stroke">Pathao.</span><br />
+    Or Shikho.
+  </h1>
+
+  <div class="hero-sub">
+    <p class="lead">
+      The previous roadmap got you to "industry-ready." This one gets you hired in Dhaka. The companies you named — bKash, Pathao, Shikho, 10 Minute School, BrainStation 23, Enosis — each hire PMs differently. Each tests for different things. Each has a domain you must understand cold. This document is the unfair advantage.
+    </p>
+    <div class="meta">
+      <div class="row"><div class="key">Reader</div><div class="val">CSE Grad, UIU</div></div>
+      <div class="row"><div class="key">Target</div><div class="val">PM in BD, 18mo</div></div>
+      <div class="row"><div class="key">Format</div><div class="val">Phases + Lessons</div></div>
+      <div class="row"><div class="key">Tone</div><div class="val">Senior, Direct</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPANY STRIP ===== -->
+<section class="companies">
+  <div class="label">Section I · Know Your Battlefield</div>
+  <h2>Six employers. Six different PM bars. Don't apply blind.</h2>
+
+  <div class="company-grid">
+    <div class="company-card">
+      <div class="name">bKash</div>
+      <div class="domain">Fintech · MFS</div>
+      <div class="note">Largest MFS in BD. Hires PMs into Product & Tech division. Process-heavy, bank-aligned (BRAC Bank parent). Strong on compliance, APIs, agile.</div>
+    </div>
+    <div class="company-card">
+      <div class="name">Pathao</div>
+      <div class="domain">Logistics · Marketplace</div>
+      <div class="note">Multi-product (rides, food, parcel, pay). Hires APMs from CSE/EEE backgrounds. Heavy on data, marketplace dynamics, supply-demand thinking.</div>
+    </div>
+    <div class="company-card">
+      <div class="name">Shikho</div>
+      <div class="domain">EdTech · Subscription</div>
+      <div class="note">EdTech for school + admission prep. Smaller, faster, more startup-y. Cares about retention curves, content-product fit, mobile-first UX.</div>
+    </div>
+    <div class="company-card">
+      <div class="name">10 Minute School</div>
+      <div class="domain">EdTech · Multi-format</div>
+      <div class="note">Largest EdTech. Multi-product (live, recorded, skill courses). Hires from product analyst track. Strong brand, growth obsession, content ops.</div>
+    </div>
+    <div class="company-card">
+      <div class="name">BrainStation 23</div>
+      <div class="domain">Software Services</div>
+      <div class="note">Services firm with internal product teams + client products. PM role here = closer to BA/Project Manager hybrid. Different beast.</div>
+    </div>
+    <div class="company-card">
+      <div class="name">Enosis</div>
+      <div class="domain">Outsourced Product Dev</div>
+      <div class="note">Builds for US clients. PM-adjacent roles (Tech Lead, BA). Excellent for learning execution & quality at scale. Step toward real PM later.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHASES INTRO ===== -->
+<section class="phases-intro">
+  <div class="left">
+    <div class="section-num">II</div>
+    <div class="label">The Path<br />Five Phases</div>
+  </div>
+  <div class="right">
+    <h2>From CSE grad<br />to <em>Dhaka PM offer</em>.</h2>
+    <p>This roadmap is shorter than the global one — 18 months, not 24 — because Bangladeshi companies don't expect a perfect candidate. They expect a sharp, hungry, high-agency one who shows up with proof. That's achievable in 18 months if you execute.</p>
+    <p>Each phase has <strong>mini-lessons</strong> embedded — the actual frameworks and ideas, condensed. You won't have to chase 50 articles to understand RICE or AARRR. The core is here. Use it as your study guide, then go deeper only where you need to.</p>
+  </div>
+</section>
+
+<!-- ===== PHASE 1 ===== -->
+<section class="phase">
+  <div class="phase-header">
+    <div class="num">01</div>
+    <div>
+      <h3>The PM <em>foundation</em>, BD-style.</h3>
+      <div class="meta">Months <span>0 – 2</span> · Outcome: Local PM literacy + 3 product teardowns</div>
+    </div>
+    <div class="timeblock">Duration<span class="big">8 wks</span></div>
+  </div>
+
+  <div class="nodes">
+
+    <!-- Node 1.1 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 1.1</span>
+        <span class="pri">Priority · Critical</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>What a PM actually does at a Bangladeshi company</h4>
+          <div class="why"><strong>Why:</strong> The PM role in BD is NOT the Silicon Valley PM role. At bKash, you'll do more stakeholder management with banks. At Pathao, more ops coordination. At 10MS, more content alignment. Get this clear before you waste 6 months prepping for the wrong job.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The BD PM reality</div>
+            <p>A PM at a Dhaka company spends roughly: <strong>40% stakeholder alignment</strong> (compliance, business, ops, sometimes regulators), <strong>25% writing & specs</strong>, <strong>20% data & analysis</strong>, <strong>10% user research</strong>, <strong>5% strategy</strong>.</p>
+            <p>Compare to a Google PM: 30% strategy, 25% data, 20% writing, 15% stakeholder, 10% research. The difference: BD PMs operate in <strong>resource-constrained, regulation-heavy, mobile-first markets</strong>. Your job is to get things shipped despite friction, not to dream up moonshots.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills <span class="glyph">— what to learn</span></div>
+            <ul>
+              <li>The role spectrum at BD companies: <strong>Product Analyst → APM → PM → Senior PM → Lead PM</strong></li>
+              <li>How "Product Manager" titles in BD often blur with <strong>Project Manager, Business Analyst, Product Owner</strong> — and how to read JDs accurately</li>
+              <li>Reading bdjobs.com PM listings and decoding what they actually want</li>
+              <li>The bKash / Pathao / 10MS reporting structures (who PMs report to, who they fight with)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Read 20 PM job postings on bdjobs.com & LinkedIn. Build a spreadsheet of common requirements. The patterns are eye-opening</li>
+              <li>Find 5 PMs working at the target companies on LinkedIn. Read every post they've published in the last 12 months</li>
+              <li>Write a 1-page note: "What does a PM at bKash do that a PM at 10MS doesn't?" Defend with evidence</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>bdjobs.com + LinkedIn Bangladesh — read PM JDs daily for 2 weeks</li>
+              <li>YouTube: "Pathao Tech Talks" — internal product videos, gold</li>
+              <li>10 Minute School blog — read their product launch posts</li>
+              <li>Lenny's Newsletter — "What is a PM" archive</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 1.2 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 1.2</span>
+        <span class="pri">Priority · High</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Core frameworks every PM uses (condensed)</h4>
+          <div class="why"><strong>Why:</strong> Frameworks aren't ceremony. They're the shared vocabulary of product. When your interviewer says "RICE this for me," you can't blink. Learn the 6 below cold. Skip the rest until you need them.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The 6 frameworks you must know</div>
+            <p><strong>1. JTBD (Jobs to Be Done):</strong> Customers don't buy products, they "hire" them to do a job. <span class="formula">When [situation], I want to [motivation], so I can [outcome]</span></p>
+            <p><strong>2. RICE prioritization:</strong> Score features by Reach × Impact × Confidence ÷ Effort. <span class="formula">RICE = (R × I × C) / E</span></p>
+            <p><strong>3. AARRR (Pirate Metrics):</strong> Acquisition → Activation → Retention → Referral → Revenue. The funnel every consumer product lives in.</p>
+            <p><strong>4. North Star Metric:</strong> ONE metric that captures the value your product delivers. For bKash: monthly transacting users. For 10MS: minutes-watched-per-active-user.</p>
+            <p><strong>5. The Kano Model:</strong> Features fall into 3 buckets — basic (must-haves), performance (more = better), delighters (surprises). Build basic first, always.</p>
+            <p><strong>6. 5 Whys:</strong> When a metric drops, ask "why" five times. The first answer is never the real cause. The fifth usually is.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>JTBD framework</strong> — apply to bKash send-money, Pathao Food, Shikho subscription</li>
+              <li><strong>Prioritization:</strong> RICE, MoSCoW, ICE, Value vs Effort matrix</li>
+              <li><strong>Pirate Metrics</strong> & funnel diagnosis</li>
+              <li><strong>North Star + input/guardrail metrics</strong></li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Write JTBD statements for 3 BD products. Make them specific — "When I'm at the kacha bazar with no cash, I want to pay the vendor without showing my balance to others, so I don't get pressured to give more"</li>
+              <li>Score 6 Pathao Food feature ideas using RICE. Be honest about your Confidence numbers</li>
+              <li>Define a North Star + 3 input metrics for 10 Minute School. Defend each in 50 words</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>productplan.com — RICE, MoSCoW guides (free)</li>
+              <li>Amplitude's North Star Playbook — free PDF</li>
+              <li>YouTube: "Clayton Christensen Milkshake Marketing" — 7 min, watch twice</li>
+              <li>Reforge free articles on retention</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 1.3 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 1.3</span>
+        <span class="pri">Priority · High · Portfolio</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Product teardowns of BD apps — your first portfolio piece</h4>
+          <div class="why"><strong>Why:</strong> Recruiters at bKash and Pathao read teardowns of their own products with intense interest. A well-written teardown of bKash's send-money flow gets you a callback. A generic teardown of Spotify does not.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · How to do a teardown that gets noticed</div>
+            <p>A good teardown has 4 parts: <strong>(1) The problem</strong> — what is this product trying to solve? <strong>(2) The current solution</strong> — annotated screenshots showing what works and what doesn't. <strong>(3) The metrics</strong> — what would you, the PM, be measuring? <strong>(4) Three improvements</strong> — with hypothesized impact, prioritized by RICE.</p>
+            <p>The mistake everyone makes: redesigning the UI. Don't. PMs aren't designers. <strong>Show product thinking, not visual taste.</strong> A 1500-word doc with smart hypotheses beats a beautiful Figma file every time.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Tasks (do all three)</div>
+            <ul>
+              <li><strong>Teardown 1 — bKash send-money flow:</strong> Why is the PIN entered last? What's the activation rate of new users sending money for the first time? Three improvements</li>
+              <li><strong>Teardown 2 — Pathao Food restaurant search:</strong> Why does it surface "popular near you" first? What metric does this optimize? Three improvements</li>
+              <li><strong>Teardown 3 — 10MS course completion:</strong> Why do most users drop off in chapter 3? What's the retention curve? Three interventions</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Format</div>
+            <ul>
+              <li>1500 words each, posted publicly on Notion or Medium</li>
+              <li>Include 3-5 annotated screenshots</li>
+              <li>End with: "If I were the PM, the top thing I'd ship next quarter is X, because Y"</li>
+              <li>Tag the company on LinkedIn when you post. PMs there will see it</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Resources</div>
+            <ul class="resource-list">
+              <li>Search "Lenny Rachitsky teardown template" — use his structure</li>
+              <li>Read Sachin Rekhi's teardown of LinkedIn — gold standard</li>
+              <li>Look up "GoodDay" teardowns archive — many BD-product teardowns by PMs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PHASE 2 ===== -->
+<section class="phase">
+  <div class="phase-header">
+    <div class="num">02</div>
+    <div>
+      <h3>Discovery, research & <em>customer truth</em>.</h3>
+      <div class="meta">Months <span>2 – 5</span> · Outcome: 10 user interviews + 1 research artifact</div>
+    </div>
+    <div class="timeblock">Duration<span class="big">12 wks</span></div>
+  </div>
+
+  <div class="nodes">
+
+    <!-- Node 2.1 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 2.1</span>
+        <span class="pri">Priority · Critical</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>User research — and why CSE grads are bad at it</h4>
+          <div class="why"><strong>Why:</strong> Engineers think users are rational. They aren't. A bKash user in Tongi will tell you the app is "fine" — and then mention in passing that her husband has to help her every time she sends money. That's the real signal. Learn to hear it.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The 4 rules of user interviews (The Mom Test)</div>
+            <p><strong>Rule 1: Talk about their life, not your idea.</strong> "How do you currently send money to your family in the village?" beats "Would you like a faster send-money feature?"</p>
+            <p><strong>Rule 2: Ask about specifics in the past, not opinions about the future.</strong> "Walk me through the last time you sent money" beats "How often do you send money?"</p>
+            <p><strong>Rule 3: Talk less, listen more.</strong> 80/20 rule. They talk 80% of the time. Most beginners do the opposite.</p>
+            <p><strong>Rule 4: Watch for pain, workarounds, and money spent.</strong> If someone has built a workaround or paid money to solve something, that's a real problem. Everything else is polite chatter.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Interview design</strong> — open vs leading questions</li>
+              <li><strong>Affinity mapping</strong> — synthesizing 10+ interviews into themes</li>
+              <li><strong>Personas & empathy maps</strong> — based on real interviews, not stereotypes</li>
+              <li><strong>Bangla-language interviewing</strong> — most BD users open up only in Bangla. Practice both</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks (the most important task in this entire roadmap)</div>
+            <ul>
+              <li><strong>Run 10 real user interviews.</strong> Pick a problem your community knows: "How UIU students find tuition jobs" or "How small Dhaka shopkeepers manage daily cash". Interview 10 people. Record (with permission)</li>
+              <li>Synthesize into 3 themes, 2 personas, 1 empathy map</li>
+              <li>Write a 5-page research report with quotes, themes, and a "what to build" recommendation</li>
+              <li>Post on LinkedIn. Tag relevant companies</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>"The Mom Test" by Rob Fitzpatrick — full PDF circulates online, ~120 pages</li>
+              <li>Teresa Torres "Continuous Discovery" — full free YouTube talks</li>
+              <li>NN/g articles — Nielsen Norman Group, free, gold standard</li>
+              <li>Coursera audits: "User Research at Scale" — free</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 2.2 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 2.2</span>
+        <span class="pri">Priority · Medium</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>BD market & competitive analysis</h4>
+          <div class="why"><strong>Why:</strong> If you walk into a Pathao interview and don't know who Uber, Obhai, and Shohoz Rides are doing differently, you're done. Domain knowledge is leverage. It also makes your interview answers 10x sharper.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · TAM/SAM/SOM for BD products</div>
+            <p><strong>TAM (Total Addressable Market):</strong> Everyone who could conceivably use this. <strong>SAM (Serviceable):</strong> Those you can realistically reach. <strong>SOM (Obtainable):</strong> Those you'll actually capture.</p>
+            <p>Example for digital tutoring in BD: <strong>TAM</strong> = ~40M school-age kids. <strong>SAM</strong> = ~12M with smartphone access in households earning >৳25K/month. <strong>SOM</strong> = ~2M reachable through digital marketing in 3 years.</p>
+            <p>Always show your work. Always sanity-check both top-down (industry reports) and bottom-up (per-user × users). When they agree within 30%, you're solid.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>SWOT, Porter's 5 Forces</strong> — basics</li>
+              <li><strong>BD market sizing</strong> — TAM/SAM/SOM with Bangladesh data</li>
+              <li><strong>Competitive teardowns</strong> — feature, pricing, distribution</li>
+              <li><strong>Reading BD industry reports</strong> — LightCastle, BIDA, Bangladesh Bank publications</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Build a competitive matrix: Pathao vs Uber vs Obhai vs Shohoz across pricing, driver supply, geography, brand, app UX</li>
+              <li>Estimate TAM/SAM/SOM for "1-on-1 online tutoring in Bangladesh." Show all assumptions</li>
+              <li>Write a 1-pager: "Why bKash beats Nagad" — back with data, not opinions</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>LightCastle Partners reports — free, focus on BD market</li>
+              <li>BIDA & Bangladesh Bank stats portals</li>
+              <li>The Daily Star Business section — startup coverage</li>
+              <li>Future Startup (futurestartup.com) — best BD startup journalism</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PHASE 3 ===== -->
+<section class="phase">
+  <div class="phase-header">
+    <div class="num">03</div>
+    <div>
+      <h3>Execution craft — the <em>shipping</em> machine.</h3>
+      <div class="meta">Months <span>5 – 9</span> · Outcome: 3 PRDs + Jira fluency + Figma comfort</div>
+    </div>
+    <div class="timeblock">Duration<span class="big">16 wks</span></div>
+  </div>
+
+  <div class="nodes">
+
+    <!-- Node 3.1 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 3.1</span>
+        <span class="pri">Priority · Critical</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Writing PRDs that engineers actually read</h4>
+          <div class="why"><strong>Why:</strong> bKash's JD literally says "Converting product features into meaningful requirements, user stories, and acceptance criteria." That IS the PRD. Bad PRDs cause shipped bugs. Bad shipped bugs cost you the trust of your engineering team forever.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The 7-section PRD that works in BD</div>
+            <p><strong>1. Problem</strong> — One paragraph. The customer pain in plain language.</p>
+            <p><strong>2. Users & use cases</strong> — Who, when, where, why. Specific, not generic.</p>
+            <p><strong>3. Goals & non-goals</strong> — What success looks like. What we are explicitly NOT solving.</p>
+            <p><strong>4. Success metrics</strong> — North star + 2 input metrics + 1 guardrail.</p>
+            <p><strong>5. User stories & acceptance criteria</strong> — <span class="formula">As a [user], I want to [action], so I can [outcome]</span> — plus testable acceptance criteria for each.</p>
+            <p><strong>6. Edge cases & failure modes</strong> — What if the network drops? What if the user is on a feature phone? Engineers will love you for this.</p>
+            <p><strong>7. Open questions & risks</strong> — Be honest. PRDs without risks are PRDs that haven't been thought through.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Writing user stories</strong> with proper acceptance criteria</li>
+              <li><strong>Edge case generation</strong> — your CSE background is your superpower here</li>
+              <li><strong>Working Backwards / press-release style</strong> (Amazon's method)</li>
+              <li><strong>Writing for Bangladeshi engineers</strong> — clear, unambiguous, well-translated terminology</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks (write 3 PRDs — these go in your portfolio)</div>
+            <ul>
+              <li><strong>PRD 1:</strong> "bKash NID-based account recovery for users without phone access"</li>
+              <li><strong>PRD 2:</strong> "Pathao Food — group order for office colleagues"</li>
+              <li><strong>PRD 3:</strong> "Shikho — offline mode for low-bandwidth students in district towns"</li>
+              <li>Get an engineer friend (real one) to read each. Iterate based on their questions</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Lenny's Newsletter — "How the best PMs write PRDs"</li>
+              <li>Coda template gallery — search "PRD template" — read 10 real ones</li>
+              <li>Amazon's "Working Backwards" PR/FAQ format — free templates online</li>
+              <li>YouTube: "Marty Cagan PRD" talks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 3.2 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 3.2</span>
+        <span class="pri">Priority · Critical · BD-Specific</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>JIRA, Agile & Scrum — the BD office stack</h4>
+          <div class="why"><strong>Why:</strong> bKash's JD literally says "thorough understanding of JIRA." Pathao runs sprints. Almost every BD tech company uses Atlassian. Your CSE training already knows what an API is. Now learn how a sprint actually runs.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · Scrum in 90 seconds</div>
+            <p>A <strong>sprint</strong> is a fixed time-box (usually 2 weeks) in which the team commits to shipping a defined set of work. Five rituals:</p>
+            <p><strong>(1) Sprint planning</strong> (Monday morning, ~2 hrs) — team picks tickets from the backlog. <strong>(2) Daily standup</strong> (15 min, every morning) — what I did, what I'll do, what's blocking me. <strong>(3) Backlog grooming</strong> (mid-sprint, 1 hr) — refining future tickets. <strong>(4) Sprint review</strong> (Friday end, demos). <strong>(5) Retrospective</strong> (after review) — what worked, what didn't.</p>
+            <p>Story points use the <strong>Fibonacci sequence</strong> (1, 2, 3, 5, 8, 13). They measure complexity, not hours. A 1 is "trivial CSS tweak." A 13 is "I'm not sure we can do this in one sprint." T-shirt sizing (XS, S, M, L, XL) works the same way.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Scrum ceremonies</strong> — how to run each one without wasting time</li>
+              <li><strong>JIRA mastery</strong> — epics, stories, sub-tasks, sprints, dashboards, JQL</li>
+              <li><strong>Backlog grooming & estimation</strong> — story points, planning poker</li>
+              <li><strong>Kanban</strong> — for ops/support teams; know when to use it over Scrum</li>
+              <li><strong>Confluence</strong> — most BD companies pair it with JIRA for docs</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Create a free JIRA account. Set up a project. Build 3 epics and 20 stories. Run 2 fake sprints with proper status transitions</li>
+              <li>Get Atlassian's <strong>JIRA Fundamentals + Agile certifications</strong> — both free, both look great on a CV in BD</li>
+              <li>Volunteer to run sprints for one of your friend's CSE thesis projects. Real teams, real friction. 4 weeks minimum</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Atlassian University — free certifications (do all 4 PM-relevant ones)</li>
+              <li>Scrum.org — free Scrum Guide, 50 pages, read it twice</li>
+              <li>YouTube: "Atlassian Agile Coach" playlist</li>
+              <li>Mike Cohn's "User Stories Applied" — buy it cheap, worth every taka</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 3.3 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 3.3</span>
+        <span class="pri">Priority · High</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>API literacy — the bKash-shaped skill</h4>
+          <div class="why"><strong>Why:</strong> bKash's JD lists "Expertise in APIs" as a hard requirement. Why? Because bKash is a platform — half the company's products live on top of merchant APIs, partner APIs, BRAC Bank APIs. A PM who can't read an API contract is dead weight. Your CSE background makes this easy.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · APIs for PMs (the 80/20)</div>
+            <p>An <strong>API</strong> is a contract: "send me X in this shape, I'll return Y in that shape." For PMs, you don't need to write APIs. You need to <strong>read them, design what they should do, and trade off between options.</strong></p>
+            <p>The 4 things you MUST know: <strong>(1) REST verbs</strong> — GET (read), POST (create), PUT (update), DELETE. <strong>(2) JSON structure</strong> — keys, values, nesting. <strong>(3) Status codes</strong> — 200 = success, 4xx = client's fault, 5xx = our fault. <strong>(4) Auth</strong> — API keys, OAuth, JWT (just the concepts).</p>
+            <p>Bigger PM concepts: <strong>idempotency</strong> (safe to retry?), <strong>rate limits</strong> (how many calls/sec?), <strong>versioning</strong> (v1 → v2 migration), <strong>webhooks</strong> (push vs pull). When you can sit in a meeting and say "if we make this idempotent, we won't double-charge customers on retries," you've earned engineering's respect.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>REST API basics</strong> — verbs, status codes, JSON, headers</li>
+              <li><strong>Postman</strong> — making and testing API calls without writing code</li>
+              <li><strong>Reading API docs</strong> — Stripe, bKash Open API, Pathao Courier API</li>
+              <li><strong>Concepts:</strong> idempotency, rate limiting, webhooks, OAuth flows</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Use Postman to call a public API (e.g., OpenWeather, GitHub). Make 10 different calls</li>
+              <li>Read the bKash Open API docs end-to-end. Write a 1-page summary of what their API exposes & what's missing</li>
+              <li>Design (in a doc) a new API endpoint for Pathao: "GET /drivers/nearby" — what params? what response? what edge cases?</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Postman Learning Center — free, structured</li>
+              <li>"API Design Patterns" by JJ Geewax — free chapters online</li>
+              <li>YouTube: "Web Dev Simplified" — REST API in 100 seconds</li>
+              <li>bKash Developer Portal — read their docs</li>
+              <li>Stripe API docs — best-in-class, copy their patterns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 3.4 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 3.4</span>
+        <span class="pri">Priority · Medium</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Figma fluency — enough to be dangerous</h4>
+          <div class="why"><strong>Why:</strong> Don't try to be a designer. Be conversant. You need to wireframe a flow, give meaningful feedback ("the back button breaks user flow on screen 3" beats "make it pop"), and clickthrough prototypes in interviews.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · Nielsen's 10 Heuristics (memorize these)</div>
+            <p>The 10 universal UX rules every PM should reference: <strong>(1)</strong> Visibility of system status (loaders, progress bars). <strong>(2)</strong> Match between system & real world (use words users know). <strong>(3)</strong> User control & freedom (undo, back). <strong>(4)</strong> Consistency & standards. <strong>(5)</strong> Error prevention.</p>
+            <p><strong>(6)</strong> Recognition over recall (show options, don't make users remember). <strong>(7)</strong> Flexibility & efficiency (shortcuts for power users). <strong>(8)</strong> Aesthetic & minimalist design. <strong>(9)</strong> Help users recover from errors (clear messages, suggestions). <strong>(10)</strong> Help & documentation.</p>
+            <p>In a heuristic evaluation, walk through a flow and tag each violation. Apply this to bKash's send-money. You'll find at least 4 violations.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Figma basics</strong> — frames, components, auto-layout</li>
+              <li><strong>Wireframing</strong> low-fi → high-fi</li>
+              <li><strong>User flows & information architecture</strong></li>
+              <li><strong>Heuristic evaluation</strong> (Nielsen's 10)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Pick one of your earlier PRDs. Wireframe the entire flow in Figma — 6-10 screens</li>
+              <li>Build one clickable prototype (Figma's built-in prototyping)</li>
+              <li>Run a heuristic evaluation on the bKash app. Document 10 issues with screenshots</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Figma's official YouTube — full beginner playlist</li>
+              <li>NN/g (Nielsen Norman Group) — articles, free, gold standard</li>
+              <li>"Refactoring UI" by Adam Wathan — free articles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PHASE 4 ===== -->
+<section class="phase">
+  <div class="phase-header">
+    <div class="num">04</div>
+    <div>
+      <h3>Data, SQL & the <em>analytical</em> PM.</h3>
+      <div class="meta">Months <span>9 – 13</span> · Outcome: SQL fluency + 1 metrics case study</div>
+    </div>
+    <div class="timeblock">Duration<span class="big">16 wks</span></div>
+  </div>
+
+  <div class="nodes">
+
+    <!-- Node 4.1 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 4.1</span>
+        <span class="pri">Priority · Critical · Pathao + bKash love this</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Product metrics, retention curves & funnel analysis</h4>
+          <div class="why"><strong>Why:</strong> Pathao's APM JD literally says "Data-driven and able to tell what the data says and what it means, and use that to inform product direction." Every BD interview asks: "If your DAU drops 10%, what do you do?" If you don't have a structured answer, you're done.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · How to diagnose a metric drop</div>
+            <p>When DAU drops 10%, never guess. Always segment in this order:</p>
+            <p><strong>(1) Internal vs External:</strong> Did we ship something? Did a competitor launch? Holiday? Outage? <strong>(2) New vs Returning users:</strong> Acquisition problem or retention problem? <strong>(3) Geography:</strong> All of BD? Just Dhaka? Just Sylhet? <strong>(4) Platform:</strong> iOS? Android? Both? Particular Android version? <strong>(5) Cohort:</strong> Which signup month started dropping?</p>
+            <p>Most metric drops have ONE explanation. Your job is to keep slicing until you find it. The PMs who stand out in interviews don't jump to causes — they jump to <strong>where they'd look first.</strong></p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>North Star + input/guardrail metrics</strong></li>
+              <li><strong>AARRR funnel analysis</strong> & drop-off diagnosis</li>
+              <li><strong>Cohort analysis & retention curves</strong> — D1, D7, D30 retention</li>
+              <li><strong>Leading vs lagging indicators</strong></li>
+              <li><strong>The "L7" / "L28" engagement metric</strong> (days active in last 7/28)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Pick a product (e.g., Shikho). Define North Star + 3 input + 2 guardrail metrics. Defend each in writing</li>
+              <li>Take a fictional dataset (or use Kaggle). Build a funnel chart in Sheets. Diagnose drop-off</li>
+              <li>Write a 1-pager: "Pathao Food orders dropped 15% this month — here's how I'd diagnose it" — practice this exact format. They WILL ask it</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Reforge — "Retention Engagement Growth" articles, free</li>
+              <li>Andrew Chen's blog — full archive on growth metrics</li>
+              <li>Amplitude's North Star Playbook — free PDF</li>
+              <li>Casey Winters on retention curves</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 4.2 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 4.2</span>
+        <span class="pri">Priority · Critical · Non-negotiable</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>SQL — the new Excel</h4>
+          <div class="why"><strong>Why:</strong> A PM who can't write SQL waits 3 days for a data analyst to answer "what was yesterday's signup conversion?" PMs who write their own queries answer it in 3 minutes. The compounding career advantage is enormous. Your CSE background makes this a weekend, not a semester.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The 6 SQL patterns every PM uses</div>
+            <p><strong>(1) Aggregate counts:</strong> <span class="formula">SELECT COUNT(*) FROM users WHERE signup_date = '2026-05-01';</span></p>
+            <p><strong>(2) Group by:</strong> <span class="formula">SELECT country, COUNT(*) FROM users GROUP BY country;</span></p>
+            <p><strong>(3) Joins:</strong> Connecting two tables (users + transactions) on a shared key.</p>
+            <p><strong>(4) Window functions:</strong> ROW_NUMBER, LAG, LEAD — for cohort analysis and "first X per user" queries.</p>
+            <p><strong>(5) CTEs (WITH clause):</strong> Breaking complex queries into readable steps. Senior PMs write CTEs. Beginners write 200-line nested subqueries.</p>
+            <p><strong>(6) Date functions:</strong> DATE_TRUNC, DATEDIFF, INTERVAL — for any time-based analysis. Most PM questions are time-based.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>SQL basics:</strong> SELECT, WHERE, JOIN, GROUP BY, ORDER BY, LIMIT</li>
+              <li><strong>Intermediate:</strong> CTEs, window functions, CASE WHEN, UNION</li>
+              <li><strong>Advanced for PMs:</strong> retention queries, cohort tables, funnel queries</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Complete <strong>Mode Analytics SQL Tutorial</strong> end-to-end (12 hours, free) — gold standard</li>
+              <li>Solve 30 SQL problems on LeetCode (Easy + Medium "Database" tag)</li>
+              <li>Take a Kaggle e-commerce dataset. Answer 10 product questions in SQL — write up the analysis as a portfolio piece</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Mode Analytics SQL Tutorial — the standard</li>
+              <li>SQLZoo — practice problems</li>
+              <li>LeetCode "Database" section — interview-style problems</li>
+              <li>YouTube: "Alex The Analyst" SQL playlist</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 4.3 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 4.3</span>
+        <span class="pri">Priority · High</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Analytics tools & A/B testing</h4>
+          <div class="why"><strong>Why:</strong> Pathao runs experiments constantly. 10MS measures everything. If you walk in not knowing what statistical significance means or how to design a test, you'll embarrass yourself.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · A/B testing in 5 rules</div>
+            <p><strong>(1) Hypothesis first:</strong> "Changing the CTA from 'Send' to 'Pay Now' will increase send-money completion rate by 5%, because 'Pay' is more familiar to merchant users."</p>
+            <p><strong>(2) Sample size matters:</strong> Smaller effect = bigger sample. Use a calculator. Running an underpowered test is worse than not testing.</p>
+            <p><strong>(3) Don't peek:</strong> Calling a test early because results look good = self-deception. Set duration up front, stick to it.</p>
+            <p><strong>(4) Watch for novelty effect:</strong> New thing always performs better in week 1. Run for 2-4 weeks minimum.</p>
+            <p><strong>(5) Always have a guardrail metric:</strong> CTA change might lift conversions but drop retention. Always check both.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Mixpanel / Amplitude</strong> — funnels, retention, cohorts</li>
+              <li><strong>Google Analytics 4</strong> — bare minimum literacy</li>
+              <li><strong>A/B testing</strong> — hypothesis, sample size, p-values, novelty effects</li>
+              <li><strong>Excel/Sheets</strong> — pivot tables, VLOOKUP, basic forecasting</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Set up a free Amplitude or Mixpanel demo. Run 3 funnel analyses on their sample data</li>
+              <li>Design 3 A/B tests on paper for a BD product. Specify: hypothesis, metric, sample size, duration, guardrails</li>
+              <li>Take Amplitude Academy's free Product Analytics certification</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Amplitude Academy — free certifications</li>
+              <li>Mixpanel University — free</li>
+              <li>Evan Miller's A/B test sample size calculator</li>
+              <li>Ronny Kohavi's A/B testing book — chapters online</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PHASE 5 ===== -->
+<section class="phase">
+  <div class="phase-header">
+    <div class="num">05</div>
+    <div>
+      <h3>The <em>job hunt</em> + AI as your edge.</h3>
+      <div class="meta">Months <span>13 – 18</span> · Outcome: Offer in hand</div>
+    </div>
+    <div class="timeblock">Duration<span class="big">20 wks</span></div>
+  </div>
+
+  <div class="nodes">
+
+    <!-- Node 5.1 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 5.1</span>
+        <span class="pri">Priority · Critical · Differentiator</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>AI fluency — your unfair edge in the BD market</h4>
+          <div class="why"><strong>Why:</strong> Most BD PM candidates in 2026 have weak AI literacy. This is your moat. A PM who can prototype a feature with Claude in an afternoon, design good evals, and reason about when AI fits — that PM is rare in Dhaka. Lean in.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The PM's mental model for LLMs</div>
+            <p>Think of an LLM as a <strong>very knowledgeable, very fast new employee with three quirks</strong>: <strong>(1) Sometimes confidently wrong (hallucination).</strong> <strong>(2) Forgets the conversation when you start a new chat (context window).</strong> <strong>(3) Can't access your data unless you give it (RAG).</strong></p>
+            <p>The PM's job with AI features is to design around these quirks. <strong>Mitigations:</strong> citations (force it to ground answers), evals (test against known-good answers), guardrails (block bad outputs), human-in-loop (escalate uncertain cases), and graceful fallbacks (when AI fails, what happens?).</p>
+            <p>For BD specifically: think hard about <strong>Bangla language quality.</strong> Most LLMs are 5x better in English than Bangla. If your product serves Bangla users, this is a constraint that shapes your entire roadmap.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Using Claude/ChatGPT for PM workflows</strong> — spec drafts, research synthesis, edge cases</li>
+              <li><strong>LLM fundamentals:</strong> tokens, context windows, temperature, system prompts</li>
+              <li><strong>RAG, evals, prompt engineering</strong> — at conceptual depth</li>
+              <li><strong>AI UX patterns:</strong> chat, autocomplete, agents, citations, streaming</li>
+              <li><strong>Bangla NLP nuances</strong> — what works, what doesn't</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li><strong>Build & ship one AI mini-product</strong> — Bangla text simplifier for SSC students, AI-powered FAQ bot for a small business, etc. Use no-code (Lovable, v0) if needed</li>
+              <li>Design an eval harness: 30 test cases for an AI feature, scoring rubric, pass/fail criteria</li>
+              <li>Write a teardown: "If I were PM at bKash, here are 3 AI features I'd build, and why" — back with cost, latency, and failure mode analysis</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Anthropic's "Building with Claude" docs — start here</li>
+              <li>Andrej Karpathy's "Intro to LLMs" YouTube — watch twice</li>
+              <li>Hamel Husain's blog on evals — gold standard</li>
+              <li>DeepLearning.AI short courses — free, 1-2 hrs each</li>
+              <li>"Latent Space" podcast — listen on commutes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Node 5.2 -->
+    <div class="node">
+      <div class="node-banner">
+        <span class="id">Node 5.2</span>
+        <span class="pri">Priority · Critical · The Job Hunt</span>
+      </div>
+      <div class="node-body">
+        <div class="left">
+          <h4>Networking, applying & getting the call</h4>
+          <div class="why"><strong>Why:</strong> The Bangladeshi job market runs on referrals. ~70% of PM hires at top BD companies come through internal referrals or warm intros. Cold-applying via bdjobs.com works, but is the slowest path. Network deliberately.</div>
+
+          <div class="minilesson">
+            <div class="ml-label">Mini-lesson · The 90-day BD networking playbook</div>
+            <p><strong>Days 1-30 — Build presence.</strong> Post on LinkedIn weekly: a teardown, a mini-lesson, a take. Comment thoughtfully on 5 PM posts/week. Update your headline to "PM in training · CSE @ UIU · sharing what I learn."</p>
+            <p><strong>Days 31-60 — Reach out.</strong> Find 30 PMs at target companies on LinkedIn. Send each a thoughtful message: "Hi [name], I read your post on X — your point about Y stuck with me. I'm a CSE grad transitioning to product, and I'd love to learn from your journey. 15 min coffee or call?" 15-25% will reply. Have 5-10 conversations.</p>
+            <p><strong>Days 61-90 — Convert.</strong> When you've had 5 good chats, ask: "If a junior role opens up at [company], would you be open to referring me? Here's my portfolio." Most who said yes to coffee will say yes to this.</p>
+          </div>
+        </div>
+        <div>
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>LinkedIn presence</strong> — posts, comments, profile</li>
+              <li><strong>Cold outreach that works</strong> — short, specific, low-ask first</li>
+              <li><strong>Coffee chat etiquette</strong> — respect their time, prepare, follow up with thanks</li>
+              <li><strong>Resume tailoring</strong> — one-page, metrics-heavy, tailored per company</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Post on LinkedIn 1x/week for 6 months. Yes, six months. The compounding is real</li>
+              <li>Reach out to 30 PMs at bKash, Pathao, Shikho, 10MS, BrainStation 23, Enosis. Track responses in a spreadsheet</li>
+              <li>Get 5 informational chats. Take notes. Send thank-you notes 24 hrs later</li>
+              <li>Apply to 50 PM-adjacent roles (Product Analyst, BA, APM, Product Operations) — not just PM</li>
+              <li>Attend 2 Dhaka product/startup meetups (BASIS, Future Startup events, Founders Lab)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>"Never Search Alone" by Phyl Terry — free in many places, focused on job hunt</li>
+              <li>"How to network on LinkedIn" — Lara Acosta YouTube</li>
+              <li>BASIS Dhaka events calendar</li>
+              <li>Future Startup BD newsletter — knows everyone</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== COMPANY DEEP DIVE ===== -->
+<section class="deepdive">
+  <div class="label">Section III · Company-by-Company Playbook</div>
+  <h2>Each company is a <em>different test</em>. Prep accordingly.</h2>
+
+  <div class="dd-grid">
+
+    <div class="dd-card">
+      <div class="co-name">bKash</div>
+      <div class="co-tag">Fintech · Most process-heavy</div>
+
+      <h5>What they really hire for</h5>
+      <p>Process maturity, API/agile fluency, ability to navigate compliance. They're a regulated bank-adjacent entity. They want PMs who don't break things.</p>
+
+      <h5>Hidden bar</h5>
+      <p>You'll work with BRAC Bank stakeholders. Comfort in formal corporate environments matters more than at Pathao or 10MS.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>3 detailed teardowns of bKash flows (send, payment, savings)</li>
+        <li>API design exercise (their JD asks)</li>
+        <li>1 case on regulatory edge: "How would you launch a feature that needs Bangladesh Bank approval?"</li>
+        <li>Read Bangladesh Bank's MFS regulations cover-to-cover</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>Officer / Senior Officer in Product & Tech division. Often via internal SWE → product transition. APM not always titled.</p>
+    </div>
+
+    <div class="dd-card">
+      <div class="co-name">Pathao</div>
+      <div class="co-tag">Logistics · Most data-heavy</div>
+
+      <h5>What they really hire for</h5>
+      <p>Data-driven decision making, marketplace thinking (supply-demand balance), comfort with ambiguity. CSE/EEE grads from MIST, BUET, BRAC, AUST predominate.</p>
+
+      <h5>Hidden bar</h5>
+      <p>They run experiments constantly. You should be able to talk about A/B tests in your sleep. Marketplace dynamics — driver supply economics — comes up in every interview.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>SQL fluency — non-negotiable</li>
+        <li>1 marketplace case study: "How would you increase Pathao Food driver retention?"</li>
+        <li>Teardowns of Pathao Food, Rides, Parcel</li>
+        <li>A/B test design walkthrough</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>Product Analyst → APM → PM. Very common. They have a clear ladder.</p>
+    </div>
+
+    <div class="dd-card">
+      <div class="co-name">Shikho</div>
+      <div class="co-tag">EdTech · Most startup-feel</div>
+
+      <h5>What they really hire for</h5>
+      <p>Generalists who can wear many hats. Mobile-first thinking. Subscription / freemium economics. Empathy for school-age users in district towns, not just Dhaka.</p>
+
+      <h5>Hidden bar</h5>
+      <p>Smaller team = higher leverage but higher chaos. Self-direction matters more than process. You'll ship faster but with less guidance.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>EdTech retention frameworks (D7, D30, content engagement)</li>
+        <li>Case: "How would you double Shikho's free-to-paid conversion?"</li>
+        <li>Mobile-first UX teardown</li>
+        <li>Understanding of NCTB curriculum (the actual syllabus they teach against)</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>Product Analyst or APM directly. Smaller team = faster path to PM title.</p>
+    </div>
+
+    <div class="dd-card">
+      <div class="co-name">10 Minute School</div>
+      <div class="co-tag">EdTech · Most growth-obsessed</div>
+
+      <h5>What they really hire for</h5>
+      <p>Growth + content product fluency. They have the largest BD audience in EdTech. PMs here think a lot about content-product fit, course completion, viral mechanics.</p>
+
+      <h5>Hidden bar</h5>
+      <p>Brand-driven culture (Ayman Sadiq is the founder, public figure). Comfort with brand-product trade-offs matters.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>Funnel diagnosis — they care about completion rates obsessively</li>
+        <li>Content-product hybrid thinking</li>
+        <li>Case: "Course completion is 35%. How do you raise it to 60%?"</li>
+        <li>Multi-format product knowledge (live, recorded, skill courses)</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>Product Analyst or APM. Strong internal mobility.</p>
+    </div>
+
+    <div class="dd-card">
+      <div class="co-name">BrainStation 23</div>
+      <div class="co-tag">Services · PM = BA/PM hybrid</div>
+
+      <h5>What they really hire for</h5>
+      <p>Be careful with the title. Many "PM" roles here are <strong>Business Analyst + Project Manager hybrid</strong> for client work. Less product strategy, more requirements + delivery.</p>
+
+      <h5>Hidden bar</h5>
+      <p>Strong written/verbal English (clients are international). Project delivery skills matter as much as product thinking.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>Solid BA fundamentals — requirements gathering, BRD writing</li>
+        <li>JIRA + project tracking mastery</li>
+        <li>Client communication examples</li>
+        <li>Comfort with the difference between product PM vs services BA</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>BA / Project Manager / Tech Lead first. Not a pure PM job, but a real foot in the door for fresh grads.</p>
+    </div>
+
+    <div class="dd-card">
+      <div class="co-name">Enosis</div>
+      <div class="co-tag">Outsourced product · execution-first</div>
+
+      <h5>What they really hire for</h5>
+      <p>Builds for US clients. PM-adjacent roles include Tech Lead, BA, sometimes Product Owner. Excellent shop for learning craft & quality at scale.</p>
+
+      <h5>Hidden bar</h5>
+      <p>Time-zone overlap with US is mandatory. Strong remote-collaboration habits valued.</p>
+
+      <h5>Prepare with</h5>
+      <ul>
+        <li>Strong CSE engineering credibility — they value technical depth</li>
+        <li>Solid English communication (mostly written)</li>
+        <li>Examples of taking initiative on projects</li>
+      </ul>
+
+      <h5>Likely entry path</h5>
+      <p>SDE → Tech Lead → adjacent PM/PO role. Long path to a pure PM title, but you'll learn an enormous amount.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== EXTRA SKILLS ===== -->
+<section class="extra">
+  <div class="label">Section IV · The Extra Skills</div>
+  <h2>What separates <em>good PMs</em> from average ones in BD.</h2>
+  <p class="sub">These don't appear on JDs but show up in every interview, every promotion conversation, every coffee with a senior PM. Build them in parallel with the technical roadmap.</p>
+
+  <div class="skill-grid">
+
+    <div class="skill-card">
+      <div class="ico">i</div>
+      <h4>Bilingual fluency, both directions</h4>
+      <p>You'll write specs in English (engineers, leadership) but interview users in Bangla. Translating user pain across the two languages without losing nuance is a real skill.</p>
+      <div class="how">→ Run 5 user interviews in Bangla. Synthesize in English. Notice what gets lost.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">ii</div>
+      <h4>Influence without authority</h4>
+      <p>You're a fresh grad with no formal power telling 30-year-old engineers what to build. They don't have to listen to you. Earning their respect is a skill — clarity, preparation, admitting when you don't know.</p>
+      <div class="how">→ Read "Influence" by Cialdini. Practice in your CSE group projects.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">iii</div>
+      <h4>Saying no — and saying it well</h4>
+      <p>Senior PMs say no 10x more than they say yes. The skill isn't refusing — it's refusing without burning the relationship. "Not now, here's why" beats "no" every time.</p>
+      <div class="how">→ Practice writing 5 polite rejections to feature requests. Get feedback.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">iv</div>
+      <h4>Written communication craft</h4>
+      <p>PMs are paid to write. Memos, status updates, proposals, post-mortems. Being a clear writer compounds — every doc you write becomes more persuasive than the last.</p>
+      <div class="how">→ Write 1 LinkedIn post per week for 6 months. Public writing forces clarity.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">v</div>
+      <h4>The "managing up" muscle</h4>
+      <p>Your CEO, your VP, your engineering lead — each needs different things from you. Senior PMs intuitively adapt their updates per audience. Juniors send everyone the same email.</p>
+      <div class="how">→ Read First Round Review's "managing up" archive. It's free.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">vi</div>
+      <h4>Domain depth in ONE area</h4>
+      <p>Generalist PMs are commodities. Specialist PMs are scarce. Pick a vertical (fintech, edtech, logistics, AI) and go deep. After 2 years, you'll be the go-to person on that domain in BD.</p>
+      <div class="how">→ Pick fintech OR edtech now. Read 1 industry report/week. Compounds fast.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">vii</div>
+      <h4>Comfort with ambiguity</h4>
+      <p>Engineers are paid for correct answers. PMs are paid for good decisions under uncertainty. The discomfort never goes away — but you stop fighting it.</p>
+      <div class="how">→ When a problem feels ambiguous, write 3 plausible answers. Pick one. Defend it. Move on.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">viii</div>
+      <h4>Conflict resolution</h4>
+      <p>Engineering wants quality. Sales wants speed. Design wants polish. You're in the middle. The PM who runs from conflict gets steamrolled. The one who facilitates it well gets promoted.</p>
+      <div class="how">→ Read "Crucial Conversations." Apply at your next project disagreement.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="ico">ix</div>
+      <h4>Customer empathy as a daily habit</h4>
+      <p>Most PMs claim it. Few practice it. Spend 1 hour/week using your product as a customer would. Sit in a customer support call. Read 20 reviews. Notice what frustrates real people, not personas.</p>
+      <div class="how">→ Block 1 hour every Friday on your calendar: "Be a user."</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== INTERVIEW PREP ===== -->
+<section class="interview">
+  <div class="label">Section V · The Interview Loop</div>
+  <h2>How <em>BD interviews</em> actually run.</h2>
+  <p class="sub">The BD PM interview is shorter than Google's (2-4 rounds vs 6-8) but tests the same fundamentals. Here's the structure, what each round really evaluates, and the framework that works.</p>
+
+  <div class="iv-stages">
+
+    <div class="iv-stage">
+      <div class="num">i</div>
+      <div>
+        <div class="stage-tag">Round 1 · Resume Screen</div>
+        <h4>30 minutes · HR or junior PM</h4>
+        <p>Tests: communication clarity, why-product motivation, basic role understanding. Surface-level. Get this right by being specific and confident, not by being clever.</p>
+      </div>
+      <div class="right">
+        <p>The 3 questions you WILL get: <strong>"Why product?" · "Why us?" · "Tell me about yourself."</strong></p>
+        <div class="tip">Tip: Have a 60-second story. CSE journey → why you got curious about product → 1 specific thing you've shipped or analyzed → why this company specifically. Practice it 50 times.</div>
+      </div>
+    </div>
+
+    <div class="iv-stage">
+      <div class="num">ii</div>
+      <div>
+        <div class="stage-tag">Round 2 · Product Sense</div>
+        <h4>45-60 minutes · Senior PM</h4>
+        <p>"How would you improve bKash?" "Design a feature for shopkeepers in Old Dhaka." Tests: customer empathy, structured thinking, prioritization, creativity. The single highest-signal round.</p>
+      </div>
+      <div class="right">
+        <p>Use a structured framework. Don't wing it.</p>
+        <div class="tip">CIRCLES Framework:<br />C — Comprehend the situation<br />I — Identify the user<br />R — Report user needs<br />C — Cut through prioritization<br />L — List solutions<br />E — Evaluate trade-offs<br />S — Summarize recommendation</div>
+      </div>
+    </div>
+
+    <div class="iv-stage">
+      <div class="num">iii</div>
+      <div>
+        <div class="stage-tag">Round 3 · Analytical / Metrics</div>
+        <h4>45 minutes · PM lead or analyst</h4>
+        <p>"Pathao Food orders dropped 12% last week. Diagnose." Tests: structured problem-solving, metric fluency, comfort with ambiguity. Always segment, segment, segment.</p>
+      </div>
+      <div class="right">
+        <p>Diagnosis flow they want to see:</p>
+        <div class="tip">Internal vs External →<br />New vs Returning users →<br />Geography (Dhaka? Sylhet?) →<br />Platform (iOS? Android?) →<br />Cohort segmentation →<br />Hypothesis → Validation plan</div>
+      </div>
+    </div>
+
+    <div class="iv-stage">
+      <div class="num">iv</div>
+      <div>
+        <div class="stage-tag">Round 4 · Technical / Execution</div>
+        <h4>45 minutes · Engineering lead or staff PM</h4>
+        <p>For CSE grads, this is your strength. They'll test API knowledge, edge case thinking, sprint trade-offs. "Engineering says it'll take 6 months but launch is in 3. What do you do?"</p>
+      </div>
+      <div class="right">
+        <p>Trade-off framework they want:</p>
+        <div class="tip">Constraints (real & flexible) →<br />Options (cut scope / extend / add resources / launch staged) →<br />Trade-offs explicit (cost, quality, timeline) →<br />Decision with reasoning →<br />Communication plan to stakeholders</div>
+      </div>
+    </div>
+
+    <div class="iv-stage">
+      <div class="num">v</div>
+      <div>
+        <div class="stage-tag">Round 5 · Behavioral & Culture</div>
+        <h4>30-45 minutes · Hiring manager / Director</h4>
+        <p>"Tell me about a conflict." "Tell me about a failure." Tests: self-awareness, leadership, fit. BD companies care a LOT about cultural alignment — humility, ownership, team-orientation.</p>
+      </div>
+      <div class="right">
+        <p>Have 8-10 stories ready, mapped to common themes (conflict, failure, leadership, ambiguity, customer focus, learning). Use STAR.</p>
+        <div class="tip">STAR + L:<br />S — Situation (context)<br />T — Task (your role)<br />A — Action (what YOU did)<br />R — Result (numbers if possible)<br />L — Learning (what would you do differently)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CHEAT SHEET ===== -->
+<section class="cheat">
+  <div class="label">Section VI · The Pocket Reference</div>
+  <h2>Frameworks <em>cheat sheet</em>.</h2>
+
+  <div class="cheat-grid">
+
+    <div class="cheat-cell">
+      <span class="tag">Prioritization</span>
+      <h4>RICE Score</h4>
+      <p>For ranking features when you have too many.</p>
+      <span class="formula">RICE = (Reach × Impact × Confidence) / Effort</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Discovery</span>
+      <h4>JTBD Statement</h4>
+      <p>For framing user needs in a way that surfaces real motivation.</p>
+      <span class="formula">When [situation], I want to [motivation], so I can [outcome]</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Growth</span>
+      <h4>AARRR Funnel</h4>
+      <p>For diagnosing where in the lifecycle your product is leaking.</p>
+      <span class="formula">Acquisition → Activation → Retention → Referral → Revenue</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Strategy</span>
+      <h4>North Star Metric</h4>
+      <p>The single metric that captures the value your product delivers to users.</p>
+      <span class="formula">NSM = (Active Users) × (Frequency) × (Value per use)</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">User Stories</span>
+      <h4>Story Format</h4>
+      <p>For writing engineering-friendly tickets.</p>
+      <span class="formula">As a [user], I want to [action], so I can [outcome]</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Market Sizing</span>
+      <h4>TAM / SAM / SOM</h4>
+      <p>For estimating market opportunity in interviews.</p>
+      <span class="formula">TAM = total possible · SAM = reachable · SOM = obtainable</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Diagnosis</span>
+      <h4>5 Whys</h4>
+      <p>For getting to root cause when a metric drops.</p>
+      <span class="formula">Why? → Why? → Why? → Why? → Why? = root cause</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Interview</span>
+      <h4>STAR Method</h4>
+      <p>For answering behavioral questions structured & memorably.</p>
+      <span class="formula">Situation → Task → Action → Result (+ Learning)</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">Product Sense</span>
+      <h4>CIRCLES</h4>
+      <p>For "how would you improve X" interview questions.</p>
+      <span class="formula">Comprehend → Identify → Report → Cut → List → Evaluate → Summarize</span>
+    </div>
+
+    <div class="cheat-cell">
+      <span class="tag">A/B Testing</span>
+      <h4>Test Design</h4>
+      <p>For designing experiments that produce trustworthy results.</p>
+      <span class="formula">Hypothesis · Sample size · Duration · Guardrail · Decision rule</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <blockquote>
+    "The PM offer in Dhaka isn't given. <span>It's earned</span> — by the candidate who showed up with three teardowns, ten interviews, and one shipped side-project.<br /><br />Be that candidate."
+  </blockquote>
+  <cite>— a senior PM, on hiring · 2026</cite>
+</section>
+
+<footer class="footer">
+  <div>BD PM Roadmap · Vol. 02</div>
+  <div>For one reader. Shipped honestly.</div>
+</footer>
+
+</body>
+</html>

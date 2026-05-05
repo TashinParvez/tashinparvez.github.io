@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PM Roadmap — From CSE Grad to Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0f0e0c;
+  --bg-soft: #161410;
+  --paper: #f5efe2;
+  --paper-soft: #ece4d0;
+  --ink: #1a1814;
+  --ink-soft: #423d33;
+  --accent: #ff5b1f;
+  --accent-soft: #ffb38a;
+  --gold: #d4a24a;
+  --green: #4d8b5b;
+  --rule: #2a2620;
+  --paper-rule: #c9bfa6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--paper);
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,91,31,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(212,162,74,0.06), transparent 50%);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  min-height: 100vh;
+  padding: 60px 6vw 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-top .stamp {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  margin-top: 60px;
+}
+
+.hero-title .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.hero-title h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 9vw, 140px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-variation-settings: 'opsz' 144;
+}
+
+.hero-title h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero-title h1 .underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 12px;
+  text-decoration-color: var(--gold);
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid var(--rule);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-meta .cell .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.hero-meta .cell .value {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--paper);
+}
+
+@media (max-width: 720px) {
+  .hero-meta { grid-template-columns: repeat(2, 1fr); }
+  .hero-top .right { display: none; }
+}
+
+/* ---------- INTRO NOTE ---------- */
+.intro-note {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 80px 6vw;
+  position: relative;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.intro-grid .left {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.intro-grid .left .num {
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 300;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.intro-grid .right h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+
+.intro-grid .right h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.intro-grid .right p {
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.intro-grid .right p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* ---------- PHASES TIMELINE ---------- */
+.timeline {
+  background: var(--bg);
+  padding: 100px 0 60px;
+  position: relative;
+}
+
+.timeline-header {
+  padding: 0 6vw 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid var(--rule);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.timeline-header .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.timeline-header h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-top: 20px;
+}
+
+.timeline-header h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.timeline-header .right p {
+  font-size: 16px;
+  color: var(--paper-soft);
+  max-width: 50ch;
+}
+
+@media (max-width: 800px) {
+  .timeline-header { grid-template-columns: 1fr; }
+}
+
+/* ---------- PHASE BLOCK ---------- */
+.phase {
+  position: relative;
+  padding: 80px 6vw 60px;
+  border-bottom: 1px solid var(--rule);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.phase-header {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.phase-num {
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.phase-title h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.phase-title h3 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.phase-title .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+}
+
+.phase-title .meta span { color: var(--accent); }
+
+.phase-duration {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+}
+
+.phase-duration .big {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  color: var(--paper);
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+  .phase-header { grid-template-columns: 60px 1fr; }
+  .phase-duration { grid-column: 1 / -1; text-align: left; }
+  .phase-num { font-size: 60px; }
+}
+
+/* ---------- NODE CARD ---------- */
+.nodes {
+  display: grid;
+  gap: 24px;
+}
+
+.node {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 32px;
+  border-radius: 2px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 36px;
+  border-left: 4px solid var(--accent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+
+.node-left h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.node-left .tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4px 8px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.node-left .why-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.node-left .why {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.node-right { display: flex; flex-direction: column; gap: 18px; }
+
+.node-section .sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--paper-rule);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.node-section .sec-label .glyph {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+
+.node-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.node-section li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+
+.node-section li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: 'Fraunces', serif;
+}
+
+.node-section li strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.resource-list li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+
+.resource-list li::before { content: '○'; font-size: 9px; top: 9px; }
+
+@media (max-width: 800px) {
+  .node { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+}
+
+/* ---------- CONNECTOR ---------- */
+.connector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 8px 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+}
+
+.connector .line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+/* ---------- TOOLS GALAXY ---------- */
+.tools {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 100px 6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.tools::after {
+  content: 'TOOLKIT';
+  position: absolute;
+  bottom: -60px;
+  right: -20px;
+  font-family: 'Fraunces', serif;
+  font-size: 280px;
+  font-weight: 900;
+  color: var(--paper-soft);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tools-inner { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto;}
+
+.tools h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+}
+
+.tools h2 em { font-style: italic; color: var(--accent); }
+
+.tools-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 60px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--paper-rule);
+  border: 1px solid var(--paper-rule);
+}
+
+.tool-cat {
+  background: var(--paper);
+  padding: 24px;
+}
+
+.tool-cat .head {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.tool-cat ul { list-style: none; padding: 0; }
+
+.tool-cat li {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  padding: 6px 0;
+  color: var(--ink);
+  border-bottom: 1px dotted var(--paper-rule);
+}
+
+.tool-cat li:last-child { border-bottom: none; }
+
+.tool-cat li span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  margin-left: 6px;
+}
+
+/* ---------- HONEST TRUTHS ---------- */
+.truths {
+  background: var(--bg);
+  padding: 100px 6vw;
+  border-top: 1px solid var(--rule);
+}
+
+.truths-inner { max-width: 1400px; margin: 0 auto; }
+
+.truths .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.truths h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+  max-width: 18ch;
+}
+
+.truths h2 em { font-style: italic; color: var(--accent); }
+
+.truth-list { display: grid; gap: 30px; }
+
+.truth-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.truth-item .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 36px;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.truth-item .body p:first-child {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 12px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.truth-item .body p:last-child {
+  font-size: 15px;
+  color: var(--paper-soft);
+  max-width: 70ch;
+}
+
+/* ---------- DUAL PATH ---------- */
+.paths {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 100px 6vw;
+}
+
+.paths-inner { max-width: 1400px; margin: 0 auto; }
+
+.paths .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.paths h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+}
+
+.paths h2 em { font-style: italic; color: var(--accent); }
+
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+.path-card {
+  border: 1px solid var(--ink);
+  padding: 36px;
+  position: relative;
+}
+
+.path-card.featured { background: var(--ink); color: var(--paper); }
+.path-card.featured h3 { color: var(--paper); }
+.path-card.featured .path-step { border-color: rgba(245,239,226,0.15); }
+.path-card.featured .path-step .when { color: var(--accent-soft); }
+
+.path-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.path-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.path-card h3 em { font-style: italic; }
+
+.path-step {
+  padding: 16px 0;
+  border-top: 1px dashed var(--paper-rule);
+}
+
+.path-step:first-of-type { border-top: none; padding-top: 0; }
+
+.path-step .when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.path-step .what {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) { .path-grid { grid-template-columns: 1fr; } }
+
+/* ---------- PORTFOLIO ---------- */
+.portfolio {
+  background: var(--bg);
+  padding: 100px 6vw;
+  border-top: 1px solid var(--rule);
+}
+
+.portfolio-inner { max-width: 1400px; margin: 0 auto; }
+
+.portfolio .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.portfolio h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+}
+
+.portfolio h2 em { font-style: italic; color: var(--accent); }
+
+.port-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; }
+
+.port-grid .col h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+
+.port-grid ol, .port-grid ul {
+  list-style: none;
+  padding: 0;
+  counter-reset: num;
+}
+
+.port-grid ol li {
+  counter-increment: num;
+  padding: 14px 0 14px 50px;
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+  color: var(--paper-soft);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.port-grid ol li::before {
+  content: counter(num, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  top: 17px;
+}
+
+.port-grid ol li strong { color: var(--paper); font-weight: 600; }
+
+.port-grid ul li {
+  padding: 12px 0 12px 24px;
+  position: relative;
+  color: var(--paper-soft);
+  font-size: 14.5px;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.port-grid ul li::before {
+  content: '•';
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  top: 8px;
+}
+
+@media (max-width: 800px) { .port-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* ---------- INTERVIEW ---------- */
+.interview {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 100px 6vw;
+}
+
+.interview-inner { max-width: 1400px; margin: 0 auto; }
+
+.interview .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.interview h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.interview h2 em { font-style: italic; color: var(--accent); }
+
+.interview .sub {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 50px;
+  max-width: 70ch;
+}
+
+.iv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+
+.iv-card {
+  border: 1px solid var(--paper-rule);
+  padding: 28px;
+  background: var(--paper-soft);
+}
+
+.iv-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.iv-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.iv-card p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.iv-card .framework {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 14px;
+  margin-top: 10px;
+  display: inline-block;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 800px) { .iv-grid { grid-template-columns: 1fr; } }
+
+/* ---------- CLOSING ---------- */
+.closing {
+  background: var(--bg);
+  padding: 120px 6vw;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+
+.closing blockquote {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  margin: 0 auto 40px;
+}
+
+.closing blockquote span { color: var(--accent); }
+
+.closing cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+  font-style: normal;
+}
+
+.footer {
+  padding: 30px 6vw;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 600px) { .footer { flex-direction: column; gap: 12px; } }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="left">PM Roadmap // Vol. 01 // 2026 Edition</div>
+    <div class="right">
+      <span class="stamp">CSE → PM</span>
+    </div>
+  </div>
+
+  <div class="hero-title">
+    <div class="kicker">A Practical Field Manual For Bangladeshi CSE Graduates</div>
+    <h1>
+      From <em>code</em><br />
+      to <span class="underline">customer.</span><br />
+      A 24-month plan.
+    </h1>
+  </div>
+
+  <div class="hero-meta">
+    <div class="cell">
+      <div class="label">Starting From</div>
+      <div class="value">CSE, UIU — Beginner</div>
+    </div>
+    <div class="cell">
+      <div class="label">Target Outcome</div>
+      <div class="value">Founder · or · MNC PM</div>
+    </div>
+    <div class="cell">
+      <div class="label">Total Phases</div>
+      <div class="value">Six, Sequential</div>
+    </div>
+    <div class="cell">
+      <div class="label">Honesty Level</div>
+      <div class="value">Senior PM, No Sugarcoat</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INTRO NOTE ========== -->
+<section class="intro-note">
+  <div class="intro-grid">
+    <div class="left">
+      <div class="num">§</div>
+      A note before<br />
+      you begin —<br /><br />
+      Read this in full.<br />
+      Then act.
+    </div>
+    <div class="right">
+      <h2>Most PM roadmaps online are <em>wishlists</em>, not plans.</h2>
+      <p>I've worked alongside PMs for 20+ years — at startups, at scale, hiring them, firing them, mentoring them. So before we start, three honest things you must internalize:</p>
+      <p><strong>One —</strong> Product Management is not a junior role at most serious companies. Google, Apple, Netflix almost never hire fresh grads as PMs. You will likely need 2–4 years of adjacent experience first (SWE, data, BA, or APM program). Plan accordingly.</p>
+      <p><strong>Two —</strong> Your CSE degree is an asset, not a liability. Technical PMs are in higher demand than ever, especially in the AI era. Don't run from your engineering background — weaponize it.</p>
+      <p><strong>Three —</strong> AI has not killed the PM role. It has killed the <em>mediocre</em> PM role. Generic feature-shippers are being automated; PMs with sharp judgment, taste, and customer empathy are more valuable than ever. Aim for the second category.</p>
+      <p>This roadmap is sequenced. Don't skip ahead. Each phase builds the foundation for the next, and shortcuts in early phases produce confident-but-shallow PMs — which is exactly the kind being squeezed out of the market right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section class="timeline">
+  <div class="timeline-header">
+    <div class="left">
+      <div class="label">The Path · Six Phases</div>
+      <h2>Beginner<br /><em>to</em> hireable.</h2>
+    </div>
+    <div class="right">
+      <p style="margin-top: 100px;">Each phase has clear outcomes. You're not done with a phase until you've built the artifact listed at the bottom of it. No artifact = not done. Move on at your peril.</p>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 1 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">01</div>
+      <div class="phase-title">
+        <h3>Foundations — what <em>product</em> actually means.</h3>
+        <div class="meta">Months <span>0 – 2</span> · Outcome: PM literacy</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">8 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 1.1</span>
+          <h4>Understand what a PM actually does (and doesn't)</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">90% of CSE grads who say "I want to be a PM" are romanticizing the job. The reality: 30% strategy, 30% communication, 30% saying no, 10% glamour. Get this clear before investing 2 years.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills <span class="glyph">— what to learn</span></div>
+            <ul>
+              <li><strong>The PM role spectrum:</strong> APM, PM, Senior PM, Group PM, Director — what each does</li>
+              <li><strong>PM vs Project Manager vs Program Manager</strong> — most beginners confuse all three</li>
+              <li><strong>The product trio:</strong> PM + Designer + Engineer — how they collaborate</li>
+              <li><strong>Outcomes vs outputs</strong> — the most important mental model in PM</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Pick 5 apps you use daily (bKash, Pathao, Foodpanda, YouTube, Notion). Write a 1-page note on what the PM there is likely optimizing for, and what trade-offs they're making</li>
+              <li>Shadow a PM in Bangladesh on LinkedIn — read every post they've written for the last 6 months</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Lenny's Newsletter — read the "PM Fundamentals" archive</li>
+              <li>YouTube: "Product School" channel — start with their "Day in the Life of a PM" playlist</li>
+              <li>Book (free PDF online): "Inspired" by Marty Cagan — chapters 1–6</li>
+              <li>Reforge blog (free articles) — search "what is a PM"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 1.2</span>
+          <h4>Master the core PM mental models</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">PMs are paid for judgment, not hours. Judgment comes from mental models. If you can't articulate "Jobs to be Done" in 30 seconds, you're not ready to call yourself a PM.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Jobs to be Done (JTBD)</strong> — Christensen's framework</li>
+              <li><strong>The Kano Model</strong> — for prioritizing features</li>
+              <li><strong>RICE, MoSCoW, ICE</strong> — prioritization frameworks (know all three)</li>
+              <li><strong>The "5 Whys" and root cause analysis</strong></li>
+              <li><strong>Opportunity Solution Trees</strong> (Teresa Torres' model)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Take Pathao Ride. Write a JTBD statement: "When [situation], I want to [motivation], so I can [outcome]." Defend it</li>
+              <li>Apply RICE to 5 features you'd add to bKash. Score them honestly</li>
+              <li>Build an Opportunity Solution Tree for "increase Foodpanda customer retention"</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Teresa Torres — "Continuous Discovery Habits" blog (free articles)</li>
+              <li>YouTube: Clayton Christensen "Milkshake Marketing" lecture</li>
+              <li>productplan.com — free framework guides</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 2 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">02</div>
+      <div class="phase-title">
+        <h3>Discovery & customer truth — the <em>art</em> of asking.</h3>
+        <div class="meta">Months <span>2 – 5</span> · Outcome: First user research artifact</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">12 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 2.1</span>
+          <h4>User research & customer interviews</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">CSE grads suck at this. We're trained to think users behave logically. They don't. The PM's superpower is sitting with five strangers and extracting truth they didn't know they had.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>The Mom Test</strong> — how to ask questions that don't get you lied to</li>
+              <li><strong>Open vs leading questions</strong></li>
+              <li><strong>User personas & empathy maps</strong></li>
+              <li><strong>Synthesizing qualitative data</strong> (affinity diagrams)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li><strong>Critical project:</strong> Conduct 10 real user interviews. Pick a problem (e.g., "How do UIU students find tuition jobs?"). Interview students. Record. Synthesize</li>
+              <li>Write 3 user personas based on those interviews</li>
+              <li>Build an empathy map for your top persona</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Book (cheap/free PDF): "The Mom Test" by Rob Fitzpatrick — read it twice</li>
+              <li>Coursera: "User Research at Scale" — audit free</li>
+              <li>YouTube: "Continuous Discovery Habits" by Teresa Torres — full talk</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 2.2</span>
+          <h4>Market & competitive analysis</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">Your product doesn't exist in a vacuum. If you can't articulate why your product wins (or why it shouldn't exist), you can't make a single good decision about it.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>SWOT, Porter's 5 Forces</strong> — the basics</li>
+              <li><strong>TAM/SAM/SOM</strong> — market sizing for Bangladesh context</li>
+              <li><strong>Competitive teardowns</strong> — feature, pricing, positioning</li>
+              <li><strong>Reading 10-Ks & investor reports</strong> for public companies</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Pick a category (e.g., "ride-hailing in Dhaka"). Build a teardown comparing Pathao, Uber, Obhai across UX, pricing, driver supply</li>
+              <li>Estimate the TAM for digital tutoring in Bangladesh. Show your math. Defend it</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Stratechery (some articles free) — Ben Thompson</li>
+              <li>YouTube: "Y Combinator Startup School" — market sizing lectures</li>
+              <li>CB Insights — free reports & teardowns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 3 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">03</div>
+      <div class="phase-title">
+        <h3>Execution craft — turning ideas into <em>shipped product</em>.</h3>
+        <div class="meta">Months <span>5 – 9</span> · Outcome: A real product spec, end-to-end</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">16 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 3.1</span>
+          <h4>Writing PRDs, specs & user stories</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">A PM's writing is the product, before it exists. Sloppy specs produce sloppy products. This skill alone separates good PMs from average ones.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>PRD structure:</strong> problem, users, goals, success metrics, scope, non-goals</li>
+              <li><strong>User stories:</strong> "As a [user], I want [action], so that [outcome]"</li>
+              <li><strong>Acceptance criteria & edge cases</strong></li>
+              <li><strong>Amazon's "Working Backwards" / press release method</strong></li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li><strong>Write 3 full PRDs</strong> for features in apps you use. Be brutal. Include trade-offs. Include what you're NOT building and why</li>
+              <li>Write a "Press Release from the Future" for a new product. Pretend it launched. Make the customer the hero</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Lenny's Newsletter — "How the best PMs write PRDs" archive</li>
+              <li>Coda templates — search "PRD template" — read 10 real ones</li>
+              <li>"Working Backwards" book — read the press release chapter</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 3.2</span>
+          <h4>Agile, Scrum & working with engineering</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">As a CSE grad, you have an unfair advantage here. Most PMs fake technical fluency. You won't have to. But you still need to learn the rituals — sprints, standups, backlog grooming.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Scrum ceremonies:</strong> sprint planning, daily standup, review, retro</li>
+              <li><strong>Backlog grooming & estimation</strong> (story points, t-shirt sizing)</li>
+              <li><strong>Jira mastery</strong> — epics, stories, sub-tasks, sprints, dashboards</li>
+              <li><strong>Kanban vs Scrum</strong> — when to use which</li>
+              <li><strong>Reading & writing tickets engineers don't hate</strong></li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Create a free Jira account. Set up a project. Run a fake 2-week sprint with 15 tickets across epics. Move them through the workflow</li>
+              <li>Volunteer to be the "PM" on a UIU friend's side project. Run their sprints for 4 weeks</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Atlassian University — free Jira & Agile certification</li>
+              <li>Scrum.org — free Scrum guide (50 pages, read it)</li>
+              <li>YouTube: "Scrum in Under 10 Minutes" + Atlassian's Agile Coach playlist</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 3.3</span>
+          <h4>Design fluency & prototyping</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">You don't need to be a designer. You need to be conversant. You need to draw a wireframe, give meaningful design feedback, and not say "make it pop."</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Figma basics</strong> — frames, components, auto-layout</li>
+              <li><strong>Wireframing</strong> (low-fi → high-fi)</li>
+              <li><strong>Information architecture & user flows</strong></li>
+              <li><strong>Heuristic evaluation</strong> (Nielsen's 10 heuristics)</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Redesign a flow you hate (e.g., bKash's send-money flow). Wireframe in Figma. Show before/after</li>
+              <li>Build a clickable prototype for one of your earlier PRDs</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Figma's official YouTube — full beginner playlist</li>
+              <li>Nielsen Norman Group articles — free, gold-standard</li>
+              <li>Refactoring UI — free articles by Adam Wathan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 4 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">04</div>
+      <div class="phase-title">
+        <h3>Data, metrics & the <em>quantitative</em> PM.</h3>
+        <div class="meta">Months <span>9 – 13</span> · Outcome: SQL fluency + a metrics framework</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">16 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 4.1</span>
+          <h4>Product metrics & analytical thinking</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">"Vibes-based" PMs are getting fired in 2026. Every decision needs a metric. Every metric needs a sanity check. If you can't define your North Star, you don't have a product, you have a hobby.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>North Star Metrics & input metrics</strong></li>
+              <li><strong>AARRR (Pirate Metrics):</strong> Acquisition, Activation, Retention, Referral, Revenue</li>
+              <li><strong>Cohort analysis & retention curves</strong></li>
+              <li><strong>Funnel analysis & drop-off diagnosis</strong></li>
+              <li><strong>Leading vs lagging indicators</strong></li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Pick a product. Define its North Star, 3 input metrics, and 3 guardrail metrics. Write a 1-pager defending each</li>
+              <li>Take a public retention curve (e.g., from Mixpanel benchmarks) and write a diagnosis: what's working, what's not</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Reforge — "Retention Engagement Growth" free articles</li>
+              <li>Amplitude's "North Star Playbook" — free PDF</li>
+              <li>Andrew Chen's blog — full archive on growth metrics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 4.2</span>
+          <h4>SQL & analytics tools</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">In 2026, a PM who can't write SQL is a liability. You'll be blocked on analysts for every basic question. SQL is the new Excel. Non-negotiable. Your CSE background makes this a weekend, not a semester.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>SQL:</strong> SELECT, JOIN, GROUP BY, window functions, CTEs</li>
+              <li><strong>Mixpanel / Amplitude</strong> — funnel & retention analysis</li>
+              <li><strong>Google Analytics 4</strong> — bare minimum literacy</li>
+              <li><strong>A/B testing fundamentals:</strong> sample size, statistical significance, p-values, novelty effects</li>
+              <li><strong>Excel/Sheets</strong> — pivot tables, VLOOKUP, basic forecasting</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Complete Mode Analytics SQL Tutorial end-to-end (free)</li>
+              <li>Take a public dataset (Kaggle e-commerce data). Answer 10 product questions in SQL</li>
+              <li>Set up a free Amplitude or Mixpanel demo and run 3 funnel analyses</li>
+              <li>Design an A/B test (with hypothesis, metric, sample size) on paper</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Mode Analytics SQL Tutorial — free, the gold standard</li>
+              <li>SQLZoo & LeetCode SQL — practice</li>
+              <li>Amplitude Academy — free certifications</li>
+              <li>Evan Miller's A/B testing calculator + writeups</li>
+              <li>Ronny Kohavi's "Trustworthy Online Controlled Experiments" — chapters online</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 5 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">05</div>
+      <div class="phase-title">
+        <h3>The AI-era PM — your <em>unfair</em> edge.</h3>
+        <div class="meta">Months <span>13 – 18</span> · Outcome: Ship an AI-powered side project</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">20 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 5.1</span>
+          <h4>How AI is reshaping the PM role</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">Honest take from 20 years in: AI is automating away the "execution-only" PM. Writing tickets, summarizing meetings, drafting specs — Claude and ChatGPT do that in seconds now. What's NOT being automated: judgment, taste, customer empathy, prioritization under ambiguity, and the ability to lead humans. Bend your career toward those.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Using AI as a thought partner</strong> — prompting Claude/ChatGPT for spec drafts, competitive analysis, user research synthesis, edge case generation</li>
+              <li><strong>Knowing when NOT to trust AI</strong> — hallucinations, stale data, sycophancy</li>
+              <li><strong>AI-augmented PM workflows:</strong> meeting summaries (Otter, Granola), customer feedback synthesis (Dovetail AI), spec drafts</li>
+              <li><strong>Doubling your output</strong> — the goal is 2x leverage, not replacement</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Take 50 customer interview transcripts (or generate them). Use Claude/ChatGPT to synthesize themes. Compare to your manual synthesis. Note where AI was wrong</li>
+              <li>Use AI to generate 3 PRDs. Then critique them — what did AI miss that a human PM would catch?</li>
+              <li>Build an "AI cheat sheet" of 20 prompts you'd use weekly as a PM</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Anthropic's prompt engineering docs — free, excellent</li>
+              <li>Lenny + AI episodes (podcast & newsletter) — search "AI PM"</li>
+              <li>Aakash Gupta's "AI PM" newsletter</li>
+              <li>OpenAI Cookbook — even if you're not building, browse it</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 5.2</span>
+          <h4>Building AI products (the new core skill)</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">Every serious product team in 2026 is shipping AI features. PMs who understand LLMs, evals, and AI UX patterns are commanding 30–50% premiums. This is THE differentiator for the next 5 years. Don't sleep on it.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>LLM fundamentals:</strong> tokens, context windows, temperature, system prompts</li>
+              <li><strong>RAG (Retrieval-Augmented Generation)</strong> — when to use it, when not to</li>
+              <li><strong>Evals</strong> — how do you measure if an AI feature is "good"? This is the new A/B test</li>
+              <li><strong>AI UX patterns:</strong> chat, autocomplete, agents, streaming, citations, fallbacks</li>
+              <li><strong>Cost & latency trade-offs</strong> — model selection, caching, batching</li>
+              <li><strong>Trust & safety:</strong> hallucinations, prompt injection, abuse</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks (this is critical)</div>
+            <ul>
+              <li><strong>Build & ship one real AI product.</strong> Use Claude API or ChatGPT API. Solve a Bangladesh-specific problem (e.g., Bangla → English document translator for SMEs, AI tuition matcher, agriculture chatbot for farmers). Use no-code tools (Bubble, Lovable, v0) if you must — but ship it</li>
+              <li>Write a teardown of one major AI product (Notion AI, Cursor, Perplexity). Cover: model choice, UX patterns, eval strategy, what they got right & wrong</li>
+              <li>Design an eval harness for your AI product — 20 test cases, scoring rubric</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Anthropic's "Building with Claude" docs — start here</li>
+              <li>Andrej Karpathy's "Intro to LLMs" YouTube talk — watch twice</li>
+              <li>Hamel Husain's blog on evals — gold standard</li>
+              <li>"AI Engineer" YouTube channel — conference talks</li>
+              <li>Latent Space podcast — listen on commutes</li>
+              <li>DeepLearning.AI short courses — free, 1–2 hours each</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PHASE 6 ========== -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">06</div>
+      <div class="phase-title">
+        <h3>Strategy, leadership & the <em>senior</em> PM mindset.</h3>
+        <div class="meta">Months <span>18 – 24</span> · Outcome: Land the role, or launch the product</div>
+      </div>
+      <div class="phase-duration">
+        Time
+        <span class="big">24 weeks</span>
+      </div>
+    </div>
+
+    <div class="nodes">
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 6.1</span>
+          <h4>Strategy, vision & roadmapping</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">Junior PMs ship features. Senior PMs choose what NOT to ship. The leap from execution to strategy is the hardest one in your career. Start practicing now — even before you have the title.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Vision & strategy frameworks:</strong> Lenny's product strategy stack, Hamilton Helmer's "7 Powers"</li>
+              <li><strong>OKRs vs KPIs vs metrics</strong></li>
+              <li><strong>Roadmapping:</strong> Now/Next/Later, theme-based roadmaps</li>
+              <li><strong>Stakeholder management & influencing without authority</strong></li>
+              <li><strong>Saying no, and saying it well</strong></li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Write a 3-year product strategy for a Bangladesh business (e.g., Chaldal, Daraz, ShopUp). Defend it</li>
+              <li>Build a Now/Next/Later roadmap for one of your AI side projects</li>
+              <li>Practice "saying no" — write 5 polite-but-firm rejections to feature requests</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>"Good Strategy Bad Strategy" by Richard Rumelt — life-changing</li>
+              <li>Lenny's "Product Strategy" archive</li>
+              <li>"7 Powers" by Hamilton Helmer — summaries on YouTube</li>
+              <li>First Round Review — "managing up" articles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector"><div class="line"></div>then →</div>
+
+      <div class="node">
+        <div class="node-left">
+          <span class="tag">Node 6.2</span>
+          <h4>Soft skills, communication & leadership</h4>
+          <div class="why-label">Why this matters</div>
+          <div class="why">PM is 60% communication. Your ideas are only as good as your ability to make others believe in them. CSE grads consistently underestimate this. Senior leaders who can't write a clear memo are fired.</div>
+        </div>
+        <div class="node-right">
+          <div class="node-section">
+            <div class="sec-label">Skills</div>
+            <ul>
+              <li><strong>Written communication</strong> — memos, updates, proposals (Amazon's 6-pager is the model)</li>
+              <li><strong>Verbal & presentation skills</strong> — explaining trade-offs to non-technical execs</li>
+              <li><strong>Active listening & negotiation</strong></li>
+              <li><strong>Conflict resolution</strong> — engineers vs design vs business</li>
+              <li><strong>Cross-cultural communication</strong> — critical if targeting Google/Apple/Netflix</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Hands-on tasks</div>
+            <ul>
+              <li>Write 1 LinkedIn post per week for 6 months on what you're learning. This builds your brand AND your writing</li>
+              <li>Join Toastmasters Dhaka — present 2x/month</li>
+              <li>Find 2 PM mentors on LinkedIn (Bangladesh + abroad). Have monthly chats</li>
+            </ul>
+          </div>
+          <div class="node-section">
+            <div class="sec-label">Free resources</div>
+            <ul class="resource-list">
+              <li>Julian Shapiro's "Writing Well" guide — free, exceptional</li>
+              <li>"Crucial Conversations" book — read it</li>
+              <li>Amazon's "Working Backwards" 6-pager template</li>
+              <li>YouTube: TED Talks on persuasion (Simon Sinek, Chris Voss)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOOLS ========== -->
+<section class="tools">
+  <div class="tools-inner">
+    <h2>The <em>toolkit.</em></h2>
+    <div class="tools-sub">Real tools used by real PMs · learn the bold ones first</div>
+
+    <div class="tool-grid">
+      <div class="tool-cat">
+        <div class="head">Project & Tickets</div>
+        <ul>
+          <li>Jira <span>essential</span></li>
+          <li>Linear <span>modern teams</span></li>
+          <li>Asana <span>common</span></li>
+          <li>Trello <span>basic</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Docs & Specs</div>
+        <ul>
+          <li>Notion <span>essential</span></li>
+          <li>Confluence <span>enterprise</span></li>
+          <li>Coda <span>good</span></li>
+          <li>Google Docs <span>universal</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Design & Prototyping</div>
+        <ul>
+          <li>Figma <span>essential</span></li>
+          <li>FigJam <span>whiteboarding</span></li>
+          <li>Miro <span>workshops</span></li>
+          <li>Balsamiq <span>wireframes</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Analytics</div>
+        <ul>
+          <li>Mixpanel <span>essential</span></li>
+          <li>Amplitude <span>essential</span></li>
+          <li>GA4 <span>basic</span></li>
+          <li>PostHog <span>open source</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Data & SQL</div>
+        <ul>
+          <li>SQL <span>non-negotiable</span></li>
+          <li>Metabase <span>BI</span></li>
+          <li>Looker <span>enterprise</span></li>
+          <li>Hex <span>modern</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Customer Research</div>
+        <ul>
+          <li>Dovetail <span>synthesis</span></li>
+          <li>UserTesting <span>recruiting</span></li>
+          <li>Maze <span>quick tests</span></li>
+          <li>Typeform <span>surveys</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">A/B Testing</div>
+        <ul>
+          <li>Optimizely <span>enterprise</span></li>
+          <li>VWO <span>SMB</span></li>
+          <li>Statsig <span>modern</span></li>
+          <li>GrowthBook <span>open source</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">AI Tools for PMs</div>
+        <ul>
+          <li>Claude <span>thinking</span></li>
+          <li>ChatGPT <span>general</span></li>
+          <li>Granola <span>meetings</span></li>
+          <li>Lovable / v0 <span>prototyping</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Communication</div>
+        <ul>
+          <li>Slack <span>essential</span></li>
+          <li>Loom <span>async video</span></li>
+          <li>Zoom <span>universal</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Roadmapping</div>
+        <ul>
+          <li>ProductBoard <span>good</span></li>
+          <li>Aha! <span>enterprise</span></li>
+          <li>Linear roadmap <span>simple</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Customer Feedback</div>
+        <ul>
+          <li>Intercom <span>support</span></li>
+          <li>Canny <span>feature requests</span></li>
+          <li>Pendo <span>in-app</span></li>
+        </ul>
+      </div>
+      <div class="tool-cat">
+        <div class="head">Code Literacy</div>
+        <ul>
+          <li>Git/GitHub <span>required</span></li>
+          <li>Postman <span>API testing</span></li>
+          <li>Cursor <span>AI coding</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PORTFOLIO ========== -->
+<section class="portfolio">
+  <div class="portfolio-inner">
+    <div class="label">Section IV — Building Proof</div>
+    <h2>Your <em>portfolio</em>.<br />Or: how strangers hire you.</h2>
+
+    <div class="port-grid">
+      <div class="col">
+        <h3>The 5-piece PM portfolio</h3>
+        <ol>
+          <li><strong>Product teardown.</strong> Pick a product. Analyze it. Propose 3 improvements with metrics. 1500 words + visuals</li>
+          <li><strong>End-to-end case study.</strong> Real or fictional problem. Discovery → research → PRD → wireframes → metrics → launch plan. Your magnum opus</li>
+          <li><strong>Live AI product.</strong> Something you actually built and shipped. Even 50 users counts. URL + writeup</li>
+          <li><strong>Data-driven analysis.</strong> SQL + charts answering a real product question. Show your reasoning</li>
+          <li><strong>Strategy memo.</strong> 6-pager Amazon-style. Pick a Bangladeshi company. Tell them where to go next 3 years</li>
+        </ol>
+      </div>
+      <div class="col">
+        <h3>Where to host it</h3>
+        <ul>
+          <li><strong>Notion site or personal website</strong> — clean, fast, scannable. Don't over-design</li>
+          <li><strong>Medium / Substack</strong> — write 1 post/month. Cross-post to LinkedIn</li>
+          <li><strong>GitHub</strong> — for AI products and SQL work. Recruiters check</li>
+          <li><strong>LinkedIn</strong> — your portfolio in public. Post weekly. This compounds</li>
+          <li><strong>Loom walkthroughs</strong> — record a 3-min video for each case study. Recruiters love this</li>
+        </ul>
+
+        <h3 style="margin-top: 40px;">Portfolio rules</h3>
+        <ul>
+          <li>Show your <strong>thinking</strong>, not just outputs. Trade-offs you considered, why you rejected them</li>
+          <li>Quantify everything. "Increased retention" is dead. "Increased D7 retention from 22% to 31% over 6 weeks" gets calls</li>
+          <li>Pick problems Bangladeshi recruiters & global ones BOTH care about</li>
+          <li>Update it every quarter. A stale portfolio is a dead portfolio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INTERVIEW PREP ========== -->
+<section class="interview">
+  <div class="interview-inner">
+    <div class="label">Section V — Earning the Title</div>
+    <h2>Interviewing for <em>PM roles</em>.</h2>
+    <p class="sub">PM interviews are a different beast. Most CSE grads bomb them not because they're not smart, but because they answer like engineers. Here's the structure of what you'll face, and the frameworks that actually work.</p>
+
+    <div class="iv-grid">
+      <div class="iv-card">
+        <span class="tag">Round Type 1</span>
+        <h3>Product Sense / Product Design</h3>
+        <p>"How would you improve YouTube?" "Design an app for elderly people in Dhaka." Tests: customer empathy, structured thinking, creativity, prioritization.</p>
+        <div class="framework">CIRCLES: Comprehend · Identify user · Report needs · Cut · List solutions · Evaluate · Summarize</div>
+      </div>
+
+      <div class="iv-card">
+        <span class="tag">Round Type 2</span>
+        <h3>Analytical / Metrics</h3>
+        <p>"YouTube views are down 5% — diagnose." Tests: structured problem-solving, metric fluency, comfort with ambiguity. Always segment, segment, segment.</p>
+        <div class="framework">Internal vs external · Then segment by user, geo, time, platform</div>
+      </div>
+
+      <div class="iv-card">
+        <span class="tag">Round Type 3</span>
+        <h3>Strategy / Vision</h3>
+        <p>"Should Netflix enter gaming?" Tests: strategic thinking, market understanding, ability to defend a position with data. Have an opinion, then back it.</p>
+        <div class="framework">Market → Capability → Customer → Competition → Recommendation</div>
+      </div>
+
+      <div class="iv-card">
+        <span class="tag">Round Type 4</span>
+        <h3>Behavioral / Leadership</h3>
+        <p>"Tell me about a conflict with an engineer." Tests: self-awareness, leadership, communication. Have 8–10 stories ready, mapped to Amazon's leadership principles.</p>
+        <div class="framework">STAR: Situation · Task · Action · Result (+ Learning)</div>
+      </div>
+
+      <div class="iv-card">
+        <span class="tag">Round Type 5</span>
+        <h3>Technical / Estimation</h3>
+        <p>Easier for you as a CSE grad. "Estimate Dhaka's daily ride-hailing volume." Show your math out loud. Make assumptions explicit. They want reasoning, not the right number.</p>
+        <div class="framework">Top-down · Bottom-up · Sanity check both ways</div>
+      </div>
+
+      <div class="iv-card">
+        <span class="tag">Round Type 6</span>
+        <h3>Execution / Trade-offs</h3>
+        <p>"Engineering says it'll take 6 months. PR launch is in 3. What do you do?" Tests: how you handle reality. There's no right answer — there's a defensible answer.</p>
+        <div class="framework">Constraints → Options → Trade-offs → Decision → Communicate</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px; padding: 30px; background: var(--ink); color: var(--paper); border-radius: 2px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">How to actually prepare</div>
+      <div style="font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.4; max-width: 60ch;">
+        Do <em>50 mock interviews</em>. Yes, fifty. With friends, with strangers on Exponent or IGotAnOffer, with paid coaches if you can afford it. Record them. Watch yourself. You'll cringe. That's the point.
+      </div>
+      <div style="margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: var(--accent-soft);">
+        Free resources → Exponent (free question bank) · "Decode and Conquer" by Lewis Lin · Lenny's interview prep archive · YouTube: "Diana Yu" PM interview channel
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HONEST TRUTHS ========== -->
+<section class="truths">
+  <div class="truths-inner">
+    <div class="label">Section VI — Things People Won't Tell You</div>
+    <h2>Six <em>uncomfortable</em> truths.</h2>
+
+    <div class="truth-list">
+      <div class="truth-item">
+        <div class="num">i</div>
+        <div class="body">
+          <p>Your first PM job will probably not be as a PM.</p>
+          <p>Realistically, in Bangladesh, you'll start as: a Software Engineer (1–2 yrs) → Associate PM or Product Analyst → PM. Or: Business Analyst → PM. Or: founder of a side project that gets traction. APM programs at Google/Microsoft/Atlassian exist, but accept &lt;1% of applicants. Plan the long route, get pleasantly surprised by the short one.</p>
+        </div>
+      </div>
+
+      <div class="truth-item">
+        <div class="num">ii</div>
+        <div class="body">
+          <p>Bangladesh's PM market is small. Use that.</p>
+          <p>Top PM employers locally: bKash, Pathao, Chaldal, ShopUp, Kludio, 10 Minute School, Daraz, Shohoz. Reach out directly. The market is small enough that LinkedIn DMs to PMs there actually get replies. This is your unfair advantage over candidates from larger markets.</p>
+        </div>
+      </div>
+
+      <div class="truth-item">
+        <div class="num">iii</div>
+        <div class="body">
+          <p>Google, Apple, Netflix won't hire you straight from UIU. That's fine.</p>
+          <p>The realistic path to a top MNC PM role: 2–3 years at a respected company (locally or remote-first global startup) → MBA at a top program OR 1–2 years at a Series B+ startup with global recognition → MNC. Or: build something that gets noticed, get acqui-hired. Both work.</p>
+        </div>
+      </div>
+
+      <div class="truth-item">
+        <div class="num">iv</div>
+        <div class="body">
+          <p>Building your own product is harder than getting a PM job. By a lot.</p>
+          <p>If your goal is a Bangladeshi product in 5 years, working as a PM at a fast-growing local company first is almost always the right move. You'll learn, network, save capital, and validate ideas. The "drop out and build" narrative is survivorship bias. Most successful Bangladeshi founders worked somewhere first.</p>
+        </div>
+      </div>
+
+      <div class="truth-item">
+        <div class="num">v</div>
+        <div class="body">
+          <p>Your network beats your resume. Always has.</p>
+          <p>80% of PM roles at the senior level are filled through networks, not job boards. Start now. Show up at Dhaka product meetups. DM people. Comment thoughtfully on LinkedIn posts. Help others before asking for help. In 24 months, your network is your career. Not a metaphor — literally.</p>
+        </div>
+      </div>
+
+      <div class="truth-item">
+        <div class="num">vi</div>
+        <div class="body">
+          <p>The PMs who stay relevant in 10 years aren't the smartest. They're the most curious.</p>
+          <p>The product world reinvents itself every 3 years. Mobile. SaaS. Crypto. AI. The next thing. PMs who grew up loving one paradigm and refused to learn the next are gone. Make curiosity your operating system. Read outside your domain. Ship things. Be wrong publicly. The rest follows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DUAL PATH ========== -->
+<section class="paths">
+  <div class="paths-inner">
+    <div class="label">Section VII — Choosing Your Lane</div>
+    <h2>Two <em>five-year</em> plans.<br />Pick one. For now.</h2>
+
+    <div class="path-grid">
+      <div class="path-card">
+        <div class="tag">Path A · MNC Product Manager</div>
+        <h3>The <em>credential</em> path. Optimized for Google, Apple, Netflix.</h3>
+
+        <div class="path-step">
+          <div class="when">Year 1</div>
+          <div class="what">Software Engineer at a Bangladeshi startup with global ambitions (ShopUp, Tiger New Energy, etc.). Build technical credibility. Volunteer for product-adjacent work.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 2</div>
+          <div class="what">Transition internally to APM or Product Analyst. Ship 2 features that move metrics. Build portfolio in parallel.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 3</div>
+          <div class="what">Apply to APM programs at global remote-first companies. Or land a PM role at a Series B+ startup with US/EU presence. Move there if needed.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 4</div>
+          <div class="what">MBA at a top-15 program (INSEAD, Wharton, Stanford GSB) — IF you can self-fund or get scholarships. This becomes your bridge to FAANG. Or: deepen at the global startup.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 5</div>
+          <div class="what">Apply to Google/Meta/Netflix PM roles. Use the MBA network or startup brand. Realistically: 100+ applications, 3–5 onsites, 1 offer if you've executed well.</div>
+        </div>
+      </div>
+
+      <div class="path-card featured">
+        <div class="tag">Path B · Founder in Bangladesh</div>
+        <h3>The <em>builder</em> path. Optimized for shipping your own product.</h3>
+
+        <div class="path-step">
+          <div class="when">Year 1</div>
+          <div class="what">SWE or PM at a Bangladeshi product company. Save aggressively. Build side projects every weekend. Start collecting "problems worth solving" in a Notion doc.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 2</div>
+          <div class="what">Move into a PM role. Get exposure to: monetization, ops, growth, fundraising (sit in on board meetings if possible). Validate 2–3 startup ideas in nights/weekends.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 3</div>
+          <div class="what">Pick ONE idea with real signal (paying customers, not just sign-ups). Build a co-founding team — ideally one strong engineer + one strong sales/ops person. Quit when you have 6 months runway and 10 paying customers.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 4</div>
+          <div class="what">Full-time on the product. Apply to Y Combinator, Antler, or local accelerators. Raise a pre-seed if needed. Get to ৳1 crore ARR or product-market fit signals.</div>
+        </div>
+        <div class="path-step">
+          <div class="when">Year 5</div>
+          <div class="what">Scale or pivot. Either you've built a real business serving Bangladeshi customers, or you've learned more in 2 years than most PMs learn in 10. Both are wins.</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 40px; font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: var(--ink-soft); max-width: 60ch;">
+      The honest truth: you don't have to choose today. Phases 1–4 are identical for both paths. The fork happens around month 18. By then, you'll know yourself well enough to choose with conviction.
+    </p>
+  </div>
+</section>
+
+<!-- ========== CLOSING ========== -->
+<section class="closing">
+  <blockquote>
+    "The best PMs I've worked with weren't the ones with the cleanest frameworks.<br /><br />
+    They were the ones <span>who couldn't stop caring</span> about the customer."
+  </blockquote>
+  <cite>— a senior PM, on hiring · 2026</cite>
+</section>
+
+<footer class="footer">
+  <div>PM Roadmap · Dhaka Edition</div>
+  <div>Built for one reader. Shipped honestly.</div>
+</footer>
+
+</body>
+</html>
+
+
+<!-- /Users/ontiktechnology/Documents/Tashin/basic.html -->
