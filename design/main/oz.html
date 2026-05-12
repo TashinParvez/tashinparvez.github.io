@@ -1677,7 +1677,7 @@
         .leadership {
             max-width: 1050px;
             margin: 0 auto;
-            padding: 80px 40px 50px;
+            padding: 80px 40px 100px;
             color: var(--text-1);
         }
 
@@ -4173,8 +4173,7 @@
         <section id="home">
             <div class="hero">
                 <div class="hero-left">
-                    <div class="hero-badge"><span class="hero-badge-dot"></span>Open to APM &amp; Junior PM
-                        Opportunities</div>
+                    <div class="hero-badge"><span class="hero-badge-dot"></span>Open to PM Opportunities</div>
                     <div class="hero-eyebrow">Hello, I'm</div>
                     <h1 class="hero-name"><span>Md Tashin</span><br><span class="gradient">Parvez</span></h1>
                     <div class="hero-title">
@@ -4220,7 +4219,7 @@
                             style="width:4px; height:4px; border-radius:50%; background:#999; display:inline-block;"></span>
 
                         <span style="display:inline-flex; align-items:center;">
-                            Product
+                            Product Enthusiast
                         </span>
                     </div>
 
@@ -4397,19 +4396,20 @@
                     </div>
 
                     <div class="about-right">
+
+                        <!-- 
                         <div class="about-intro">
                             <div class="about-name">Md Tashin Parvez</div>
                             <div class="role-tags">
-                                <!-- <span class="role-tag">CSE Graduate</span>
+                                <span class="role-tag">CSE Graduate</span>
                                 <span class="role-sep"></span>
                                 <span class="role-tag">Product Analyst</span>
                                 <span class="role-sep"></span>
-                                <span class="role-tag">Aspiring PM</span> -->
-
+                                <span class="role-tag">Aspiring PM</span>
                                 <span class="role-tag">Product Analyst @Ontik Technology</span>
-
                             </div>
-                        </div>
+                        </div> 
+                        -->
 
                         <div class="prose-block">
                             <div class="prose-lbl">Background</div>
@@ -4604,8 +4604,12 @@
                                 </div>
                             </div>
 
+                            <!--        8th sem : Summer 24  ▶  ICS
+                                        9th sem : Summer 24  ▶  ICS, OOP 
+                            -->
+
                             <div class="exp-side">
-                                <div class="exp-date">Feb 2024 – Jan 2026</div>
+                                <div class="exp-date">Jun 2024 – Feb 2026</div>
                                 <div class="exp-logo-wrap"><img class="exp-logo"
                                         src="https://upload.wikimedia.org/wikipedia/en/6/6b/United_International_University_Monogram.svg"
                                         alt="UIU" /></div>
@@ -4636,7 +4640,7 @@
                                 </div>
                             </div>
                             <div class="exp-side">
-                                <div class="exp-date">2023 – 2024</div>
+                                <div class="exp-date">Feb 2023 – Jan 2024</div>
                                 <div class="exp-logo-wrap"><img class="exp-logo"
                                         src="https://upload.wikimedia.org/wikipedia/en/6/6b/United_International_University_Monogram.svg"
                                         alt="UIU" /></div>
@@ -4668,7 +4672,7 @@
                             <div class="edu-body">
                                 <div class="edu-degree-row">
                                     <div class="edu-degree">BSc in Computer Science &amp; Engineering</div>
-                                    <div class="edu-year">2022 – 2025</div>
+                                    <div class="edu-year">2022 – 2026</div>
                                 </div>
                                 <div class="edu-school-row">
                                     <div class="edu-school">United International University</div>
@@ -4783,7 +4787,7 @@
                     <div class="projects-head">
                         <div class="projects-eeyebrow">
                             <div class="eyebrow-fprojects">Selected Work</div>
-                            <h2 class="projects-title">Projects & <em>Case Studies</em></h2>
+                            <h2 class="projects-title">Projects & <br><em>Case Studies</em></h2>
                             <p class="projects-sub" style="width: 100%; max-width: none;">
                                 A curated collection of product systems, research, and engineering work built with
                                 intent and
@@ -4807,6 +4811,7 @@
                             <span>↗</span>
                         </a>
                     </div>
+
                 </section>
             </div>
 
@@ -4928,6 +4933,11 @@
                 gap: 24px;
                 align-items: end;
                 margin-bottom: 26px;
+            }
+
+            .projects-eeyebrow {
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--line-2);
             }
 
             .projects .eyebrow-fprojects {
@@ -6772,17 +6782,22 @@
                             Achievements
                         </div>
 
-                        <h2 class="ach-title">Moments that earned<br>real recognition</h2>
-                        <!-- <h2 class="skills-title">Moments that earned<br><em>real recognition</em></h2> -->
+                        <h2 class="projects-title">Moments that earned<br>real<em> recognition </em></h2>
 
                     </div>
                     <p class="ach-copy" style="text-align: right;">
                         A refined collection of project recognitions with focused details and minimal presentation
                     </p>
                 </div>
+
+                <!-- achievements pull -->
                 <div class="ach-list" id="achList"></div>
-                <div class="ach-more"><button class="ach-more-btn" id="achMoreBtn" type="button"
-                        aria-expanded="false"><span class="label">Show more</span><span class="icon">↓</span></button>
+
+                <!-- more btn -->
+                <div class="ach-more">
+                    <button class="ach-more-btn" id="achMoreBtn" type="button" aria-expanded="false">
+                        <span class="label">Show more</span><span class="icon">↓</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -6818,13 +6833,31 @@
                 </div>
             </div>
 
+            <!--============ certifications cards ============-->
+            <!--============ certifications cards ============-->
+
             <div class="certifications-grid">
+
+
+                <!-- add here -->
+
+                <a href="https://drive.google.com/file/d/1Q_QDccFlQSx3SzkRovs9_h3a5XOb9BJe/view?usp=drive_link"
+                    class="certificate-card" target="_blank" rel="noopener">
+                    <div class="certificate-card-inner">
+                        <h3 class="certificate-name">Pathway to Digital Product Management</h3>
+                        <span class="certificate-org">Bohubrihi<span class="arrow">↗</span></span>
+                        <div class="certificate-date">May 5, 2026</div>
+                    </div>
+                    <span class="certificate-glow"></span>
+                </a>
+
+
                 <a href="https://www.grameenphone.academy/cert/9c417e418de0" class="certificate-card" target="_blank"
                     rel="noopener">
                     <div class="certificate-card-inner">
                         <h3 class="certificate-name">Art of Communication</h3>
                         <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
-                        <div class="certificate-date">March 16, 2026</div>
+                        <div class="certificate-date">Mar 16, 2026</div>
                     </div>
                     <span class="certificate-glow"></span>
                 </a>
@@ -6834,7 +6867,7 @@
                     <div class="certificate-card-inner">
                         <h3 class="certificate-name">Corporate Presentation Skills</h3>
                         <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
-                        <div class="certificate-date">March 17, 2026</div>
+                        <div class="certificate-date">Mar 17, 2026</div>
                     </div>
                     <span class="certificate-glow"></span>
                 </a>
@@ -6844,7 +6877,7 @@
                     <div class="certificate-card-inner">
                         <h3 class="certificate-name">LinkedIn 101</h3>
                         <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
-                        <div class="certificate-date">March 16, 2026</div>
+                        <div class="certificate-date">Mar 16, 2026</div>
                     </div>
                     <span class="certificate-glow"></span>
                 </a>
@@ -6854,7 +6887,7 @@
                     <div class="certificate-card-inner">
                         <h3 class="certificate-name">Sharpen Your Interview Skills</h3>
                         <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
-                        <div class="certificate-date">April 02, 2026</div>
+                        <div class="certificate-date">Apr 02, 2026</div>
                     </div>
                     <span class="certificate-glow"></span>
                 </a>
@@ -6864,10 +6897,12 @@
                     <div class="certificate-card-inner">
                         <h3 class="certificate-name">Smart CV</h3>
                         <span class="certificate-org">Grameenphone Academy <span class="arrow">↗</span></span>
-                        <div class="certificate-date">March 15, 2026</div>
+                        <div class="certificate-date">Mar 15, 2026</div>
                     </div>
                     <span class="certificate-glow"></span>
                 </a>
+
+                <!-- cards ends -->
             </div>
 
             <div class="certifications-bottom-rule"></div>
@@ -6890,7 +6925,7 @@
                             </span>
                             Beyond the Classroom
                         </div>
-                        <h2 class="leadership-title">Leadership &amp; <em>Extracurriculars</em></h2>
+                        <h2 class="leadership-title">Leadership &amp; <br><em>Extracurriculars</em></h2>
                     </div>
                     <p class="leadership-desc">
                         A record of leadership, mentoring, and community-driven contributions
@@ -7059,7 +7094,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section-rule bottom"></div>
+            <!-- <div class="section-rule bottom"></div> -->
         </section>
 
 
@@ -7070,21 +7105,29 @@
         <!-- ======================================== TESTIMONIALS ========================================== -->
 
         <section class="testimonials" id="testimonials">
+
             <div class="testimonials-head">
-                <div>
-                    <div class="testimonials-label">Testimonials</div>
-                    <h2 class="testimonials-title">Words from <span>people</span></h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div>
+                        <div class="testimonials-label">Testimonials</div>
+                        <h2 class="leadership-title">Words from <br><em>people</em></h2>
+                        <!-- <h2 class="testimonials-title">Words from <span>people</span></h2> -->
+                    </div>
+                    <div class="testimonials-text" style="text-align: right;">
+                        Feedback from people who have seen my problem-solving mindset, consistency,
+                        collaboration, and growth in action.
+                    </div>
                 </div>
 
-                <p class="testimonials-text">
-                    Feedback from people who have seen my problem-solving mindset, consistency,
-                    collaboration, and growth in action.
-                </p>
+                <!-- <div class="section-rule bottom"></div> -->
+
             </div>
 
+            <!-- testimonial pull -->
             <div class="carousel-shell">
                 <div class="carousel-track" id="carouselTrack"></div>
             </div>
+
         </section>
 
 
@@ -7110,6 +7153,10 @@
                 <div class="section-label"><span class="section-label-text">Publication</span><span
                         class="section-label-line"></span></div>
                 <div class="pub-list">
+
+                    <!--=========================== cards ===========================-->
+
+                    <!-- autotrack -->
                     <article class="pub-card">
                         <div class="pub-main">
                             <div class="pub-meta"><span class="pub-chip">IEEE TENSYMP</span><span
@@ -7132,6 +7179,60 @@
                                 rel="noopener">Dataset</a>
                         </div>
                     </article>
+
+
+
+                    <!-- in progress -->
+
+                    <article class="pub-card">
+                        <div class="pub-main">
+                            <div class="pub-meta">
+                                <span class="pub-chip">in progress</span>
+                            </div>
+                            <div class="pub-title">Defect Detection</div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card">
+                        <div class="pub-main">
+                            <div class="pub-meta">
+                                <span class="pub-chip">in progress</span>
+                            </div>
+                            <div class="pub-title">Auto Map generation</div>
+                        </div>
+                    </article>
+
+
+                    <article class="pub-card">
+                        <div class="pub-main">
+                            <div class="pub-meta">
+                                <span class="pub-chip">in progress</span>
+                            </div>
+                            <div class="pub-title">Elder Care</div>
+                        </div>
+                    </article>
+
+
+                    <article class="pub-card">
+                        <div class="pub-main">
+                            <div class="pub-meta">
+                                <span class="pub-chip">in progress</span>
+                            </div>
+                            <div class="pub-title">Detection for Blinds</div>
+                        </div>
+                    </article>
+
+                    <!-- end of papers -->
+
+
+                    <!--=============== more btn ===============-->
+
+                    <!-- <div class="">
+                        <button class="" id="" type="button" aria-expanded="false">
+                            <span class="label">Show more</span><span class="icon">↓</span>
+                        </button>
+                    </div> -->
+
                 </div>
             </div>
         </section>
@@ -7191,7 +7292,7 @@
                             Contact
                         </div>
 
-                        <h2 class="contact-title">Let's talk about<br><span>better products.</span></h2>
+                        <h2 class="contact-title">Let's talk about<br><span>better products</span></h2>
                     </div>
                     <div class="contact-head-right">
                         <p class="contact-desc">Seeking PM opportunities where I can build user-focused products and
@@ -7436,10 +7537,17 @@
             });
         })();
 
-        /* ── ACHIEVEMENTS ── */
+
+        /* ──=============================== ACHIEVEMENTS ===============================── */
+        /* ──=============================== ACHIEVEMENTS ===============================── */
+        /* ──=============================== ACHIEVEMENTS ===============================── */
+
         (() => {
             const achData = [
-
+                {
+                    closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "../../assets/images/awards/scholarship.png",
+                    tag: "Scholarship", link: "", recog: ""
+                },
                 {
                     closedTitle: "Champion — UIU CSE Project Show", closedSub: "DBMS Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Kairos", projDetails: "Ranked 1st among 71 teams in the DBMS Lab Project and also won the DBMS Poster Presentation through strong execution, technical clarity, and presentation quality.", cat: "DBMS Lab Project",
                     team: "Team Kairos",
@@ -7465,10 +7573,7 @@
                     tag: "Champion", link: "", recog: ""
                 },
 
-                {
-                    closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "../../assets/images/awards/scholarship.png",
-                    tag: "Scholarship", link: "", recog: ""
-                },
+
 
             ];
 
@@ -7551,14 +7656,25 @@
             });
         })();
 
-        /* ── TESTIMONIALS ── */
+
+
+        /* ──================================= TESTIMONIALS =================================── */
+        /* ──================================= TESTIMONIALS =================================── */
+        /* ──================================= TESTIMONIALS =================================── */
+
         (() => {
             const testimonials = [
                 {
-                    text: "Working with Tashin was a game-changer. His problem-solving mindset and ability to break down complex logic into simple steps really stood out.",
-                    name: "Arif Hasan",
-                    role: "Software Engineer"
+                    text: "Tashin showed exceptional leadership, teamwork, and adaptability while leading UIU Coders Combat 4.0 and contributing to UIU CSE Fest 2025. His fast learning ability, professionalism, and calm approach under pressure make him a highly promising individual.",
+                    name: "Md. Tarek Hasan",
+                    role: "Assistant Professor & Undergraduate Program Coordinator - CSE  @UIU"
                 },
+
+
+                //================================ in valilid ==============================
+                //================================ in valilid ==============================
+                //================================ in valilid ==============================
+
                 {
                     text: "Tashin has an impressive analytical mind. Whether it's competitive programming or real-world coding challenges, he consistently delivers efficient solutions.",
                     name: "Nusrat Jahan",
