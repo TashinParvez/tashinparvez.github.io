@@ -1154,6 +1154,14 @@
             margin-bottom: 10px;
         }
 
+        .eyebrow-aboutme,
+        .blue-clor-text {
+            display: inline-flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
         .prose-block p {
             font-size: .92rem;
             line-height: 1.88;
@@ -1244,7 +1252,7 @@
    EXPERIENCE & EDUCATION
    ============================================================ */
         .edu-exp {
-            max-width: 860px;
+            max-width: 1132px;
             margin: 0 auto;
             padding: 80px 40px 100px;
             color: var(--text-1);
@@ -1459,8 +1467,8 @@
         }
 
         .exp-logo-wrap {
-            width: 112px;
-            height: 112px;
+            width: 104px;
+            height: 104px;
             border-radius: 14px;
             border: 1px solid rgba(99, 179, 237, .12);
             background: rgba(255, 255, 255, .04);
@@ -4191,7 +4199,7 @@
                         <a href="#projects" class="btn btn-primary">View My Work →</a>
                         <a href="sections/resume-doc-reader/resume.html" class="btn btn-secondary" download>Download
                             Resume ↓</a>
-                        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+                        <a href="#contact" class="btn btn-ghost">Let’s Connect</a>
                     </div>
 
 
@@ -4320,20 +4328,34 @@
                         <div class="snap-sub">Graduating with highest academic distinction</div>
                     </div> -->
 
-
+                    <!--========== Awards ==========-->
                     <div class="snap-stat">
                         <div class="snap-lbl">Awards</div>
                         <div class="snap-val">4+</div>
                         <div class="snap-title">Competitive project awards across 3 years</div>
                         <div class="snap-sub">Champion ×2, 1st Runner-Up, 2nd Runner-Up</div>
                     </div>
+
+                    <!--========== Contest Ranking ==========-->
                     <div class="snap-stat">
                         <div class="snap-lbl">Coding Contest Ranking</div>
                         <div class="snap-val">16th</div>
                         <div class="snap-title">UAP Intra University Coding Contest</div>
                         <div class="snap-sub">Problem solving &amp; algorithmic thinking</div>
                     </div>
+
+                    <!--========== Problem Solved ==========-->
+                    <div class="snap-stat">
+                        <div class="snap-lbl">Problems Solved</div>
+                        <div class="snap-val">1000+</div>
+                        <div class="snap-title">Total problems solved on Online Judges</div>
+                        <div class="snap-sub">Across Codeforces, CodeChef, AtCoder & practice sets</div>
+                    </div>
+
+
                 </div>
+
+
                 <div class="snap-chips" style="display: flex; justify-content: center;">
                     <span class="snap-chips-lbl">Focused On</span>
                     <div class="snap-chips-track">
@@ -4370,8 +4392,11 @@
                 <div class="about-grid">
                     <div class="about-left">
                         <div class="img-frame">
-                            <img src="https://scontent-bom5-2.xx.fbcdn.net/v/t39.30808-6/349299836_991411121934653_7461298287642662667_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeHkaG79KsavuwJBOw4yjCML68uk7QofQiDry6TtCh9CIBkiWWh-SO0pqQfoXWHouq9vbhU7GWjCqFcPZJrHR1Wj&_nc_ohc=ga8RoMZueRsQ7kNvwE3OCXX&_nc_oc=Adr4LYpUMe0yPTnycT6Kz3KRiaQS6ToQlpj7_GVUyWrab0pkDFo9l3bvouIwxxVieua0HBmIguUOcq631w5GHn6F&_nc_zt=23&_nc_ht=scontent-bom5-2.xx&_nc_gid=juP4cXCFmZKwqlM1UkaGtA&_nc_ss=7a3a8&oh=00_Af3KNsxJ7jb1xfGjcjqyin-nV6Gi0d2kR9dOR3wYGBZCtg&oe=69EEF5B1"
-                                alt="Md Tashin Parvez" />
+
+                            <!-- img of tashin on about me -->
+                            <img
+                                src="https://drive.google.com/file/d/15RCi1huwEfmFPKfl-fW9TUgwDX9Dj7Nt/view?usp=drive_link" />
+
                             <div class="img-status">
                                 <span class="status-active"><span class="dot"></span>Open to PM roles</span>
                                 <span class="img-loc" style="display:  flex; justify-content: center;">
@@ -4387,6 +4412,9 @@
                                 </span>
                             </div>
                         </div>
+
+
+                        <!--=========== about me stat ===========-->
                         <div class="stat-grid">
                             <div class="stat-box">
                                 <div class="stat-box-val">3+</div>
@@ -4400,9 +4428,13 @@
                                 <div class="stat-box-val">13×</div>
                                 <div class="stat-box-lbl">Scholarships</div>
                             </div>
-                            <div class="stat-box">
+                            <!-- <div class="stat-box">
                                 <div class="stat-box-val">3.93</div>
                                 <div class="stat-box-lbl">CGPA</div>
+                            </div> -->
+                            <div class="stat-box">
+                                <div class="stat-box-val">1000+</div>
+                                <div class="stat-box-lbl">Problems Solved</div>
                             </div>
                         </div>
                     </div>
@@ -4424,7 +4456,7 @@
                         -->
 
                         <div class="prose-block">
-                            <div class="prose-lbl">Background</div>
+                            <div class="prose-lbl eyebrow-aboutme">Background</div>
 
                             <p style="text-align: justify;">I’m a <strong>Computer Science graduate</strong> currently
                                 working as a <strong>Product Analyst</strong>. My interest in
@@ -4455,7 +4487,7 @@
 
                         <div class="prose-sep"></div>
                         <div class="prose-block">
-                            <div class="prose-lbl">What drives me</div>
+                            <div class="prose-lbl eyebrow-aboutme">What drives me</div>
                             <p style="text-align: justify;">What draws me to product management is the opportunity to
                                 <strong>turn ambiguous user problems into structured solutions</strong>. I enjoy
                                 understanding behavior, <strong>clarifying requirements</strong>, and shaping features
@@ -4479,7 +4511,7 @@
                         <div class="prose-sep"></div>
 
                         <div class="prose-block" style="padding-bottom: 10px;">
-                            <div class="prose-lbl">Beyond the work</div>
+                            <div class="prose-lbl eyebrow-aboutme">Beyond the work</div>
 
                             <p style="text-align: justify;">During university, I actively helped others learn by sharing
                                 study materials, problem-solving methods, and practical guidance. That experience
@@ -4499,6 +4531,7 @@
                         </div> -->
 
                         <div class="about-cta">
+                            <a href="sections/more-about-me.html" class="btn btn-secondary">More About Me</a>
                             <a href="#contact" class="btn btn-primary">Get in touch →</a>
                             <a href="sections/resume-doc-reader/resume.html" download class="btn btn-secondary">Download
                                 Resume ↓</a>
@@ -4533,11 +4566,12 @@
                 <!-- ==================================== EDUCATION ========================================= -->
 
                 <div class="exp-section">
-                    <div class="section-label"><span class="section-label-text">Experience</span><span
-                            class="section-label-line"></span></div>
+
+                    <div class="section-label"><span class="section-label-text blue-clor-text"
+                            style=" color: var(--accent);">Experience</span><span class="section-label-line"></span>
+                    </div>
+
                     <div class="exp-list">
-
-
 
 
                         <!-- ==================== Product Analyst ======================== -->
@@ -4670,8 +4704,9 @@
                     <!-- ==================================== EDUCATION ========================================= -->
 
 
-                    <div class="section-label"><span class="section-label-text">Education</span><span
-                            class="section-label-line"></span></div>
+                    <div class="section-label"><span class="section-label-text"
+                            style=" color: var(--accent);">Education</span><span class="section-label-line"></span>
+                    </div>
                     <div class="edu-list">
 
                         <!-- ====================== UIU ======================== -->
@@ -4779,6 +4814,7 @@
                             <div class="projects-stat-num" id="projectsStatNum" style="display: none;">00</div>
                             <div class="projects-stat-lbl" style="display: none;">Projects Available</div>
                         </div>
+                        
                     </div>
 
                     <div class="filter-wrap" id="projectFilters" style="justify-content: center;"></div>
