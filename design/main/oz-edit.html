@@ -2408,8 +2408,8 @@
             color: var(--text-2);
             flex-shrink: 0;
             transition: transform .26s, opacity .2s, background .26s, border-color .26s, color .26s;
-            opacity: 0;
-            pointer-events: none;
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .ach-card.open .ach-toggle {
@@ -4396,7 +4396,7 @@
                             <!-- img of tashin on about me / profile Img -->
 
                             <!-- <img  src="../../assets/images/profile.jpg" /> -->
-                            <img  src="../../assets/images/profile2.jpg" />
+                            <img src="../../assets/images/profile2.jpg" />
 
 
                             <div class="img-status">
@@ -7637,21 +7637,22 @@
         })();
 
 
-        /* ──=============================== ACHIEVEMENTS ===============================── */
-        /* ──=============================== ACHIEVEMENTS ===============================── */
-        /* ──=============================== ACHIEVEMENTS ===============================── */
+        /* ──=============================== ACHIEVEMENTS JS ===============================── */
+        /* ──=============================== ACHIEVEMENTS JS ===============================── */
+        /* ──=============================== ACHIEVEMENTS JS ===============================── */
 
         (() => {
             const achData = [
-                {
-                    closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "../../assets/images/awards/scholarship.png",
-                    tag: "Scholarship", link: "", recog: ""
-                },
+
                 {
                     closedTitle: "Champion — UIU CSE Project Show", closedSub: "DBMS Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Kairos", projDetails: "Ranked 1st among 71 teams in the DBMS Lab Project and also won the DBMS Poster Presentation through strong execution, technical clarity, and presentation quality.", cat: "DBMS Lab Project",
                     team: "Team Kairos",
                     img: "../../assets/images/projects/Kairos.png",
-                    tag: "Champion", link: "https://github.com/TashinParvez/Kairos", recog: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion"
+                    tag: "Champion", 
+
+                    img: "../../assets/images/awards/3.jpeg", //kairos  
+
+                    recog: "https://cse.uiu.ac.bd/projects/database-management-systems-laboratory-2/?rank=champion"
                 },
 
                 {
@@ -7659,19 +7660,46 @@
                     img: "../../assets/images/projects/DirectEdge.png",
                     tag: "1st Runner-Up", link: "https://github.com/TashinParvez/direct-edge", recog: "https://cse.uiu.ac.bd/projects/software-engineering-laboratory/?rank=1st-runner-up"
                 },
-
-                {
-                    closedTitle: "2nd Runner-Up — UIU CSE Project Show", closedSub: "AOOP Lab Project · UIU CSE, Dhaka, Bangladesh", projName: "Wayout", projDetails: "A tour planning project recognised for thoughtful implementation, clean experience design, and polished academic presentation.", cat: "AOOP Lab Project", team: "Team Wayout",
-                    img: "../../assets/images/projects/Wayout.png",
-                    tag: "2nd Runner-Up", link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner", recog: ""
-                },
-
                 {
                     closedTitle: "Champion — DBMS Poster Presentation", closedSub: "UIU CSE Project Show, Dhaka, Bangladesh", projName: "DBMS Poster", projDetails: "Awarded for clear technical communication, visual structure, and strong presentation of database concepts in a concise poster format.", cat: "Poster Presentation", team: "Team Kairos",
-                    img: "../../assets/images/projects/Kairos.png",
+
+                    // img: "../../assets/images/awards/1.jpeg", //kairos poster 
+                    img: "../../assets/images/awards/2.jpg", //kairos poster 
+                    // img: "../../assets/images/awards/3.jpeg", //kairos poster 
+
                     tag: "Champion", link: "", recog: ""
                 },
+                {
+                    closedTitle: "16th Place — UAP Inter University Collaborative Programming Contest 1.0",
+                    closedSub: "Collaborative Programming Contest · University of Asia Pacific (UAP), Dhaka, Bangladesh",
+                    projName: "UIU Cyber Knights",
+                    projDetails: "Secured 16th place in the UAP Inter University Collaborative Programming Contest 1.0, marking our team's first outside onsite programming contest and showcasing strong collaborative problem-solving skills among participating universities.",
+                    cat: "Competitive Programming Contest",
+                    team: "UIU Cyber Knights",
+                    img: "../../assets/images/awards/UAP-ICPC.jpg",
+                    tag: "16th Place",
+                    link: "",
+                    recog: "https://www.facebook.com/events/3208325839311356/"
+                },
+                {
+                    closedTitle: "2nd Runner-Up — UIU CSE Project Show", 
+                    closedSub: "AOOP Lab Project · UIU CSE, Dhaka, Bangladesh", 
+                    projName: "Wayout", 
+                    projDetails: "A tour planning project recognised for thoughtful implementation, clean experience design, and polished academic presentation.", 
+                    cat: "AOOP Lab Project", 
+                    team: "Team Tripod",
 
+                    img: "../../assets/images/awards/Wayout-team_tripod.jpg",
+
+                    tag: "2nd Runner-Up", 
+                    link: "https://github.com/TashinParvez/Wayout-The-Ultimate-Tour-Planner", 
+                    recog: ""
+                },
+
+                {
+                    closedTitle: "Academic Scholarships — UIU", closedSub: "United International University, Dhaka, Bangladesh", projName: "Academic Scholarships", projDetails: "Received merit-based scholarships across 13 semesters — six at 100%, two at 50%, four at 25%, and one merit scholarship — for sustained academic performance.", cat: "Academic Achievement", team: "UIU", img: "../../assets/images/awards/scholarship.png",
+                    tag: "Scholarship", link: "", recog: ""
+                },
 
 
             ];
@@ -7696,6 +7724,7 @@
                 card.className = `ach-card ${type}${idx >= INIT ? ' hidden' : ''}`;
                 const acts = (item.link ? `<a class="action-btn primary" href="${esc(item.link)}" target="_blank" rel="noopener">View Project ↗</a>` : '') + (item.recog ? `<a class="action-btn" href="${esc(item.recog)}" target="_blank" rel="noopener">Recognition ↗</a>` : '');
                 card.innerHTML = `
+                
       <button class="ach-trigger" type="button" aria-expanded="false">
         <div class="ach-head-inner">
           <div class="ach-badge ${badgeType}">${icon}</div>
@@ -7704,7 +7733,10 @@
             <div class="ach-card-sub">${esc(item.closedSub)}</div>
           </div>
         </div>
+
+
         <div class="ach-toggle">↓</div>
+
       </button>
       <div class="ach-body"><div class="ach-body-inner"><div class="ach-content">
         <div class="ach-shell">
