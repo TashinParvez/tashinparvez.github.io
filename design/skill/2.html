@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skills & Capabilities — Md Tashin Parvez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #0d0d10;
+    --bg-soft:   #131318;
+    --surface:   #17171d;
+    --surface-2: #1d1d24;
+    --line:      #26262f;
+    --line-soft: #1e1e26;
+    --text:      #ececf0;
+    --text-mute: #8a8a96;
+    --text-dim:  #5a5a66;
+    --accent:    #d4ff3a;            /* lime — signature accent */
+    --accent-dim:#9bbf28;
+    --product:   #d4ff3a;
+    --technical: #7cc4ff;
+    --tools:     #ff9966;
+    --radius:    14px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter Tight',sans-serif;
+    font-feature-settings:'ss01','cv11';
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+
+  /* background atmosphere */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(212,255,58,0.05), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(124,196,255,0.04), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .skills-section{
+    position:relative;
+    z-index:1;
+    padding:120px 32px;
+    max-width:1280px;
+    margin:0 auto;
+  }
+
+  /* eyebrow */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-mute);
+    margin-bottom:24px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:24px;height:1px;
+    background:var(--accent);
+  }
+
+  /* heading */
+  .section-title{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(40px,5.5vw,68px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    margin-bottom:28px;
+    max-width:900px;
+  }
+  .section-title em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--accent);
+  }
+
+  .section-sub{
+    font-size:16px;
+    color:var(--text-mute);
+    max-width:600px;
+    margin-bottom:64px;
+    line-height:1.65;
+  }
+
+  /* filter tabs */
+  .skill-tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:48px;
+    flex-wrap:wrap;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .tab{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--text-mute);
+    padding:10px 18px;
+    border-radius:999px;
+    font-family:'Inter Tight',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .tab:hover{
+    color:var(--text);
+    border-color:var(--text-dim);
+  }
+  .tab.active{
+    background:var(--text);
+    color:var(--bg);
+    border-color:var(--text);
+  }
+  .tab .count{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    opacity:0.6;
+  }
+
+  /* bucket grid */
+  .buckets{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+
+  .bucket{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.35s cubic-bezier(0.2,0.7,0.3,1);
+  }
+  .bucket:hover{
+    transform:translateY(-4px);
+    border-color:var(--line-soft);
+    background:var(--surface-2);
+  }
+  .bucket::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:2px;
+    background:var(--bucket-color, var(--accent));
+    opacity:0.8;
+  }
+
+  .bucket-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:28px;
+    padding-bottom:24px;
+    border-bottom:1px dashed var(--line);
+  }
+  .bucket-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:0.1em;
+  }
+  .bucket-name{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:26px;
+    letter-spacing:-0.01em;
+    margin-top:4px;
+  }
+  .bucket-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    padding:5px 10px;
+    border-radius:6px;
+    background:var(--bucket-bg, rgba(212,255,58,0.08));
+    color:var(--bucket-color, var(--accent));
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border:1px solid var(--bucket-border, rgba(212,255,58,0.15));
+    white-space:nowrap;
+  }
+
+  .bucket-desc{
+    color:var(--text-mute);
+    font-size:13.5px;
+    line-height:1.6;
+    margin-bottom:28px;
+    min-height:60px;
+  }
+
+  /* skill chips */
+  .skill-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .skill-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid var(--line-soft);
+    cursor:default;
+    transition:all 0.2s ease;
+  }
+  .skill-item:last-child{border-bottom:none}
+  .skill-item:hover{
+    padding-left:8px;
+  }
+  .skill-item:hover .skill-name{color:var(--text)}
+  .skill-item:hover .skill-level::after{
+    width:var(--level-w);
+  }
+
+  .skill-name{
+    font-size:14.5px;
+    color:var(--text-mute);
+    font-weight:500;
+    transition:color 0.2s;
+  }
+  .skill-meta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .skill-level{
+    width:60px;
+    height:3px;
+    background:var(--line);
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+  }
+  .skill-level::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    width:var(--level-w);
+    background:var(--bucket-color, var(--accent));
+    border-radius:2px;
+    transition:width 0.5s cubic-bezier(0.2,0.7,0.3,1);
+  }
+  .skill-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--text-dim);
+    letter-spacing:0.05em;
+  }
+
+  /* color schemes per bucket */
+  .bucket.product{
+    --bucket-color:var(--product);
+    --bucket-bg:rgba(212,255,58,0.07);
+    --bucket-border:rgba(212,255,58,0.18);
+  }
+  .bucket.technical{
+    --bucket-color:var(--technical);
+    --bucket-bg:rgba(124,196,255,0.07);
+    --bucket-border:rgba(124,196,255,0.18);
+  }
+  .bucket.tools{
+    --bucket-color:var(--tools);
+    --bucket-bg:rgba(255,153,102,0.07);
+    --bucket-border:rgba(255,153,102,0.18);
+  }
+
+  /* footer note */
+  .skills-footer{
+    margin-top:56px;
+    padding-top:32px;
+    border-top:1px solid var(--line-soft);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-note{
+    font-size:13px;
+    color:var(--text-dim);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .footer-note span{color:var(--accent)}
+
+  .legend{
+    display:flex;
+    gap:18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+  }
+  .legend-item{display:flex;align-items:center;gap:6px}
+  .legend-dot{
+    width:8px;height:8px;border-radius:50%;
+  }
+
+  /* hidden state for filter */
+  .bucket.hide{
+    display:none;
+  }
+
+  /* entry animation */
+  .bucket{
+    opacity:0;
+    transform:translateY(20px);
+    animation:rise 0.7s cubic-bezier(0.2,0.7,0.3,1) forwards;
+  }
+  .bucket:nth-child(1){animation-delay:0.1s}
+  .bucket:nth-child(2){animation-delay:0.22s}
+  .bucket:nth-child(3){animation-delay:0.34s}
+
+  @keyframes rise{
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* responsive */
+  @media (max-width:980px){
+    .buckets{grid-template-columns:1fr;gap:18px}
+    .skills-section{padding:80px 20px}
+    .bucket{padding:28px 24px}
+    .skills-footer{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<section class="skills-section" id="skills">
+  <div class="eyebrow">Engineering × Product Depth</div>
+
+  <h2 class="section-title">Skills & <em>Capabilities</em></h2>
+
+  <p class="section-sub">
+    A focused set of product, technical, and tooling skills — built from CSE foundations and sharpened through hands-on product work.
+  </p>
+
+  <!-- Filter Tabs -->
+  <div class="skill-tabs" role="tablist">
+    <button class="tab active" data-filter="all">All <span class="count">15</span></button>
+    <button class="tab" data-filter="product">Product <span class="count">5</span></button>
+    <button class="tab" data-filter="technical">Technical <span class="count">5</span></button>
+    <button class="tab" data-filter="tools">Tools <span class="count">5</span></button>
+  </div>
+
+  <!-- Buckets -->
+  <div class="buckets">
+
+    <!-- Bucket 1: Product -->
+    <article class="bucket product" data-bucket="product">
+      <div class="bucket-head">
+        <div>
+          <div class="bucket-num">01</div>
+          <div class="bucket-name">Product</div>
+        </div>
+        <div class="bucket-tag">Core</div>
+      </div>
+      <p class="bucket-desc">
+        Turning user signals into structured product decisions — research, requirements, prioritization, and tradeoffs.
+      </p>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <span class="skill-name">User Research</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Discovery</span>
+            <div class="skill-level" style="--level-w:88%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">PRD Writing</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Spec</span>
+            <div class="skill-level" style="--level-w:82%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Roadmap Prioritization</span>
+          <div class="skill-meta">
+            <span class="skill-tag">RICE</span>
+            <div class="skill-level" style="--level-w:75%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Jobs-to-be-Done</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Framework</span>
+            <div class="skill-level" style="--level-w:78%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Wireframing & Flows</span>
+          <div class="skill-meta">
+            <span class="skill-tag">UX</span>
+            <div class="skill-level" style="--level-w:80%"></div>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Bucket 2: Technical -->
+    <article class="bucket technical" data-bucket="technical">
+      <div class="bucket-head">
+        <div>
+          <div class="bucket-num">02</div>
+          <div class="bucket-name">Technical</div>
+        </div>
+        <div class="bucket-tag">Edge</div>
+      </div>
+      <p class="bucket-desc">
+        CSE foundation that lets me speak engineering fluently, scope feasibility early, and bridge product-eng conversations.
+      </p>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <span class="skill-name">System Design</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Arch</span>
+            <div class="skill-level" style="--level-w:80%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Data & SQL</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Query</span>
+            <div class="skill-level" style="--level-w:78%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">API Thinking</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Integ</span>
+            <div class="skill-level" style="--level-w:75%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Algorithmic Reasoning</span>
+          <div class="skill-meta">
+            <span class="skill-tag">CP</span>
+            <div class="skill-level" style="--level-w:90%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">ML / AI Awareness</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Applied</span>
+            <div class="skill-level" style="--level-w:72%"></div>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Bucket 3: Tools -->
+    <article class="bucket tools" data-bucket="tools">
+      <div class="bucket-head">
+        <div>
+          <div class="bucket-num">03</div>
+          <div class="bucket-name">Tools</div>
+        </div>
+        <div class="bucket-tag">Stack</div>
+      </div>
+      <p class="bucket-desc">
+        Day-to-day tools for product execution — documentation, design, data, and team collaboration.
+      </p>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <span class="skill-name">Figma</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Design</span>
+            <div class="skill-level" style="--level-w:80%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Notion</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Docs</span>
+            <div class="skill-level" style="--level-w:90%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Jira / Trello</span>
+          <div class="skill-meta">
+            <span class="skill-tag">PM</span>
+            <div class="skill-level" style="--level-w:75%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Excel / Sheets</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Data</span>
+            <div class="skill-level" style="--level-w:85%"></div>
+          </div>
+        </li>
+        <li class="skill-item">
+          <span class="skill-name">Slack / Loom</span>
+          <div class="skill-meta">
+            <span class="skill-tag">Comm</span>
+            <div class="skill-level" style="--level-w:82%"></div>
+          </div>
+        </li>
+      </ul>
+    </article>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="skills-footer">
+    <div class="footer-note">
+      &lt;3 buckets · 15 capabilities · <span>built for PM work</span>&gt;
+    </div>
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--product)"></span> Product
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--technical)"></span> Technical
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot" style="background:var(--tools)"></span> Tools
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  // Filter logic
+  const tabs    = document.querySelectorAll('.tab');
+  const buckets = document.querySelectorAll('.bucket');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.dataset.filter;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      buckets.forEach(b => {
+        if (filter === 'all' || b.dataset.bucket === filter){
+          b.classList.remove('hide');
+        } else {
+          b.classList.add('hide');
+        }
+      });
+    });
+  });
+
+  // Animate skill-level bars on scroll into view
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.querySelectorAll('.skill-level').forEach(bar => {
+          const w = bar.style.getPropertyValue('--level-w');
+          bar.style.setProperty('--level-w','0%');
+          setTimeout(() => bar.style.setProperty('--level-w', w), 200);
+        });
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  buckets.forEach(b => io.observe(b));
+</script>
+
+</body>
+</html>
