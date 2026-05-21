@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More About Me — Tashin Parvez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Satoshi:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#060608;--bg2:#0c0c10;--bg3:#111116;--bg4:#19191f;
+      --s:#1e1e26;--sh:#26262f;
+      --t1:#ece9e1;--t2:#a09d95;--t3:#6a6862;
+      --ac:#c9a96e;--ac2:#e8c97a;--acbg:rgba(201,169,110,.08);--acbg2:rgba(201,169,110,.15);
+      --gr:#5ec269;--bl:#5b8def;
+      --b:rgba(255,255,255,.05);--b2:rgba(255,255,255,.1);
+      --serif:'Instrument Serif',Georgia,serif;
+      --sans:'Satoshi',-apple-system,sans-serif;
+      --mono:'JetBrains Mono',monospace;
+      --e:cubic-bezier(.16,1,.3,1);
+      --mx:1060px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--bg);color:var(--t1);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    ::selection{background:var(--ac);color:var(--bg)}
+    a{color:var(--ac);text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* reveal */
+    .rv{opacity:0;transform:translateY(44px);transition:opacity .85s var(--e),transform .85s var(--e)}
+    .rv.vis{opacity:1;transform:translateY(0)}
+    .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
+
+    /* cursor glow */
+    #glow{position:fixed;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.035),transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:left .5s var(--e),top .5s var(--e);display:none}
+    @media(hover:hover){#glow{display:block}}
+
+    /* ── nav ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,8,.78);backdrop-filter:blur(28px);border-bottom:1px solid var(--b);transition:padding .3s}
+    nav.shrink{padding:13px 40px}
+    .logo{font-family:var(--serif);font-size:1.1rem;color:var(--t1)}
+    .back{font-size:.76rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--t2);display:flex;align-items:center;gap:6px;transition:color .3s}
+    .back:hover{color:var(--ac)}
+
+    /* ── hero ── */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 40px 80px;max-width:var(--mx);margin:0 auto;position:relative}
+    .htag{font-family:var(--mono);font-size:.7rem;color:var(--ac);letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px;display:flex;align-items:center;gap:12px}
+    .htag .dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.6rem);font-weight:400;line-height:1.1;margin-bottom:30px}
+    .hero h1 .ln{display:block;overflow:hidden}
+    .hero h1 .ln span{display:inline-block;transform:translateY(115%);animation:su .85s var(--e) forwards}
+    .hero h1 .ln:nth-child(2) span{animation-delay:.14s}
+    @keyframes su{to{transform:translateY(0)}}
+    .hero h1 em{font-style:italic;color:var(--ac)}
+    .hsub{font-size:1.06rem;color:var(--t2);max-width:520px;line-height:1.85;opacity:0;animation:fi 1s .55s var(--e) forwards}
+    @keyframes fi{to{opacity:1}}
+    .hscroll{position:absolute;bottom:36px;left:40px;display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.62rem;color:var(--t3);letter-spacing:.35em;text-transform:uppercase}
+    .hscroll .bar{width:48px;height:1px;background:var(--t3);position:relative;overflow:hidden}
+    .hscroll .bar::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--ac);animation:bs 2.5s ease-in-out infinite}
+    @keyframes bs{0%{left:-100%}50%{left:0}100%{left:100%}}
+
+    /* ── section ── */
+    .sec{padding:110px 40px;max-width:var(--mx);margin:0 auto}
+    .sec-w{max-width:1260px}
+    .sec-full{max-width:100%}
+    .slb{font-family:var(--mono);font-size:.66rem;color:var(--ac);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .slb::before{content:'';width:18px;height:1px;background:var(--ac)}
+    .stt{font-family:var(--serif);font-size:clamp(1.7rem,3.3vw,2.6rem);font-weight:400;line-height:1.2;margin-bottom:18px}
+    .stt em{font-style:italic;color:var(--ac)}
+    .sin{font-size:.95rem;color:var(--t2);max-width:540px;line-height:1.85;margin-bottom:52px}
+    .hr{height:1px;background:var(--b);max-width:var(--mx);margin:0 auto}
+
+    /* ═══ ORIGIN ═══ */
+    .og{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+    .og-imgs{position:relative;min-height:520px}
+    .og-imgs .im1{position:absolute;top:0;left:0;width:76%;aspect-ratio:3/4;border-radius:8px;overflow:hidden;z-index:2;box-shadow:0 0 60px rgba(0,0,0,.3)}
+    .og-imgs .im2{position:absolute;bottom:0;right:0;width:50%;aspect-ratio:1;border-radius:8px;overflow:hidden;z-index:3;border:3px solid var(--bg)}
+    .og-imgs img{width:100%;height:100%;object-fit:cover}
+    .og-badge{position:absolute;top:16px;right:0;z-index:4;background:var(--ac);color:var(--bg);padding:7px 16px;border-radius:4px;font-family:var(--mono);font-size:.65rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+    .og-txt h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:12px;font-weight:400;line-height:1.35}
+    .og-txt p{color:var(--t2);margin-bottom:22px;font-size:.92rem;line-height:1.9}
+    .og-txt strong{color:var(--t1);font-weight:500}
+    .og-q{border-left:2px solid var(--ac);padding:14px 0 14px 22px;margin:28px 0;font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--t1);line-height:1.55}
+    .og-link{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:var(--ac);margin-top:8px;transition:gap .3s}
+    .og-link:hover{gap:14px}
+
+    /* ═══ PHILOSOPHY — compact scroll-read ═══ */
+    .ph-section{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:110px 40px}
+    .ph-inner{max-width:var(--mx);margin:0 auto}
+    .ph-row{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:32px 0;border-bottom:1px solid var(--b);opacity:.2;transition:opacity .55s var(--e)}
+    .ph-row:first-of-type{border-top:1px solid var(--b)}
+    .ph-row.reading{opacity:1}
+    .ph-n{font-family:var(--mono);font-size:.7rem;color:var(--ac);padding-top:5px}
+    .ph-row h4{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:6px;line-height:1.35}
+    .ph-row p{font-size:.88rem;color:var(--t2);line-height:1.8;max-width:520px}
+
+    /* ═══ INTERESTS — magazine stagger ═══ */
+    .int-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .int-card{background:var(--bg3);border:1px solid var(--b);border-radius:10px;padding:32px 26px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:border-color .4s,background .4s,transform .5s var(--e);cursor:default}
+    .int-card:hover{border-color:var(--b2);background:var(--bg4);transform:translateY(-4px)}
+    .int-card .ic-emoji{font-size:1.8rem;margin-bottom:16px;display:block;transition:transform .5s var(--e)}
+    .int-card:hover .ic-emoji{transform:scale(1.15) rotate(-6deg)}
+    .int-card h4{font-size:.92rem;font-weight:600;margin-bottom:8px}
+    .int-card p{font-size:.82rem;color:var(--t2);line-height:1.7;flex:1}
+    .int-card .ic-sub{font-family:var(--mono);font-size:.62rem;color:var(--t3);margin-top:14px;letter-spacing:.06em;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+    .int-card:hover .ic-sub{opacity:1;transform:translateY(0)}
+    /* bento sizing */
+    .ic-1{grid-column:span 5;grid-row:span 2}
+    .ic-2{grid-column:span 4}
+    .ic-3{grid-column:span 3}
+    .ic-4{grid-column:span 4}
+    .ic-5{grid-column:span 3;grid-row:span 2}
+    .ic-6{grid-column:span 5}
+
+    /* ═══ PHOTOGRAPHY ═══ */
+    .ph-masonry{columns:4;column-gap:12px}
+    .ph-item{break-inside:avoid;margin-bottom:12px;border-radius:6px;overflow:hidden;position:relative;cursor:pointer;transition:transform .5s var(--e)}
+    .ph-item:hover{transform:scale(1.015);z-index:5}
+    .ph-item img{width:100%;display:block;filter:grayscale(35%) contrast(1.05);transition:filter .5s}
+    .ph-item:hover img{filter:grayscale(0%) contrast(1.1)}
+    .ph-item .po{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.55));opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:14px}
+    .ph-item:hover .po{opacity:1}
+    .po span{font-size:.75rem;color:rgba(255,255,255,.85)}
+    .ig-btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:11px 26px;border:1px solid var(--b2);border-radius:40px;font-size:.84rem;font-weight:500;color:var(--t2);transition:all .3s}
+    .ig-btn:hover{border-color:var(--ac);color:var(--ac);background:var(--acbg)}
+
+    /* ═══ IN PERSON — horizontal filmstrip ═══ */
+    .film-wrap{position:relative;overflow:hidden}
+    .film-track{display:flex;gap:18px;padding:0 40px 24px;overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .film-track::-webkit-scrollbar{display:none}
+    .film-track.grabbing{cursor:grabbing}
+    .fm{flex:0 0 280px;border-radius:10px;overflow:hidden;position:relative;user-select:none}
+    .fm img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s var(--e);pointer-events:none}
+    .fm:hover img{transform:scale(1.05)}
+    .fm figcaption{position:absolute;bottom:0;left:0;right:0;padding:36px 16px 16px;background:linear-gradient(transparent,rgba(0,0,0,.6));font-size:.78rem;color:rgba(255,255,255,.85);transform:translateY(100%);transition:transform .35s var(--e)}
+    .fm:hover figcaption{transform:translateY(0)}
+    .film-hint{position:absolute;right:40px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.6rem;color:var(--t3);letter-spacing:.1em;writing-mode:vertical-rl;text-transform:uppercase;pointer-events:none;opacity:.5}
+
+    /* ═══ COMMUNITY ═══ */
+    .cl-track{position:relative;padding-left:44px}
+    .cl-track::before{content:'';position:absolute;top:10px;bottom:10px;left:7px;width:1px;background:linear-gradient(var(--ac),var(--b))}
+    .cl-node{position:relative;margin-bottom:36px}
+    .cl-node::before{content:'';position:absolute;left:-44px;top:7px;width:15px;height:15px;border-radius:50%;border:2px solid var(--ac);background:var(--bg);transition:background .3s,box-shadow .3s}
+    .cl-node:first-child::before{background:var(--ac);box-shadow:0 0 14px rgba(201,169,110,.3)}
+    .cl-node:hover::before{background:var(--ac);box-shadow:0 0 14px rgba(201,169,110,.3)}
+    .cl-node h4{font-size:.92rem;font-weight:500;margin-bottom:2px}
+    .cl-node .cl-org{font-family:var(--mono);font-size:.68rem;color:var(--ac);margin-bottom:5px}
+    .cl-node p{font-size:.84rem;color:var(--t2);line-height:1.7}
+    .cl-node .cl-dt{font-family:var(--mono);font-size:.62rem;color:var(--t3);margin-top:5px}
+
+    /* ═══ FAQ — Pumo style with hover-dim ═══ */
+    .faq-list{list-style:none}
+    .faq-list:hover .faq-item{opacity:.35}
+    .faq-list:hover .faq-item:hover{opacity:1}
+    .faq-item{border-bottom:1px solid var(--b);transition:opacity .4s var(--e)}
+    .faq-item:first-child{border-top:1px solid var(--b)}
+    .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;padding:28px 0;text-align:left;font-family:var(--sans);font-size:.98rem;font-weight:500;color:var(--t1);transition:color .3s}
+    .faq-q:hover{color:var(--ac)}
+    .faq-num{font-family:var(--serif);font-size:1.3rem;color:var(--t3);width:48px;flex-shrink:0;font-weight:400;transition:color .3s}
+    .faq-item:hover .faq-num{color:var(--ac)}
+    .faq-qtxt{flex:1}
+    .faq-arrow{width:28px;height:28px;border:1px solid var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--t3);transition:transform .5s var(--e),border-color .3s,color .3s,background .3s}
+    .faq-item.open .faq-arrow{transform:rotate(45deg);border-color:var(--ac);color:var(--bg);background:var(--ac)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .55s var(--e),padding .4s;padding:0 0 0 48px}
+    .faq-item.open .faq-a{max-height:280px;padding:0 0 28px 48px}
+    .faq-a p{font-size:.9rem;color:var(--t2);line-height:1.85}
+    .faq-a a{text-decoration:underline;text-underline-offset:3px}
+
+    /* ═══ FIND ME ═══ */
+    .find-section{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:90px 40px}
+    .find-inner{max-width:var(--mx);margin:0 auto}
+    .find-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:48px}
+    .find-card{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--bg3);border:1px solid var(--b);border-radius:8px;transition:border-color .3s,background .3s,transform .4s var(--e);text-decoration:none}
+    .find-card:hover{border-color:var(--b2);background:var(--bg4);transform:translateY(-3px)}
+    .find-card .fc-icon{width:36px;height:36px;border-radius:8px;background:var(--acbg2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .find-card .fc-name{font-size:.85rem;font-weight:500;color:var(--t1)}
+    .find-card .fc-handle{font-size:.72rem;color:var(--t3);font-family:var(--mono)}
+    .find-card:hover .fc-name{color:var(--ac)}
+
+    /* ═══ CTA ═══ */
+    .cta{background:var(--bg);border-top:1px solid var(--b);padding:120px 40px;text-align:center;position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.035),transparent 70%);pointer-events:none}
+    .cta-in{max-width:560px;margin:0 auto;position:relative;z-index:2}
+    .cta-in h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:400;margin-bottom:16px}
+    .cta-in h2 em{font-style:italic;color:var(--ac)}
+    .cta-in>p{color:var(--t2);margin-bottom:40px;font-size:.96rem;line-height:1.8}
+    .cta-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .cta-links a{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid var(--b2);border-radius:6px;font-size:.84rem;font-weight:500;color:var(--t2);transition:all .3s}
+    .cta-links a:hover{border-color:var(--ac);color:var(--ac);background:var(--acbg)}
+    .cta-links a.main{background:var(--ac);border-color:var(--ac);color:var(--bg);font-weight:700}
+    .cta-links a.main:hover{background:var(--ac2);border-color:var(--ac2)}
+    footer{padding:26px 40px;text-align:center;font-size:.7rem;color:var(--t3);border-top:1px solid var(--b)}
+
+    /* lightbox */
+    .lb{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);backdrop-filter:blur(30px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+    .lb.on{opacity:1;pointer-events:all}
+    .lb img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:4px;transform:scale(.9);transition:transform .5s var(--e)}
+    .lb.on img{transform:scale(1)}
+    .lb-x{position:absolute;top:22px;right:26px;width:42px;height:42px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:none;color:var(--t1);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .3s}
+    .lb-x:hover{border-color:var(--ac);transform:rotate(90deg)}
+
+    /* responsive */
+    @media(max-width:960px){
+      .og{grid-template-columns:1fr;gap:40px}
+      .og-imgs{min-height:auto;display:flex;gap:12px}
+      .og-imgs .im1{position:relative;width:60%;aspect-ratio:3/4}
+      .og-imgs .im2{position:relative;width:38%;aspect-ratio:1;border:none;align-self:flex-end}
+      .og-badge{top:12px;right:auto;left:12px}
+      .int-grid{grid-template-columns:repeat(6,1fr)}
+      .ic-1,.ic-2,.ic-3,.ic-4,.ic-5,.ic-6{grid-column:span 3;grid-row:auto}
+      .ph-masonry{columns:3}
+      .fm{flex:0 0 240px}
+    }
+    @media(max-width:640px){
+      nav{padding:13px 18px}
+      .hero{padding:108px 18px 56px}
+      .sec{padding:76px 18px}
+      .ph-section{padding:76px 18px}
+      .find-section{padding:76px 18px}
+      .cta{padding:76px 18px}
+      .hscroll{left:18px}
+      .int-grid{grid-template-columns:1fr}
+      .ic-1,.ic-2,.ic-3,.ic-4,.ic-5,.ic-6{grid-column:span 1}
+      .ph-masonry{columns:2}
+      .film-track{padding:0 18px 20px}
+      .fm{flex:0 0 200px}
+      .find-grid{grid-template-columns:1fr 1fr}
+      .cta-links{flex-direction:column;align-items:center}
+    }
+  </style>
+</head>
+<body>
+
+<div id="glow"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="https://tashinparvez.github.io/design/main/oz-edit.html" class="back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Portfolio
+  </a>
+  <span class="logo">Tashin Parvez</span>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="htag"><span class="dot"></span> Currently open to opportunities</p>
+  <h1>
+    <span class="ln"><span>Not just a résumé.</span></span>
+    <span class="ln"><span>The <em>whole picture.</em></span></span>
+  </h1>
+  <p class="hsub">Where the curiosity started, how it became a craft, what I care about when nobody's watching — and why any of it matters for the products I build.</p>
+  <div class="hscroll"><span class="bar"></span> Scroll</div>
+</header>
+
+<div class="hr"></div>
+
+<!-- ═══ ORIGIN ═══ -->
+<section class="sec" id="origin">
+  <div class="rv">
+    <p class="slb">01 — Origin</p>
+    <h2 class="stt">How I got <em>here</em></h2>
+  </div>
+  <div class="og">
+    <div class="og-imgs rv d1">
+      <span class="og-badge">Dhaka · 2026</span>
+      <div class="im1"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&crop=face" alt="Tashin" /></div>
+      <div class="im2"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=400&fit=crop" alt="Working" /></div>
+    </div>
+    <div class="og-txt">
+      <div class="rv d2">
+        <h3>It started with breaking things, not building them.</h3>
+        <p>I was a CS student at UIU, deep in Codeforces problems at 2 AM. Somewhere around my 800th problem, a quiet realization: I was more excited about <strong>why something should exist</strong> than how the algorithm worked.</p>
+      </div>
+      <div class="rv d3">
+        <div class="og-q">"The moment I stopped asking 'how does this compile' and started asking 'who actually needs this' — that's when product thinking clicked."</div>
+      </div>
+      <div class="rv d3">
+        <h3>Teaching made me a PM before I knew it.</h3>
+        <p>As a <strong>TA across four courses</strong>, I spent semesters watching students struggle — not with code, but with understanding what the problem actually was. That instinct — diagnosing real friction, not assumed friction — is exactly what I do now as a <strong>Product Analyst at Ontik Technology</strong>.</p>
+      </div>
+      <div class="rv d4">
+        <h3>What I'm building toward.</h3>
+        <p>I want to work on <strong>B2B SaaS products</strong> where the users are professionals, the workflows are messy, and good product decisions directly move business metrics.</p>
+        <a href="https://tashinparvez.github.io/design/main/oz-edit.html#projects" class="og-link">See my projects & case studies <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ PHILOSOPHY ═══ -->
+<div class="ph-section" id="philosophy">
+  <div class="ph-inner">
+    <div class="rv">
+      <p class="slb">02 — Product Beliefs</p>
+      <h2 class="stt">Things I <em>hold true</em></h2>
+    </div>
+    <div class="ph-row" data-ph><span class="ph-n">01</span><div><h4>Start with the problem, not the feature.</h4><p>Most bad products skip the "why." I push to understand real friction before proposing anything.</p></div></div>
+    <div class="ph-row" data-ph><span class="ph-n">02</span><div><h4>Features are hypotheses, not commitments.</h4><p>Ship small, learn fast. Ego has no place in a product roadmap.</p></div></div>
+    <div class="ph-row" data-ph><span class="ph-n">03</span><div><h4>Enterprise users deserve consumer-grade UX.</h4><p>"It's B2B" is not an excuse for bad design. Professionals notice when a product respects their time.</p></div></div>
+    <div class="ph-row" data-ph><span class="ph-n">04</span><div><h4>Data tells you what. Conversations tell you why.</h4><p>Analytics without user context is guessing with charts. I use both.</p></div></div>
+  </div>
+</div>
+
+<!-- ═══ INTERESTS — bento stagger ═══ -->
+<section class="sec" id="interests">
+  <div class="rv">
+    <p class="slb">03 — Beyond Work</p>
+    <h2 class="stt">What keeps me <em>interesting</em></h2>
+    <p class="sin">The things that recharge me, sharpen how I think, and make me someone worth grabbing coffee with.</p>
+  </div>
+  <div class="int-grid">
+    <div class="int-card ic-1 rv">
+      <span class="ic-emoji">📸</span>
+      <h4>Photography</h4>
+      <p>I think in frames. Composition, visual hierarchy, negative space — photography trained my design eye years before I ever opened Figma. I shoot street, architecture, and candid moments. There's a gallery below if you're curious.</p>
+      <span class="ic-sub">3+ years shooting · Certificates on request</span>
+    </div>
+    <div class="int-card ic-2 rv d1">
+      <span class="ic-emoji">🧩</span>
+      <h4>Competitive Programming</h4>
+      <p>1000+ problems solved across Codeforces, CodeChef, and AtCoder. It trained me to decompose before I solve — surprisingly useful for product specs.</p>
+      <span class="ic-sub">Codeforces · CodeChef · AtCoder</span>
+    </div>
+    <div class="int-card ic-3 rv d2">
+      <span class="ic-emoji">✍️</span>
+      <h4>Writing</h4>
+      <p>I write to clarify my own thinking. Clear writing is clear thinking.</p>
+      <span class="ic-sub">Blog posts · Product notes</span>
+    </div>
+    <div class="int-card ic-4 rv d1">
+      <span class="ic-emoji">🎓</span>
+      <h4>Teaching & Mentoring</h4>
+      <p>TA across 4 university courses. Founded Scholar's Squad for exam prep. Explaining complex things simply is the most PM-relevant skill I have.</p>
+      <span class="ic-sub">4 courses · 100+ students mentored</span>
+    </div>
+    <div class="int-card ic-5 rv d2">
+      <span class="ic-emoji">🏗️</span>
+      <h4>Building Systems</h4>
+      <p>Not just code — systems. Community initiatives, knowledge bases, processes. I get satisfaction from building things that outlast me and keep running without me.</p>
+      <span class="ic-sub">Scholar's Squad · Study Archive · Club ops</span>
+    </div>
+    <div class="int-card ic-6 rv d3">
+      <span class="ic-emoji">🌍</span>
+      <h4>Ideas & Rabbit Holes</h4>
+      <p>Product strategy, cognitive psychology, business models. Every good PM I admire is curious about the world, not just the backlog.</p>
+      <span class="ic-sub">Always reading · Always questioning</span>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ PHOTOGRAPHY ═══ -->
+<section class="sec sec-w" id="gallery">
+  <div class="rv">
+    <p class="slb">04 — Through My Lens</p>
+    <h2 class="stt">A curated <em>few</em></h2>
+  </div>
+  <div class="ph-masonry rv">
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=660&fit=crop" alt="Mountains"/><div class="po"><span>Mountain light</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&h=340&fit=crop" alt="Stars"/><div class="po"><span>Night sky</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&h=600&fit=crop" alt="Fields"/><div class="po"><span>Green expanse</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&h=420&fit=crop" alt="Fog"/><div class="po"><span>Morning fog</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&h=500&fit=crop" alt="Lake"/><div class="po"><span>Still waters</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=500&h=720&fit=crop" alt="Waterfall"/><div class="po"><span>Falling light</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=380&fit=crop" alt="Rays"/><div class="po"><span>Golden hour</span></div></div>
+    <div class="ph-item" onclick="openLb(this)"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=500&h=580&fit=crop" alt="Forest"/><div class="po"><span>Quiet paths</span></div></div>
+  </div>
+  <div class="rv" style="margin-top:6px;">
+    <a href="https://instagram.com/" target="_blank" class="ig-btn">See more on Instagram <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ IN PERSON — draggable filmstrip ═══ -->
+<section class="sec sec-full" id="personal">
+  <div class="rv" style="padding:0 40px;margin-bottom:32px;">
+    <p class="slb">05 — In Person</p>
+    <h2 class="stt">Behind the <em>screen</em></h2>
+  </div>
+  <div class="film-wrap rv">
+    <div class="film-track" id="filmTrack">
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=420&h=560&fit=crop&crop=face" alt="Event"/><figcaption>Speaking at a workshop</figcaption></figure>
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=420&h=560&fit=crop" alt="Collab"/><figcaption>Collaboration day</figcaption></figure>
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=420&h=560&fit=crop" alt="Team"/><figcaption>Team huddle</figcaption></figure>
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?w=420&h=560&fit=crop&crop=face" alt="Outside"/><figcaption>Outside the screen</figcaption></figure>
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=420&h=560&fit=crop&crop=face" alt="Portrait"/><figcaption>Candid moment</figcaption></figure>
+      <figure class="fm"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=420&h=560&fit=crop&crop=face" alt="Event2"/><figcaption>After the presentation</figcaption></figure>
+    </div>
+    <span class="film-hint">drag to explore →</span>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ COMMUNITY ═══ -->
+<section class="sec" id="club">
+  <div class="rv">
+    <p class="slb">06 — Community</p>
+    <h2 class="stt">UIU Computer Club <em>arc</em></h2>
+    <p class="sin">Four years of growing from a junior volunteer to shaping how the community learns.</p>
+  </div>
+  <div class="cl-track rv">
+    <div class="cl-node"><h4>CP Wing Associate</h4><span class="cl-org">UIU Computer Club</span><p>Contributing to competitive programming activities, peer learning, and community engagement.</p><span class="cl-dt">2025 — 2026</span></div>
+    <div class="cl-node"><h4>Executive, Programming Wing</h4><span class="cl-org">UIU Computer Club</span><p>Organised programming events, student engagement, and club-wide coding initiatives.</p><span class="cl-dt">2023 — 2025</span></div>
+    <div class="cl-node"><h4>Junior Executive, Programming Wing</h4><span class="cl-org">UIU Computer Club</span><p>Supported event coordination and early leadership in the programming wing.</p><span class="cl-dt">2023 — 2024</span></div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ FAQ — Pumo style ═══ -->
+<section class="sec" id="faq">
+  <div class="rv">
+    <p class="slb">07 — Frequently Asked</p>
+    <h2 class="stt">Questions <em>answered</em></h2>
+  </div>
+  <ul class="faq-list rv">
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">01</span><span class="faq-qtxt">What kind of PM role are you targeting?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>APM or Junior PM in B2B SaaS — particularly products serving complex professional workflows where understanding the user requires research and cross-functional collaboration.</p></div></li>
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">02</span><span class="faq-qtxt">Are you open to relocation?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>Yes. Based in Dhaka, Bangladesh. Open to remote, hybrid, or on-site — including relocation for the right team.</p></div></li>
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">03</span><span class="faq-qtxt">What makes you different from other junior PMs?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>Engineering depth. CS degree, 1000+ competitive programming problems, and an IEEE publication. I don't just write specs — I understand what engineers face building them. Better requirements, fewer miscommunications, faster trust.</p></div></li>
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">04</span><span class="faq-qtxt">Do you have enterprise product experience?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>At Ontik Technology I work on products serving business users — conducting research, mapping workflows, and writing documentation for enterprise features. It's early-stage experience, but it's hands-on and real.</p></div></li>
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">05</span><span class="faq-qtxt">What's your working style?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>Structured but not rigid. Heavy on documentation and async updates. I ask the right questions early to avoid rework later. I'm the one who writes the meeting summary before anyone asks.</p></div></li>
+    <li class="faq-item"><button class="faq-q" onclick="toggleF(this)"><span class="faq-num">06</span><span class="faq-qtxt">Can I see your resume?</span><span class="faq-arrow">+</span></button><div class="faq-a"><p>Absolutely — <a href="https://tashinparvez.github.io/design/main/sections/resume-doc-reader/resume.html" target="_blank">view it here ↗</a></p></div></li>
+  </ul>
+</section>
+
+<div class="hr"></div>
+
+<!-- ═══ FIND ME ═══ -->
+<div class="find-section" id="findme">
+  <div class="find-inner">
+    <div class="rv">
+      <p class="slb">08 — Elsewhere</p>
+      <h2 class="stt">Find me on <em>other platforms</em></h2>
+    </div>
+    <div class="find-grid rv">
+      <a href="https://www.linkedin.com/in/tashinparvez" target="_blank" class="find-card">
+        <div class="fc-icon">in</div>
+        <div><div class="fc-name">LinkedIn</div><div class="fc-handle">@tashinparvez</div></div>
+      </a>
+      <a href="https://github.com/TashinParvez" target="_blank" class="find-card">
+        <div class="fc-icon">⌘</div>
+        <div><div class="fc-name">GitHub</div><div class="fc-handle">@TashinParvez</div></div>
+      </a>
+      <a href="https://codeforces.com/profile/" target="_blank" class="find-card">
+        <div class="fc-icon">◈</div>
+        <div><div class="fc-name">Codeforces</div><div class="fc-handle">Profile</div></div>
+      </a>
+      <a href="https://www.codechef.com/users/" target="_blank" class="find-card">
+        <div class="fc-icon">★</div>
+        <div><div class="fc-name">CodeChef</div><div class="fc-handle">Profile</div></div>
+      </a>
+      <a href="mailto:tashinparvez2002@gmail.com" class="find-card">
+        <div class="fc-icon">✉</div>
+        <div><div class="fc-name">Email</div><div class="fc-handle">tashinparvez2002</div></div>
+      </a>
+      <a href="https://instagram.com/" target="_blank" class="find-card">
+        <div class="fc-icon">◉</div>
+        <div><div class="fc-name">Instagram</div><div class="fc-handle">Photography</div></div>
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" class="find-card">
+        <div class="fc-icon">f</div>
+        <div><div class="fc-name">Facebook</div><div class="fc-handle">Profile</div></div>
+      </a>
+      <a href="tel:+8801954449226" class="find-card">
+        <div class="fc-icon">☏</div>
+        <div><div class="fc-name">Phone</div><div class="fc-handle">+880 1954449226</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<div class="cta" id="connect">
+  <div class="cta-in rv">
+    <p class="slb" style="justify-content:center">Let's Connect</p>
+    <h2>Always up for a conversation about <em>products, photography,</em> or interesting problems.</h2>
+    <p>Whether you're hiring, collaborating, or just want to exchange ideas.</p>
+    <div class="cta-links">
+      <a href="mailto:tashinparvez2002@gmail.com" class="main">Email Me →</a>
+      <a href="https://www.linkedin.com/in/tashinparvez" target="_blank">LinkedIn</a>
+      <a href="https://github.com/TashinParvez" target="_blank">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<footer><p>© 2026 Tashin Parvez · Built with intent, not just code.</p></footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" onclick="closeLb()">
+  <button class="lb-x" aria-label="Close">✕</button>
+  <img src="" alt="Full photo" id="lbImg"/>
+</div>
+
+<script>
+// reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// philosophy scroll-read
+const phObs=new IntersectionObserver(e=>{e.forEach(x=>{x.target.classList.toggle('reading',x.isIntersecting)})},{threshold:.7,rootMargin:'-8% 0px -25% 0px'});
+document.querySelectorAll('[data-ph]').forEach(el=>phObs.observe(el));
+
+// nav shrink
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('shrink',scrollY>70)});
+
+// cursor glow
+const glow=document.getElementById('glow');
+document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+
+// FAQ
+function toggleF(btn){
+  const item=btn.closest('.faq-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(r=>r.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+// filmstrip drag
+const ft=document.getElementById('filmTrack');
+let isDrag=false,startX,scrollL;
+ft.addEventListener('mousedown',e=>{isDrag=true;ft.classList.add('grabbing');startX=e.pageX-ft.offsetLeft;scrollL=ft.scrollLeft});
+ft.addEventListener('mouseleave',()=>{isDrag=false;ft.classList.remove('grabbing')});
+ft.addEventListener('mouseup',()=>{isDrag=false;ft.classList.remove('grabbing')});
+ft.addEventListener('mousemove',e=>{if(!isDrag)return;e.preventDefault();const x=e.pageX-ft.offsetLeft;ft.scrollLeft=scrollL-(x-startX)*1.5});
+
+// lightbox
+function openLb(el){
+  const src=el.querySelector('img').src.replace(/w=\d+&h=\d+/,'w=1400&h=1000');
+  document.getElementById('lbImg').src=src;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+</script>
+</body>
+</html>

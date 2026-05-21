@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="More about Md Tashin Parvez — origin story, product thinking, interests, and the person behind the portfolio." />
+  <title>More About Me — Tashin Parvez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Foundation ─────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #161618;
+      --bg-card-hover: #1c1c1f;
+      --bg-elevated: #1e1e21;
+      --text-primary: #e8e6e3;
+      --text-secondary: #9a9a9e;
+      --text-muted: #6b6b70;
+      --accent: #c9a96e;
+      --accent-dim: rgba(201, 169, 110, 0.15);
+      --accent-glow: rgba(201, 169, 110, 0.08);
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 255, 255, 0.12);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Outfit', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --max-w: 1100px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg-primary); }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
+    a:hover { opacity: 0.8; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── Scroll-driven reveal ───────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Top Nav Bar ────────────────────────────────── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    .top-bar.scrolled { padding: 12px 40px; }
+    .top-bar__name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+    .top-bar__back {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    .top-bar__back:hover { color: var(--accent); opacity: 1; }
+    .top-bar__back svg { transition: transform 0.3s; }
+    .top-bar__back:hover svg { transform: translateX(-3px); }
+
+    /* ── Hero / Page Opener ─────────────────────────── */
+    .page-hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 40px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      position: relative;
+    }
+    .page-hero__label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+    }
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .page-hero__sub {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    .scroll-hint__line {
+      width: 40px;
+      height: 1px;
+      background: var(--text-muted);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-hint__line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--accent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0% { left: -100%; }
+      50% { left: 0; }
+      100% { left: 100%; }
+    }
+
+    /* ── Section Globals ────────────────────────────── */
+    .section {
+      padding: 100px 40px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section--wide {
+      max-width: 1300px;
+    }
+    .section__label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section__title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .section__title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .section__intro {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+
+    /* ── Divider ─────────────────────────────────────── */
+    .divider {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .divider__line {
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Origin Story ───────────────────────────────── */
+    .origin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .origin-image {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+    .origin-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.05);
+      transition: filter 0.6s;
+    }
+    .origin-image:hover img {
+      filter: grayscale(0%) contrast(1);
+    }
+    .origin-image__caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+    }
+    .origin-text h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      color: var(--text-primary);
+    }
+    .origin-text p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      font-size: 0.98rem;
+      line-height: 1.85;
+    }
+    .origin-text strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ── Product Thinking (Strategy Section) ─────────── */
+    .strategy-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 40px;
+    }
+    .strategy-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .strategy-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 50px;
+    }
+    .strategy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+      transition: border-color 0.4s, background 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .strategy-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--accent);
+      transition: height 0.5s var(--ease-out);
+    }
+    .strategy-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+    .strategy-card:hover::before { height: 100%; }
+    .strategy-card__num {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .strategy-card h4 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+    .strategy-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ── What I Build on Sundays ─────────────────────── */
+    .builds-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+    .build-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 28px;
+      transition: transform 0.4s var(--ease-out), border-color 0.4s;
+      display: flex;
+      flex-direction: column;
+    }
+    .build-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+    }
+    .build-card__icon {
+      width: 42px; height: 42px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .build-card h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+    .build-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .build-card__tag {
+      margin-top: 18px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Interests Section ──────────────────────────── */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .interest-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 28px;
+      transition: border-color 0.4s, background 0.4s;
+      position: relative;
+    }
+    .interest-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+    .interest-card__emoji {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .interest-card h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+    .interest-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── Photography Gallery ─────────────────────────── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .gallery-grid__item {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-grid__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out), filter 0.4s;
+      filter: grayscale(30%);
+    }
+    .gallery-grid__item:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+    .gallery-grid__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 60%, rgba(0,0,0,0.4));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-grid__item:hover::after { opacity: 1; }
+    .gallery-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--accent);
+      transition: gap 0.3s;
+    }
+    .gallery-link:hover { gap: 14px; opacity: 1; }
+
+    /* ── Lightbox ─────────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(30px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox img {
+      max-width: 85vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      transform: scale(0.92);
+      transition: transform 0.5s var(--ease-out);
+    }
+    .lightbox.active img { transform: scale(1); }
+    .lightbox__close {
+      position: absolute;
+      top: 28px; right: 32px;
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      background: none;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .lightbox__close:hover {
+      border-color: var(--accent);
+      transform: rotate(90deg);
+    }
+
+    /* ── Community / Club Timeline ───────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 8px; bottom: 8px; left: 7px;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline__item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: -40px; top: 8px;
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg-primary);
+    }
+    .timeline__item:first-child::before {
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-dim);
+    }
+    .timeline__role {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .timeline__org {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+    .timeline__desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .timeline__date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ── Personal Photos Row ─────────────────────────── */
+    .personal-photos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .personal-photos__item {
+      aspect-ratio: 3 / 4;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .personal-photos__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .personal-photos__item:hover img {
+      transform: scale(1.05);
+    }
+    .personal-photos__item figcaption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .personal-photos__item:hover figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── FAQ Accordion ───────────────────────────────── */
+    .faq-list { list-style: none; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 1.02rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question__num {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-right: 20px;
+      min-width: 28px;
+    }
+    .faq-question__text { flex: 1; }
+    .faq-question__icon {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform 0.4s var(--ease-out), color 0.3s;
+      min-width: 24px;
+      text-align: center;
+    }
+    .faq-item.active .faq-question__icon {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--ease-out), padding 0.5s;
+      padding: 0 0 0 48px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 0 24px 48px;
+    }
+    .faq-answer p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ── Connect CTA ─────────────────────────────────── */
+    .connect-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .connect-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .connect-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .connect-inner h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .connect-inner p {
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .connect-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .connect-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+    .connect-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+      opacity: 1;
+    }
+    .connect-links a.primary-cta {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg-primary);
+      font-weight: 600;
+    }
+    .connect-links a.primary-cta:hover {
+      background: #b8953d;
+      border-color: #b8953d;
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+    .page-footer {
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    .page-footer a { color: var(--text-secondary); }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .origin-grid { grid-template-columns: 1fr; gap: 40px; }
+      .origin-image { max-width: 400px; }
+      .strategy-cards { grid-template-columns: 1fr; }
+      .builds-grid { grid-template-columns: 1fr; }
+      .interests-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .personal-photos { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .top-bar { padding: 14px 20px; }
+      .page-hero { padding: 120px 20px 60px; min-height: 80vh; }
+      .section { padding: 70px 20px; }
+      .strategy-section { padding: 70px 20px; }
+      .connect-section { padding: 70px 20px; }
+      .scroll-hint { left: 20px; bottom: 28px; }
+      .interests-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .personal-photos { grid-template-columns: 1fr 1fr; }
+      .connect-links { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Top Bar ═══ -->
+  <nav class="top-bar" id="topBar">
+    <a href="https://tashinparvez.github.io/design/main/oz-edit.html" class="top-bar__back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Home
+    </a>
+    <span class="top-bar__name">Tashin Parvez</span>
+  </nav>
+
+
+  <!-- ═══ Hero ═══ -->
+  <header class="page-hero">
+    <div class="reveal">
+      <p class="page-hero__label">/ More About Me</p>
+    </div>
+    <h1 class="reveal reveal-delay-1">The story behind<br>the <em>product thinking</em></h1>
+    <p class="page-hero__sub reveal reveal-delay-2">
+      Not just another résumé page. This is where the curiosity started,
+      how it shaped into a craft, and what I care about beyond the work.
+    </p>
+    <div class="scroll-hint">
+      <span class="scroll-hint__line"></span>
+      Scroll
+    </div>
+  </header>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 1: Origin Story ═══ -->
+  <section class="section" id="origin">
+    <div class="reveal">
+      <p class="section__label">01 — Origin</p>
+      <h2 class="section__title">How I got <em>here</em></h2>
+    </div>
+
+    <div class="origin-grid">
+      <div class="origin-image reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face" alt="Tashin Parvez" />
+        <span class="origin-image__caption">Dhaka, Bangladesh · 2026</span>
+      </div>
+
+      <div class="origin-text">
+        <div class="reveal reveal-delay-2">
+          <h3>It started with curiosity, not a career plan.</h3>
+          <p>
+            I didn't wake up one day and decide to become a Product Manager. It started in university — I was deep into
+            <strong>Computer Science</strong>, solving 1000+ competitive programming problems, and building systems
+            for class projects. But somewhere along the way, I noticed something: I cared less about
+            <em>how</em> the code worked and more about <em>why</em> we were building it in the first place.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+          <h3>The shift from code to product.</h3>
+          <p>
+            During my time as a <strong>Teaching Assistant</strong>, I realized I was naturally drawn to
+            understanding what students actually struggled with — not just delivering content. I was doing
+            user research without knowing the term. That instinct led me to my current role as a
+            <strong>Product Analyst at Ontik Technology</strong>, where I translate user problems into
+            structured requirements and work alongside engineers and PMs daily.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-4">
+          <h3>Where I'm headed.</h3>
+          <p>
+            I'm drawn to <strong>B2B and SaaS products</strong> — systems where the users are professionals,
+            the workflows are complex, and good product thinking directly impacts business outcomes.
+            I want to be in the room where trade-offs are made, roadmaps are debated, and ambiguity
+            gets turned into clarity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 2: Product Thinking (Strategy) ═══ -->
+  <div class="strategy-section" id="thinking">
+    <div class="strategy-inner">
+      <div class="reveal">
+        <p class="section__label">02 — Product Thinking</p>
+        <h2 class="section__title">How I <em>approach</em> building</h2>
+        <p class="section__intro">
+          These aren't buzzwords. They're beliefs I've developed through real projects,
+          failures, and hundreds of conversations with users and engineers.
+        </p>
+      </div>
+
+      <div class="strategy-cards">
+        <div class="strategy-card reveal">
+          <span class="strategy-card__num">01</span>
+          <h4>Start with the problem, not the feature.</h4>
+          <p>Most bad products exist because someone skipped the "why" and jumped to the "what."
+             I always push to understand the user's actual friction before proposing any solution.</p>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <span class="strategy-card__num">02</span>
+          <h4>Ambiguity is the raw material.</h4>
+          <p>Enterprise products live in messy contexts — conflicting stakeholder needs, unclear requirements,
+             edge cases everywhere. I see ambiguity as something to structure, not something to avoid.</p>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <span class="strategy-card__num">03</span>
+          <h4>Ship learning, not just features.</h4>
+          <p>Every release is a hypothesis. I'd rather ship something small that teaches us something
+             than build something big that assumes we're right.</p>
+        </div>
+        <div class="strategy-card reveal reveal-delay-3">
+          <span class="strategy-card__num">04</span>
+          <h4>Documentation is a product skill.</h4>
+          <p>Clear specs, structured requirements, and well-written PRDs aren't overhead — they're
+             how cross-functional teams stay aligned without endless meetings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ Section 3: What I Build on Sundays ═══ -->
+  <section class="section" id="builds">
+    <div class="reveal">
+      <p class="section__label">03 — Side Projects</p>
+      <h2 class="section__title">What I build <em>on Sundays</em></h2>
+      <p class="section__intro">
+        The things I build when nobody asks me to. These aren't tutorials —
+        they're problems I noticed and decided to solve.
+      </p>
+    </div>
+
+    <div class="builds-grid">
+      <div class="build-card reveal">
+        <div class="build-card__icon">📋</div>
+        <h4>Scholar's Squad Platform</h4>
+        <p>Built a student-focused academic support system to help UIU students prepare for exams.
+           Grew into a trusted resource across multiple CSE cohorts.</p>
+        <span class="build-card__tag">Community · Education · Impact</span>
+      </div>
+      <div class="build-card reveal reveal-delay-1">
+        <div class="build-card__icon">🚗</div>
+        <h4>AutoTrack — CCTV Route Tracker</h4>
+        <p>YOLO-based vehicle detection and route reconstruction system from multi-camera CCTV feeds.
+           Published at IEEE TENSYMP 2025 with ~83% accuracy.</p>
+        <span class="build-card__tag">Deep Learning · Research · Published</span>
+      </div>
+      <div class="build-card reveal reveal-delay-2">
+        <div class="build-card__icon">📝</div>
+        <h4>Study Material Archive</h4>
+        <p>Curated and organized study notes, problem-solving guides, and exam prep materials
+           that hundreds of juniors actively use each semester.</p>
+        <span class="build-card__tag">Knowledge Sharing · Ongoing</span>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 4: Interests ═══ -->
+  <section class="section" id="interests">
+    <div class="reveal">
+      <p class="section__label">04 — Beyond Work</p>
+      <h2 class="section__title">What makes me <em>human</em></h2>
+      <p class="section__intro">
+        The things that recharge me, keep me curious, and make me someone
+        worth grabbing coffee with.
+      </p>
+    </div>
+
+    <div class="interests-grid">
+      <div class="interest-card reveal">
+        <span class="interest-card__emoji">📸</span>
+        <h4>Photography</h4>
+        <p>I see composition everywhere — in UI layouts, in city streets, in how light falls on
+           ordinary things. Photography trained my eye for framing and visual hierarchy before
+           I ever opened Figma.</p>
+      </div>
+      <div class="interest-card reveal reveal-delay-1">
+        <span class="interest-card__emoji">🧩</span>
+        <h4>Competitive Programming</h4>
+        <p>1000+ problems solved across Codeforces, CodeChef, and AtCoder. It trained me to
+           decompose big problems into small ones — surprisingly useful when writing product specs.</p>
+      </div>
+      <div class="interest-card reveal reveal-delay-2">
+        <span class="interest-card__emoji">🏗️</span>
+        <h4>Building Things That Work</h4>
+        <p>Whether it's a side project, an academic tool, or a community initiative — I get
+           genuine satisfaction from making something that people actually use.</p>
+      </div>
+      <div class="interest-card reveal reveal-delay-3">
+        <span class="interest-card__emoji">🎓</span>
+        <h4>Teaching & Mentoring</h4>
+        <p>I've mentored juniors, led exam prep sessions, and organized club activities.
+           Explaining complex things simply is a skill I use in every product discussion.</p>
+      </div>
+      <div class="interest-card reveal reveal-delay-4">
+        <span class="interest-card__emoji">✍️</span>
+        <h4>Writing</h4>
+        <p>I write to clarify my own thinking — blog posts, product notes, structured observations.
+           Clear writing is clear thinking, and both matter in PM work.</p>
+      </div>
+      <div class="interest-card reveal">
+        <span class="interest-card__emoji">🌍</span>
+        <h4>Exploring Ideas</h4>
+        <p>I read widely — product strategy, cognitive psychology, business models.
+           Every good product person I admire is curious about the world, not just the product.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ Section 5: Photography Gallery ═══ -->
+  <section class="section section--wide" id="gallery">
+    <div class="reveal">
+      <p class="section__label">05 — Through My Lens</p>
+      <h2 class="section__title">A curated <em>few</em></h2>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=500&fit=crop" alt="Mountain landscape" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&h=500&fit=crop" alt="Night sky" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&h=500&fit=crop" alt="Green fields" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&h=500&fit=crop" alt="Foggy forest" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&h=500&fit=crop" alt="Lake reflection" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=500&h=500&fit=crop" alt="Waterfall" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=500&fit=crop" alt="Sun rays through mountains" />
+      </div>
+      <div class="gallery-grid__item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=500&h=500&fit=crop" alt="Forest path" />
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 8px;">
+      <a href="https://instagram.com/" target="_blank" class="gallery-link">
+        See more on Instagram
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 6: Community & Club Journey ═══ -->
+  <section class="section" id="community">
+    <div class="reveal">
+      <p class="section__label">06 — Community</p>
+      <h2 class="section__title">UIU Computer Club <em>journey</em></h2>
+      <p class="section__intro">
+        Four years of growing from a junior volunteer to shaping how the
+        programming community learns and collaborates.
+      </p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline__item">
+        <p class="timeline__role">CP Wing Associate</p>
+        <p class="timeline__org">UIU Computer Club</p>
+        <p class="timeline__desc">Contributing to competitive programming activities, peer learning,
+           and community engagement within the programming wing.</p>
+        <p class="timeline__date">2025 — 2026</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__role">Executive, Programming Wing</p>
+        <p class="timeline__org">UIU Computer Club</p>
+        <p class="timeline__desc">Helped organise programming events, student engagement activities,
+           and club initiatives around coding and technical development.</p>
+        <p class="timeline__date">2023 — 2025</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__role">Junior Executive, Programming Wing</p>
+        <p class="timeline__org">UIU Computer Club</p>
+        <p class="timeline__desc">Supported the programming wing in coordinating events and student
+           participation during the earliest stage of leadership involvement.</p>
+        <p class="timeline__date">2023 — 2024</p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 7: Personal Photos ═══ -->
+  <section class="section section--wide" id="personal">
+    <div class="reveal">
+      <p class="section__label">07 — In Person</p>
+      <h2 class="section__title">Behind the <em>screen</em></h2>
+    </div>
+
+    <div class="personal-photos reveal">
+      <figure class="personal-photos__item">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=530&fit=crop&crop=face" alt="At an event" />
+        <figcaption>Speaking at a workshop</figcaption>
+      </figure>
+      <figure class="personal-photos__item">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=530&fit=crop" alt="With team" />
+        <figcaption>Team collaboration day</figcaption>
+      </figure>
+      <figure class="personal-photos__item">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=530&fit=crop" alt="Working" />
+        <figcaption>Deep in product work</figcaption>
+      </figure>
+      <figure class="personal-photos__item">
+        <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?w=400&h=530&fit=crop&crop=face" alt="Outdoors" />
+        <figcaption>Outside the screen</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <div class="divider"><div class="divider__line"></div></div>
+
+
+  <!-- ═══ Section 8: FAQ ═══ -->
+  <section class="section" id="faq">
+    <div class="reveal">
+      <p class="section__label">08 — FAQ</p>
+      <h2 class="section__title">Frequently <em>asked</em></h2>
+    </div>
+
+    <ul class="faq-list reveal">
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">01</span>
+          <span class="faq-question__text">What kind of PM role are you looking for?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>I'm targeting APM or Junior PM roles in B2B SaaS companies — particularly where the product
+             serves complex professional workflows. I thrive in environments where understanding the user's
+             real problem requires deep research and cross-functional collaboration.</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">02</span>
+          <span class="faq-question__text">Are you open to remote or hybrid work?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — I'm comfortable with remote, hybrid, or on-site arrangements. I'm based in Dhaka,
+             Bangladesh and open to relocation for the right opportunity.</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">03</span>
+          <span class="faq-question__text">What makes you different from other junior PMs?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>I bring engineering depth. With a CS degree, 1000+ competitive programming problems, and an
+             IEEE research publication, I don't just write specs — I understand what engineers face when
+             they build them. That translates to better requirements, fewer miscommunications, and more
+             trust with technical teams.</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">04</span>
+          <span class="faq-question__text">Do you have experience with enterprise customers?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>In my current role at Ontik Technology, I work on products serving business users. I conduct
+             user research, map workflows, and write product documentation for enterprise-facing features.
+             It's early-stage experience, but it's hands-on and real.</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">05</span>
+          <span class="faq-question__text">What's your working style?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Structured but not rigid. I lean heavily on documentation, clear communication, and async
+             updates. I ask a lot of questions early (to avoid rework later), and I'm the type who writes
+             the meeting summary before anyone asks.</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question__num">06</span>
+          <span class="faq-question__text">Can I see your resume?</span>
+          <span class="faq-question__icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely — <a href="https://tashinparvez.github.io/design/main/sections/resume-doc-reader/resume.html" target="_blank">view it here</a>.
+             You'll find a focused overview of my experience, education, and skills.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- ═══ Connect CTA ═══ -->
+  <div class="connect-section" id="connect">
+    <div class="connect-inner reveal">
+      <p class="section__label" style="text-align:center;">Let's Connect</p>
+      <h2>Always up for a conversation about <em>products, photography,</em> or interesting problems.</h2>
+      <p>Whether you're hiring, collaborating, or just want to talk shop — I'd love to hear from you.</p>
+      <div class="connect-links">
+        <a href="mailto:tashinparvez2002@gmail.com" class="primary-cta">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 4 6-4M2 4v8h12V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/tashinparvez" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6v6M4 3.5v.01M7 12V8.5c0-1.5 1-2.5 2.5-2.5S12 7 12 8.5V12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/TashinParvez" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 12c-2.5.8-2.5-1.5-3.5-1.5M10 14v-2.5c0-.8-.1-1.1-.4-1.5 2.2-.2 4.4-1 4.4-4.8 0-1-.4-2-1-2.7.1-.3.4-1.3-.1-2.5 0 0-.8-.3-2.7 1a9.4 9.4 0 00-5 0C3.4 1.3 2.5 1.5 2.5 1.5c-.5 1.2-.2 2.2-.1 2.5-.6.7-1 1.6-1 2.7 0 3.8 2.2 4.6 4.4 4.8-.3.3-.4.8-.4 1.5V14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          GitHub
+        </a>
+        <a href="tel:+8801954449226">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h3l1.5 3.5L5.8 7c.8 1.6 2 2.8 3.5 3.5l1.5-1.7L14 10.3V13a1 1 0 01-1 1A11 11 0 012 3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Phone
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="page-footer">
+    <p>© 2026 <a href="https://tashinparvez.github.io/design/main/oz-edit.html">Tashin Parvez</a> · Built with intent, not just code.</p>
+  </footer>
+
+
+  <!-- ═══ Lightbox ═══ -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox__close" aria-label="Close">✕</button>
+    <img src="" alt="Full size photo" id="lightboxImg" />
+  </div>
+
+
+  <script>
+    /* ── Scroll Reveal ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── Navbar shrink ── */
+    const topBar = document.getElementById('topBar');
+    window.addEventListener('scroll', () => {
+      topBar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── FAQ Toggle ── */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const wasActive = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }
+
+    /* ── Lightbox ── */
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      lbImg.src = img.src.replace('w=500&h=500', 'w=1400&h=1000');
+      lbImg.alt = img.alt;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

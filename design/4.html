@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Tashin Parvez | About</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #2563eb;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* LAYOUT & CONTAINERS */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 120px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        /* INTRO & SCROLL REVEAL TEXT */
+        .intro-text p {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: rgba(26, 26, 26, 0.2); /* Starts faded */
+            transition: color 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+        }
+
+        .intro-text p.revealed {
+            color: var(--text-main);
+            transform: translateY(0);
+        }
+
+        /* GRID LAYOUTS */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        /* PHOTOGRAPHY SECTION */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .photo-item {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(20%);
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .photo-item:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .btn-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-main);
+            padding-bottom: 2px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .btn-link:hover {
+            opacity: 0.6;
+        }
+
+        /* FAQ HOVER FOCUS EFFECT */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            list-style: none;
+        }
+
+        .faq-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: opacity 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* The Magic: When list is hovered, fade out items not being hovered */
+        .faq-list:hover .faq-item:not(:hover) {
+            opacity: 0.2;
+        }
+
+        .faq-question {
+            font-size: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            color: var(--text-muted);
+            margin-top: 0;
+            transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        /* JS Toggle Class for FAQ */
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 1rem;
+            opacity: 1;
+        }
+        
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+        }
+
+        .faq-question span {
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 80px 0; }
+        }
+    </style>
+    <!-- Importing Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SECTION 1: THE BUILDER'S ETHOS (Scroll Reveal) -->
+    <section id="why-me">
+        <div class="container">
+            <span class="section-label">01. The Builder's Ethos</span>
+            <div class="intro-text">
+                <p class="scroll-paragraph">I am a Product Analyst and Software Engineer who believes the best products sit at the intersection of complex systems and human empathy.</p>
+                <p class="scroll-paragraph">My background in training YOLOv8 models and studying high-performance computing didn't just teach me how to write code—it taught me how to break down massive, ambiguous problems into executable milestones.</p>
+                <p class="scroll-paragraph">Whether I'm mapping agricultural supply chains, exploring green computing architectures, or building end-to-end habit platforms, I care about one thing: delivering sustainable, scalable impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: TECH & COMMUNITY -->
+    <section id="community-tech">
+        <div class="container">
+            <span class="section-label">02. Ecosystem & Engineering</span>
+            
+            <div class="bento-grid">
+                <!-- UIU Club -->
+                <div class="card">
+                    <h3>UIU Computer Club</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">2021 — 2026</p>
+                    <p>More than just coding. Contributed heavily to the UIU Question Bank to democratize learning for CSE students, and learned how to mobilize technical teams to ship community projects.</p>
+                </div>
+                
+                <!-- Open Source / CP -->
+                <div class="card">
+                    <h3>Competitive & Open Source</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">GitHub / LeetCode</p>
+                    <p>I stay sharp by solving algorithmic challenges and contributing to open projects. It keeps my engineering intuition grounded when making product roadmap decisions.</p>
+                    <a href="#" class="btn-link">View GitHub Stats →</a>
+                </div>
+                
+                <!-- Events/Hackathons -->
+                <div class="card">
+                    <h3>Events & Stages</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Hackathons & Project Shows</p>
+                    <p>Building in a vacuum is easy. I thrive in high-pressure environments. Highlights include presenting AutoTrack at IEEE TENSYMP and taking Champion at the UIU Project Show.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: CREATIVE LENS -->
+    <section id="creative">
+        <div class="container">
+            <span class="section-label">03. The Creative Lens</span>
+            <div style="max-width: 600px; margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; font-weight: 500; margin-bottom: 1rem;">tastills (tas-tills)</h2>
+                <p style="color: var(--text-muted);">Product management requires seeing the big picture without losing the details. Photography is how I practice that daily. I focus on capturing raw human life and nature.</p>
+            </div>
+            
+            <div class="photo-gallery">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Random photo placeholder" class="photo-item">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Random photo placeholder" class="photo-item">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Random photo placeholder" class="photo-item">
+            </div>
+            
+            <a href="#" class="btn-link">See more on Instagram @tastills →</a>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FAQ (with Hover Focus Effect) -->
+    <section id="faq">
+        <div class="container">
+            <span class="section-label">04. Frequently Asked Questions</span>
+            
+            <ul class="faq-list">
+                <li class="faq-item">
+                    <div class="faq-question">What is your core tech stack? <span>+</span></div>
+                    <div class="faq-answer">I am deeply familiar with Python, JavaScript, and machine learning frameworks like YOLOv8. I leverage this background not to write production code, but to communicate effectively with engineering teams and estimate technical debt accurately.</div>
+                </li>
+                
+                <li class="faq-item">
+                    <div class="faq-question">Are you looking for SWE or PM roles? <span>+</span></div>
+                    <div class="faq-answer">I am aggressively pursuing Product Analyst and Associate Product Manager roles. My software engineering background is the foundation that makes me an empathetic, highly technical product leader.</div>
+                </li>
+                
+                <li class="faq-item">
+                    <div class="faq-question">Where are you based? Are you open to relocating? <span>+</span></div>
+                    <div class="faq-answer">I am currently based in Bangladesh. I am actively planning for higher education and career opportunities abroad, and I am highly open to relocation and international roles.</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- INTERACTION SCRIPTS -->
+    <script>
+        // 1. Scroll-Triggered Reading Effect (Intersection Observer)
+        const paragraphs = document.querySelectorAll('.scroll-paragraph');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.8 // Triggers when 80% of the paragraph is visible
+        };
+
+        const paragraphObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                } else {
+                    // Optional: remove class if you want it to fade out when scrolling up
+                    // entry.target.classList.remove('revealed'); 
+                }
+            });
+        }, observerOptions);
+
+        paragraphs.forEach(p => {
+            paragraphObserver.observe(p);
+        });
+
+        // 2. FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Close others
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('span').innerText = '+';
+                    }
+                });
+                
+                // Toggle clicked item
+                item.classList.toggle('active');
+                const span = item.querySelector('span');
+                span.innerText = item.classList.contains('active') ? '×' : '+';
+            });
+        });
+    </script>
+</body>
+</html>
