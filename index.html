@@ -288,15 +288,21 @@
    NAVBAR
    ============================================================ */
         .navbar {
-            position: sticky;
+            position: fixed;
             top: 16px;
-            margin: 16px auto;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
             max-width: 1060px;
+
+            margin: 0;
             padding: 0 24px;
             height: 60px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             border-radius: var(--r-xl);
             background: rgba(10, 14, 22, .75);
             backdrop-filter: blur(24px) saturate(180%);
@@ -4165,7 +4171,7 @@
     <!-- =============================================== NAVBAR ================================================ -->
     <nav class="navbar" id="navbar">
 
-        
+
         <!-- website logo - tashin -->
         <a href="#home" class="logo">
             <img src="assets/icons/fav-3.png" alt="Favicon" style="width: 38px; height: 38px;">
