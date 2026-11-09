@@ -10,17 +10,18 @@
 
   <style>
     :root {
-      --bg: #070b11;
+      --bg: #060a10;
       --bg-2: #0b1018;
-      --panel: rgba(255, 255, 255, 0.04);
+      --panel: rgba(255, 255, 255, 0.045);
       --panel-2: rgba(255, 255, 255, 0.03);
-      --text: #edf2f7;
+      --text: #eef4fb;
       --muted: #94a3b8;
       --line: rgba(255, 255, 255, 0.08);
       --line-2: rgba(255, 255, 255, 0.12);
       --accent: #7dd3fc;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
       --max: 1080px;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      --action-width: 170px;
     }
 
     * {
@@ -38,9 +39,10 @@
       color: var(--text);
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top center, rgba(96, 165, 250, 0.07), transparent 28%),
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.06), transparent 26%),
+        radial-gradient(circle at top center, rgba(56, 189, 248, 0.08), transparent 24%),
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.07), transparent 26%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x: hidden;
     }
 
     body::before {
@@ -50,71 +52,175 @@
       pointer-events: none;
       background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
       background-size: 26px 26px;
-      opacity: 0.04;
+      opacity: 0.03;
       z-index: 0;
     }
 
     .resume-page {
       position: relative;
       z-index: 1;
-      width: min(var(--max), calc(100% - 32px));
+      width: min(calc(var(--max) + var(--action-width) + 48px), calc(100% - 32px));
       margin: 36px auto 64px;
+      display: grid;
+      grid-template-columns: minmax(0, var(--max)) var(--action-width);
+      gap: 24px;
+      align-items: start;
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 0.86rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      height: 42px;
-      padding: 0 16px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      color: var(--text);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: 0.22s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(125, 211, 252, 0.28);
-      background: rgba(96, 165, 250, 0.08);
+    .sheet-wrap {
+      min-width: 0;
     }
 
     .sheet {
       border: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
-        rgba(7, 11, 17, 0.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.018)),
+        rgba(7, 11, 17, 0.74);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       box-shadow: var(--shadow);
       overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .sheet-toolbar {
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr) 60px;
+      align-items: center;
+      gap: 16px;
+      min-height: 68px;
+      padding: 0 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .toolbar-center {
+      display: flex;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .toolbar-right {
+      min-height: 1px;
+    }
+
+    .mac-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .mac-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.18);
+    }
+
+    .mac-dot.red {
+      background: #ff5f57;
+    }
+
+    .mac-dot.yellow {
+      background: #febc2e;
+    }
+
+    .mac-dot.green {
+      background: #28c840;
+    }
+
+    .toolbar-url {
+      width: min(100%, 430px);
+      min-height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 30px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .toolbar-url a {
+      color: #dce8f6;
+      text-decoration: none;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .toolbar-url a:hover {
+      color: var(--accent);
+    }
+
+    .actions-rail {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      display: grid;
+      gap: 12px;
+    }
+
+    .action-btn {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
+        rgba(8, 12, 19, 0.8);
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+      cursor: pointer;
+      outline: none;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(125, 211, 252, 0.32);
+      background: rgba(56, 189, 248, 0.09);
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.12);
+    }
+
+    .action-btn:focus-visible {
+      border-color: rgba(125, 211, 252, 0.42);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+    }
+
+    .action-btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
     }
 
     .hero {
@@ -165,6 +271,7 @@
     .contact-line a {
       color: var(--text);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .contact-line a:hover {
@@ -180,7 +287,7 @@
     .sidebar {
       padding: 28px 26px 32px;
       border-right: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.015));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.015));
     }
 
     .main {
@@ -322,10 +429,6 @@
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 0.88rem;
-      /* display: flex; */
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
     }
 
     .loading,
@@ -340,6 +443,53 @@
       color: #fda4af;
     }
 
+    .resume-social-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0;
+    }
+
+    .resume-social-link {
+      height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #dbe7f5;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
+    }
+
+    .resume-social-link:hover {
+      transform: translateY(-2px);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(125, 211, 252, 0.22);
+    }
+
+    .resume-social-link svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: #a5b4fc;
+    }
+
+    .resume-social-link span {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
     @media print {
       body {
         background: #fff;
@@ -347,19 +497,22 @@
       }
 
       body::before,
-      .topbar {
-        display: none;
+      .actions-rail,
+      .sheet-toolbar {
+        display: none !important;
       }
 
       .resume-page {
         width: 100%;
         margin: 0;
+        display: block;
       }
 
       .sheet {
         border: none;
         box-shadow: none;
         background: white;
+        border-radius: 0;
       }
 
       .hero,
@@ -412,6 +565,27 @@
       }
     }
 
+    @media (max-width: 1220px) {
+      .resume-page {
+        width: min(var(--max), calc(100% - 32px));
+        grid-template-columns: 1fr;
+      }
+
+      .actions-rail {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        top: auto;
+        z-index: 30;
+        width: auto;
+      }
+
+      .action-btn {
+        width: auto;
+        min-width: 170px;
+      }
+    }
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
@@ -439,6 +613,29 @@
       .resume-page {
         width: min(100%, calc(100% - 18px));
         margin-top: 18px;
+        margin-bottom: 140px;
+      }
+
+      .sheet {
+        border-radius: 22px;
+      }
+
+      .sheet-toolbar {
+        grid-template-columns: auto 1fr;
+        padding: 0 16px;
+        gap: 12px;
+      }
+
+      .toolbar-center {
+        justify-content: flex-start;
+      }
+
+      .toolbar-right {
+        display: none;
+      }
+
+      .toolbar-url {
+        width: 100%;
       }
 
       .hero {
@@ -459,23 +656,80 @@
       .name {
         font-size: 2rem;
       }
+
+      .actions-rail {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .action-btn {
+        min-width: 0;
+        width: 100%;
+        font-size: 0.88rem;
+        padding: 0 12px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .toolbar-url a {
+        font-size: 0.76rem;
+      }
+
+      .resume-social-link {
+        min-width: calc(50% - 10px);
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="resume-page">
-    <div class="topbar">
-      <div class="brand">Resume</div>
-      <div class="actions">
-        <button class="btn" onclick="window.print()">Download PDF</button>
-        <button class="btn" id="copyMarkdownBtn">Copy Markdown</button>
+    <div class="sheet-wrap">
+      <div class="sheet" id="resumeSheet">
+        <div class="sheet-toolbar">
+          <div class="toolbar-left">
+            <div class="mac-controls" aria-hidden="true">
+              <span class="mac-dot red"></span>
+              <span class="mac-dot yellow"></span>
+              <span class="mac-dot green"></span>
+            </div>
+          </div>
+
+          <div class="toolbar-center">
+            <div class="toolbar-url">
+              <a href="#resumeSheet">~/portfolio/readme</a>
+            </div>
+          </div>
+
+          <div class="toolbar-right"></div>
+        </div>
+
+        <div class="loading" id="resumeLoading">Loading resume data...</div>
       </div>
     </div>
 
-    <div class="sheet" id="resumeSheet">
-      <div class="loading" id="resumeLoading">Loading resume data...</div>
-    </div>
+    <aside class="actions-rail" aria-label="Resume actions">
+      <button class="action-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M7 8V3h10v5" />
+          <rect x="4" y="8" width="16" height="8" rx="2" />
+          <path d="M7 13h10v8H7z" />
+        </svg>
+        <span>Download</span>
+      </button>
+
+      <button class="action-btn" id="copyMarkdownBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="9" y="9" width="11" height="11" rx="2" />
+          <rect x="4" y="4" width="11" height="11" rx="2" />
+        </svg>
+        <span>Copy Markdown</span>
+      </button>
+    </aside>
   </div>
 
   <script>
@@ -552,6 +806,24 @@
 
     function buildResume(data) {
       return `
+        <div class="sheet-toolbar">
+          <div class="toolbar-left">
+            <div class="mac-controls" aria-hidden="true">
+              <span class="mac-dot red"></span>
+              <span class="mac-dot yellow"></span>
+              <span class="mac-dot green"></span>
+            </div>
+          </div>
+
+          <div class="toolbar-center">
+            <div class="toolbar-url">
+              <a href="#resumeSheet">~/portfolio/readme</a>
+            </div>
+          </div>
+
+          <div class="toolbar-right"></div>
+        </div>
+
         <header class="hero">
           <div>
             <h1 class="name" id="name">${data.name || ""}</h1>
@@ -610,114 +882,36 @@
           </main>
         </div>
 
-        <div class="footer-note">  
-          <span>
-
+        <div class="footer-note">
           <div class="resume-social-footer">
-  <a class="resume-social-link" href="mailto:tashinparvez2002@gmail.com" target="_blank" aria-label="Email">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M2 4h20v16H2V4zm10 7L4 6h16l-8 5zm0 2l8-5v10H4V8l8 5z" />
-    </svg>
-    <span>Email</span>
-  </a>
+            <a class="resume-social-link" href="mailto:tashinparvez2002@gmail.com" target="_blank" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M2 4h20v16H2V4zm10 7L4 6h16l-8 5zm0 2l8-5v10H4V8l8 5z" />
+              </svg>
+              <span>Email</span>
+            </a>
 
-  <a class="resume-social-link" href="https://github.com/TashinParvez" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.43 7.9 10.96.58.1.79-.25.79-.55v-2.1c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.2 1.8 1.2 1.04 1.78 2.74 1.26 3.4.96.1-.75.4-1.26.72-1.55-2.56-.3-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.52.12-3.16 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.84 0c2.22-1.5 3.2-1.18 3.2-1.18.64 1.64.24 2.86.12 3.16.75.8 1.2 1.82 1.2 3.08 0 4.43-2.7 5.4-5.27 5.7.41.35.77 1.04.77 2.1v3.12c0 .3.21.66.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
-    </svg>
-    <span>GitHub</span>
-  </a>
+            <a class="resume-social-link" href="https://github.com/TashinParvez" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.43 7.9 10.96.58.1.79-.25.79-.55v-2.1c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.18.08 1.8 1.2 1.8 1.2 1.04 1.78 2.74 1.26 3.4.96.1-.75.4-1.26.72-1.55-2.56-.3-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.2-3.08-.12-.3-.52-1.52.12-3.16 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.84 0c2.22-1.5 3.2-1.18 3.2-1.18.64 1.64.24 2.86.12 3.16.75.8 1.2 1.82 1.2 3.08 0 4.43-2.7 5.4-5.27 5.7.41.35.77 1.04.77 2.1v3.12c0 .3.21.66.8.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
 
-  <a class="resume-social-link" href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C22 7.6 24 9.5 24 13.3V24h-5v-9.4c0-2.24-.04-5.1-3.1-5.1-3.1 0-3.58 2.42-3.58 4.93V24h-5V8z" />
-    </svg>
-    <span>LinkedIn</span>
-  </a>
+            <a class="resume-social-link" href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C22 7.6 24 9.5 24 13.3V24h-5v-9.4c0-2.24-.04-5.1-3.1-5.1-3.1 0-3.58 2.42-3.58 4.93V24h-5V8z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
 
-  <a class="resume-social-link" href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M10 2h4v4h-4V2zM4 6h16v14H4V6zm2 2v10h12V8H6zm2 2h8v2H8v-2z" />
-    </svg>
-    <span>Portfolio</span>
-  </a>
-</div>
-
-<style>
-  .resume-social-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 0px 0 0px;
-  }
-
-  .resume-social-link {
-    height: 38px;
-    padding: 0 16px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    color: #dbe7f5;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
-  }
-
-  .resume-social-link:hover {
-    transform: translateY(-2px);
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(125, 211, 252, 0.22);
-  }
-
-  .resume-social-link svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: #a5b4fc;
-  }
-
-  .resume-social-link span {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    line-height: 1;
-  }
-
-  @media (max-width: 640px) {
-    .resume-social-footer {
-      gap: 10px;
-    }
-
-    .resume-social-link {
-      height: 42px;
-      padding: 0 14px;
-    }
-
-    .resume-social-link span {
-      font-size: 0.84rem;
-    }
-  }
-
-  @media (max-width: 420px) {
-    .resume-social-link {
-      min-width: calc(50% - 10px);
-    }
-  }
-</style>
-             
-          </span>
-
-
-
+            <a class="resume-social-link" href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M10 2h4v4h-4V2zM4 6h16v14H4V6zm2 2v10h12V8H6zm2 2h8v2H8v-2z" />
+              </svg>
+              <span>Portfolio</span>
+            </a>
+          </div>
         </div>
       `;
     }
@@ -777,22 +971,43 @@
         resumeData = await response.json();
         sheet.innerHTML = buildResume(resumeData);
       } catch (error) {
-        sheet.innerHTML = `<div class="error">Failed to load resume.json</div>`;
+        sheet.innerHTML = `
+          <div class="sheet-toolbar">
+            <div class="toolbar-left">
+              <div class="mac-controls" aria-hidden="true">
+                <span class="mac-dot red"></span>
+                <span class="mac-dot yellow"></span>
+                <span class="mac-dot green"></span>
+              </div>
+            </div>
+
+            <div class="toolbar-center">
+              <div class="toolbar-url">
+                <a href="#resumeSheet">~/portfolio/readme</a>
+              </div>
+            </div>
+
+            <div class="toolbar-right"></div>
+          </div>
+          <div class="error">Failed to load resume.json</div>
+        `;
         console.error(error);
       }
     }
 
-    document.getElementById("copyMarkdownBtn").addEventListener("click", async () => {
+    document.getElementById("copyMarkdownBtn").addEventListener("click", async function () {
       if (!resumeData) return;
 
       const markdown = toMarkdown(resumeData);
 
       try {
         await navigator.clipboard.writeText(markdown);
-        const btn = document.getElementById("copyMarkdownBtn");
-        const old = btn.textContent;
-        btn.textContent = "Copied";
-        setTimeout(() => btn.textContent = old, 1200);
+        const span = this.querySelector("span");
+        const old = span.textContent;
+        span.textContent = "Copied";
+        setTimeout(() => {
+          span.textContent = old;
+        }, 1200);
       } catch (error) {
         alert("Could not copy markdown.");
       }
