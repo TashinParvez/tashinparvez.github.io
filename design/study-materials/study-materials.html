@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Study materials, notes, and code Tashin Parvez created during his time at United International University.">
+  <title>Study Materials | Tashin Parvez</title>
+  <link rel="icon" href="https://tashinparvez.github.io/assets/icons/fav-3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ============================================================
+     THEME TOKENS: change these to match your main site exactly.
+     Open your site's CSS, find the same values, paste them here.
+     ============================================================ */
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #11182d;
+      --card: #141c33;
+      --card-hov: #19223d;
+      --border: #25304f;
+      --text: #e8ecf6;
+      --muted: #9aa6c4;
+      --accent: #6c8cff;
+      --accent-2: #38d9c0;
+      --radius: 16px;
+      --font-head: "Sora", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .wrap {
+      width: min(1120px, 100% - 40px);
+      margin-inline: auto;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-weight: 600;
+    }
+
+    .brand img {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .9rem;
+      border: 1px solid var(--border);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #07101f;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #86a1ff;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: var(--bg-soft);
+    }
+
+    /* ---------- Header ---------- */
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .back {
+      color: var(--muted);
+      font-size: .9rem;
+      display: inline-block;
+      margin-bottom: 28px;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--accent-2);
+      border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+      background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin: 0 0 16px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 82ch;
+      font-size: 1.08rem;
+      margin: 0;
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      padding: 48px 0;
+    }
+
+    .sec-head {
+      margin-bottom: 28px;
+    }
+
+    .sec-head h2 {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      margin: 0 0 6px;
+      letter-spacing: -.01em;
+    }
+
+    .sec-head p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ---------- Featured (all-in-one) cards ---------- */
+    .featured {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .big {
+      background: linear-gradient(160deg, var(--card), var(--bg-soft));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .big .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--accent) 16%, transparent);
+      color: var(--accent);
+    }
+
+    .big.alt .icon {
+      background: color-mix(in srgb, var(--accent-2) 16%, transparent);
+      color: var(--accent-2);
+    }
+
+    .big h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .big ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .big li {
+      margin-bottom: 4px;
+    }
+
+    .big li::marker {
+      color: var(--accent);
+    }
+
+    .big .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* ---------- Repo toolbar ---------- */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font: inherit;
+      font-size: .85rem;
+      cursor: pointer;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+
+    .chip:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .chip[aria-pressed="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #07101f;
+      font-weight: 600;
+    }
+
+    .search {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font: inherit;
+      font-size: .9rem;
+      min-width: 240px;
+    }
+
+    .search::placeholder {
+      color: var(--muted);
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 14px;
+    }
+
+    /* ---------- Repo grid ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+    }
+
+    .repo {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color .2s, background .2s;
+    }
+
+    .repo:hover {
+      border-color: var(--accent);
+      background: var(--card-hov);
+    }
+
+    .repo-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .repo h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      margin: 0;
+      word-break: break-word;
+    }
+
+    .repo .arrow {
+      color: var(--muted);
+      transition: color .2s, transform .2s;
+      flex-shrink: 0;
+    }
+
+    .repo:hover .arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .repo p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .repo .cat {
+      margin-top: 4px;
+      font-size: .75rem;
+      color: var(--accent-2);
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 30px 0;
+      display: none;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="https://tashinparvez.github.io/">
+        <img src="https://tashinparvez.github.io/assets/icons/fav-3.png" alt="">
+        Tashin Parvez
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="https://tashinparvez.github.io/#home">Home</a>
+        <a href="https://tashinparvez.github.io/#about">About</a>
+        <a href="https://tashinparvez.github.io/#experience">Experience</a>
+        <a href="https://tashinparvez.github.io/#projects">Projects</a>
+        <a href="https://tashinparvez.github.io/#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="https://tashinparvez.github.io/design/resume-doc-reader/resume.html">Resume →</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero" style="text-align: center;">
+        <h1>Study <span>Materials</span></h1>
+        <p class="lead">
+          Notes, code, lab work, and assignments I created during my CSE journey at United International University.
+          Everything is organized here so you can find what you need quickly.
+        </p>
+      </div>
+
+      <!-- SEGMENT 1: All-in-one resources -->
+      <section id="all-in-one">
+        <div class="sec-head">
+          <h2>All resources in one place</h2>
+          <p>Start here. These two links cover almost everything.</p>
+        </div>
+
+        <div class="featured">
+          <article class="big">
+            <div class="icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18M3 15h18M9 3v18" />
+              </svg>
+            </div>
+            <h3>SWCM Master Sheet</h3>
+            <ul>
+              <li>One Google Sheet that links to all my study materials</li>
+              <li>Organized course by course for quick lookup</li>
+              <li>Includes notes, slides, and reference links</li>
+              <li>Updated regularly as I add new resources</li>
+            </ul>
+            <a class="btn btn-primary"
+              href="https://docs.google.com/spreadsheets/d/1UTliZRhDHcRKNKkKnWdNQI-XiEDrxRhWsG0dguoqSEo/edit?gid=1541110513#gid=1541110513"
+              target="_blank" rel="noopener">Open the sheet ↗</a>
+          </article>
+
+          <article class="big alt">
+            <div class="icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.7s-1.2-.3-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.5 5.1 1.8 5.1 1.8a5 5 0 0 0-.1 3.7A5.4 5.4 0 0 0 3.5 9.3c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22" />
+              </svg>
+            </div>
+            <h3>UIU Course Materials on GitHub</h3>
+            <ul>
+              <li>A curated GitHub list of all UIU course repositories</li>
+              <li>Code, labs, assignments, and class test solutions</li>
+              <li>Covers programming, databases, AI, OS, and networks</li>
+              <li>Star the list to keep it handy</li>
+            </ul>
+            <a class="btn btn-ghost" href="https://github.com/stars/TashinParvez/lists/uiu-course-materials"
+              target="_blank" rel="noopener">View the GitHub list ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- SEGMENT 2: GitHub repositories -->
+      <section id="github">
+        <div class="sec-head">
+          <h2>GitHub resources</h2>
+          <p>Individual repositories, one per course, lab, or project.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+          <input class="search" id="search" type="search" placeholder="Search repositories"
+            aria-label="Search repositories">
+        </div>
+        <div class="count" id="count" aria-live="polite"></div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty">No repositories match your search. Try a different keyword or category.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Tashin Parvez</span>
+      <span>Built with intent, not just code.</span>
+    </div>
+  </footer>
+
+  <script>
+    const BASE = "https://github.com/TashinParvez/";
+
+    /* To add a new repo, copy one line below and edit it. */
+    const repos = [
+      { name: "UIU-ICS", repo: "UIU-ICS", cat: "Programming", desc: "Notes and code from the ICS course." },
+      { name: "Python_From_Zero", repo: "Python_From_Zero", cat: "Programming", desc: "Python from the basics, with practice programs." },
+      { name: "Java_From_Zero_UIU_OOP", repo: "Java_From_Zero_UIU_OOP", cat: "Programming", desc: "Java and OOP concepts from scratch, with course examples." },
+      { name: "UIU-Web-Programming", repo: "UIU-Web-Programming", cat: "Programming", desc: "Web programming labs and projects." },
+
+      { name: "DSA_1_UIU", repo: "DSA_1_UIU", cat: "Data Structures & Algorithms", desc: "Data Structures I implementations and problems." },
+      { name: "Data_Structure_and_Algorithms_2_UIU", repo: "Data_Structure_and_Algorithms_2_UIU", cat: "Data Structures & Algorithms", desc: "Data Structures and Algorithms II solutions." },
+
+      { name: "AOOP_File_System", repo: "AOOP_File_CT3", cat: "Advanced OOP", desc: "AOOP class test on the Java File system." },
+      { name: "Collections_CT_AOOP", repo: "Collections_CT_AOOP", cat: "Advanced OOP", desc: "AOOP class test on Java Collections." },
+      { name: "AOOP_Assignment_on_SceneBuilder_and_JavaFX_Problem_no_01", repo: "AOOP_Assignment_on_SceneBuilder_and_JavaFX_Problem_no_01", cat: "Advanced OOP", desc: "JavaFX and SceneBuilder assignment, Problem 1." },
+      { name: "AOOP-ASSG-On-Socket-Programming-and-FileIO", repo: "AOOP-ASSG-On-Socket-Programming-and-FileIO", cat: "Advanced OOP", desc: "Assignment on socket programming and file I/O." },
+      { name: "Sound-Mixer-Simulation--AOOP-CT-on-Thread", repo: "Sound-Mixer-Simulation--AOOP-CT-on-Thread", cat: "Advanced OOP", desc: "Thread-based sound mixer simulation for an AOOP class test." },
+
+      { name: "MySQL_From_Zero", repo: "MySQL_From_Zero", cat: "Databases", desc: "MySQL learning path from basics to queries." },
+      { name: "Database-Management-Systems-UIU", repo: "Database-Management-Systems-UIU", cat: "Databases", desc: "DBMS course materials and lab work." },
+
+      { name: "os-lab-uiu", repo: "os-lab-uiu", cat: "Systems & Networks", desc: "Operating Systems lab tasks and solutions." },
+      { name: "xv6-riscv-OS_Lab_ASSG", repo: "xv6-riscv-OS_Lab_ASSG", cat: "Systems & Networks", desc: "OS lab assignments built on xv6 for RISC-V." },
+      { name: "UIU_Enterprise_Network_Design_PacketTracer", repo: "UIU_Enterprise_Network_Design_PacketTracer", cat: "Systems & Networks", desc: "Enterprise network design in Cisco Packet Tracer." },
+
+      { name: "Artificial-Intelligence-UIU", repo: "Artificial-Intelligence-UIU", cat: "AI & Data", desc: "AI course code and assignments." },
+      { name: "UIU-DataMining-Lab", repo: "UIU-DataMining-Lab", cat: "AI & Data", desc: "Data mining lab work and experiments." },
+
+      { name: "software-engineering-lab-uiu", repo: "software-engineering-lab-uiu", cat: "Software Engineering", desc: "Software Engineering lab tasks and documentation." },
+      { name: "sqa-test-parking-system-unit-testing", repo: "sqa-test-parking-system-unit-testing/tree/master", cat: "Software Engineering", desc: "Unit testing of a parking system for the SQA course." },
+
+      { name: "UIU-Coders-Combat-3.0", repo: "UIU-Coders-Combat-3.0", cat: "Contests & Projects", desc: "Problems and solutions from UIU Coders Combat 3.0." },
+      { name: "UIU-Coders-Combat-4.0", repo: "UIU-Coders-Combat-4.0", cat: "Contests & Projects", desc: "Problems and solutions from UIU Coders Combat 4.0." },
+      { name: "uiu-faculty-schedule-app", repo: "uiu-faculty-schedule-app", cat: "Contests & Projects", desc: "An app for viewing UIU faculty schedules." },
+      { name: "Online_eTicket_System_JABO", repo: "Online_eTicket_System_JABO", cat: "Contests & Projects", desc: "An online e-ticket booking system project." }
+    ];
+
+    const cats = ["All", ...new Set(repos.map(r => r.cat))];
+    let activeCat = "All";
+
+    const chipsEl = document.getElementById("chips");
+    const gridEl = document.getElementById("grid");
+    const countEl = document.getElementById("count");
+    const emptyEl = document.getElementById("empty");
+    const searchEl = document.getElementById("search");
+
+    const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    function renderChips() {
+      chipsEl.innerHTML = cats.map(c =>
+        `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${c === activeCat}">${esc(c)}</button>`
+      ).join("");
+    }
+
+    function render() {
+      const q = searchEl.value.trim().toLowerCase();
+      const list = repos.filter(r =>
+        (activeCat === "All" || r.cat === activeCat) &&
+        (!q || (r.name + " " + r.desc + " " + r.cat).toLowerCase().includes(q))
+      );
+      gridEl.innerHTML = list.map(r => `
+      <a class="repo" href="${BASE}${r.repo}" target="_blank" rel="noopener">
+        <div class="repo-top">
+          <h3>${esc(r.name)}</h3>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </div>
+        <p>${esc(r.desc)}</p>
+        <span class="cat">${esc(r.cat)}</span>
+      </a>`).join("");
+      countEl.textContent = `${list.length} of ${repos.length} repositories`;
+      emptyEl.style.display = list.length ? "none" : "block";
+    }
+
+    chipsEl.addEventListener("click", e => {
+      const b = e.target.closest(".chip");
+      if (!b) return;
+      activeCat = b.dataset.cat;
+      renderChips();
+      render();
+    });
+    searchEl.addEventListener("input", render);
+
+    renderChips();
+    render();
+  </script>
+</body>
+
+</html>
