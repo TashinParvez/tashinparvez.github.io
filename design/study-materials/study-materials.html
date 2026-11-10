@@ -7,48 +7,72 @@
   <meta name="description"
     content="Study materials, notes, and code Tashin Parvez created during his time at United International University.">
   <title>Study Materials | Tashin Parvez</title>
-  <link rel="icon" href="https://tashinparvez.github.io/assets/icons/fav-3.png">
+  <link rel="icon" href="../../assets/icons/fav-3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap"
     rel="stylesheet">
-  <style>
-    /* ============================================================
-     THEME TOKENS: change these to match your main site exactly.
-     Open your site's CSS, find the same values, paste them here.
-     ============================================================ */
-    :root {
-      --bg: #0b1020;
-      --bg-soft: #11182d;
-      --card: #141c33;
-      --card-hov: #19223d;
-      --border: #25304f;
-      --text: #e8ecf6;
-      --muted: #9aa6c4;
-      --accent: #6c8cff;
-      --accent-2: #38d9c0;
-      --radius: 16px;
-      --font-head: "Sora", system-ui, sans-serif;
-      --font-body: "Inter", system-ui, sans-serif;
-    }
 
+
+  <style>
     *,
     *::before,
     *::after {
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #080b10;
+      --text-1: #f1f5f9;
+      --text-2: #cbd5e1;
+      --text-3: #94a3b8;
+      --text-4: #475569;
+      --text-5: #2d3f52;
+      --accent: #63b3ed;
+      --accent-2: #93c5fd;
+      --border: rgba(255, 255, 255, .07);
+      --r-xl: 26px;
+      --r-lg: 18px;
+      --r-md: 12px;
+    }
+
     html {
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
       margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
       background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      color: var(--text-2);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+      opacity: .55;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      width: 900px;
+      height: 600px;
+      transform: translateX(-50%);
+      pointer-events: none;
+      background: radial-gradient(ellipse, rgba(99, 179, 237, .14), rgba(59, 130, 246, .07) 40%, transparent 70%);
     }
 
     a {
@@ -59,351 +83,427 @@
     :focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
-      border-radius: 6px;
     }
 
-    .wrap {
-      width: min(1120px, 100% - 40px);
-      margin-inline: auto;
-    }
-
-    /* ---------- Nav ---------- */
-    .nav {
+    .navbar {
       position: sticky;
-      top: 0;
-      z-index: 10;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav .wrap {
+      top: 14px;
+      z-index: 50;
+      width: min(1120px, calc(100% - 24px));
+      height: 56px;
+      margin: 14px auto;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      background: rgba(8, 10, 18, .78);
+      backdrop-filter: blur(22px) saturate(180%);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .44), inset 0 1px 0 rgba(255, 255, 255, .04);
     }
 
-    .brand {
+    .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: var(--font-head);
-      font-weight: 600;
+      gap: 7px;
+      color: var(--text-1);
+      font: 600 1.05rem 'Space Grotesk', sans-serif;
+      letter-spacing: -.02em;
     }
 
-    .brand img {
-      width: 26px;
-      height: 26px;
+    .nav-logo img {
+      width: 38px;
+      height: 38px;
       border-radius: 6px;
     }
 
     .nav-links {
       display: flex;
-      gap: 22px;
-      font-size: .92rem;
-      color: var(--muted);
+      align-items: center;
+      gap: 2px;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .nav-link {
+      padding: 5px 12px;
+      border-radius: 9px;
+      color: var(--text-3);
+      font-size: .83rem;
+      font-weight: 500;
     }
 
-    .btn {
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-1);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .nav-link.active {
+      color: var(--accent-2);
+      background: rgba(99, 179, 237, .1);
+    }
+
+    .nav-back {
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-2);
+      font-size: .83rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .nav-back:hover {
+      color: var(--accent-2);
+      border-color: rgba(99, 179, 237, .3);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding-bottom: 90px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro-segment {
+      padding: 56px 0 34px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: .9rem;
-      border: 1px solid var(--border);
-      transition: background .2s, border-color .2s, transform .2s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #07101f;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      background: #86a1ff;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      background: var(--bg-soft);
-    }
-
-    /* ---------- Header ---------- */
-    .hero {
-      padding: 72px 0 40px;
-    }
-
-    .back {
-      color: var(--muted);
-      font-size: .9rem;
-      display: inline-block;
-      margin-bottom: 28px;
-    }
-
-    .back:hover {
-      color: var(--accent);
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: .8rem;
-      font-weight: 500;
+      margin-bottom: 14px;
       color: var(--accent-2);
-      border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
-      background: color-mix(in srgb, var(--accent-2) 10%, transparent);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 18px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .page-eyebrow::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 7px #22c55e;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      line-height: 1.1;
-      letter-spacing: -.02em;
-      margin: 0 0 16px;
+      margin: 0 0 14px;
+      color: var(--text-1);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      letter-spacing: -.045em;
+      line-height: .95;
     }
 
-    h1 span {
-      color: var(--accent);
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #63b3ed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .lead {
-      color: var(--muted);
-      max-width: 82ch;
-      font-size: 1.08rem;
+    .page-sub {
+      max-width: 760px;
       margin: 0;
+      color: var(--text-3);
+      font-size: .93rem;
+      line-height: 1.78;
     }
 
-    /* ---------- Sections ---------- */
-    section {
-      padding: 48px 0;
-    }
-
-    .sec-head {
-      margin-bottom: 28px;
-    }
-
-    .sec-head h2 {
-      font-family: var(--font-head);
-      font-size: 1.7rem;
-      margin: 0 0 6px;
-      letter-spacing: -.01em;
-    }
-
-    .sec-head p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* ---------- Featured (all-in-one) cards ---------- */
-    .featured {
+    .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 32px;
     }
 
-    .big {
-      background: linear-gradient(160deg, var(--card), var(--bg-soft));
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
+    .resource-card {
+      min-height: 210px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .big .icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: color-mix(in srgb, var(--accent) 16%, transparent);
-      color: var(--accent);
-    }
-
-    .big.alt .icon {
-      background: color-mix(in srgb, var(--accent-2) 16%, transparent);
-      color: var(--accent-2);
-    }
-
-    .big h3 {
-      font-family: var(--font-head);
-      font-size: 1.3rem;
-      margin: 0;
-    }
-
-    .big ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .big li {
-      margin-bottom: 4px;
-    }
-
-    .big li::marker {
-      color: var(--accent);
-    }
-
-    .big .btn {
-      margin-top: auto;
-      align-self: flex-start;
-    }
-
-    /* ---------- Repo toolbar ---------- */
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      font: inherit;
-      font-size: .85rem;
-      cursor: pointer;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--muted);
       border: 1px solid var(--border);
-      transition: all .2s;
+      border-radius: var(--r-lg);
+      background: rgba(12, 14, 22, .72);
+      transition: transform .25s, border-color .25s, background .25s;
     }
 
-    .chip:hover {
-      color: var(--text);
-      border-color: var(--accent);
+    .resource-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 179, 237, .28);
+      background: rgba(15, 17, 28, .82);
     }
 
-    .chip[aria-pressed="true"] {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #07101f;
-      font-weight: 600;
+    .resource-card h2 {
+      margin: 0 0 8px;
+      color: var(--text-1);
+      font-size: 1.15rem;
     }
 
-    .search {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 9px 16px;
-      font: inherit;
-      font-size: .9rem;
-      min-width: 240px;
-    }
-
-    .search::placeholder {
-      color: var(--muted);
-    }
-
-    .count {
-      color: var(--muted);
+    .resource-card p {
+      margin: 0 0 18px;
+      color: var(--text-3);
       font-size: .88rem;
-      margin-bottom: 14px;
+      line-height: 1.65;
     }
 
-    /* ---------- Repo grid ---------- */
-    .grid {
+    .resource-card .card-link {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 8px 13px;
+      border-radius: 9px;
+      color: #0a0e1a;
+      background: linear-gradient(135deg, #93c5fd, #63b3ed);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .resource-card.alt .card-link {
+      color: var(--text-3);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .github-segment {
+      padding: 42px 0 0;
+    }
+
+    .section-heading {
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 6px;
+      color: var(--text-1);
+      font-size: 1.7rem;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--text-3);
+    }
+
+    .controls {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 14px;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 0 0 22px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .repo {
+    .controls-left {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 20px;
-      transition: border-color .2s, background .2s;
+      gap: 12px;
     }
 
-    .repo:hover {
-      border-color: var(--accent);
-      background: var(--card-hov);
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      width: 16px;
+      stroke: var(--text-4);
+      fill: none;
+      stroke-width: 1.8;
+      pointer-events: none;
+    }
+
+    .search-input,
+    .sort-select {
+      color: var(--text-1);
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      font: .88rem 'Inter', sans-serif;
+      outline: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 14px 10px 40px;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-4);
+    }
+
+    .search-input:focus,
+    .sort-select:focus {
+      border-color: rgba(99, 179, 237, .42);
+      box-shadow: 0 0 0 3px rgba(99, 179, 237, .08);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .filter-pill {
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-3);
+      background: rgba(255, 255, 255, .03);
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .filter-pill:hover,
+    .filter-pill.active {
+      color: var(--accent-2);
+      border-color: rgba(99, 179, 237, .4);
+      background: rgba(99, 179, 237, .1);
+    }
+
+    .controls-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .sort-select {
+      padding: 11px 2px 11px 12px;
+      cursor: pointer;
+    }
+
+    .sort-select option {
+      color: var(--text-1);
+      background: #12151f;
+    }
+
+    .reset-btn {
+      padding: 4px 0;
+      border: 0;
+      color: var(--text-4);
+      background: transparent;
+      cursor: pointer;
+      font: .8rem 'Inter', sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .results-bar {
+      padding: 16px 0 20px;
+      color: var(--text-4);
+      font-size: .83rem;
+    }
+
+    .results-bar strong {
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .repo-card {
+      min-height: 164px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: rgba(12, 14, 22, .72);
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+
+    .repo-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(99, 179, 237, .28);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .38);
     }
 
     .repo-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .repo h3 {
-      font-family: var(--font-head);
-      font-size: 1rem;
+    .repo-card h3 {
       margin: 0;
+      color: var(--text-1);
+      font-size: 1rem;
       word-break: break-word;
     }
 
-    .repo .arrow {
-      color: var(--muted);
-      transition: color .2s, transform .2s;
-      flex-shrink: 0;
+    .repo-arrow {
+      color: var(--text-4);
+      font-size: 1.25rem;
     }
 
-    .repo:hover .arrow {
-      color: var(--accent);
-      transform: translate(2px, -2px);
+    .repo-card p {
+      margin: 12px 0;
+      color: var(--text-3);
+      font-size: .86rem;
+      line-height: 1.6;
     }
 
-    .repo p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    .repo .cat {
-      margin-top: 4px;
-      font-size: .75rem;
+    .repo-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, .05);
       color: var(--accent-2);
+      font-size: .72rem;
+    }
+
+    .repo-visit {
+      color: var(--text-3);
+      font-weight: 600;
     }
 
     .empty {
-      color: var(--muted);
-      padding: 30px 0;
       display: none;
+      padding: 60px 0;
+      color: var(--text-4);
+      text-align: center;
     }
 
-    /* ---------- Footer ---------- */
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 0 40px;
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: .9rem;
+      padding: 28px max(20px, calc((100% - 1120px) / 2)) 40px;
+      color: var(--text-4);
+      font-size: .85rem;
     }
 
-    footer .wrap {
+    footer div {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       gap: 10px;
+    }
+
+    @media (max-width: 860px) {
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .controls-right {
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 640px) {
@@ -411,17 +511,24 @@
         display: none;
       }
 
-      .search {
-        width: 100%;
+      .resource-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 48px;
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer div {
+        flex-direction: column;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * {
+
+      *,
+      *::before,
+      *::after {
         transition: none !important;
         scroll-behavior: auto !important;
       }
@@ -430,193 +537,194 @@
 </head>
 
 <body>
-
-  <header class="nav">
-    <div class="wrap">
-      <a class="brand" href="https://tashinparvez.github.io/">
-        <img src="https://tashinparvez.github.io/assets/icons/fav-3.png" alt="">
-        Tashin Parvez
-      </a>
-      <nav class="nav-links" aria-label="Main">
-        <a href="https://tashinparvez.github.io/#home">Home</a>
-        <a href="https://tashinparvez.github.io/#about">About</a>
-        <a href="https://tashinparvez.github.io/#experience">Experience</a>
-        <a href="https://tashinparvez.github.io/#projects">Projects</a>
-        <a href="https://tashinparvez.github.io/#contact">Contact</a>
-      </nav>
-      <a class="btn btn-primary" href="https://tashinparvez.github.io/design/resume-doc-reader/resume.html">Resume →</a>
+  <nav class="navbar">
+    <a href="../../index.html" class="nav-logo"><img src="../../assets/icons/fav-3.png" alt="Favicon">Tashin Parvez</a>
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">Home</a>
+      <a href="../projects/all-projects.html" class="nav-link">Projects</a>
+      <a href="#" class="nav-link active">Study Materials</a>
+      <a href="../../index.html#contact" class="nav-link">Contact</a>
     </div>
-  </header>
+    <a href="../../index.html" class="nav-back">← Back</a>
+  </nav>
 
-  <main>
-    <div class="wrap">
-      <div class="hero" style="text-align: center;">
-        <h1>Study <span>Materials</span></h1>
-        <p class="lead">
-          Notes, code, lab work, and assignments I created during my CSE journey at United International University.
-          Everything is organized here so you can find what you need quickly.
-        </p>
+  <main class="page">
+    <section class="intro-segment">
+      <div class="page-eyebrow">Learning archive</div>
+      <h1>Study <em>Materials</em></h1>
+      <p class="page-sub">Notes, code, lab work, and assignments I created during my CSE journey at United International
+        University. Everything is organized here so you can find what you need quickly.</p>
+      <div class="resource-grid">
+
+
+
+        <article class="resource-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <img src="https://www.google.com/s2/favicons?domain=sheets.google.com&sz=64" alt="Sheets"
+                style="width:22px; height:22px;">
+              <span style="font-size:12px; font-weight:600; color:#34A853;">
+                Google Sheets
+              </span>
+            </div>
+            <span style="font-size:11px; opacity:0.5;">SPREADSHEET</span>
+          </div>
+
+          <h2>Semester Wise Course Materials Sheet</h2>
+
+          <p>
+            One organized Google Sheet linking to course notes, slides,
+            references, labs, and other study materials.
+          </p>
+
+          <a class="card-link"
+            href="https://docs.google.com/spreadsheets/d/1UTliZRhDHcRKNKkKnWdNQI-XiEDrxRhWsG0dguoqSEo/edit?gid=1541110513#gid=1541110513"
+            target="_blank" rel="noopener">
+            Open spreadsheet ↗
+          </a>
+        </article>
+
+
+
+
+
+        <article class="resource-card alt">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub"
+                style="width:22px; height:22px;">
+              <span style="font-size:12px; font-weight:600; color:inherit;">
+                GitHub
+              </span>
+            </div>
+            <span style="font-size:11px; opacity:0.5;">REPOSITORY COLLECTION</span>
+          </div>
+
+          <h2>UIU Course Materials on GitHub</h2>
+          <p>A curated list of UIU course repositories with code, labs, assignments, and class test solutions.</p>
+
+          <a class="card-link" href="https://github.com/stars/TashinParvez/lists/uiu-course-materials" target="_blank"
+            rel="noopener" style="color:#FFFFFF; background:#24292F; border-color:#24292F;">
+            Explore GitHub list ↗
+          </a>
+
+        </article>
+
+
+
       </div>
+    </section>
 
-      <!-- SEGMENT 1: All-in-one resources -->
-      <section id="all-in-one">
-        <div class="sec-head">
-          <h2>All resources in one place</h2>
-          <p>Start here. These two links cover almost everything.</p>
+    <section class="github-segment" id="github">
+      <div class="section-heading">
+        <h2
+          style="background: linear-gradient(90deg, #63b3ed, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          GitHub resources</h2>
+
+        <p>Individual repositories, one per course, lab, or project.</p>
+      </div>
+      <div class="controls">
+        <div class="controls-left">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input class="search-input" id="searchInput" type="search" placeholder="Search repositories…"
+              autocomplete="off" aria-label="Search repositories">
+          </div>
+          <div class="filters" id="filterPills" role="group" aria-label="Filter repositories"></div>
         </div>
-
-        <div class="featured">
-          <article class="big">
-            <div class="icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M3 15h18M9 3v18" />
-              </svg>
-            </div>
-            <h3>SWCM Master Sheet</h3>
-            <ul>
-              <li>One Google Sheet that links to all my study materials</li>
-              <li>Organized course by course for quick lookup</li>
-              <li>Includes notes, slides, and reference links</li>
-              <li>Updated regularly as I add new resources</li>
-            </ul>
-            <a class="btn btn-primary"
-              href="https://docs.google.com/spreadsheets/d/1UTliZRhDHcRKNKkKnWdNQI-XiEDrxRhWsG0dguoqSEo/edit?gid=1541110513#gid=1541110513"
-              target="_blank" rel="noopener">Open the sheet ↗</a>
-          </article>
-
-          <article class="big alt">
-            <div class="icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.7s-1.2-.3-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.5 5.1 1.8 5.1 1.8a5 5 0 0 0-.1 3.7A5.4 5.4 0 0 0 3.5 9.3c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22" />
-              </svg>
-            </div>
-            <h3>UIU Course Materials on GitHub</h3>
-            <ul>
-              <li>A curated GitHub list of all UIU course repositories</li>
-              <li>Code, labs, assignments, and class test solutions</li>
-              <li>Covers programming, databases, AI, OS, and networks</li>
-              <li>Star the list to keep it handy</li>
-            </ul>
-            <a class="btn btn-ghost" href="https://github.com/stars/TashinParvez/lists/uiu-course-materials"
-              target="_blank" rel="noopener">View the GitHub list ↗</a>
-          </article>
+        <div class="controls-right">
+          <select class="sort-select" id="sortSelect" aria-label="Sort repositories">
+            <option value="az">Sort: A → Z</option>
+            <option value="za">Sort: Z → A</option>
+            <option value="category">Sort: Category</option>
+          </select>
+          <button class="reset-btn" id="resetBtn" type="button">Reset Filters</button>
         </div>
-      </section>
-
-      <!-- SEGMENT 2: GitHub repositories -->
-      <section id="github">
-        <div class="sec-head">
-          <h2>GitHub resources</h2>
-          <p>Individual repositories, one per course, lab, or project.</p>
-        </div>
-
-        <div class="toolbar">
-          <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
-          <input class="search" id="search" type="search" placeholder="Search repositories"
-            aria-label="Search repositories">
-        </div>
-        <div class="count" id="count" aria-live="polite"></div>
-        <div class="grid" id="grid"></div>
-        <p class="empty" id="empty">No repositories match your search. Try a different keyword or category.</p>
-      </section>
-    </div>
+      </div>
+      <div class="results-bar" id="resultsText" aria-live="polite"></div>
+      <div class="repo-grid" id="repoGrid"></div>
+      <p class="empty" id="empty">No repositories match your search. Try a different keyword or category.</p>
+    </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      <span>© 2026 Tashin Parvez</span>
-      <span>Built with intent, not just code.</span>
-    </div>
+    <div><span>© 2026 Tashin Parvez</span><span>Built with intent, not just code.</span></div>
   </footer>
 
   <script>
     const BASE = "https://github.com/TashinParvez/";
-
-    /* To add a new repo, copy one line below and edit it. */
     const repos = [
       { name: "UIU-ICS", repo: "UIU-ICS", cat: "Programming", desc: "Notes and code from the ICS course." },
       { name: "Python_From_Zero", repo: "Python_From_Zero", cat: "Programming", desc: "Python from the basics, with practice programs." },
       { name: "Java_From_Zero_UIU_OOP", repo: "Java_From_Zero_UIU_OOP", cat: "Programming", desc: "Java and OOP concepts from scratch, with course examples." },
       { name: "UIU-Web-Programming", repo: "UIU-Web-Programming", cat: "Programming", desc: "Web programming labs and projects." },
-
       { name: "DSA_1_UIU", repo: "DSA_1_UIU", cat: "Data Structures & Algorithms", desc: "Data Structures I implementations and problems." },
       { name: "Data_Structure_and_Algorithms_2_UIU", repo: "Data_Structure_and_Algorithms_2_UIU", cat: "Data Structures & Algorithms", desc: "Data Structures and Algorithms II solutions." },
-
       { name: "AOOP_File_System", repo: "AOOP_File_CT3", cat: "Advanced OOP", desc: "AOOP class test on the Java File system." },
       { name: "Collections_CT_AOOP", repo: "Collections_CT_AOOP", cat: "Advanced OOP", desc: "AOOP class test on Java Collections." },
       { name: "AOOP_Assignment_on_SceneBuilder_and_JavaFX_Problem_no_01", repo: "AOOP_Assignment_on_SceneBuilder_and_JavaFX_Problem_no_01", cat: "Advanced OOP", desc: "JavaFX and SceneBuilder assignment, Problem 1." },
       { name: "AOOP-ASSG-On-Socket-Programming-and-FileIO", repo: "AOOP-ASSG-On-Socket-Programming-and-FileIO", cat: "Advanced OOP", desc: "Assignment on socket programming and file I/O." },
       { name: "Sound-Mixer-Simulation--AOOP-CT-on-Thread", repo: "Sound-Mixer-Simulation--AOOP-CT-on-Thread", cat: "Advanced OOP", desc: "Thread-based sound mixer simulation for an AOOP class test." },
-
       { name: "MySQL_From_Zero", repo: "MySQL_From_Zero", cat: "Databases", desc: "MySQL learning path from basics to queries." },
       { name: "Database-Management-Systems-UIU", repo: "Database-Management-Systems-UIU", cat: "Databases", desc: "DBMS course materials and lab work." },
-
       { name: "os-lab-uiu", repo: "os-lab-uiu", cat: "Systems & Networks", desc: "Operating Systems lab tasks and solutions." },
       { name: "xv6-riscv-OS_Lab_ASSG", repo: "xv6-riscv-OS_Lab_ASSG", cat: "Systems & Networks", desc: "OS lab assignments built on xv6 for RISC-V." },
       { name: "UIU_Enterprise_Network_Design_PacketTracer", repo: "UIU_Enterprise_Network_Design_PacketTracer", cat: "Systems & Networks", desc: "Enterprise network design in Cisco Packet Tracer." },
-
       { name: "Artificial-Intelligence-UIU", repo: "Artificial-Intelligence-UIU", cat: "AI & Data", desc: "AI course code and assignments." },
       { name: "UIU-DataMining-Lab", repo: "UIU-DataMining-Lab", cat: "AI & Data", desc: "Data mining lab work and experiments." },
-
       { name: "software-engineering-lab-uiu", repo: "software-engineering-lab-uiu", cat: "Software Engineering", desc: "Software Engineering lab tasks and documentation." },
       { name: "sqa-test-parking-system-unit-testing", repo: "sqa-test-parking-system-unit-testing/tree/master", cat: "Software Engineering", desc: "Unit testing of a parking system for the SQA course." },
-
       { name: "UIU-Coders-Combat-3.0", repo: "UIU-Coders-Combat-3.0", cat: "Contests & Projects", desc: "Problems and solutions from UIU Coders Combat 3.0." },
       { name: "UIU-Coders-Combat-4.0", repo: "UIU-Coders-Combat-4.0", cat: "Contests & Projects", desc: "Problems and solutions from UIU Coders Combat 4.0." },
       { name: "uiu-faculty-schedule-app", repo: "uiu-faculty-schedule-app", cat: "Contests & Projects", desc: "An app for viewing UIU faculty schedules." },
       { name: "Online_eTicket_System_JABO", repo: "Online_eTicket_System_JABO", cat: "Contests & Projects", desc: "An online e-ticket booking system project." }
     ];
-
-    const cats = ["All", ...new Set(repos.map(r => r.cat))];
-    let activeCat = "All";
-
-    const chipsEl = document.getElementById("chips");
-    const gridEl = document.getElementById("grid");
-    const countEl = document.getElementById("count");
+    const filters = ["All", ...new Set(repos.map(r => r.cat))];
+    let activeFilter = "All";
+    const esc = value => value.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const filterEl = document.getElementById("filterPills");
+    const gridEl = document.getElementById("repoGrid");
+    const searchEl = document.getElementById("searchInput");
+    const sortEl = document.getElementById("sortSelect");
+    const resultEl = document.getElementById("resultsText");
     const emptyEl = document.getElementById("empty");
-    const searchEl = document.getElementById("search");
 
-    const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-    function renderChips() {
-      chipsEl.innerHTML = cats.map(c =>
-        `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${c === activeCat}">${esc(c)}</button>`
-      ).join("");
+    function renderFilters() {
+      filterEl.innerHTML = filters.map(filter => `<button class="filter-pill${filter === activeFilter ? " active" : ""}" type="button" data-filter="${esc(filter)}">${esc(filter)}</button>`).join("");
     }
-
     function render() {
-      const q = searchEl.value.trim().toLowerCase();
-      const list = repos.filter(r =>
-        (activeCat === "All" || r.cat === activeCat) &&
-        (!q || (r.name + " " + r.desc + " " + r.cat).toLowerCase().includes(q))
-      );
-      gridEl.innerHTML = list.map(r => `
-      <a class="repo" href="${BASE}${r.repo}" target="_blank" rel="noopener">
-        <div class="repo-top">
-          <h3>${esc(r.name)}</h3>
-          <span class="arrow" aria-hidden="true">↗</span>
-        </div>
-        <p>${esc(r.desc)}</p>
-        <span class="cat">${esc(r.cat)}</span>
+      const query = searchEl.value.trim().toLowerCase();
+      const list = repos.filter(repo => (activeFilter === "All" || repo.cat === activeFilter) &&
+        (!query || `${repo.name} ${repo.desc} ${repo.cat}`.toLowerCase().includes(query)));
+      list.sort((a, b) => sortEl.value === "za" ? b.name.localeCompare(a.name) :
+        sortEl.value === "category" ? a.cat.localeCompare(b.cat) || a.name.localeCompare(b.name) : a.name.localeCompare(b.name));
+      gridEl.innerHTML = list.map(repo => `<a class="repo-card" href="${BASE}${repo.repo}" target="_blank" rel="noopener">
+        <div class="repo-top"><h3>${esc(repo.name)}</h3><span class="repo-arrow" aria-hidden="true">↗</span></div>
+        <p>${esc(repo.desc)}</p><div class="repo-meta"><span>${esc(repo.cat)}</span><span class="repo-visit">View repository</span></div>
       </a>`).join("");
-      countEl.textContent = `${list.length} of ${repos.length} repositories`;
+      resultEl.innerHTML = `<strong>${list.length}</strong> of ${repos.length} repositories`;
       emptyEl.style.display = list.length ? "none" : "block";
     }
-
-    chipsEl.addEventListener("click", e => {
-      const b = e.target.closest(".chip");
-      if (!b) return;
-      activeCat = b.dataset.cat;
-      renderChips();
+    filterEl.addEventListener("click", event => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+      activeFilter = button.dataset.filter;
+      renderFilters();
       render();
     });
     searchEl.addEventListener("input", render);
-
-    renderChips();
+    sortEl.addEventListener("change", render);
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      activeFilter = "All";
+      searchEl.value = "";
+      sortEl.value = "az";
+      renderFilters();
+      render();
+    });
+    renderFilters();
     render();
   </script>
 </body>
